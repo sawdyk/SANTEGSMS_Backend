@@ -1,0 +1,78 @@
+﻿using Microsoft.EntityFrameworkCore;
+using SANTEGSMS.DataSeed;
+using SANTEGSMS.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace SANTEGSMS.DatabaseContext
+{
+    public class AppDbContext: DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+
+        }
+
+        public DbSet<Schools> Schools { get; set; }
+        public DbSet<SchoolType> SchoolType { get; set; }
+        public DbSet<SchoolRoles> SchoolRoles { get; set; }
+        public DbSet<SchoolUsers> SchoolUsers { get; set; }
+        public DbSet<SchoolUserRoles> SchoolUserRoles { get; set; }
+        public DbSet<SchoolCampus> SchoolCampus { get; set; }
+        public DbSet<LocalGovt> LocalGovt { get; set; }
+        public DbSet<States> States { get; set; }
+        public DbSet<District> District { get; set; }
+        public DbSet<DistrictAdministrators> DistrictAdministrators { get; set; }
+        public DbSet<ErrorLog> ErrorLog { get; set; }
+        public DbSet<Gender> Gender { get; set; }
+        public DbSet<Parents> Parents { get; set; }
+        public DbSet<Students> Students { get; set; }
+        public DbSet<EmailConfirmationCodes> EmailConfirmationCodes { get; set; }
+        public DbSet<Classes> Classes { get; set; }
+        public DbSet<ClassGrades> ClassGrades { get; set; }
+        public DbSet<GradeStudents> GradeStudents { get; set; }
+        public DbSet<Sessions> Sessions { get; set; }
+        public DbSet<Terms> Terms { get; set; }
+        public DbSet<AcademicSessions> AcademicSessions { get; set; }
+        public DbSet<Teachers> Teachers { get; set; }
+        public DbSet<GradeTeachers> GradeTeachers { get; set; }
+        public DbSet<ParentsStudentsMap> ParentsStudentsMap { get; set; }
+        public DbSet<Alumni> Alumni { get; set; }
+        public DbSet<ClassAlumni> ClassAlumni { get; set; }
+        public DbSet<AttendancePeriod> AttendancePeriod { get; set; }
+        public DbSet<StudentAttendance> StudentAttendance { get; set; }
+        public DbSet<SchoolSubjects> SchoolSubjects { get; set; }
+        public DbSet<SubjectDepartment> SubjectDepartment { get; set; }
+        public DbSet<SubjectTeachers> SubjectTeachers { get; set; }
+        public DbSet<ScoreCategory> ScoreCategory { get; set; }
+        public DbSet<ScoreSubCategoryConfig> ScoreSubCategoryConfig { get; set; }
+        public DbSet<ScoreGrading> ScoreGrading { get; set; }
+        public DbSet<StudentDuplicates> StudentDuplicates { get; set; }
+        public DbSet<ScoreCategoryConfig> ScoreCategoryConfig { get; set; }
+        public DbSet<Assignments> Assignments { get; set; }
+        public DbSet<ScoreStatus> ScoreStatus { get; set; }
+        public DbSet<AssignmentsSubmitted> AssignmentsSubmitted { get; set; }
+        public DbSet<LessonNotes> LessonNotes { get; set; }
+        public DbSet<Status> Status { get; set; }
+        public DbSet<SubjectNotes> SubjectNotes { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.SeedSchoolRoles();
+            builder.SeedSchoolTypes();
+            builder.SeedGenderTypes();
+            builder.SeedTerms();
+            builder.SeedClassOrAlumni();
+            builder.SeedAttendancePeriod();
+            builder.seedScoreCategory();
+            builder.SeedScoreStatus();
+            builder.SeedStatus();
+        }
+    }
+}
