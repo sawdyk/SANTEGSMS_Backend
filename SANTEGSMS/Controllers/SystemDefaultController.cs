@@ -170,5 +170,48 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("activeInActiveStatus")]
+        [AllowAnonymous]
+        public async Task<IActionResult> getActiveInActiveStatusAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _systemDefaultRepo.getActiveInActiveStatusAsync();
+
+            return Ok(result);
+        }
+
+        [HttpGet("activeInActiveStatusById")]
+        [AllowAnonymous]
+        public async Task<IActionResult> getActiveInActiveStatusByIdAsync(long statusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _systemDefaultRepo.getActiveInActiveStatusByIdAsync(statusId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("schoolSubTypesBySchoolTypeId")]
+        [AllowAnonymous]
+        public async Task<IActionResult> getAllSchoolSubTypesBySchoolTypeIdAsync(long schoolTypeId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _systemDefaultRepo.getAllSchoolSubTypesBySchoolTypeIdAsync(schoolTypeId);
+
+            return Ok(result);
+        }
+
     }
 }

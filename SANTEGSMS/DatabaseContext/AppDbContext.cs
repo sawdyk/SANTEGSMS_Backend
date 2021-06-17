@@ -57,8 +57,24 @@ namespace SANTEGSMS.DatabaseContext
         public DbSet<LessonNotes> LessonNotes { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<SubjectNotes> SubjectNotes { get; set; }
-
-
+        public DbSet<ExtraCurricularScores> ExtraCurricularScores { get; set; }
+        public DbSet<BehavioralScores> BehavioralScores { get; set; }
+        public DbSet<ReportCardCommentsList> ReportCardCommentsList { get; set; }
+        public DbSet<ReportCardSignature> ReportCardSignature { get; set; }
+        public DbSet<ReportCardNextTermBegins> ReportCardNextTermBegins { get; set; }
+        public DbSet<ReportCardCommentConfig> ReportCardCommentConfig { get; set; }
+        public DbSet<ReportCardComments> ReportCardComments { get; set; }
+        public DbSet<SchoolSubTypes> SchoolSubTypes { get; set; }
+        public DbSet<ReportCardTemplates> ReportCardTemplates { get; set; }
+        public DbSet<ReportCardConfiguration> ReportCardConfiguration { get; set; }
+        public DbSet<ActiveInActiveStatus> ActiveInActiveStatus { get; set; }
+        public DbSet<ReportCardConfigurationLegendList> ReportCardConfigurationLegendList { get; set; }
+        public DbSet<ReportCardConfigurationLegend> ReportCardConfigurationLegend { get; set; }
+        public DbSet<ExaminationScores> ExaminationScores { get; set; }
+        public DbSet<ContinousAssessmentScores> ContinousAssessmentScores { get; set; }
+        public DbSet<ReportCardData> ReportCardData { get; set; }
+        public DbSet<ReportCardPosition> ReportCardPosition { get; set; }
+        public DbSet<ScoreUploadSheetTemplates> ScoreUploadSheetTemplates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -73,6 +89,9 @@ namespace SANTEGSMS.DatabaseContext
             builder.seedScoreCategory();
             builder.SeedScoreStatus();
             builder.SeedStatus();
+            builder.SeedSchoolSubTypes();
+            builder.SeedActiveInActiveStatus();
+            builder.SeedReportCardConfig();
         }
     }
 }

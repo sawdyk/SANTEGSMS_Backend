@@ -131,5 +131,21 @@ namespace SANTEGSMS.Utilities
             Online_Transfer = 2,
             Card_Payment = 3
         }
+
+        public enum Terms
+        {
+            FirstTerm = 1,
+            SecondTerm = 2,
+            ThirdTerm = 3,
+        }
+
+        public enum CommentConfig
+        {
+            Examiner = 1,
+            ClassTeacher = 2,
+            HeadTeacher = 3,
+            Principal = 4,
+        }
+
     }
 }

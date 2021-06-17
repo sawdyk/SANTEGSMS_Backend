@@ -12,6 +12,7 @@ using SANTEGSMS.DatabaseContext;
 using SANTEGSMS.Helpers;
 using SANTEGSMS.IRepos;
 using SANTEGSMS.Repos;
+using SANTEGSMS.Reusables;
 using SANTEGSMS.Security.BasicAuth;
 using SANTEGSMS.Services.Cloudinary;
 using SANTEGSMS.Services.Email;
@@ -85,12 +86,13 @@ namespace SANTEGSMS
             services.AddTransient<ITeacherRepo, TeacherRepo>();
             services.AddTransient<IAssignmentRepo, AssignmentRepo>();
             services.AddTransient<ILessonNoteRepo, LessonNoteRepo>();
+            services.AddTransient<IExtraCurricularBehavioralScoresRepo, ExtraCurricularBehavioralScoreRepo>();
+            services.AddTransient<IReportCardConfigurationRepo, ReportCardConfigurationRepo>();
+            services.AddTransient<IScoreUploadRepo, ScoreUploadRepo>();
+            services.AddTransient<IReportCardRepo, ReportCardRepo>();
+            services.AddTransient<IReportCardDataGenerateRepo, ReportCardGenerateRepo>();
 
-
-
-
-
-
+            services.AddTransient<ReportCardReUsables>();
 
             //Get the swagger value options
             var swaggerOpt = Configuration.GetSection("SwaggerOptions").Get<SwaggerOptions>();

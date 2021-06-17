@@ -58,10 +58,10 @@ namespace SANTEGSMS.Repos
                 {
                     return new SchoolSignUpRespModel { StatusCode = 409, StatusMessage = "This Email has been taken!" };
                 }
-                else if (accountCheckResult == true)
-                {
-                    return new SchoolSignUpRespModel { StatusCode = 409, StatusMessage = "This Account Exist but has not been Activated!" };
-                }
+                //else if (accountCheckResult == true)
+                //{
+                //    return new SchoolSignUpRespModel { StatusCode = 409, StatusMessage = "This Account Exist but has not been Activated!" };
+                //}
                 else
                 {
                     //school info
@@ -104,7 +104,7 @@ namespace SANTEGSMS.Repos
                         FirstName = obj.FirstName,
                         LastName = obj.LastName,
                         Email = obj.Email,
-                        EmailConfirmed = false,
+                        EmailConfirmed = true,  //change to false on production and activate email sending
                         PhoneNumber = obj.PhoneNumber,
                         PhoneNumberConfirmed = false,
                         Salt = salt,
@@ -134,21 +134,21 @@ namespace SANTEGSMS.Repos
                     string codeGenerated = confirmationCode.randomCodesGen();
 
                     //save the code generated
-                    var emailConfirmation = new EmailConfirmationCodes
-                    {
-                        UserId = schUsr.Id,
-                        Code = codeGenerated,
-                        DateGenerated = DateTime.Now
-                    };
-                    await _context.AddAsync(emailConfirmation);
-                    await _context.SaveChangesAsync();
+                    //var emailConfirmation = new EmailConfirmationCodes
+                    //{
+                    //    UserId = schUsr.Id,
+                    //    Code = codeGenerated,
+                    //    DateGenerated = DateTime.Now
+                    //};
+                    //await _context.AddAsync(emailConfirmation);
+                    //await _context.SaveChangesAsync();
 
 
                     //code to send Mail to user for account activation
-                    string MailContent = "Welcome to SANTEG School Management, use this code " + codeGenerated + " to Activate Your School Account";
+                    //string MailContent = "Welcome to SANTEG School Management, use this code " + codeGenerated + " to Activate Your School Account";
 
-                    EmailMessage message = new EmailMessage(schUsr.Email, MailContent);
-                    _emailRepo.SendEmail(message);
+                    //EmailMessage message = new EmailMessage(schUsr.Email, MailContent);
+                    //_emailRepo.SendEmail(message);
 
                     //The data collected from the user 
                     schUserRespData.UserId = schUsr.Id.ToString();

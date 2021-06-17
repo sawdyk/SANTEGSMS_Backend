@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SANTEGSMS.DatabaseContext;
 
 namespace SANTEGSMS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210430161206_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1201,28 +1203,6 @@ namespace SANTEGSMS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ReportCardCommentConfig");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CommentBy = "Examiner"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CommentBy = "Class Teacher"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CommentBy = "Head Teacher"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CommentBy = "Principal"
-                        });
                 });
 
             modelBuilder.Entity("SANTEGSMS.Entities.ReportCardComments", b =>

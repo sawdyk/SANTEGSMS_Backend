@@ -1,0 +1,556 @@
+2021-04-30 17:24:49.707 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-04-30 17:24:52.987 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-04-30 17:24:52.989 +01:00 [INF] Hosting environment: Development
+2021-04-30 17:24:52.989 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-04-30 17:24:53.203 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/weatherforecast  
+2021-04-30 17:24:53.577 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-04-30 17:24:53.608 +01:00 [INF] Authorization failed.
+2021-04-30 17:24:53.620 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2021-04-30 17:24:53.806 +01:00 [INF] Request finished in 568.2609ms 401 
+2021-04-30 17:24:54.040 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/favicon.ico  
+2021-04-30 17:24:54.141 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-04-30 17:24:54.142 +01:00 [INF] Request finished in 101.6847ms 0 
+2021-04-30 17:25:01.077 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/index.html  
+2021-04-30 17:25:01.557 +01:00 [INF] Request finished in 479.7976ms 200 text/html;charset=utf-8
+2021-04-30 17:25:01.594 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/swagger-ui.css  
+2021-04-30 17:25:01.595 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/swagger-ui-standalone-preset.js  
+2021-04-30 17:25:01.795 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/swagger-ui-bundle.js  
+2021-04-30 17:25:01.831 +01:00 [INF] The file /swagger-ui-bundle.js was not modified
+2021-04-30 17:25:01.833 +01:00 [INF] Request finished in 37.9327ms 304 application/javascript
+2021-04-30 17:25:01.912 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-04-30 17:25:01.946 +01:00 [INF] Request finished in 351.9962ms 200 text/css
+2021-04-30 17:25:01.975 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2021-04-30 17:25:01.976 +01:00 [INF] Request finished in 380.8513ms 200 application/javascript
+2021-04-30 17:25:02.261 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/favicon-16x16.png  
+2021-04-30 17:25:02.338 +01:00 [INF] Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+2021-04-30 17:25:02.339 +01:00 [INF] Request finished in 78.7712ms 200 image/png
+2021-04-30 17:25:02.395 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-04-30 17:25:04.011 +01:00 [INF] Request finished in 1614.8976ms 200 application/json;charset=utf-8
+2021-04-30 17:31:49.140 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/LocalGovt/createStates application/json 336
+2021-04-30 17:31:50.773 +01:00 [INF] CORS policy execution successful.
+2021-04-30 17:31:50.795 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-04-30 17:31:50.796 +01:00 [INF] Authorization failed.
+2021-04-30 17:31:50.797 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2021-04-30 17:31:51.082 +01:00 [INF] Request finished in 1941.3209ms 401 
+2021-04-30 17:32:08.625 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/LocalGovt/createStates application/json 336
+2021-04-30 17:32:08.642 +01:00 [INF] CORS policy execution successful.
+2021-04-30 17:32:08.801 +01:00 [INF] Authorization was successful.
+2021-04-30 17:32:08.803 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS)'
+2021-04-30 17:32:09.067 +01:00 [INF] Route matched with {action = "createStates", controller = "LocalGovt"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createStatesAsync(SANTEGSMS.RequestModels.StateReqModel) on controller SANTEGSMS.Controllers.LocalGovtController (SANTEGSMS).
+2021-04-30 17:32:12.747 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-04-30 17:32:28.626 +01:00 [ERR] An error occurred using the connection to database 'abn8gwda6xeqjvcw' on server 'xlf3ljx3beaucz9x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'.
+2021-04-30 17:32:29.606 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure()' to the 'UseMySql' call.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Connect Timeout expired.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): The Command Timeout expired before the operation completed.
+   at MySqlConnector.Protocol.Serialization.BufferedByteReader.ReadBytesAsync(IByteHandler byteHandler, ArraySegment`1 buffer, Int32 totalBytesToRead, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/BufferedByteReader.cs:line 36
+   at MySqlConnector.Protocol.Serialization.ProtocolUtility.ReadPacketAsync(BufferedByteReader bufferedByteReader, IByteHandler byteHandler, Func`1 getNextSequenceNumber, ProtocolErrorBehavior protocolErrorBehavior, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/ProtocolUtility.cs:line 409
+   at MySqlConnector.Protocol.Serialization.ProtocolUtility.DoReadPayloadAsync(BufferedByteReader bufferedByteReader, IByteHandler byteHandler, Func`1 getNextSequenceNumber, ArraySegmentHolder`1 previousPayloads, ProtocolErrorBehavior protocolErrorBehavior, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/ProtocolUtility.cs:line 467
+   at MySqlConnector.Protocol.Serialization.ProtocolUtility.ReadPayloadAsync(BufferedByteReader bufferedByteReader, IByteHandler byteHandler, Func`1 getNextSequenceNumber, ArraySegmentHolder`1 cache, ProtocolErrorBehavior protocolErrorBehavior, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/ProtocolUtility.cs:line 462
+   at MySqlConnector.Protocol.Serialization.StandardPayloadHandler.ReadPayloadAsync(ArraySegmentHolder`1 cache, ProtocolErrorBehavior protocolErrorBehavior, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/StandardPayloadHandler.cs:line 42
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 766
+--- End of stack trace from previous location where exception was thrown ---
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 794
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, Int32 startTickCount, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 386
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 112
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 141
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 729
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 751
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 396
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 362
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   --- End of inner exception stack trace ---
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure()' to the 'UseMySql' call.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Connect Timeout expired.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): The Command Timeout expired before the operation completed.
+   at MySqlConnector.Protocol.Serialization.BufferedByteReader.ReadBytesAsync(IByteHandler byteHandler, ArraySegment`1 buffer, Int32 totalBytesToRead, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/BufferedByteReader.cs:line 36
+   at MySqlConnector.Protocol.Serialization.ProtocolUtility.ReadPacketAsync(BufferedByteReader bufferedByteReader, IByteHandler byteHandler, Func`1 getNextSequenceNumber, ProtocolErrorBehavior protocolErrorBehavior, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/ProtocolUtility.cs:line 409
+   at MySqlConnector.Protocol.Serialization.ProtocolUtility.DoReadPayloadAsync(BufferedByteReader bufferedByteReader, IByteHandler byteHandler, Func`1 getNextSequenceNumber, ArraySegmentHolder`1 previousPayloads, ProtocolErrorBehavior protocolErrorBehavior, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/ProtocolUtility.cs:line 467
+   at MySqlConnector.Protocol.Serialization.ProtocolUtility.ReadPayloadAsync(BufferedByteReader bufferedByteReader, IByteHandler byteHandler, Func`1 getNextSequenceNumber, ArraySegmentHolder`1 cache, ProtocolErrorBehavior protocolErrorBehavior, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/ProtocolUtility.cs:line 462
+   at MySqlConnector.Protocol.Serialization.StandardPayloadHandler.ReadPayloadAsync(ArraySegmentHolder`1 cache, ProtocolErrorBehavior protocolErrorBehavior, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/StandardPayloadHandler.cs:line 42
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 766
+--- End of stack trace from previous location where exception was thrown ---
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 794
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, Int32 startTickCount, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 386
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 112
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 141
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 729
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 751
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 396
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 362
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   --- End of inner exception stack trace ---
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2021-04-30 17:32:34.285 +01:00 [INF] Executed DbCommand (265ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:32:34.630 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-04-30 17:32:34.691 +01:00 [INF] Executed action SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS) in 25616.3755ms
+2021-04-30 17:32:34.694 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS)'
+2021-04-30 17:32:34.701 +01:00 [INF] Request finished in 26076.6505ms 200 application/json; charset=utf-8
+2021-04-30 17:33:13.860 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/SystemDefault/schoolTypes  
+2021-04-30 17:33:13.880 +01:00 [INF] Authorization was successful.
+2021-04-30 17:33:13.881 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SystemDefaultController.getAllSchoolTypesAsync (SANTEGSMS)'
+2021-04-30 17:33:13.929 +01:00 [INF] Route matched with {action = "getAllSchoolTypes", controller = "SystemDefault"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSchoolTypesAsync() on controller SANTEGSMS.Controllers.SystemDefaultController (SANTEGSMS).
+2021-04-30 17:33:14.043 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-04-30 17:33:14.640 +01:00 [INF] Executed DbCommand (211ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `SchoolType` AS `s`
+2021-04-30 17:33:15.180 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+2021-04-30 17:33:15.202 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-04-30 17:33:15.240 +01:00 [INF] Executed action SANTEGSMS.Controllers.SystemDefaultController.getAllSchoolTypesAsync (SANTEGSMS) in 1310.6373ms
+2021-04-30 17:33:15.240 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SystemDefaultController.getAllSchoolTypesAsync (SANTEGSMS)'
+2021-04-30 17:33:15.241 +01:00 [INF] Request finished in 1381.8259ms 200 application/json; charset=utf-8
+2021-04-30 17:35:26.438 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/LocalGovt/createStates application/json 336
+2021-04-30 17:35:26.440 +01:00 [INF] CORS policy execution successful.
+2021-04-30 17:35:26.453 +01:00 [INF] Authorization was successful.
+2021-04-30 17:35:26.453 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS)'
+2021-04-30 17:35:26.455 +01:00 [INF] Route matched with {action = "createStates", controller = "LocalGovt"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createStatesAsync(SANTEGSMS.RequestModels.StateReqModel) on controller SANTEGSMS.Controllers.LocalGovtController (SANTEGSMS).
+2021-04-30 17:35:26.474 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-04-30 17:35:27.021 +01:00 [INF] Executed DbCommand (193ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:27.929 +01:00 [INF] Executed DbCommand (176ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:28.629 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:29.552 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:30.261 +01:00 [INF] Executed DbCommand (177ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:31.130 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:31.824 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:32.701 +01:00 [INF] Executed DbCommand (173ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:33.396 +01:00 [INF] Executed DbCommand (175ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:34.268 +01:00 [INF] Executed DbCommand (175ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:34.988 +01:00 [INF] Executed DbCommand (185ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:35.857 +01:00 [INF] Executed DbCommand (173ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:36.551 +01:00 [INF] Executed DbCommand (168ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:37.422 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:38.117 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:38.996 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:39.696 +01:00 [INF] Executed DbCommand (175ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:40.565 +01:00 [INF] Executed DbCommand (174ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:41.264 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:42.137 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:42.847 +01:00 [INF] Executed DbCommand (180ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:43.714 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:44.404 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:45.260 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:45.956 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:46.823 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:47.517 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:48.374 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:49.065 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:49.947 +01:00 [INF] Executed DbCommand (173ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:50.654 +01:00 [INF] Executed DbCommand (184ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:51.533 +01:00 [INF] Executed DbCommand (176ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:52.275 +01:00 [INF] Executed DbCommand (174ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:53.329 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:54.038 +01:00 [INF] Executed DbCommand (181ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:54.926 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:55.622 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:56.484 +01:00 [INF] Executed DbCommand (168ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:57.187 +01:00 [INF] Executed DbCommand (174ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:58.058 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:35:58.758 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:35:59.631 +01:00 [INF] Executed DbCommand (185ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:00.329 +01:00 [INF] Executed DbCommand (176ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:01.201 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:01.901 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:02.763 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:03.527 +01:00 [INF] Executed DbCommand (237ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:05.083 +01:00 [INF] Executed DbCommand (312ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:06.154 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:07.011 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:07.709 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:08.574 +01:00 [INF] Executed DbCommand (177ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:09.286 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:10.143 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:10.835 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:11.718 +01:00 [INF] Executed DbCommand (181ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:12.424 +01:00 [INF] Executed DbCommand (176ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:13.284 +01:00 [INF] Executed DbCommand (174ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:13.986 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:14.846 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:15.543 +01:00 [INF] Executed DbCommand (176ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:16.408 +01:00 [INF] Executed DbCommand (183ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:17.104 +01:00 [INF] Executed DbCommand (175ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:17.958 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:18.657 +01:00 [INF] Executed DbCommand (176ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:19.524 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:20.222 +01:00 [INF] Executed DbCommand (174ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:21.086 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:21.786 +01:00 [INF] Executed DbCommand (176ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:22.648 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:23.354 +01:00 [INF] Executed DbCommand (181ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:24.230 +01:00 [INF] Executed DbCommand (174ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:24.928 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-04-30 17:36:25.788 +01:00 [INF] Executed DbCommand (170ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-04-30 17:36:26.494 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+2021-04-30 17:36:26.501 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-04-30 17:36:26.523 +01:00 [INF] Executed action SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS) in 60068.2688ms
+2021-04-30 17:36:26.524 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS)'
+2021-04-30 17:36:26.526 +01:00 [INF] Request finished in 60088.5136ms 200 application/json; charset=utf-8
+2021-04-30 17:37:03.359 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/SystemDefault/states  
+2021-04-30 17:37:03.381 +01:00 [INF] Authorization was successful.
+2021-04-30 17:37:03.382 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SystemDefaultController.getAllStatesAsync (SANTEGSMS)'
+2021-04-30 17:37:03.396 +01:00 [INF] Route matched with {action = "getAllStates", controller = "SystemDefault"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllStatesAsync() on controller SANTEGSMS.Controllers.SystemDefaultController (SANTEGSMS).
+2021-04-30 17:37:03.471 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-04-30 17:37:03.995 +01:00 [INF] Executed DbCommand (173ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `States` AS `s`
+2021-04-30 17:37:04.522 +01:00 [INF] Executed DbCommand (176ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+2021-04-30 17:37:04.531 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-04-30 17:37:04.545 +01:00 [INF] Executed action SANTEGSMS.Controllers.SystemDefaultController.getAllStatesAsync (SANTEGSMS) in 1148.2105ms
+2021-04-30 17:37:04.546 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SystemDefaultController.getAllStatesAsync (SANTEGSMS)'
+2021-04-30 17:37:04.548 +01:00 [INF] Request finished in 1190.0058ms 200 application/json; charset=utf-8

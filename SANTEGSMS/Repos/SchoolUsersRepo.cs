@@ -58,7 +58,7 @@ namespace SANTEGSMS.Repos
                         FirstName = obj.FirstName,
                         LastName = obj.LastName,
                         Email = obj.Email,
-                        EmailConfirmed = false,
+                        EmailConfirmed = true,
                         PhoneNumber = obj.PhoneNumber,
                         PhoneNumberConfirmed = false,
                         Salt = salt,
@@ -153,17 +153,23 @@ namespace SANTEGSMS.Repos
                 CheckerValidation emailcheck = new CheckerValidation(_context);
 
                 var getUser = _context.SchoolUsers.FirstOrDefault(u => u.Email == obj.Email);
-                var accountCheckResult = emailcheck.checkIfAccountExistAndNotConfirmed(obj.Email, Convert.ToInt64(EnumUtility.UserCategoty.SchoolUsers));
-
-                //get the school user Role
-                var getSchUserRole = _context.SchoolUserRoles.Where(r => r.UserId == getUser.Id).FirstOrDefault();
-
-                //get the school user RoleId
-                long schUserRoleId = (long)getSchUserRole.RoleId;
-
+                
 
                 if (getUser != null)
                 {
+                    var accountCheckResult = emailcheck.checkIfAccountExistAndNotConfirmed(obj.Email, Convert.ToInt64(EnumUtility.UserCategoty.SchoolUsers));
+
+                    //get the school user Role
+                    var getSchUserRole = _context.SchoolUserRoles.Where(r => r.UserId == getUser.Id).FirstOrDefault();
+
+                    long schUserRoleId = 0;
+
+                    //get the school user RoleId
+                    if (getSchUserRole != null)
+                    {
+                        schUserRoleId = (long)getSchUserRole.RoleId;
+                    }
+
                     var paswordHasher = new PasswordHasher();
                     string salt = getUser.Salt; //gets the salt used to hash the user password
                     string decryptedPassword = paswordHasher.hashedPassword(obj.Password, salt); //decrypts the password
@@ -236,6 +242,7 @@ namespace SANTEGSMS.Repos
                 await _context.ErrorLog.AddAsync(logError);
                 await _context.SaveChangesAsync();
                 return new SchoolUsersLoginRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+                //}
             }
         }
 

@@ -27,5 +27,11 @@ namespace SANTEGSMS.IRepos
         //-----------------------Attendance Period---------------------------------------------------------------------
         Task<GenericRespModel> getAllAttendancePeriodAsync();
         Task<GenericRespModel> getAttendancePeriodByIdAsync(long periodId);
+
+        Task<GenericRespModel> getActiveInActiveStatusAsync();
+        Task<GenericRespModel> getActiveInActiveStatusByIdAsync(long statusId);
+
+        Task<GenericRespModel> getAllSchoolSubTypesBySchoolTypeIdAsync(long schoolTypeId);
+
     }
 }
