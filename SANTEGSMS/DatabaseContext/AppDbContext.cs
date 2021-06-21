@@ -75,6 +75,9 @@ namespace SANTEGSMS.DatabaseContext
         public DbSet<ReportCardData> ReportCardData { get; set; }
         public DbSet<ReportCardPosition> ReportCardPosition { get; set; }
         public DbSet<ScoreUploadSheetTemplates> ScoreUploadSheetTemplates { get; set; }
+        public DbSet<AppTypes> AppTypes { get; set; }
+        public DbSet<FolderTypes> FolderTypes { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -92,6 +95,8 @@ namespace SANTEGSMS.DatabaseContext
             builder.SeedSchoolSubTypes();
             builder.SeedActiveInActiveStatus();
             builder.SeedReportCardConfig();
+            builder.SeedAppTypes();
+            builder.SeedFolderTypes();
         }
     }
 }
