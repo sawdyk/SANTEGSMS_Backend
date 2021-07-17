@@ -17,6 +17,7 @@ namespace SANTEGSMS.Entities
         public long? CampusId { get; set; }
         public DateTime DateCreated { get; set; }
 
+
         [ForeignKey("SchoolId")]
         public virtual Schools Schools { get; set; }
 

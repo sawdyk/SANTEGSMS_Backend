@@ -1,0 +1,356 @@
+2021-07-17 22:16:45.260 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-17 22:16:46.376 +01:00 [INF] Creating key {819f0711-3267-4179-a2b4-499f8a0616b9} with creation date 2021-07-17 21:16:46Z, activation date 2021-07-18 13:36:35Z, and expiration date 2021-10-15 21:16:45Z.
+2021-07-17 22:16:46.519 +01:00 [INF] Writing data to file 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys\key-819f0711-3267-4179-a2b4-499f8a0616b9.xml'.
+2021-07-17 22:16:51.274 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-17 22:16:51.275 +01:00 [INF] Hosting environment: Development
+2021-07-17 22:16:51.276 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-17 22:16:51.700 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger  
+2021-07-17 22:16:51.700 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-17 22:16:51.915 +01:00 [INF] Request finished in 220.5875ms 0 
+2021-07-17 22:16:52.299 +01:00 [INF] Request finished in 607.2884ms 200 text/html;charset=utf-8
+2021-07-17 22:16:52.455 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui.css  
+2021-07-17 22:16:52.670 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui-bundle.js  
+2021-07-17 22:16:52.700 +01:00 [INF] The file /swagger-ui-bundle.js was not modified
+2021-07-17 22:16:52.704 +01:00 [INF] Request finished in 33.8137ms 304 application/javascript
+2021-07-17 22:16:52.709 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui-standalone-preset.js  
+2021-07-17 22:16:52.727 +01:00 [INF] The file /swagger-ui-standalone-preset.js was not modified
+2021-07-17 22:16:52.729 +01:00 [INF] Request finished in 20.1651ms 304 application/javascript
+2021-07-17 22:16:52.787 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-07-17 22:16:52.792 +01:00 [INF] Request finished in 337.145ms 200 text/css
+2021-07-17 22:16:53.097 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/favicon-16x16.png  
+2021-07-17 22:16:53.312 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-17 22:16:53.528 +01:00 [INF] Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+2021-07-17 22:16:53.528 +01:00 [INF] Request finished in 432.4678ms 0 image/png
+2021-07-17 22:16:54.718 +01:00 [INF] Request finished in 1406.2284ms 200 application/json;charset=utf-8
+2021-07-17 22:18:38.200 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/ReportCard/generatePins application/json 128
+2021-07-17 22:18:38.802 +01:00 [INF] CORS policy execution successful.
+2021-07-17 22:18:39.348 +01:00 [INF] Authorization was successful.
+2021-07-17 22:18:39.349 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS)'
+2021-07-17 22:18:39.754 +01:00 [INF] Route matched with {action = "generatePins", controller = "ReportCard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] generatePinsAsync(SANTEGSMS.RequestModels.PinCreateReqModel) on controller SANTEGSMS.Controllers.ReportCardController (SANTEGSMS).
+2021-07-17 22:18:46.366 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-17 22:18:48.907 +01:00 [INF] Executed DbCommand (180ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-07-17 22:18:49.530 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-07-17 22:18:49.895 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-07-17 22:18:49.918 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-07-17 22:18:50.022 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 2
+2021-07-17 22:18:50.534 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:18:50.568 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:18:50.573 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:18:50.577 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:18:50.581 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:18:51.550 +01:00 [INF] Executed DbCommand (58ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Int64), @p7='?' (DbType = Int64), @p8='?' (Size = 4000), @p9='?' (DbType = Int64), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64), @p12='?' (DbType = Int64), @p13='?' (DbType = Int64), @p14='?' (DbType = Int64), @p15='?' (DbType = Guid), @p16='?' (DbType = DateTime), @p17='?' (Size = 4000), @p18='?' (DbType = Boolean), @p19='?' (Size = 4000), @p20='?' (DbType = Int64), @p21='?' (DbType = Int64), @p22='?' (Size = 4000), @p23='?' (DbType = Int64), @p24='?' (DbType = Int64), @p25='?' (DbType = Int64), @p26='?' (DbType = Int64), @p27='?' (DbType = Int64), @p28='?' (DbType = Int64), @p29='?' (DbType = Guid), @p30='?' (DbType = DateTime), @p31='?' (Size = 4000), @p32='?' (DbType = Boolean), @p33='?' (Size = 4000), @p34='?' (DbType = Int64), @p35='?' (DbType = Int64), @p36='?' (Size = 4000), @p37='?' (DbType = Int64), @p38='?' (DbType = Int64), @p39='?' (DbType = Int64), @p40='?' (DbType = Int64), @p41='?' (DbType = Int64), @p42='?' (DbType = Int64), @p43='?' (DbType = Guid), @p44='?' (DbType = DateTime), @p45='?' (Size = 4000), @p46='?' (DbType = Boolean), @p47='?' (Size = 4000), @p48='?' (DbType = Int64), @p49='?' (DbType = Int64), @p50='?' (Size = 4000), @p51='?' (DbType = Int64), @p52='?' (DbType = Int64), @p53='?' (DbType = Int64), @p54='?' (DbType = Int64), @p55='?' (DbType = Int64), @p56='?' (DbType = Int64), @p57='?' (DbType = Guid), @p58='?' (DbType = DateTime), @p59='?' (Size = 4000), @p60='?' (DbType = Boolean), @p61='?' (Size = 4000), @p62='?' (DbType = Int64), @p63='?' (DbType = Int64), @p64='?' (Size = 4000), @p65='?' (DbType = Int64), @p66='?' (DbType = Int64), @p67='?' (DbType = Int64), @p68='?' (DbType = Int64), @p69='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52, @p53, @p54, @p55);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, @p64, @p65, @p66, @p67, @p68, @p69);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-17 22:18:51.823 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-17 22:18:51.928 +01:00 [INF] Executed action SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS) in 12160.534ms
+2021-07-17 22:18:51.930 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS)'
+2021-07-17 22:18:51.942 +01:00 [INF] Request finished in 13744.0924ms 200 application/json; charset=utf-8
+2021-07-17 22:22:01.944 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-17 22:22:04.102 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-17 22:22:04.106 +01:00 [INF] Hosting environment: Development
+2021-07-17 22:22:04.107 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-17 22:22:04.250 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-17 22:22:04.568 +01:00 [INF] Request finished in 321.636ms 200 text/html;charset=utf-8
+2021-07-17 22:22:05.100 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/favicon-16x16.png  
+2021-07-17 22:22:05.202 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-17 22:22:05.214 +01:00 [INF] Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+2021-07-17 22:22:05.215 +01:00 [INF] Request finished in 115.731ms 0 image/png
+2021-07-17 22:22:06.168 +01:00 [INF] Request finished in 965.7407ms 200 application/json;charset=utf-8
+2021-07-17 22:22:33.599 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/ReportCard/generatePins application/json 128
+2021-07-17 22:22:33.915 +01:00 [INF] CORS policy execution successful.
+2021-07-17 22:22:34.064 +01:00 [INF] Authorization was successful.
+2021-07-17 22:22:34.065 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS)'
+2021-07-17 22:22:34.274 +01:00 [INF] Route matched with {action = "generatePins", controller = "ReportCard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] generatePinsAsync(SANTEGSMS.RequestModels.PinCreateReqModel) on controller SANTEGSMS.Controllers.ReportCardController (SANTEGSMS).
+2021-07-17 22:22:39.893 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-17 22:22:42.530 +01:00 [INF] Executed DbCommand (174ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-07-17 22:22:43.425 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-07-17 22:22:43.895 +01:00 [INF] Executed DbCommand (48ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-07-17 22:22:43.932 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-07-17 22:22:44.053 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 2
+2021-07-17 22:22:44.996 +01:00 [INF] Executed DbCommand (70ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Int64), @p7='?' (DbType = Int64), @p8='?' (Size = 4000), @p9='?' (DbType = Int64), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64), @p12='?' (DbType = Int64), @p13='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-17 22:22:45.263 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:22:45.339 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Int64), @p7='?' (DbType = Int64), @p8='?' (Size = 4000), @p9='?' (DbType = Int64), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64), @p12='?' (DbType = Int64), @p13='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-17 22:22:45.458 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:22:45.507 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Int64), @p7='?' (DbType = Int64), @p8='?' (Size = 4000), @p9='?' (DbType = Int64), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64), @p12='?' (DbType = Int64), @p13='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-17 22:22:45.552 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:22:45.579 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Int64), @p7='?' (DbType = Int64), @p8='?' (Size = 4000), @p9='?' (DbType = Int64), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64), @p12='?' (DbType = Int64), @p13='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-17 22:22:45.629 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:22:45.652 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Int64), @p7='?' (DbType = Int64), @p8='?' (Size = 4000), @p9='?' (DbType = Int64), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64), @p12='?' (DbType = Int64), @p13='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-17 22:22:45.689 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ReportCardPin` AS `r`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:22:45.708 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-17 22:22:45.840 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[@__reportCardPin_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`Pin`, `r`.`CreatedById`, `s`.`FirstName`, `s`.`LastName`, `r`.`SchoolId`, `s0`.`SchoolName`, `r`.`CampusId`, `s1`.`CampusName`, `r`.`SessionId`, `s2`.`SessionName`, `r`.`TermId`, `t`.`TermName`, `r`.`ViewedClassId`, `r`.`ViewedClassGradeId`, `r`.`NoOfTimesValid`, `r`.`NoOfTimesUsed`, `r`.`IsUsed`, `r`.`IsUsedById`, `r`.`DateCreated`, `r`.`DateLastUsed`
+FROM `ReportCardPin` AS `r`
+INNER JOIN `SchoolUsers` AS `s` ON `r`.`CreatedById` = `s`.`Id`
+INNER JOIN `Schools` AS `s0` ON `r`.`SchoolId` = `s0`.`Id`
+INNER JOIN `SchoolCampus` AS `s1` ON `r`.`CampusId` = `s1`.`Id`
+INNER JOIN `Sessions` AS `s2` ON `r`.`SessionId` = `s2`.`Id`
+INNER JOIN `Terms` AS `t` ON `r`.`TermId` = `t`.`Id`
+WHERE `r`.`Id` = @__reportCardPin_Id_0
+2021-07-17 22:22:46.406 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+System.InvalidOperationException: Cannot set MySqlCommand.CommandText when there is an open DataReader for this command; it must be closed first.
+   at MySql.Data.MySqlClient.MySqlCommand.set_CommandText(String value) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 148
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.CreateCommand(RelationalCommandParameterObject parameterObject, Guid commandId, DbCommandMethod commandMethod)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+System.InvalidOperationException: Cannot set MySqlCommand.CommandText when there is an open DataReader for this command; it must be closed first.
+   at MySql.Data.MySqlClient.MySqlCommand.set_CommandText(String value) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 148
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.CreateCommand(RelationalCommandParameterObject parameterObject, Guid commandId, DbCommandMethod commandMethod)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2021-07-17 22:22:46.493 +01:00 [INF] Executed action SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS) in 12203.7164ms
+2021-07-17 22:22:46.507 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS)'
+2021-07-17 22:22:46.550 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Cannot set MySqlCommand.CommandText when there is an open DataReader for this command; it must be closed first.
+   at MySql.Data.MySqlClient.MySqlCommand.set_CommandText(String value) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 148
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.CreateCommand(RelationalCommandParameterObject parameterObject, Guid commandId, DbCommandMethod commandMethod)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Text.Json.JsonSerializer.HandleEnumerable(JsonClassInfo elementClassInfo, JsonSerializerOptions options, Utf8JsonWriter writer, WriteStack& state)
+   at System.Text.Json.JsonSerializer.Write(Utf8JsonWriter writer, Int32 originalWriterDepth, Int32 flushThreshold, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.JsonSerializer.WriteAsyncCore(Stream utf8Json, Object value, Type inputType, JsonSerializerOptions options, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-07-17 22:22:46.774 +01:00 [INF] Request finished in 13176.2848ms 500 text/plain
+2021-07-17 22:33:57.803 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-17 22:33:59.161 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-17 22:33:59.178 +01:00 [INF] Hosting environment: Development
+2021-07-17 22:33:59.178 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-17 22:33:59.278 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-17 22:33:59.278 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger  
+2021-07-17 22:33:59.383 +01:00 [INF] Request finished in 115.0373ms 0 
+2021-07-17 22:33:59.682 +01:00 [INF] Request finished in 416.5318ms 200 text/html;charset=utf-8
+2021-07-17 22:33:59.881 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui.css  
+2021-07-17 22:34:00.114 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-07-17 22:34:00.114 +01:00 [INF] Request finished in 233.4628ms 0 text/css
+2021-07-17 22:34:00.300 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-17 22:34:01.166 +01:00 [INF] Request finished in 866.091ms 200 application/json;charset=utf-8
+2021-07-17 22:34:08.498 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/ReportCard/generatePins application/json 128
+2021-07-17 22:34:08.698 +01:00 [INF] CORS policy execution successful.
+2021-07-17 22:34:08.812 +01:00 [INF] Authorization was successful.
+2021-07-17 22:34:08.814 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS)'
+2021-07-17 22:34:08.959 +01:00 [INF] Route matched with {action = "generatePins", controller = "ReportCard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] generatePinsAsync(SANTEGSMS.RequestModels.PinCreateReqModel) on controller SANTEGSMS.Controllers.ReportCardController (SANTEGSMS).
+2021-07-17 22:34:14.645 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-17 22:34:16.285 +01:00 [INF] Executed DbCommand (205ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-07-17 22:34:16.792 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-07-17 22:34:17.052 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-07-17 22:34:17.075 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-07-17 22:34:17.183 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 2
+2021-07-17 22:34:18.640 +01:00 [INF] Executed DbCommand (60ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Int64), @p7='?' (DbType = Int64), @p8='?' (Size = 4000), @p9='?' (DbType = Int64), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64), @p12='?' (DbType = Int64), @p13='?' (DbType = Int64), @p14='?' (DbType = Int64), @p15='?' (DbType = Guid), @p16='?' (DbType = DateTime), @p17='?' (Size = 4000), @p18='?' (DbType = Boolean), @p19='?' (Size = 4000), @p20='?' (DbType = Int64), @p21='?' (DbType = Int64), @p22='?' (Size = 4000), @p23='?' (DbType = Int64), @p24='?' (DbType = Int64), @p25='?' (DbType = Int64), @p26='?' (DbType = Int64), @p27='?' (DbType = Int64), @p28='?' (DbType = Int64), @p29='?' (DbType = Guid), @p30='?' (DbType = DateTime), @p31='?' (Size = 4000), @p32='?' (DbType = Boolean), @p33='?' (Size = 4000), @p34='?' (DbType = Int64), @p35='?' (DbType = Int64), @p36='?' (Size = 4000), @p37='?' (DbType = Int64), @p38='?' (DbType = Int64), @p39='?' (DbType = Int64), @p40='?' (DbType = Int64), @p41='?' (DbType = Int64), @p42='?' (DbType = Int64), @p43='?' (DbType = Guid), @p44='?' (DbType = DateTime), @p45='?' (Size = 4000), @p46='?' (DbType = Boolean), @p47='?' (Size = 4000), @p48='?' (DbType = Int64), @p49='?' (DbType = Int64), @p50='?' (Size = 4000), @p51='?' (DbType = Int64), @p52='?' (DbType = Int64), @p53='?' (DbType = Int64), @p54='?' (DbType = Int64), @p55='?' (DbType = Int64), @p56='?' (DbType = Int64), @p57='?' (DbType = Guid), @p58='?' (DbType = DateTime), @p59='?' (Size = 4000), @p60='?' (DbType = Boolean), @p61='?' (Size = 4000), @p62='?' (DbType = Int64), @p63='?' (DbType = Int64), @p64='?' (Size = 4000), @p65='?' (DbType = Int64), @p66='?' (DbType = Int64), @p67='?' (DbType = Int64), @p68='?' (DbType = Int64), @p69='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52, @p53, @p54, @p55);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `ReportCardPin` (`CampusId`, `CreatedById`, `DateCreated`, `DateLastUsed`, `IsUsed`, `IsUsedById`, `NoOfTimesUsed`, `NoOfTimesValid`, `Pin`, `SchoolId`, `SessionId`, `TermId`, `ViewedClassGradeId`, `ViewedClassId`)
+VALUES (@p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, @p64, @p65, @p66, @p67, @p68, @p69);
+SELECT `Id`
+FROM `ReportCardPin`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-17 22:34:18.987 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+    SELECT `r`.`Id`, `r`.`CampusId`, `r`.`CreatedById`, `r`.`DateCreated`, `r`.`DateLastUsed`, `r`.`IsUsed`, `r`.`IsUsedById`, `r`.`NoOfTimesUsed`, `r`.`NoOfTimesValid`, `r`.`Pin`, `r`.`SchoolId`, `r`.`SessionId`, `r`.`TermId`, `r`.`ViewedClassGradeId`, `r`.`ViewedClassId`
+    FROM `ReportCardPin` AS `r`
+    LIMIT @__p_0
+) AS `t`
+2021-07-17 22:34:19.017 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-17 22:34:19.183 +01:00 [INF] Executed DbCommand (43ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`Pin`, `t`.`CreatedById`, `s`.`FirstName`, `s`.`LastName`, `t`.`SchoolId`, `s0`.`SchoolName`, `t`.`CampusId`, `s1`.`CampusName`, `t`.`SessionId`, `s2`.`SessionName`, `t`.`TermId`, `t0`.`TermName`, `t`.`ViewedClassId`, `t`.`ViewedClassGradeId`, `t`.`NoOfTimesValid`, `t`.`NoOfTimesUsed`, `t`.`IsUsed`, `t`.`IsUsedById`, `t`.`DateCreated`, `t`.`DateLastUsed`
+FROM (
+    SELECT `r`.`Id`, `r`.`CampusId`, `r`.`CreatedById`, `r`.`DateCreated`, `r`.`DateLastUsed`, `r`.`IsUsed`, `r`.`IsUsedById`, `r`.`NoOfTimesUsed`, `r`.`NoOfTimesValid`, `r`.`Pin`, `r`.`SchoolId`, `r`.`SessionId`, `r`.`TermId`, `r`.`ViewedClassGradeId`, `r`.`ViewedClassId`
+    FROM `ReportCardPin` AS `r`
+    LIMIT @__p_0
+) AS `t`
+INNER JOIN `SchoolUsers` AS `s` ON `t`.`CreatedById` = `s`.`Id`
+INNER JOIN `Schools` AS `s0` ON `t`.`SchoolId` = `s0`.`Id`
+INNER JOIN `SchoolCampus` AS `s1` ON `t`.`CampusId` = `s1`.`Id`
+INNER JOIN `Sessions` AS `s2` ON `t`.`SessionId` = `s2`.`Id`
+INNER JOIN `Terms` AS `t0` ON `t`.`TermId` = `t0`.`Id`
+ORDER BY `t`.`Id` DESC
+2021-07-17 22:34:19.238 +01:00 [INF] Executed action SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS) in 10266.5255ms
+2021-07-17 22:34:19.240 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ReportCardController.generatePinsAsync (SANTEGSMS)'
+2021-07-17 22:34:19.266 +01:00 [INF] Request finished in 10769.1537ms 200 application/json; charset=utf-8

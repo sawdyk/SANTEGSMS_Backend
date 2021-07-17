@@ -22,6 +22,11 @@ namespace SANTEGSMS.Entities
         public DateTime LastPasswordChangedDate { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
+
 
         [ForeignKey("SchoolUserId")]
         public virtual SchoolUsers SchoolUsers { get; set; }

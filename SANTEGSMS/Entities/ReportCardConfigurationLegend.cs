@@ -21,6 +21,9 @@ namespace SANTEGSMS.Entities
         public DateTime DateCreated { get; set; }
         public Guid LastUpdatedBy { get; set; }
         public DateTime LastUpdatedDate { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
 
         [ForeignKey("TermId")]
         public virtual Terms Terms { get; set; }

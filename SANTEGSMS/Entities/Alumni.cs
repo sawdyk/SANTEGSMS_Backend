@@ -21,6 +21,10 @@ namespace SANTEGSMS.Entities
         public Guid GradeTeacherId { get; set; }
         public long StatusId { get; set; }
         public DateTime DateGraduated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
 
         [ForeignKey("SchoolId")]

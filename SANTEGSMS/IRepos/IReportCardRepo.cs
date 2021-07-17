@@ -18,5 +18,15 @@ namespace SANTEGSMS.IRepos
         Task<ComputeResultRespModel> getComputedResultByStudentIdAsync(Guid studentId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId);
         Task<GenericRespModel> deleteComputedResultByStudentIdAsync(Guid studentId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId);
         Task<GenericRespModel> deleteAllComputedResultAsync(long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId);
+
+
+        //----------------------------REPORT CARD PIN GENERATION----------------------------------------------------
+
+        Task<GenericRespModel> generatePinsAsync(PinCreateReqModel obj);
+        Task<GenericRespModel> getPinByIdAsync(long pinId);
+        Task<GenericRespModel> getAllPinsAsync(long schoolId, long campusId, long termId, long sessionId);
+        Task<GenericRespModel> getPinsByStatusAsync(long schoolId, long campusId, long termId, long sessionId, bool isUsed);
+
+
     }
 }

@@ -35,6 +35,10 @@ namespace SANTEGSMS.Entities
         public string Grade { get; set; }
         public string Remark { get; set; }
         public DateTime DateComputed { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
 
         [ForeignKey("StudentId")]

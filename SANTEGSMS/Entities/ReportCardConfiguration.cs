@@ -32,6 +32,10 @@ namespace SANTEGSMS.Entities
         public bool RefSecondTermScoreShow { get; set; }  //third term
         public bool ComputeOverallTotalAverage { get; set; } //third term
         public bool ShowComputeOverallTotalAverage { get; set; }  //third term
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
 
         [ForeignKey("TermId")]

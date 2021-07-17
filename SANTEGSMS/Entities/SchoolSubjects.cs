@@ -24,7 +24,7 @@ namespace SANTEGSMS.Entities
         public bool IsAssignedToTeacher { get; set; }
         public bool IsActive { get; set; }
         public DateTime DateCreated { get; set; }
-
+       
 
         [ForeignKey("ClassId")]
         public virtual Classes Classes { get; set; }

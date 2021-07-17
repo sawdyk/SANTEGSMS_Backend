@@ -17,6 +17,10 @@ namespace SANTEGSMS.Entities
         public long ClassId { get; set; }
         public string DepartmentName { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
         [ForeignKey("SchoolId")]
         public virtual Schools Schools { get; set; }

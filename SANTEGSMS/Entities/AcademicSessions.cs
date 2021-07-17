@@ -24,6 +24,10 @@ namespace SANTEGSMS.Entities
         public bool IsClosed { get; set; }
         public bool IsOpened { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
         [ForeignKey("SessionId")]
         public virtual Sessions Sessions { get; set; }

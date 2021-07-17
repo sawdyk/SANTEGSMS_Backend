@@ -25,6 +25,10 @@ namespace SANTEGSMS.Entities
         public long AttendancePeriodIdMorning { get; set; }
         public long AttendancePeriodIdAfternoon { get; set; }
         public DateTime AttendanceDate { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
 
         [ForeignKey("SchoolId")]

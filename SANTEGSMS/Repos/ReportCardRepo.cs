@@ -9,6 +9,7 @@ using SANTEGSMS.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace SANTEGSMS.Repos
@@ -1136,6 +1137,248 @@ namespace SANTEGSMS.Repos
                 }
 
                 return new GenericRespModel { StatusCode = 409, StatusMessage = "A Paremeter With Specified ID does not exist" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+
+        //----------------------------REPORT CARD PIN GENERATION----------------------------------------------------
+
+        public async Task<GenericRespModel> generatePinsAsync(PinCreateReqModel obj)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(obj.SchoolId);
+                var checkCampus = check.checkSchoolCampusById(obj.CampusId);
+                var checkTerm = check.checkTermById(obj.TermId);
+                var checkSession = check.checkSessionById(obj.SessionId);
+
+                IList<object> pinList = new List<object>();
+
+                //check if all parameters supplied is Valid
+                if (checkSchool == true && checkCampus == true && checkTerm == true && checkSession == true)
+                {
+                    int count = (int)obj.NoOfPinsToGenerate;
+                    string schoolCode = new AdmissionNumberGenerator(_context).RetrieveSchoolCode(obj.SchoolId).SchoolCode;
+
+                    for (int i = 1; i <= count; i++)
+                    {
+                        string random = RandomNumberGenerator.RandomString().ToUpper();
+                        string pinGenerated = schoolCode + "-" + random;
+
+                        var reportCardPin = new ReportCardPin()
+                        {
+                            Pin = pinGenerated,
+                            CreatedById = obj.CreatedById,
+                            SchoolId = obj.SchoolId,
+                            CampusId = obj.CampusId,
+                            TermId = obj.TermId,
+                            SessionId = obj.SessionId,
+                            IsUsed = false,
+                            NoOfTimesValid = 5,
+                            DateCreated = DateTime.Now
+                        };
+
+                        await _context.ReportCardPin.AddAsync(reportCardPin);
+                    }
+
+                    await _context.SaveChangesAsync();
+
+                    //return the ReportCarPin Created
+                    var queryResult = from st in _context.ReportCardPin.Take(count) orderby st.Id descending
+                                      select new
+                                      {
+                                          st.Id,
+                                          st.Pin,
+                                          st.CreatedById,
+                                          st.SchoolUsers.FirstName,
+                                          st.SchoolUsers.LastName,
+                                          st.SchoolId,
+                                          st.Schools.SchoolName,
+                                          st.CampusId,
+                                          st.SchoolCampus.CampusName,
+                                          st.SessionId,
+                                          st.Sessions.SessionName,
+                                          st.TermId,
+                                          st.Terms.TermName,
+                                          st.ViewedClassId,
+                                          st.ViewedClassGradeId,
+                                          st.NoOfTimesValid,
+                                          st.NoOfTimesUsed,
+                                          st.IsUsed,
+                                          st.IsUsedById,
+                                          st.DateCreated,
+                                          st.DateLastUsed,
+                                      };
+
+                    if (queryResult.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = (long)HttpStatusCode.OK, StatusMessage = $"Successfully Generated {count} Pins", Data = queryResult };
+                    }
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "A Paremeter With Specified ID does not exist" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getPinByIdAsync(long pinId)
+        {
+            try
+            {
+                //return the ReportCarPin Created
+                var result = from st in _context.ReportCardPin
+                             where st.Id == pinId
+                             select new
+                             {
+                                 st.Id,
+                                 st.Pin,
+                                 st.CreatedById,
+                                 st.SchoolUsers.FirstName,
+                                 st.SchoolUsers.LastName,
+                                 st.SchoolId,
+                                 st.Schools.SchoolName,
+                                 st.CampusId,
+                                 st.SchoolCampus.CampusName,
+                                 st.SessionId,
+                                 st.Sessions.SessionName,
+                                 st.TermId,
+                                 st.Terms.TermName,
+                                 st.ViewedClassId,  
+                                 st.ViewedClassGradeId,
+                                 st.NoOfTimesValid,
+                                 st.NoOfTimesUsed,
+                                 st.IsUsed,
+                                 st.IsUsedById,
+                                 st.DateCreated,
+                                 st.DateLastUsed,
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAllPinsAsync(long schoolId, long campusId, long termId, long sessionId)
+        {
+            try
+            {
+                //return the ReportCarPin Created
+                var result = from st in _context.ReportCardPin
+                             where st.SchoolId == schoolId && st.CampusId == campusId 
+                             && st.TermId == termId && st.SessionId == sessionId
+                             select new
+                             {
+                                 st.Id,
+                                 st.Pin,
+                                 st.CreatedById,
+                                 st.SchoolUsers.FirstName,
+                                 st.SchoolUsers.LastName,
+                                 st.SchoolId,
+                                 st.Schools.SchoolName,
+                                 st.CampusId,
+                                 st.SchoolCampus.CampusName,
+                                 st.SessionId,
+                                 st.Sessions.SessionName,
+                                 st.TermId,
+                                 st.Terms.TermName,
+                                 st.ViewedClassId,
+                                 st.ViewedClassGradeId,
+                                 st.NoOfTimesValid,
+                                 st.NoOfTimesUsed,
+                                 st.IsUsed,
+                                 st.IsUsedById,
+                                 st.DateCreated,
+                                 st.DateLastUsed,
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getPinsByStatusAsync(long schoolId, long campusId, long termId, long sessionId, bool isUsed)
+        {
+            try
+            {
+                //return the ReportCarPin Created
+                var result = from st in _context.ReportCardPin
+                             where st.SchoolId == schoolId && st.CampusId == campusId
+                             && st.TermId == termId && st.SessionId == sessionId && st.IsUsed == isUsed
+                             select new
+                             {
+                                 st.Id,
+                                 st.Pin,
+                                 st.CreatedById,
+                                 st.SchoolUsers.FirstName,
+                                 st.SchoolUsers.LastName,
+                                 st.SchoolId,
+                                 st.Schools.SchoolName,
+                                 st.CampusId,
+                                 st.SchoolCampus.CampusName,
+                                 st.SessionId,
+                                 st.Sessions.SessionName,
+                                 st.TermId,
+                                 st.Terms.TermName,
+                                 st.ViewedClassId,
+                                 st.ViewedClassGradeId,
+                                 st.NoOfTimesValid,
+                                 st.NoOfTimesUsed,
+                                 st.IsUsed,
+                                 st.IsUsedById,
+                                 st.DateCreated,
+                                 st.DateLastUsed,
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
             }
             catch (Exception exMessage)
             {

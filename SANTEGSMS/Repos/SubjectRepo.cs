@@ -1,4 +1,5 @@
-﻿using SANTEGSMS.DatabaseContext;
+﻿using OfficeOpenXml;
+using SANTEGSMS.DatabaseContext;
 using SANTEGSMS.Entities;
 using SANTEGSMS.Helpers;
 using SANTEGSMS.IRepos;
@@ -8,6 +9,7 @@ using SANTEGSMS.Reusables;
 using SANTEGSMS.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -738,6 +740,112 @@ namespace SANTEGSMS.Repos
                 await _context.ErrorLog.AddAsync(logError);
                 await _context.SaveChangesAsync();
                 return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful" };
+            }
+        }
+
+        //Bulk Creation of Subjects
+        public async Task<GenericRespModel> createBulkSubjectAsync(BulkSubjectReqModel obj)
+        {
+            IList<object> data = new List<object>();
+            try
+            {
+                GenericRespModel response = new GenericRespModel();
+                List<GenericRespModel> responseList = new List<GenericRespModel>();
+
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(obj.SchoolId);
+                var checkCampus = check.checkSchoolCampusById(obj.CampusId);
+                var checkClass = check.checkClassById(obj.ClassId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == false && checkCampus == false && checkClass == false)
+                {
+                    return new GenericRespModel { StatusCode = 400, StatusMessage = "No School, Campus or Class With the specified ID" };
+                }
+                else if (obj.File == null || obj.File.Length <= 0)
+                {
+                    return new GenericRespModel { StatusCode = 400, StatusMessage = "No File Selected!, Please Select the Subject Bulk Upload Template" };
+                }
+                else if (!Path.GetExtension(obj.File.FileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
+                {
+                    return new GenericRespModel { StatusCode = 400, StatusMessage = "Not a Supported File Format!" };
+                }
+                else
+                {
+                    //the file path
+                    var FilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", obj.File.FileName);
+                    //copy the file to the stream and read from the file
+                    using (var stream = new FileStream(FilePath, FileMode.Create))
+                    {
+                        await obj.File.CopyToAsync(stream);
+                    }
+
+                    // If you use EPPlus in a noncommercial context
+                    // according to the Polyform Noncommercial license:
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+                    FileInfo existingFile = new FileInfo(FilePath);
+                    using (ExcelPackage package = new ExcelPackage(existingFile))
+                    {
+                        //get the first worksheet in the workbook
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
+                        int colCount = worksheet.Dimension.Columns;  //get Column Count
+                        int rowCount = worksheet.Dimension.Rows;     //get row count
+                        
+                        for (int row = 2; row <= rowCount; row++) // starts from the second row (Jumping the table headings)
+                        {
+                            //subjectname
+                            string subjectName = worksheet.Cells[row, 1].Value.ToString();
+                            string subjectCode = worksheet.Cells[row, 2].Value.ToString();
+                            int subjectMaxScore = Convert.ToInt32(worksheet.Cells[row, 3].Value);
+
+                            var checkResult = _context.SchoolSubjects.Where(x => x.SubjectName == subjectName && x.ClassId == obj.ClassId && x.SchoolId == obj.SchoolId && x.CampusId == obj.CampusId).FirstOrDefault();
+                            if (checkResult == null)
+                            {
+                                var subject = new SchoolSubjects
+                                {
+                                    ClassId = obj.ClassId,
+                                    SchoolId = obj.SchoolId,
+                                    CampusId = obj.CampusId,
+                                    SubjectName = subjectName,
+                                    SubjectCode = subjectCode,
+                                    MaximumScore = subjectMaxScore,
+                                    IsAssignedToTeacher = false,
+                                    IsActive = true,
+                                    DateCreated = DateTime.Now,
+                                };
+
+                                await _context.SchoolSubjects.AddAsync(subject);
+                                int result = await _context.SaveChangesAsync();
+
+                                if (result > 0)
+                                    responseList.Add(new GenericRespModel { StatusCode = 200, StatusMessage = $"Subject: {subjectName} Created Successfully!" });
+                                else
+                                    responseList.Add(new GenericRespModel { StatusCode = 500, StatusMessage = $"Internal Server/Database Error!"});
+                            }
+                            else
+                            {
+                                responseList.Add(new GenericRespModel { StatusCode = 409, StatusMessage = $"This Subject {subjectName} Already exist for this Class!" });
+                            }
+
+                            response.StatusCode = 200;
+                            response.StatusMessage = "Successfully!";
+                            response.Data = responseList;
+                        }
+                    }
+                }
+
+                return response;
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
         }
     }

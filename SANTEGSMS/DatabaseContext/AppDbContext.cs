@@ -77,6 +77,7 @@ namespace SANTEGSMS.DatabaseContext
         public DbSet<ScoreUploadSheetTemplates> ScoreUploadSheetTemplates { get; set; }
         public DbSet<AppTypes> AppTypes { get; set; }
         public DbSet<FolderTypes> FolderTypes { get; set; }
+        public DbSet<ReportCardPin> ReportCardPin { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

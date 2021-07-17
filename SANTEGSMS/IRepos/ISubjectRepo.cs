@@ -17,6 +17,8 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getAllAssignedSubjectsAsync(long schoolId, long campusId);
         Task<GenericRespModel> getAllUnAssignedSubjectsAsync(long schoolId, long campusId);
         Task<GenericRespModel> getAllSubjectsAssignedToTeacherAsync(Guid teacherId, long schoolId, long campusId);
+        Task<GenericRespModel> createBulkSubjectAsync(BulkSubjectReqModel obj);
+
 
         //--------------------------------------------Subject Department--------------------------------------------------
 

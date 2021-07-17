@@ -20,6 +20,10 @@ namespace SANTEGSMS.Entities
         public long TermId { get; set; }
         public decimal Percentage { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
         [ForeignKey("CategoryId")]
         public virtual ScoreCategory ScoreCategory { get; set; }

@@ -16,6 +16,7 @@ namespace SANTEGSMS.Entities
         public long? RoleId { get; set; }
         public DateTime DateCreated { get; set; }
 
+
         [ForeignKey("UserId")]
         public virtual SchoolUsers SchoolUsers { get; set; }
 

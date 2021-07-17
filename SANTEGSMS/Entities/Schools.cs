@@ -25,6 +25,7 @@ namespace SANTEGSMS.Entities
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
 
+
         [ForeignKey("SchoolTypeId")]
         public virtual SchoolType SchoolType { get; set; }
 

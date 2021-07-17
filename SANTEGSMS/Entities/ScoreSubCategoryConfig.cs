@@ -21,6 +21,9 @@ namespace SANTEGSMS.Entities
         public string SubCategoryName { get; set; }
         public long ScoreObtainable { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
 
 
         [ForeignKey("CategoryId")]

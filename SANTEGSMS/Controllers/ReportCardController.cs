@@ -106,5 +106,65 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+
+        //----------------------------REPORT CARD PIN GENERATION----------------------------------------------------
+
+        [HttpPost("generatePins")]
+        [Authorize]
+        public async Task<IActionResult> generatePinsAsync(PinCreateReqModel obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardRepo.generatePinsAsync(obj);
+
+            return Ok(result);
+        }
+
+        [HttpGet("pinById")]
+        [Authorize]
+        public async Task<IActionResult> getPinByIdAsync(long pinId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardRepo.getPinByIdAsync(pinId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("pins")]
+        [Authorize]
+        public async Task<IActionResult> getAllPinsAsync(long schoolId, long campusId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardRepo.getAllPinsAsync(schoolId, campusId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+       
+        [HttpGet("pinsByStatus")]
+        [Authorize]
+        public async Task<IActionResult> getPinsByStatusAsync(long schoolId, long campusId, long termId, long sessionId, bool isUsed)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardRepo.getPinsByStatusAsync(schoolId, campusId, termId, sessionId, isUsed);
+
+            return Ok(result);
+        }
     }
 }

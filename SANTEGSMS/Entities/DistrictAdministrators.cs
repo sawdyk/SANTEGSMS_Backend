@@ -26,6 +26,5 @@ namespace SANTEGSMS.Entities
         public DateTime LastPasswordChangedDate { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public DateTime DateCreated { get; set; }
-    
     }
 }

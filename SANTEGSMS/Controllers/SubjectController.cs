@@ -274,5 +274,19 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("createBulkSubject")]
+        [Authorize]
+        public async Task<IActionResult> createBulkSubjectAsync([FromForm] BulkSubjectReqModel obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _subjectRepo.createBulkSubjectAsync(obj);
+
+            return Ok(result);
+        }
     }
 }

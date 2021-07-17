@@ -26,6 +26,10 @@ namespace SANTEGSMS.Entities
         public long SessionId { get; set; }
         public long TermId { get; set; }
         public DateTime DateComputed { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
 
         [ForeignKey("StudentId")]

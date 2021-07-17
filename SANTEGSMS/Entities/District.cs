@@ -18,7 +18,6 @@ namespace SANTEGSMS.Entities
         public string DistrictName { get; set; }
         public DateTime DateCreated { get; set; }
 
-
         [ForeignKey("StateId")]
         public virtual States States { get; set; }
 

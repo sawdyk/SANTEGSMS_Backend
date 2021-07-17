@@ -15,6 +15,10 @@ namespace SANTEGSMS.Entities
         public long LegendId { get; set; }
         public string ReferenceRange { get; set; }
         public string ReferenceValue { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
         [ForeignKey("LegendId")]
         public virtual ReportCardConfigurationLegend ReportCardConfigurationLegend { get; set; }

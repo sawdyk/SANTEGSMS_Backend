@@ -1,0 +1,1427 @@
+2021-07-05 18:32:14.594 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 18:32:17.111 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 18:32:17.112 +01:00 [INF] Hosting environment: Development
+2021-07-05 18:32:17.113 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 18:32:17.367 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 18:32:17.367 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger  
+2021-07-05 18:32:17.457 +01:00 [INF] Request finished in 97.9282ms 0 
+2021-07-05 18:32:17.792 +01:00 [INF] Request finished in 433.5347ms 200 text/html;charset=utf-8
+2021-07-05 18:32:18.070 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui.css  
+2021-07-05 18:32:18.073 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui-standalone-preset.js  
+2021-07-05 18:32:18.463 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2021-07-05 18:32:18.469 +01:00 [INF] Request finished in 397.2916ms 200 application/javascript
+2021-07-05 18:32:18.477 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-07-05 18:32:18.478 +01:00 [INF] Request finished in 408.6155ms 200 text/css
+2021-07-05 18:32:18.807 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/favicon-16x16.png  
+2021-07-05 18:32:18.810 +01:00 [INF] Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+2021-07-05 18:32:18.811 +01:00 [INF] Request finished in 4.1758ms 200 image/png
+2021-07-05 18:32:18.993 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 18:32:19.719 +01:00 [INF] Request finished in 726.7406ms 200 application/json;charset=utf-8
+2021-07-05 20:02:57.689 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:02:58.578 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:02:58.578 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:02:58.578 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:02:58.651 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger  
+2021-07-05 20:02:58.651 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:02:58.706 +01:00 [INF] Request finished in 59.4696ms 0 
+2021-07-05 20:02:58.833 +01:00 [INF] Request finished in 188.1374ms 200 text/html;charset=utf-8
+2021-07-05 20:02:58.973 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui.css  
+2021-07-05 20:02:58.975 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui-standalone-preset.js  
+2021-07-05 20:02:59.058 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-07-05 20:02:59.058 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2021-07-05 20:02:59.061 +01:00 [INF] Request finished in 88.1303ms 200 text/css
+2021-07-05 20:02:59.061 +01:00 [INF] Request finished in 86.9158ms 200 application/javascript
+2021-07-05 20:02:59.368 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/favicon-16x16.png  
+2021-07-05 20:02:59.373 +01:00 [INF] Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+2021-07-05 20:02:59.375 +01:00 [INF] Request finished in 7.6758ms 200 image/png
+2021-07-05 20:02:59.473 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:02:59.911 +01:00 [INF] Request finished in 438.0214ms 200 application/json;charset=utf-8
+2021-07-05 20:06:11.172 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/LocalGovt/createStates application/json 336
+2021-07-05 20:06:11.459 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:06:11.592 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-07-05 20:06:11.620 +01:00 [INF] Authorization failed.
+2021-07-05 20:06:11.624 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2021-07-05 20:06:11.654 +01:00 [INF] Request finished in 483.219ms 401 
+2021-07-05 20:06:31.169 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/LocalGovt/createStates application/json 336
+2021-07-05 20:06:31.190 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:06:31.277 +01:00 [INF] Authorization was successful.
+2021-07-05 20:06:31.278 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS)'
+2021-07-05 20:06:31.568 +01:00 [INF] Route matched with {action = "createStates", controller = "LocalGovt"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createStatesAsync(SANTEGSMS.RequestModels.StateReqModel) on controller SANTEGSMS.Controllers.LocalGovtController (SANTEGSMS).
+2021-07-05 20:06:37.071 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:06:38.923 +01:00 [INF] Executed DbCommand (112ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:39.673 +01:00 [INF] Executed DbCommand (147ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:39.849 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:39.905 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:39.958 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:39.982 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.098 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.146 +01:00 [INF] Executed DbCommand (38ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.190 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.208 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.259 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.273 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.314 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.328 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.394 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.407 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.449 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.463 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.500 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.512 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.549 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.560 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.599 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.613 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.648 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.664 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.735 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.749 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.793 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.801 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.843 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.854 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.897 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.933 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:40.973 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:40.988 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.033 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.051 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.095 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.117 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.155 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.168 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.211 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.227 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.269 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.282 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.319 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.365 +01:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.402 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.421 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.464 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.516 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.558 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.618 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.663 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.694 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.734 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.771 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.820 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.882 +01:00 [INF] Executed DbCommand (38ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:41.924 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:41.971 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:42.013 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:42.049 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:42.089 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:42.111 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:42.166 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:42.178 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:42.217 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:42.239 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:42.276 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:42.305 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:42.342 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__stateName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+WHERE `s`.`StateName` = @__stateName_0
+LIMIT 1
+2021-07-05 20:06:42.355 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `States` (`StateName`)
+VALUES (@p0);
+SELECT `Id`
+FROM `States`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:06:42.405 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`StateName`
+FROM `States` AS `s`
+2021-07-05 20:06:42.433 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:06:42.500 +01:00 [INF] Executed action SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS) in 10919.83ms
+2021-07-05 20:06:42.502 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.LocalGovtController.createStatesAsync (SANTEGSMS)'
+2021-07-05 20:06:42.509 +01:00 [INF] Request finished in 11341.1704ms 200 application/json; charset=utf-8
+2021-07-05 20:07:13.352 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/LocalGovt/createLocalGovt application/json 41
+2021-07-05 20:07:13.354 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:07:13.361 +01:00 [INF] Authorization was successful.
+2021-07-05 20:07:13.361 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.LocalGovtController.createLocalGovtAsync (SANTEGSMS)'
+2021-07-05 20:07:13.371 +01:00 [INF] Route matched with {action = "createLocalGovt", controller = "LocalGovt"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createLocalGovtAsync(SANTEGSMS.RequestModels.LocalGovtReqModel) on controller SANTEGSMS.Controllers.LocalGovtController (SANTEGSMS).
+2021-07-05 20:07:13.491 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:07:13.552 +01:00 [INF] Executed DbCommand (46ms) [Parameters=[@__obj_LocalGovtName_0='?' (Size = 4000), @__obj_StateId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`LocalGovtName`, `l`.`StateId`
+FROM `LocalGovt` AS `l`
+WHERE (`l`.`LocalGovtName` = @__obj_LocalGovtName_0) AND (`l`.`StateId` = @__obj_StateId_1)
+LIMIT 1
+2021-07-05 20:07:13.666 +01:00 [INF] Executed DbCommand (34ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `LocalGovt` (`LocalGovtName`, `StateId`)
+VALUES (@p0, @p1);
+SELECT `Id`
+FROM `LocalGovt`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:07:13.776 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__localGovt_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`StateId`, `s`.`StateName`, `l`.`LocalGovtName`
+FROM `LocalGovt` AS `l`
+LEFT JOIN `States` AS `s` ON `l`.`StateId` = `s`.`Id`
+WHERE `l`.`Id` = @__localGovt_Id_0
+LIMIT 1
+2021-07-05 20:07:13.779 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:07:13.803 +01:00 [INF] Executed action SANTEGSMS.Controllers.LocalGovtController.createLocalGovtAsync (SANTEGSMS) in 430.8499ms
+2021-07-05 20:07:13.803 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.LocalGovtController.createLocalGovtAsync (SANTEGSMS)'
+2021-07-05 20:07:13.804 +01:00 [INF] Request finished in 456.6129ms 200 application/json; charset=utf-8
+2021-07-05 20:08:22.338 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/LocalGovt/localGovtInStates?stateId=25  
+2021-07-05 20:08:22.344 +01:00 [INF] Authorization was successful.
+2021-07-05 20:08:22.345 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.LocalGovtController.getAllLocalGovtInStatesAsync (SANTEGSMS)'
+2021-07-05 20:08:22.363 +01:00 [INF] Route matched with {action = "getAllLocalGovtInStates", controller = "LocalGovt"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllLocalGovtInStatesAsync(Int64) on controller SANTEGSMS.Controllers.LocalGovtController (SANTEGSMS).
+2021-07-05 20:08:22.404 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:08:22.465 +01:00 [INF] Executed DbCommand (32ms) [Parameters=[@__stateId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `LocalGovt` AS `l`
+WHERE `l`.`StateId` = @__stateId_0
+2021-07-05 20:08:22.478 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__stateId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `l`.`Id`, `l`.`StateId`, `s`.`StateName`, `l`.`LocalGovtName`
+FROM `LocalGovt` AS `l`
+LEFT JOIN `States` AS `s` ON `l`.`StateId` = `s`.`Id`
+WHERE `l`.`StateId` = @__stateId_0
+2021-07-05 20:08:22.479 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:08:22.484 +01:00 [INF] Executed action SANTEGSMS.Controllers.LocalGovtController.getAllLocalGovtInStatesAsync (SANTEGSMS) in 121.1082ms
+2021-07-05 20:08:22.484 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.LocalGovtController.getAllLocalGovtInStatesAsync (SANTEGSMS)'
+2021-07-05 20:08:22.485 +01:00 [INF] Request finished in 146.9619ms 200 application/json; charset=utf-8
+2021-07-05 20:10:06.828 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/District/createDistrictAdministrator application/json 95
+2021-07-05 20:10:06.830 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:10:06.851 +01:00 [INF] Authorization was successful.
+2021-07-05 20:10:06.852 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.DistrictController.createDistrictAdministratorAsync (SANTEGSMS)'
+2021-07-05 20:10:06.867 +01:00 [INF] Route matched with {action = "createDistrictAdministrator", controller = "District"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createDistrictAdministratorAsync(SANTEGSMS.RequestModels.DistrictAdminReqModel) on controller SANTEGSMS.Controllers.DistrictController (SANTEGSMS).
+2021-07-05 20:10:06.905 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:10:07.001 +01:00 [ERR] Failed executing DbCommand (76ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`DateCreated`, `d`.`DateDeleted`, `d`.`DeletedBy`, `d`.`Email`, `d`.`EmailConfirmed`, `d`.`FirstName`, `d`.`IsActive`, `d`.`IsDeleted`, `d`.`LastLoginDate`, `d`.`LastName`, `d`.`LastPasswordChangedDate`, `d`.`LastUpdatedDate`, `d`.`PasswordHash`, `d`.`PhoneNumber`, `d`.`PhoneNumberConfirmed`, `d`.`Salt`, `d`.`UserName`
+FROM `DistrictAdministrators` AS `d`
+WHERE `d`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-07-05 20:10:07.359 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'd.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'd.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 116
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'd.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'd.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 116
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2021-07-05 20:10:08.392 +01:00 [INF] Executed DbCommand (67ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:10:08.443 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:10:08.458 +01:00 [INF] Executed action SANTEGSMS.Controllers.DistrictController.createDistrictAdministratorAsync (SANTEGSMS) in 1590.6953ms
+2021-07-05 20:10:08.458 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.DistrictController.createDistrictAdministratorAsync (SANTEGSMS)'
+2021-07-05 20:10:08.459 +01:00 [INF] Request finished in 1631.1346ms 200 application/json; charset=utf-8
+2021-07-05 20:11:34.946 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:11:35.712 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:11:35.713 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:11:35.713 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:11:35.766 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:11:35.894 +01:00 [INF] Request finished in 131.6838ms 200 text/html;charset=utf-8
+2021-07-05 20:11:36.302 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:11:36.895 +01:00 [INF] Request finished in 593.8338ms 200 application/json;charset=utf-8
+2021-07-05 20:12:04.386 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/District/createDistrictAdministrator application/json 95
+2021-07-05 20:12:04.506 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:12:04.592 +01:00 [INF] Authorization was successful.
+2021-07-05 20:12:04.593 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.DistrictController.createDistrictAdministratorAsync (SANTEGSMS)'
+2021-07-05 20:12:04.740 +01:00 [INF] Route matched with {action = "createDistrictAdministrator", controller = "District"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createDistrictAdministratorAsync(SANTEGSMS.RequestModels.DistrictAdminReqModel) on controller SANTEGSMS.Controllers.DistrictController (SANTEGSMS).
+2021-07-05 20:12:08.503 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:12:09.720 +01:00 [INF] Executed DbCommand (113ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`DateCreated`, `d`.`Email`, `d`.`EmailConfirmed`, `d`.`FirstName`, `d`.`IsActive`, `d`.`LastLoginDate`, `d`.`LastName`, `d`.`LastPasswordChangedDate`, `d`.`LastUpdatedDate`, `d`.`PasswordHash`, `d`.`PhoneNumber`, `d`.`PhoneNumberConfirmed`, `d`.`Salt`, `d`.`UserName`
+FROM `DistrictAdministrators` AS `d`
+WHERE `d`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-07-05 20:12:10.363 +01:00 [INF] Executed DbCommand (46ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime), @p9='?' (DbType = DateTime), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `DistrictAdministrators` (`Id`, `DateCreated`, `Email`, `EmailConfirmed`, `FirstName`, `IsActive`, `LastLoginDate`, `LastName`, `LastPasswordChangedDate`, `LastUpdatedDate`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `Salt`, `UserName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2021-07-05 20:12:10.562 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__districtAdmin_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`FirstName`, `d`.`LastName`, `d`.`UserName`, `d`.`Email`, `d`.`EmailConfirmed`, `d`.`PhoneNumber`, `d`.`LastPasswordChangedDate`, `d`.`LastLoginDate`, `d`.`LastUpdatedDate`, `d`.`DateCreated`
+FROM `DistrictAdministrators` AS `d`
+WHERE `d`.`Id` = @__districtAdmin_Id_0
+LIMIT 1
+2021-07-05 20:12:10.611 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:12:10.723 +01:00 [INF] Executed action SANTEGSMS.Controllers.DistrictController.createDistrictAdministratorAsync (SANTEGSMS) in 5969.461ms
+2021-07-05 20:12:10.726 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.DistrictController.createDistrictAdministratorAsync (SANTEGSMS)'
+2021-07-05 20:12:10.752 +01:00 [INF] Request finished in 6372.1368ms 200 application/json; charset=utf-8
+2021-07-05 20:12:34.186 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/District/createDistrict application/json 115
+2021-07-05 20:12:34.208 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:12:34.225 +01:00 [INF] Authorization was successful.
+2021-07-05 20:12:34.226 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.DistrictController.createDistrictAsync (SANTEGSMS)'
+2021-07-05 20:12:34.238 +01:00 [INF] Route matched with {action = "createDistrict", controller = "District"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createDistrictAsync(SANTEGSMS.RequestModels.DistrictReqModel) on controller SANTEGSMS.Controllers.DistrictController (SANTEGSMS).
+2021-07-05 20:12:34.350 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:12:34.393 +01:00 [ERR] Failed executing DbCommand (15ms) [Parameters=[@__obj_DistrictName_0='?' (Size = 4000), @__obj_StateId_1='?' (DbType = Int64), @__obj_LocalGovtId_2='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`DateCreated`, `d`.`DateDeleted`, `d`.`DeletedBy`, `d`.`DistrictAdminId`, `d`.`DistrictName`, `d`.`IsDeleted`, `d`.`LocalGovtId`, `d`.`StateId`
+FROM `District` AS `d`
+WHERE ((`d`.`DistrictName` = @__obj_DistrictName_0) AND (`d`.`StateId` = @__obj_StateId_1)) AND (`d`.`LocalGovtId` = @__obj_LocalGovtId_2)
+LIMIT 1
+2021-07-05 20:12:34.533 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'd.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'd.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'd.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'd.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2021-07-05 20:12:34.944 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:12:35.103 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:12:35.105 +01:00 [INF] Executed action SANTEGSMS.Controllers.DistrictController.createDistrictAsync (SANTEGSMS) in 866.0009ms
+2021-07-05 20:12:35.105 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.DistrictController.createDistrictAsync (SANTEGSMS)'
+2021-07-05 20:12:35.106 +01:00 [INF] Request finished in 921.5313ms 200 application/json; charset=utf-8
+2021-07-05 20:13:15.182 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:13:15.920 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:13:15.920 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:13:15.920 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:13:15.981 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:13:16.135 +01:00 [INF] Request finished in 158.8717ms 200 text/html;charset=utf-8
+2021-07-05 20:13:16.443 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:13:16.936 +01:00 [INF] Request finished in 492.3392ms 200 application/json;charset=utf-8
+2021-07-05 20:13:26.598 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/District/createDistrict application/json 115
+2021-07-05 20:13:26.741 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:13:26.822 +01:00 [INF] Authorization was successful.
+2021-07-05 20:13:26.824 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.DistrictController.createDistrictAsync (SANTEGSMS)'
+2021-07-05 20:13:26.912 +01:00 [INF] Route matched with {action = "createDistrict", controller = "District"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createDistrictAsync(SANTEGSMS.RequestModels.DistrictReqModel) on controller SANTEGSMS.Controllers.DistrictController (SANTEGSMS).
+2021-07-05 20:13:30.744 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:13:31.912 +01:00 [INF] Executed DbCommand (160ms) [Parameters=[@__obj_DistrictName_0='?' (Size = 4000), @__obj_StateId_1='?' (DbType = Int64), @__obj_LocalGovtId_2='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`DateCreated`, `d`.`DistrictAdminId`, `d`.`DistrictName`, `d`.`LocalGovtId`, `d`.`StateId`
+FROM `District` AS `d`
+WHERE ((`d`.`DistrictName` = @__obj_DistrictName_0) AND (`d`.`StateId` = @__obj_StateId_1)) AND (`d`.`LocalGovtId` = @__obj_LocalGovtId_2)
+LIMIT 1
+2021-07-05 20:13:32.549 +01:00 [INF] Executed DbCommand (90ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Guid), @p2='?' (Size = 4000), @p3='?' (DbType = Int64), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `District` (`DateCreated`, `DistrictAdminId`, `DistrictName`, `LocalGovtId`, `StateId`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT `Id`
+FROM `District`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:13:32.788 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[@__district_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `d`.`Id`, `d`.`DistrictName`, `d`.`StateId`, `s`.`StateName`, `d`.`LocalGovtId`, `l`.`LocalGovtName`, `d`.`DistrictAdminId`, `d0`.`FirstName`, `d0`.`LastName`
+FROM `District` AS `d`
+LEFT JOIN `States` AS `s` ON `d`.`StateId` = `s`.`Id`
+LEFT JOIN `LocalGovt` AS `l` ON `d`.`LocalGovtId` = `l`.`Id`
+LEFT JOIN `DistrictAdministrators` AS `d0` ON `d`.`DistrictAdminId` = `d0`.`Id`
+WHERE `d`.`Id` = @__district_Id_0
+LIMIT 1
+2021-07-05 20:13:32.807 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:13:32.854 +01:00 [INF] Executed action SANTEGSMS.Controllers.DistrictController.createDistrictAsync (SANTEGSMS) in 5930.794ms
+2021-07-05 20:13:32.855 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.DistrictController.createDistrictAsync (SANTEGSMS)'
+2021-07-05 20:13:32.866 +01:00 [INF] Request finished in 6268.9288ms 200 application/json; charset=utf-8
+2021-07-05 20:15:57.447 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 322
+2021-07-05 20:15:57.472 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:15:57.477 +01:00 [INF] Authorization was successful.
+2021-07-05 20:15:57.478 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:15:57.490 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-07-05 20:15:57.616 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:15:57.658 +01:00 [ERR] Failed executing DbCommand (19ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`IsDeleted`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-07-05 20:15:57.775 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 's.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 's.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 's.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 's.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2021-07-05 20:15:58.300 +01:00 [INF] Executed DbCommand (58ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:15:58.359 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-07-05 20:15:58.410 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 919.2292ms
+2021-07-05 20:15:58.410 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:15:58.411 +01:00 [INF] Request finished in 988.0285ms 200 application/json; charset=utf-8
+2021-07-05 20:17:22.400 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:17:23.095 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:17:23.095 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:17:23.096 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:17:23.167 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:17:23.167 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger  
+2021-07-05 20:17:23.212 +01:00 [INF] Request finished in 48.3731ms 0 
+2021-07-05 20:17:23.324 +01:00 [INF] Request finished in 162.6222ms 200 text/html;charset=utf-8
+2021-07-05 20:17:23.394 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui.css  
+2021-07-05 20:17:23.424 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui-standalone-preset.js  
+2021-07-05 20:17:23.469 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2021-07-05 20:17:23.469 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-07-05 20:17:23.469 +01:00 [INF] Request finished in 44.4984ms 0 application/javascript
+2021-07-05 20:17:23.469 +01:00 [INF] Request finished in 74.5706ms 0 text/css
+2021-07-05 20:17:23.632 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:17:24.174 +01:00 [INF] Request finished in 542.5326ms 200 application/json;charset=utf-8
+2021-07-05 20:17:31.416 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 322
+2021-07-05 20:17:31.543 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:17:31.618 +01:00 [INF] Authorization was successful.
+2021-07-05 20:17:31.619 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:17:31.761 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-07-05 20:17:35.220 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:17:36.857 +01:00 [ERR] Failed executing DbCommand (145ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`IsDeleted`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-07-05 20:17:36.990 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 's.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 's.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 's.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 's.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2021-07-05 20:17:37.756 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:17:37.963 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-07-05 20:17:38.002 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 6222.1563ms
+2021-07-05 20:17:38.008 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:17:38.026 +01:00 [INF] Request finished in 6611.0482ms 200 application/json; charset=utf-8
+2021-07-05 20:22:33.137 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:22:34.215 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:22:34.215 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:22:34.216 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:22:34.479 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:22:34.711 +01:00 [INF] Request finished in 278.4468ms 200 text/html;charset=utf-8
+2021-07-05 20:22:35.278 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:22:35.918 +01:00 [INF] Request finished in 641.3604ms 200 application/json;charset=utf-8
+2021-07-05 20:22:42.098 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 322
+2021-07-05 20:22:42.217 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:22:42.295 +01:00 [INF] Authorization was successful.
+2021-07-05 20:22:42.296 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:22:42.393 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-07-05 20:22:45.912 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:22:47.673 +01:00 [INF] Executed DbCommand (193ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-07-05 20:22:47.759 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-07-05 20:22:47.792 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[@__schoolName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolName` = @__schoolName_0
+LIMIT 1
+2021-07-05 20:22:47.804 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCode_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolCode` = @__schoolCode_0
+LIMIT 1
+2021-07-05 20:22:48.602 +01:00 [INF] Executed DbCommand (105ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int64), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Schools` (`DateCreated`, `DateUpdated`, `DistrictId`, `IsActive`, `IsApproved`, `IsVerified`, `LocalGovtId`, `SchoolCode`, `SchoolLogoUrl`, `SchoolName`, `SchoolTypeId`, `StateId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `Schools`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:22:49.032 +01:00 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolCampus` (`CampusAddress`, `CampusName`, `DateCreated`, `IsActive`, `SchoolId`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT `Id`
+FROM `SchoolCampus`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:22:49.328 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 4000), @p15='?' (DbType = Int64), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUsers` (`Id`, `CampusId`, `DateCreated`, `Email`, `EmailConfirmed`, `FirstName`, `IsActive`, `LastLoginDate`, `LastName`, `LastPasswordChangedDate`, `LastUpdatedDate`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `Salt`, `SchoolId`, `UserName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2021-07-05 20:22:49.425 +01:00 [ERR] Failed executing DbCommand (10ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int64), @p5='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUserRoles` (`DateCreated`, `DateDeleted`, `DeletedBy`, `IsDeleted`, `RoleId`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT `Id`
+FROM `SchoolUserRoles`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:22:49.609 +01:00 [ERR] An exception occurred in the database while saving changes for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 806
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 257
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 806
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 257
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2021-07-05 20:22:50.076 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:22:50.091 +01:00 [ERR] Failed executing DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int64), @p5='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUserRoles` (`DateCreated`, `DateDeleted`, `DeletedBy`, `IsDeleted`, `RoleId`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT `Id`
+FROM `SchoolUserRoles`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:22:50.158 +01:00 [ERR] An exception occurred in the database while saving changes for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 806
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 257
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 806
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 257
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2021-07-05 20:22:50.795 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 8390.8522ms
+2021-07-05 20:22:50.799 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:22:50.812 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'DateDeleted' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 806
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 257
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SANTEGSMS.Repos.SchoolRepo.schoolSignUpAsync(SchoolSignUpReqModel obj) in C:\ASPNETApps\SANTEGSMS\SANTEGSMS\Repos\SchoolRepo.cs:line 186
+   at SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync(SchoolSignUpReqModel obj) in C:\ASPNETApps\SANTEGSMS\SANTEGSMS\Controllers\SchoolController.cs:line 34
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-07-05 20:22:50.949 +01:00 [INF] Request finished in 8851.9127ms 500 text/plain
+2021-07-05 20:25:32.999 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:25:34.126 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:25:34.128 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:25:34.128 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:25:34.188 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:25:34.326 +01:00 [INF] Request finished in 146.2969ms 200 text/html;charset=utf-8
+2021-07-05 20:25:34.617 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:25:35.090 +01:00 [INF] Request finished in 472.7003ms 200 application/json;charset=utf-8
+2021-07-05 20:25:44.568 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 322
+2021-07-05 20:25:44.702 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:25:44.774 +01:00 [INF] Authorization was successful.
+2021-07-05 20:25:44.775 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:25:44.906 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-07-05 20:25:49.213 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:25:50.823 +01:00 [INF] Executed DbCommand (159ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-07-05 20:25:51.269 +01:00 [INF] Executed DbCommand (50ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-07-05 20:25:51.283 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__schoolName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolName` = @__schoolName_0
+LIMIT 1
+2021-07-05 20:25:51.520 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCode_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolCode` = @__schoolCode_0
+LIMIT 1
+2021-07-05 20:25:51.530 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-07-05 20:25:51.556 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 6636.325ms
+2021-07-05 20:25:51.558 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:25:51.569 +01:00 [INF] Request finished in 7001.574ms 200 application/json; charset=utf-8
+2021-07-05 20:30:17.249 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 322
+2021-07-05 20:30:17.265 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:30:17.279 +01:00 [INF] Authorization was successful.
+2021-07-05 20:30:17.279 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:30:17.281 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-07-05 20:30:17.339 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:30:17.355 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-07-05 20:30:17.358 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-07-05 20:30:17.362 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__schoolName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolName` = @__schoolName_0
+LIMIT 1
+2021-07-05 20:30:17.366 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCode_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolCode` = @__schoolCode_0
+LIMIT 1
+2021-07-05 20:30:17.367 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-07-05 20:30:17.369 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 88.1146ms
+2021-07-05 20:30:17.370 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:30:17.370 +01:00 [INF] Request finished in 121.5735ms 200 application/json; charset=utf-8
+2021-07-05 20:33:28.353 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:33:29.415 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:33:29.416 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:33:29.416 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:33:29.491 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:33:29.612 +01:00 [INF] Request finished in 126.8696ms 200 text/html;charset=utf-8
+2021-07-05 20:33:29.893 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:33:30.402 +01:00 [INF] Request finished in 520.0601ms 200 application/json;charset=utf-8
+2021-07-05 20:33:36.675 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 322
+2021-07-05 20:33:36.798 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:33:36.879 +01:00 [INF] Authorization was successful.
+2021-07-05 20:33:36.880 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:33:36.966 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-07-05 20:33:40.648 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:33:41.769 +01:00 [INF] Executed DbCommand (126ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-07-05 20:33:41.880 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-07-05 20:33:41.894 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__schoolName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolName` = @__schoolName_0
+LIMIT 1
+2021-07-05 20:33:41.905 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCode_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolCode` = @__schoolCode_0
+LIMIT 1
+2021-07-05 20:33:42.596 +01:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int64), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Schools` (`DateCreated`, `DateUpdated`, `DistrictId`, `IsActive`, `IsApproved`, `IsVerified`, `LocalGovtId`, `SchoolCode`, `SchoolLogoUrl`, `SchoolName`, `SchoolTypeId`, `StateId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `Schools`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:33:43.242 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolCampus` (`CampusAddress`, `CampusName`, `DateCreated`, `IsActive`, `SchoolId`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT `Id`
+FROM `SchoolCampus`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:33:43.561 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 4000), @p15='?' (DbType = Int64), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUsers` (`Id`, `CampusId`, `DateCreated`, `Email`, `EmailConfirmed`, `FirstName`, `IsActive`, `LastLoginDate`, `LastName`, `LastPasswordChangedDate`, `LastUpdatedDate`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `Salt`, `SchoolId`, `UserName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2021-07-05 20:33:43.682 +01:00 [INF] Executed DbCommand (36ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int64), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUserRoles` (`DateCreated`, `RoleId`, `UserId`)
+VALUES (@p0, @p1, @p2);
+SELECT `Id`
+FROM `SchoolUserRoles`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:33:43.777 +01:00 [INF] Executed DbCommand (32ms) [Parameters=[@__newSch_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__newSch_SchoolTypeId_0
+LIMIT 1
+2021-07-05 20:33:43.819 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-07-05 20:33:43.887 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 6902.9989ms
+2021-07-05 20:33:43.889 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-07-05 20:33:43.900 +01:00 [INF] Request finished in 7226.4501ms 200 application/json; charset=utf-8
+2021-07-05 20:35:16.194 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/Class/createClass application/json 53
+2021-07-05 20:35:16.211 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:35:16.224 +01:00 [INF] Authorization was successful.
+2021-07-05 20:35:16.224 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ClassController.createClass (SANTEGSMS)'
+2021-07-05 20:35:16.237 +01:00 [INF] Route matched with {action = "createClass", controller = "Class"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createClass(SANTEGSMS.RequestModels.ClassReqModel) on controller SANTEGSMS.Controllers.ClassController (SANTEGSMS).
+2021-07-05 20:35:16.357 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:35:16.394 +01:00 [ERR] Failed executing DbCommand (19ms) [Parameters=[@__obj_ClassName_0='?' (Size = 4000), @__obj_SchoolId_1='?' (DbType = Int64), @__obj_CampusId_2='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`IsDeleted`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE ((`c`.`ClassName` = @__obj_ClassName_0) AND (`c`.`SchoolId` = @__obj_SchoolId_1)) AND (`c`.`CampusId` = @__obj_CampusId_2)
+LIMIT 1
+2021-07-05 20:35:16.539 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SANTEGSMS.DatabaseContext.AppDbContext'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'c.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'c.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'c.DateDeleted' in 'field list'
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'c.DateDeleted' in 'field list'
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 51
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 130
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlDataReader.cs:line 391
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 62
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 210
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2021-07-05 20:35:17.050 +01:00 [INF] Executed DbCommand (51ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:35:17.329 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:35:17.336 +01:00 [INF] Executed action SANTEGSMS.Controllers.ClassController.createClass (SANTEGSMS) in 1098.3592ms
+2021-07-05 20:35:17.336 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ClassController.createClass (SANTEGSMS)'
+2021-07-05 20:35:17.337 +01:00 [INF] Request finished in 1144.3899ms 200 application/json; charset=utf-8
+2021-07-05 20:36:17.635 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:36:18.351 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:36:18.352 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:36:18.352 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:36:18.406 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:36:18.549 +01:00 [INF] Request finished in 147.0898ms 200 text/html;charset=utf-8
+2021-07-05 20:36:18.806 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:36:19.324 +01:00 [INF] Request finished in 518.3991ms 200 application/json;charset=utf-8
+2021-07-05 20:37:02.174 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/Class/createClass application/json 53
+2021-07-05 20:37:02.385 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:37:02.543 +01:00 [INF] Authorization was successful.
+2021-07-05 20:37:02.544 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ClassController.createClass (SANTEGSMS)'
+2021-07-05 20:37:02.729 +01:00 [INF] Route matched with {action = "createClass", controller = "Class"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createClass(SANTEGSMS.RequestModels.ClassReqModel) on controller SANTEGSMS.Controllers.ClassController (SANTEGSMS).
+2021-07-05 20:37:06.603 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:37:07.748 +01:00 [INF] Executed DbCommand (128ms) [Parameters=[@__obj_ClassName_0='?' (Size = 4000), @__obj_SchoolId_1='?' (DbType = Int64), @__obj_CampusId_2='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE ((`c`.`ClassName` = @__obj_ClassName_0) AND (`c`.`SchoolId` = @__obj_SchoolId_1)) AND (`c`.`CampusId` = @__obj_CampusId_2)
+LIMIT 1
+2021-07-05 20:37:08.697 +01:00 [INF] Executed DbCommand (87ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Classes` (`CampusId`, `ClassName`, `DateCreated`, `SchoolId`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `Classes`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:37:08.879 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__newClass_Id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`SchoolId`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__newClass_Id_0
+LIMIT 1
+2021-07-05 20:37:08.898 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:37:08.936 +01:00 [INF] Executed action SANTEGSMS.Controllers.ClassController.createClass (SANTEGSMS) in 6197.6589ms
+2021-07-05 20:37:08.938 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ClassController.createClass (SANTEGSMS)'
+2021-07-05 20:37:08.950 +01:00 [INF] Request finished in 6778.9457ms 200 application/json; charset=utf-8
+2021-07-05 20:39:29.859 +01:00 [INF] User profile is available. Using 'C:\Users\Ahmed Sodiq\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-05 20:39:30.754 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-05 20:39:30.755 +01:00 [INF] Hosting environment: Development
+2021-07-05 20:39:30.755 +01:00 [INF] Content root path: C:\ASPNETApps\SANTEGSMS\SANTEGSMS
+2021-07-05 20:39:30.864 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-07-05 20:39:30.864 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger  
+2021-07-05 20:39:30.928 +01:00 [INF] Request finished in 70.3258ms 0 
+2021-07-05 20:39:31.035 +01:00 [INF] Request finished in 179.6854ms 200 text/html;charset=utf-8
+2021-07-05 20:39:31.118 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui.css  
+2021-07-05 20:39:31.210 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-07-05 20:39:31.210 +01:00 [INF] Request finished in 92.9464ms 0 text/css
+2021-07-05 20:39:31.355 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-07-05 20:39:31.965 +01:00 [INF] Request finished in 609.5565ms 200 application/json;charset=utf-8
+2021-07-05 20:40:37.681 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/Subject/createBulkSubject multipart/form-data; boundary=---------------------------54704722720533324683945355911 9311
+2021-07-05 20:40:37.805 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:40:37.869 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-07-05 20:40:37.895 +01:00 [INF] Authorization failed.
+2021-07-05 20:40:37.899 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2021-07-05 20:40:37.905 +01:00 [INF] Request finished in 231.2861ms 401 
+2021-07-05 20:40:53.697 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/Subject/createBulkSubject multipart/form-data; boundary=---------------------------3228797641154024884188733868 9306
+2021-07-05 20:40:53.733 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:40:53.754 +01:00 [INF] Authorization was successful.
+2021-07-05 20:40:53.755 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS)'
+2021-07-05 20:40:53.880 +01:00 [INF] Route matched with {action = "createBulkSubject", controller = "Subject"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createBulkSubjectAsync(SANTEGSMS.RequestModels.BulkSubjectReqModel) on controller SANTEGSMS.Controllers.SubjectController (SANTEGSMS).
+2021-07-05 20:40:57.843 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:40:59.112 +01:00 [INF] Executed DbCommand (208ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-07-05 20:40:59.465 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-07-05 20:40:59.681 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-07-05 20:41:00.975 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:41:01.172 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:41:01.211 +01:00 [INF] Executed action SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS) in 7311.3423ms
+2021-07-05 20:41:01.213 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS)'
+2021-07-05 20:41:01.225 +01:00 [INF] Request finished in 7529.1832ms 200 application/json; charset=utf-8
+2021-07-05 20:42:56.520 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/Subject/createBulkSubject multipart/form-data; boundary=---------------------------338233676023239125491643769541 9986
+2021-07-05 20:42:56.533 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:42:56.550 +01:00 [INF] Authorization was successful.
+2021-07-05 20:42:56.551 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS)'
+2021-07-05 20:42:56.553 +01:00 [INF] Route matched with {action = "createBulkSubject", controller = "Subject"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createBulkSubjectAsync(SANTEGSMS.RequestModels.BulkSubjectReqModel) on controller SANTEGSMS.Controllers.SubjectController (SANTEGSMS).
+2021-07-05 20:42:56.625 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:42:56.636 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-07-05 20:42:56.640 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-07-05 20:42:56.642 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-07-05 20:42:57.943 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:42:58.147 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (DbType = Int64), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int64), @p8='?' (DbType = Int64), @p9='?' (DbType = Int64), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolSubjects` (`CampusId`, `ClassId`, `DateCreated`, `DepartmentId`, `IsActive`, `IsAssignedToClass`, `IsAssignedToTeacher`, `MaximumScore`, `ReportCardOrder`, `SchoolId`, `SubjectCode`, `SubjectName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `SchoolSubjects`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:42:58.209 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:42:58.226 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (DbType = Int64), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int64), @p8='?' (DbType = Int64), @p9='?' (DbType = Int64), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolSubjects` (`CampusId`, `ClassId`, `DateCreated`, `DepartmentId`, `IsActive`, `IsAssignedToClass`, `IsAssignedToTeacher`, `MaximumScore`, `ReportCardOrder`, `SchoolId`, `SubjectCode`, `SubjectName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `SchoolSubjects`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:42:58.280 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:42:58.374 +01:00 [INF] Executed DbCommand (77ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (DbType = Int64), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int64), @p8='?' (DbType = Int64), @p9='?' (DbType = Int64), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolSubjects` (`CampusId`, `ClassId`, `DateCreated`, `DepartmentId`, `IsActive`, `IsAssignedToClass`, `IsAssignedToTeacher`, `MaximumScore`, `ReportCardOrder`, `SchoolId`, `SubjectCode`, `SubjectName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `SchoolSubjects`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:42:58.412 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:42:58.427 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (DbType = Int64), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int64), @p8='?' (DbType = Int64), @p9='?' (DbType = Int64), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolSubjects` (`CampusId`, `ClassId`, `DateCreated`, `DepartmentId`, `IsActive`, `IsAssignedToClass`, `IsAssignedToTeacher`, `MaximumScore`, `ReportCardOrder`, `SchoolId`, `SubjectCode`, `SubjectName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `SchoolSubjects`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:42:58.463 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:42:58.483 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (DbType = Int64), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int64), @p8='?' (DbType = Int64), @p9='?' (DbType = Int64), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolSubjects` (`CampusId`, `ClassId`, `DateCreated`, `DepartmentId`, `IsActive`, `IsAssignedToClass`, `IsAssignedToTeacher`, `MaximumScore`, `ReportCardOrder`, `SchoolId`, `SubjectCode`, `SubjectName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `SchoolSubjects`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:42:58.552 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:42:58.565 +01:00 [INF] Executed action SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS) in 2011.9155ms
+2021-07-05 20:42:58.565 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS)'
+2021-07-05 20:42:58.566 +01:00 [INF] Request finished in 2048.0647ms 200 application/json; charset=utf-8
+2021-07-05 20:43:16.501 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/Subject/createBulkSubject multipart/form-data; boundary=---------------------------362538008020941051111446783357 9986
+2021-07-05 20:43:16.503 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:43:16.510 +01:00 [INF] Authorization was successful.
+2021-07-05 20:43:16.511 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS)'
+2021-07-05 20:43:16.513 +01:00 [INF] Route matched with {action = "createBulkSubject", controller = "Subject"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createBulkSubjectAsync(SANTEGSMS.RequestModels.BulkSubjectReqModel) on controller SANTEGSMS.Controllers.SubjectController (SANTEGSMS).
+2021-07-05 20:43:16.552 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:43:16.562 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-07-05 20:43:16.572 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-07-05 20:43:16.578 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-07-05 20:43:16.660 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:43:16.670 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:43:16.676 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:43:16.683 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:43:16.689 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:43:16.708 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:43:16.713 +01:00 [INF] Executed action SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS) in 198.8952ms
+2021-07-05 20:43:16.714 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS)'
+2021-07-05 20:43:16.715 +01:00 [INF] Request finished in 213.8532ms 200 application/json; charset=utf-8
+2021-07-05 20:45:07.715 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/Subject/createBulkSubject multipart/form-data; boundary=---------------------------426411848739488540433057257778 10018
+2021-07-05 20:45:07.718 +01:00 [INF] CORS policy execution successful.
+2021-07-05 20:45:07.733 +01:00 [INF] Authorization was successful.
+2021-07-05 20:45:07.733 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS)'
+2021-07-05 20:45:07.734 +01:00 [INF] Route matched with {action = "createBulkSubject", controller = "Subject"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] createBulkSubjectAsync(SANTEGSMS.RequestModels.BulkSubjectReqModel) on controller SANTEGSMS.Controllers.SubjectController (SANTEGSMS).
+2021-07-05 20:45:07.743 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2021-07-05 20:45:07.748 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-07-05 20:45:07.752 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-07-05 20:45:07.755 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-07-05 20:45:07.830 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:45:07.832 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:45:07.835 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:45:07.838 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:45:07.841 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:45:07.844 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__subjectName_0='?' (Size = 4000), @__8__locals1_obj_ClassId_1='?' (DbType = Int64), @__8__locals1_obj_SchoolId_2='?' (DbType = Int64), @__8__locals1_obj_CampusId_3='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE (((`s`.`SubjectName` = @__subjectName_0) AND (`s`.`ClassId` = @__8__locals1_obj_ClassId_1)) AND (`s`.`SchoolId` = @__8__locals1_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals1_obj_CampusId_3)
+LIMIT 1
+2021-07-05 20:45:07.908 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (DbType = Int64), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int64), @p8='?' (DbType = Int64), @p9='?' (DbType = Int64), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolSubjects` (`CampusId`, `ClassId`, `DateCreated`, `DepartmentId`, `IsActive`, `IsAssignedToClass`, `IsAssignedToTeacher`, `MaximumScore`, `ReportCardOrder`, `SchoolId`, `SubjectCode`, `SubjectName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `SchoolSubjects`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-07-05 20:45:07.962 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-07-05 20:45:07.967 +01:00 [INF] Executed action SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS) in 232.2981ms
+2021-07-05 20:45:07.967 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SubjectController.createBulkSubjectAsync (SANTEGSMS)'
+2021-07-05 20:45:07.968 +01:00 [INF] Request finished in 253.2305ms 200 application/json; charset=utf-8

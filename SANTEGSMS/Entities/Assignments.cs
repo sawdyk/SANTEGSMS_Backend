@@ -27,6 +27,9 @@ namespace SANTEGSMS.Entities
         public DateTime DueDate { get; set; }
         public DateTime DateUploaded { get; set; }
         public DateTime LastDateUpdated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
 
 
         [ForeignKey("SubjectId")]

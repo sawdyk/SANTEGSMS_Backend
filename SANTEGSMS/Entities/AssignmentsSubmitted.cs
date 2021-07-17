@@ -26,6 +26,10 @@ namespace SANTEGSMS.Entities
         public long ScoreStatusId { get; set; }
         public DateTime? DateSubmitted { get; set; }
         public DateTime? DateGraded { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
+
 
         [ForeignKey("AssignmentId")]
         public virtual Assignments Assignments { get; set; }

@@ -19,6 +19,9 @@ namespace SANTEGSMS.Entities
         public long SchoolId { get; set; }
         public long CampusId { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
 
 
         [ForeignKey("SchoolUserId")]

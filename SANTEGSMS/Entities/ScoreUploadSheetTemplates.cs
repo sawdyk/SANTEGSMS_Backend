@@ -22,6 +22,9 @@ namespace SANTEGSMS.Entities
         public long TotalNumberOfSubjects { get; set; }
         public bool IsUsed { get; set; }
         public DateTime DateGenerated { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateDeleted { get; set; }
+        public string DeletedBy { get; set; }
 
 
         [ForeignKey("SchoolId")]
