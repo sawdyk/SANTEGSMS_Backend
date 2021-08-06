@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SANTEGSMS.DatabaseContext;
 
 namespace SANTEGSMS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210806102632_AssignmentMigration")]
+    partial class AssignmentMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,38 +104,6 @@ namespace SANTEGSMS.Migrations
                             Id = 2L,
                             StatusName = "InActive"
                         });
-                });
-
-            modelBuilder.Entity("SANTEGSMS.Entities.ActivityLogs", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Action")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("ActionDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ActivityLogs");
                 });
 
             modelBuilder.Entity("SANTEGSMS.Entities.Alumni", b =>
@@ -3283,14 +3253,14 @@ namespace SANTEGSMS.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0c135cc1-928d-426e-bb64-1a8ef7c8deec"),
-                            DateCreated = new DateTime(2021, 8, 6, 17, 43, 37, 870, DateTimeKind.Local).AddTicks(25),
+                            Id = new Guid("e0b79329-3a60-4780-978c-c53b63e496df"),
+                            DateCreated = new DateTime(2021, 8, 6, 11, 26, 31, 92, DateTimeKind.Local).AddTicks(7225),
                             Email = "SuperAdmin@gmail.com",
                             FirstName = "Super Admin",
                             LastName = "Super Admin",
-                            PasswordHash = "9ecdd7907be1c6112e3a75c54d82ed84304cf59543ce7a2e0238455423b56d55",
+                            PasswordHash = "5d0f5f04dd1a074542a66e5c8a830a6940df68dc69f8749bc7e67ae915d4f00a",
                             PhoneNumber = "09000990099",
-                            Salt = "fd3a55350d3cc7507390126965859246"
+                            Salt = "e15ac795e450ef8dbb2c942f130ba264"
                         });
                 });
 

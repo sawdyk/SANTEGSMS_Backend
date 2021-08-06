@@ -59,10 +59,40 @@ namespace SANTEGSMS.Repos
                         response.StatusCode = 200;
                         response.StatusMessage = "Login Successful";
                         response.Data = userData;
+
+                        //activityLog
+                        var activitylog = new ActivityLogs()
+                        {
+                            UserId = getUser.Id.ToString(),
+                            FirstName = getUser.FirstName,
+                            LastName = getUser.LastName,
+                            Action = "System Super Administrator Login",
+                            Message = "Login Successful",
+                            Description = "Successfully Logged in",
+                            ActionDate = DateTime.Now,
+                        };
+
+                        await _context.ActivityLogs.AddAsync(activitylog);
+                        await _context.SaveChangesAsync();
                     }
                 }
                 else
                 {
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getUser.Id.ToString(),
+                        FirstName = getUser.FirstName,
+                        LastName = getUser.LastName,
+                        Action = "System Super Administrator Login",
+                        Message = "Invalid Username/Password!",
+                        Description = "Failed to Login",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
                     return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid Username/Password!" };
                 }
 
@@ -157,9 +187,39 @@ namespace SANTEGSMS.Repos
                     response.StatusMessage = "Default Password Generated Successfully, Kindly Change Password after Login!";
                     response.Data = userData;
 
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getUser.Id.ToString(),
+                        FirstName = getUser.FirstName,
+                        LastName = getUser.LastName,
+                        Action = "Forgot Password",
+                        Message = "Password Changed Successfully",
+                        Description = "Default Password Generated and sent to mail Successfully, Kindly Change Password after Login!",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
                 }
                 else
                 {
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getUser.Id.ToString(),
+                        FirstName = getUser.FirstName,
+                        LastName = getUser.LastName,
+                        Action = "Forgot Password",
+                        Message = "Invalid User!",
+                        Description = "Default Password Could not be Generated!",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
                     return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid User!" };
                 }
 
@@ -212,10 +272,40 @@ namespace SANTEGSMS.Repos
                         //response
                         response.StatusCode = 200;
                         response.StatusMessage = "Password Chnaged Successfully!";
+
+                        //activityLog
+                        var activitylog = new ActivityLogs()
+                        {
+                            UserId = getUser.Id.ToString(),
+                            FirstName = getUser.FirstName,
+                            LastName = getUser.LastName,
+                            Action = "Change Password",
+                            Message = "Password Changed Successfully!",
+                            Description = "Password Changed Successfully!",
+                            ActionDate = DateTime.Now,
+                        };
+
+                        await _context.ActivityLogs.AddAsync(activitylog);
+                        await _context.SaveChangesAsync();
                     }
                 }
                 else
                 {
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getUser.Id.ToString(),
+                        FirstName = getUser.FirstName,
+                        LastName = getUser.LastName,
+                        Action = "Change Password",
+                        Message = "Invalid User!",
+                        Description = "Password Could not be changed!",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
                     return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid User!" };
                 }
 
@@ -447,10 +537,40 @@ namespace SANTEGSMS.Repos
                                        s.DateCreated
                                    };
 
-                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Super Admin Details Updated Successfully!", Data = superAdm };
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getAdmin.Id.ToString(),
+                        FirstName = getAdmin.FirstName,
+                        LastName = getAdmin.LastName,
+                        Action = "System Super Administrator Update Details",
+                        Message = "Super Admin Details Updated Successfully!",
+                        Description = "Super Admin Details Updated Successfully!",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Super Admin Details Updated Successfully!", Data = superAdm.FirstOrDefault() };
                 }
                 else
                 {
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getAdmin.Id.ToString(),
+                        FirstName = getAdmin.FirstName,
+                        LastName = getAdmin.LastName,
+                        Action = "System Super Administrator Update Details",
+                        Message = "No Super Admin with the specified ID!",
+                        Description = "Super Admin Details Could not be Updated!",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
                     return new GenericRespModel { StatusCode = 409, StatusMessage = "No Super Admin with the specified ID!" };
                 }
             }

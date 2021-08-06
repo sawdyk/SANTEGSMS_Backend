@@ -28,6 +28,7 @@ namespace SANTEGSMS.Entities
         public DateTime? DateSubmitted { get; set; }
         public DateTime? DateGraded { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsGraded { get; set; }
         public DateTime DateDeleted { get; set; }
         public string DeletedBy { get; set; }
 

@@ -244,10 +244,40 @@ namespace SANTEGSMS.Repos
                         respData.SchoolUserDetails = userData;
                         respData.schoolDetails = schData;
                         respData.Roles = getRole.ToList();
+
+                        //activityLog
+                        var activitylog = new ActivityLogs()
+                        {
+                            UserId = getUser.Id.ToString(),
+                            FirstName = getUser.FirstName,
+                            LastName = getUser.LastName,
+                            Action = "School Users Login",
+                            Message = "Successful Login",
+                            Description = "Valid Username and Password",
+                            ActionDate = DateTime.Now,
+                        };
+
+                        await _context.ActivityLogs.AddAsync(activitylog);
+                        await _context.SaveChangesAsync();
                     }
                 }
                 else
                 {
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getUser.Id.ToString(),
+                        FirstName = getUser.FirstName,
+                        LastName = getUser.LastName,
+                        Action = "School Users Login",
+                        Message = "Failed Login",
+                        Description = "Invalid Username/Password",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
                     return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "Invalid Username/Password!" };
                 }
 
@@ -337,6 +367,21 @@ namespace SANTEGSMS.Repos
 
                         await _context.SaveChangesAsync();
 
+                        //activityLog
+                        var activitylog = new ActivityLogs()
+                        {
+                            UserId = getUserByEmail.Id.ToString(),
+                            FirstName = getUserByEmail.FirstName,
+                            LastName = getUserByEmail.LastName,
+                            Action = "Update School Users Details",
+                            Message = "User Details Updated Successfully",
+                            Description = "Successfully Updated the User Details",
+                            ActionDate = DateTime.Now,
+                        };
+
+                        await _context.ActivityLogs.AddAsync(activitylog);
+                        await _context.SaveChangesAsync();
+
                         return new GenericRespModel { StatusCode = 200, StatusMessage = "User Details Updated Successfully", };
                     }
                 }
@@ -362,6 +407,21 @@ namespace SANTEGSMS.Repos
                 if (getSchUser != null)
                 {
                     _context.SchoolUsers.Remove(getSchUser);
+                    await _context.SaveChangesAsync();
+
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getSchUser.Id.ToString(),
+                        FirstName = getSchUser.FirstName,
+                        LastName = getSchUser.LastName,
+                        Action = "Deleted School Users Details",
+                        Message = "User Details Deleted Successfully",
+                        Description = "Successfully Deleted the User Details",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
                     await _context.SaveChangesAsync();
 
                     return new GenericRespModel { StatusCode = 200, StatusMessage = "User Details Deleted Successfully" };
@@ -595,9 +655,38 @@ namespace SANTEGSMS.Repos
                     response.StatusCode = 200;
                     response.StatusMessage = "Default Password Generated and sent to mail Successfully, Kindly Change Password after Login!";
 
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getUser.Id.ToString(),
+                        FirstName = getUser.FirstName,
+                        LastName = getUser.LastName,
+                        Action = "School Users Forgot Password",
+                        Message = "Password Generated Successfully",
+                        Description = "Default Password Generated and sent to mail Successfully, Kindly Change Password after Login!",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
                 }
                 else
                 {
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getUser.Id.ToString(),
+                        FirstName = getUser.FirstName,
+                        LastName = getUser.LastName,
+                        Action = "School Users Forgot Password",
+                        Message = "Invalid User!",
+                        Description = "Default Password Could not be Generated!",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
                     return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid User!"};
                 }
 
@@ -648,11 +737,42 @@ namespace SANTEGSMS.Repos
 
                         //response
                         response.StatusCode = 200;
-                        response.StatusMessage = "Password Chnaged Successfully!";
+                        response.StatusMessage = "Password Changed Successfully!";
+
+                        //activityLog
+                        var activitylog = new ActivityLogs()
+                        {
+                            UserId = getUser.Id.ToString(),
+                            FirstName = getUser.FirstName,
+                            LastName = getUser.LastName,
+                            Action = "School Users Change Password",
+                            Message = "Password Changed Successfully!",
+                            Description = "Password Changed Successfully!",
+                            ActionDate = DateTime.Now,
+                        };
+
+                        await _context.ActivityLogs.AddAsync(activitylog);
+                        await _context.SaveChangesAsync();
+
                     }
                 }
                 else
                 {
+                    //activityLog
+                    var activitylog = new ActivityLogs()
+                    {
+                        UserId = getUser.Id.ToString(),
+                        FirstName = getUser.FirstName,
+                        LastName = getUser.LastName,
+                        Action = "School Users Change Password",
+                        Message = "Invalid User!",
+                        Description = "Password Could not be changed!",
+                        ActionDate = DateTime.Now,
+                    };
+
+                    await _context.ActivityLogs.AddAsync(activitylog);
+                    await _context.SaveChangesAsync();
+
                     return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid User!" };
                 }
 

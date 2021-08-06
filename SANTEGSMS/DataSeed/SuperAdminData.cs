@@ -27,7 +27,7 @@ namespace SANTEGSMS.DataSeed
                     Id = Guid.NewGuid(),
                     FirstName = "Super Admin",
                     LastName = "Super Admin",
-                    Email = "SuperAdmin@gmail.com",
+                    Email = "Ahmedsodiq7@gmail.com",
                     PhoneNumber = "09000990099",
                     Salt = salt,
                     PasswordHash = passwordHash,

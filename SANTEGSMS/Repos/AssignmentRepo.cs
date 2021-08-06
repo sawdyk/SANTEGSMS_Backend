@@ -777,10 +777,15 @@ namespace SANTEGSMS.Repos
 
                 if (assignmentSubmited != null)
                 {
-                    _context.AssignmentsSubmitted.Remove(assignmentSubmited);
-                    await _context.SaveChangesAsync();
+                    if (assignmentSubmited.IsGraded == false)
+                    {
+                        _context.AssignmentsSubmitted.Remove(assignmentSubmited);
+                        await _context.SaveChangesAsync();
 
-                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Submitted Assignment Deleted Successfully!" };
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Submitted Assignment Deleted Successfully!" };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Submitted Assignment has been Graded and Cannot be deleted!" };
                 }
 
                 return new GenericRespModel { StatusCode = 200, StatusMessage = "No Submitted Assignment with the specified ID!" };
@@ -825,6 +830,7 @@ namespace SANTEGSMS.Repos
                             {
                                 assignmentSubmitted.ObtainableScore = obtainableScore;
                                 assignmentSubmitted.ScoreObtained = scr.ScoreObtained;
+                                assignmentSubmitted.IsGraded = true;
                                 assignmentSubmitted.DateGraded = DateTime.Now;
                                 if (scr.ScoreObtained >= (obtainableScore / 2)) // divide by 2 to get average pass mark 
                                 {
