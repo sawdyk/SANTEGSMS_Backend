@@ -93,5 +93,90 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("schoolUsersBySchoolId")]
+        [Authorize]
+        public async Task<IActionResult> getSchoolUsersBySchoolIdAsync(long schoolId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolUsersRepo.getSchoolUsersBySchoolIdAsync(schoolId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("schoolAdminsBySchoolId")]
+        [Authorize]
+        public async Task<IActionResult> getSchoolAdminsBySchoolIdAsync(long schoolId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolUsersRepo.getSchoolAdminsBySchoolIdAsync(schoolId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("schoolAdminsByCampusId")]
+        [Authorize]
+        public async Task<IActionResult> getSchoolAdminsByCampusIdAsync(long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolUsersRepo.getSchoolAdminsByCampusIdAsync(campusId);
+
+            return Ok(result);
+        }
+
+
+        [HttpGet("schoolUsersByCampuslId")]
+        [Authorize]
+        public async Task<IActionResult> getSchoolUsersByCampuslIdAsync(long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolUsersRepo.getSchoolUsersByCampuslIdAsync(campusId);
+
+            return Ok(result);
+        }
+
+        [HttpPost("forgotPassword")]
+        [Authorize]
+        public async Task<IActionResult> forgotPasswordAsync(string email)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolUsersRepo.forgotPasswordAsync(email);
+
+            return Ok(result);
+        }
+
+        [HttpPut("changePassword")]
+        [Authorize]
+        public async Task<IActionResult> changePasswordAsync(string email, string oldPassword, string newPassword)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolUsersRepo.changePasswordAsync(email, oldPassword, newPassword);
+
+            return Ok(result);
+        }
     }
 }

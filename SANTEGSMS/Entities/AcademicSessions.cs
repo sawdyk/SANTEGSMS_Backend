@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SANTEGSMS.Entities
 {
+    [Table("AcademicSessions")]
     public class AcademicSessions
     {
         [Key]

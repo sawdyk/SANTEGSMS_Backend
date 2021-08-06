@@ -62,6 +62,32 @@ namespace SANTEGSMS.Repos
             }
         }
 
+        public async Task<GenericRespModel> deleteSchoolCampusAsync(long campusId)
+        {
+            try
+            {
+                var schCamp = _context.SchoolCampus.Where(x => x.Id == campusId).FirstOrDefault();
+                if (schCamp != null)
+                {
+                    _context.SchoolCampus.Remove(schCamp);
+                    await _context.SaveChangesAsync();
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "School Campus Deleted Successfully", };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "No School Campus with the specified ID" };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
         public async Task<GenericRespModel> getAllSchoolCampusAsync(long schoolId)
         {
             try

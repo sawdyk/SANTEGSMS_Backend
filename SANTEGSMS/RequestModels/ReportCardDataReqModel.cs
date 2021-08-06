@@ -23,4 +23,24 @@ namespace SANTEGSMS.RequestModels
         [Required]
         public IList<Guid> StudentIds { get; set; }
     }
+
+    public class ReportCardDataWithPinReqModel
+    {
+        [Required]
+        public long SchoolId { get; set; }
+        [Required]
+        public long CampusId { get; set; }
+        [Required]
+        public long TermId { get; set; }
+        [Required]
+        public long SessionId { get; set; }
+        [Required]
+        public long ClassId { get; set; }
+        [Required]
+        public long ClassGradeId { get; set; }
+        [Required]
+        public Guid StudentId { get; set; }
+        [Required]
+        public string Pin { get; set; }
+    }
 }

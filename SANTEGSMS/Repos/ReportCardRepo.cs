@@ -1185,6 +1185,7 @@ namespace SANTEGSMS.Repos
                             SessionId = obj.SessionId,
                             IsUsed = false,
                             NoOfTimesValid = 5,
+                            NoOfTimesUsed = 0,
                             DateCreated = DateTime.Now
                         };
 
@@ -1388,6 +1389,42 @@ namespace SANTEGSMS.Repos
                 await _context.SaveChangesAsync();
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
+        }
+
+        public async Task<GenericRespModel> deletePinsAsync(long pinId)
+        {
+            try
+            {
+                var getPin = _context.ReportCardPin.Where(s => s.Id == pinId).FirstOrDefault();
+
+                if (getPin != null)
+                {
+                    if (getPin.IsUsed == true && getPin.NoOfTimesUsed < getPin.NoOfTimesValid)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = $"This Pin has been used {getPin.NoOfTimesUsed} time(s) and Cannot be deleted" };
+                    }
+                    else
+                    {
+                        //delete the Pin
+                        _context.ReportCardPin.Remove(getPin);
+                        await _context.SaveChangesAsync();
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Pin Deleted Successfully" };
+                    }
+                }
+                
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "No Pin with the Specified ID" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+
+           
         }
     }
 }

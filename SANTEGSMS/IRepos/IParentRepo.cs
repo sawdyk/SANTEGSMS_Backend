@@ -14,6 +14,9 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getParentDetailsByIdAsync(Guid parentId, long schoolId, long campusId);
         Task<GenericRespModel> getAllParentAsync(long schoolId, long campusId);
         Task<ParentChildRespModel> getAllParentChildAsync(Guid parentId, long schoolId, long campusId);
+        Task<GenericRespModel> updateParentDetailsAsync(Guid parentId, UpdateParentReqModel obj);
+
+
         //-------------------------------------ChildrenProfile-----------------------------------------------
         Task<GenericRespModel> getChildrenProfileAsync(ChildrenProfileReqModel obj);
         //-------------------------------------ChildrenAttendance-----------------------------------------------
@@ -28,5 +31,9 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getChildAttendanceByDateAsync(Guid childId, Guid parentId, DateTime startDate, DateTime endDate);
         //------------------------------------------ChildSubject--------------------------------------------------
         Task<GenericRespModel> getChildSubjectAsync(Guid childId, Guid parentId);
+
+        Task<GenericRespModel> forgotPasswordAsync(string email);
+        Task<GenericRespModel> changePasswordAsync(string email, string oldPassword, string newPassword);
+
     }
 }

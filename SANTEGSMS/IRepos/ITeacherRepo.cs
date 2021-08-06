@@ -19,6 +19,9 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getAssignedTeachersAsync(long schoolId, long campusId);
         Task<GenericRespModel> getAllRolesAssignedToTeacherAsync(Guid teacherId, long schoolId, long campusId);
 
+        Task<GenericRespModel> deleteClassAndClassGradesAssignedToTeacherAsync(Guid teacherId, long schoolId, long campusId, long classId, long classGradeId);
+
+
 
         //-----------------------------------ATTENDANCE---------------------------------------------------------------
         Task<GenericRespModel> takeClassAttendanceAsync(TakeAttendanceReqModel obj);

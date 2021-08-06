@@ -309,7 +309,7 @@ namespace SANTEGSMS.Reusables
         {
             try
             {
-                var result = from ex in _context.BehavioralScores
+                var result = (from ex in _context.BehavioralScores
                              where ex.SchoolId == schoolId && ex.CampusId == campusId
                                && ex.ClassId == classId && ex.ClassGradeId == classGradeId && ex.TermId == termId && ex.SessionId == sessionId
                                && ex.CategoryId == categoryId && ex.StudentId == studentId
@@ -319,7 +319,7 @@ namespace SANTEGSMS.Reusables
                                  ex.MarkObtained,
                                  ex.ScoreCategory.CategoryName,
                                  ex.ScoreSubCategoryConfig.SubCategoryName,
-                             };
+                             }).FirstOrDefault();
 
                 return result;
             }
@@ -335,7 +335,7 @@ namespace SANTEGSMS.Reusables
         {
             try
             {
-                var result = from ex in _context.ExtraCurricularScores
+                var result = (from ex in _context.ExtraCurricularScores
                              where ex.SchoolId == schoolId && ex.CampusId == campusId
                               && ex.ClassId == classId && ex.ClassGradeId == classGradeId && ex.TermId == termId && ex.SessionId == sessionId
                               && ex.CategoryId == categoryId && ex.StudentId == studentId
@@ -345,7 +345,7 @@ namespace SANTEGSMS.Reusables
                                  ex.MarkObtained,
                                  ex.ScoreCategory.CategoryName,
                                  ex.ScoreSubCategoryConfig.SubCategoryName,
-                             };
+                             }).FirstOrDefault();
 
                 return result;
             }
@@ -385,7 +385,7 @@ namespace SANTEGSMS.Reusables
             try
             {
                 //get the legend and the legendList
-                var result = from rp in _context.ReportCardConfigurationLegend.AsNoTracking()
+                var result = (from rp in _context.ReportCardConfigurationLegend.AsNoTracking()
                                 .Include(l => l.ReportCardConfigurationLegendList).AsNoTracking()
                              where rp.TermId == termId && rp.SchoolId == schoolId && rp.CampusId == campusId
                              select new
@@ -403,7 +403,7 @@ namespace SANTEGSMS.Reusables
                                  rp.StatusId,
                                  rp.ActiveInActiveStatus.StatusName,
                                  rp.ReportCardConfigurationLegendList,
-                             };
+                             }).ToList();
                 return result;
             }
             catch (Exception ex)

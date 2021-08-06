@@ -53,7 +53,7 @@ namespace SANTEGSMS
             //Database Context
             services.AddDbContext<AppDbContext>(opt =>
             {
-                opt.UseMySql(Configuration.GetConnectionString("DefaultConnection"));
+                opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")).EnableDetailedErrors();
                 //opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
@@ -70,29 +70,33 @@ namespace SANTEGSMS
             services.AddTransient<IEmailRepo, EmailRepo>();
 
 
-            services.AddTransient<ISchoolRepo, SchoolRepo>();
-            services.AddTransient<ISystemDefaultRepo, SystemDefaultRepo>();
-            services.AddTransient<ILocalGovtRepo, LocalGovtRepo>();
-            services.AddTransient<IDistrictRepo, DistrictRepo>();
-            services.AddTransient<ISchoolCampusRepo, SchoolCampusRepo>();
-            services.AddTransient<ISchoolUsersRepo, SchoolUsersRepo>();
-            services.AddTransient<ISchoolRolesRepo, SchoolRolesRepo>();
-            services.AddTransient<IClassRepo, ClassRepo>();
-            services.AddTransient<ISessionTermRepo, SessionTermRepo>();
-            services.AddTransient<IParentRepo, ParentRepo>();
-            services.AddTransient<IScoresConfigRepo, ScoresConfigRepo>();
-            services.AddTransient<IStudentRepo, StudentRepo>();
-            services.AddTransient<ISubjectRepo, SubjectRepo>();
-            services.AddTransient<ITeacherRepo, TeacherRepo>();
-            services.AddTransient<IAssignmentRepo, AssignmentRepo>();
-            services.AddTransient<ILessonNoteRepo, LessonNoteRepo>();
-            services.AddTransient<IExtraCurricularBehavioralScoresRepo, ExtraCurricularBehavioralScoreRepo>();
-            services.AddTransient<IReportCardConfigurationRepo, ReportCardConfigurationRepo>();
-            services.AddTransient<IScoreUploadRepo, ScoreUploadRepo>();
-            services.AddTransient<IReportCardRepo, ReportCardRepo>();
-            services.AddTransient<IReportCardDataGenerateRepo, ReportCardGenerateRepo>();
+            services.AddScoped<ISchoolRepo, SchoolRepo>();
+            services.AddScoped<ISystemDefaultRepo, SystemDefaultRepo>();
+            services.AddScoped<ILocalGovtRepo, LocalGovtRepo>();
+            services.AddScoped<IDistrictRepo, DistrictRepo>();
+            services.AddScoped<ISchoolCampusRepo, SchoolCampusRepo>();
+            services.AddScoped<ISchoolUsersRepo, SchoolUsersRepo>();
+            services.AddScoped<ISchoolRolesRepo, SchoolRolesRepo>();
+            services.AddScoped<IClassRepo, ClassRepo>();
+            services.AddScoped<ISessionTermRepo, SessionTermRepo>();
+            services.AddScoped<IParentRepo, ParentRepo>();
+            services.AddScoped<IScoresConfigRepo, ScoresConfigRepo>();
+            services.AddScoped<IStudentRepo, StudentRepo>();
+            services.AddScoped<ISubjectRepo, SubjectRepo>();
+            services.AddScoped<ITeacherRepo, TeacherRepo>();
+            services.AddScoped<IAssignmentRepo, AssignmentRepo>();
+            services.AddScoped<ILessonNoteRepo, LessonNoteRepo>();
+            services.AddScoped<IExtraCurricularBehavioralScoresRepo, ExtraCurricularBehavioralScoreRepo>();
+            services.AddScoped<IReportCardConfigurationRepo, ReportCardConfigurationRepo>();
+            services.AddScoped<IScoreUploadRepo, ScoreUploadRepo>();
+            services.AddScoped<IReportCardRepo, ReportCardRepo>();
+            services.AddScoped<IReportCardDataGenerateRepo, ReportCardGenerateRepo>();
+            services.AddScoped<ISuperAdminRepo, SuperAdminRepo>();
+            services.AddScoped<IFileUploadRepo, FileUploadRepo>();
 
-            services.AddTransient<ReportCardReUsables>();
+            services.AddScoped<ReportCardReUsables>();
+            services.AddScoped<EmailTemplate>();
+            services.AddScoped<ServerPath>();
 
             //Get the swagger value options
             var swaggerOpt = Configuration.GetSection("SwaggerOptions").Get<SwaggerOptions>();
@@ -144,7 +148,7 @@ namespace SANTEGSMS
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SANTEG SMS");
+                c.SwaggerEndpoint($"./v1/swagger.json", "SANTEG SMS");
             });
 
             app.UseRouting();

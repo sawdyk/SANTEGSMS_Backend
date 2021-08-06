@@ -32,7 +32,22 @@ namespace SANTEGSMS.DataSeed
                     Id = 4,
                     RoleName = "Subject Teacher"
                 }
-               
+                //new SchoolRoles
+                //{
+                //    Id = 5,
+                //    RoleName = "Finance Officer"
+                //},
+                //new SchoolRoles
+                //{
+                //    Id = 6,
+                //    RoleName = "Principal/HeadMaster"
+                //},
+                //new SchoolRoles
+                //{
+                //    Id = 7,
+                //    RoleName = "Vice Principal/HeadMistress"
+                //}
+
             );
         }
     }

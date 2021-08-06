@@ -2132,6 +2132,23 @@ namespace SANTEGSMS.Migrations
                     b.ToTable("SchoolCampus");
                 });
 
+            modelBuilder.Entity("SANTEGSMS.Entities.SchoolResources", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ResourceLink")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ResourceName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SchoolResources");
+                });
+
             modelBuilder.Entity("SANTEGSMS.Entities.SchoolRoles", b =>
                 {
                     b.Property<long>("Id")
@@ -3195,6 +3212,51 @@ namespace SANTEGSMS.Migrations
                     b.HasIndex("SubjectId");
 
                     b.ToTable("SubjectTeachers");
+                });
+
+            modelBuilder.Entity("SANTEGSMS.Entities.SuperAdmin", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Salt")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SuperAdmin");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d51cc453-cb95-4ff9-a9aa-b30bacc18a86"),
+                            DateCreated = new DateTime(2021, 8, 3, 10, 36, 8, 908, DateTimeKind.Local).AddTicks(698),
+                            Email = "SuperAdmin@gmail.com",
+                            FirstName = "Super Admin",
+                            LastName = "Super Admin",
+                            PasswordHash = "b357ccc6166a97571f4a115ddadaf7a062c6fc4fc0a5d07eef500ec07a8cffe3",
+                            PhoneNumber = "09000990099",
+                            Salt = "0c7842fd6b7fda453f0742f23a74fd98"
+                        });
                 });
 
             modelBuilder.Entity("SANTEGSMS.Entities.Teachers", b =>

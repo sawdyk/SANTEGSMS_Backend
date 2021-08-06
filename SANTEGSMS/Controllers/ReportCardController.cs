@@ -107,6 +107,20 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
+        [HttpPost("reportCardDataByStudentIdAndPin")]
+        [Authorize]
+        public async Task<IActionResult> getReportCardDataByStudentIdAndPinAsync(ReportCardDataWithPinReqModel obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardDataGenerateRepo.getReportCardDataByStudentIdAndPinAsync(obj);
+
+            return Ok(result);
+        }
+
 
         //----------------------------REPORT CARD PIN GENERATION----------------------------------------------------
 
@@ -163,6 +177,20 @@ namespace SANTEGSMS.Controllers
             }
 
             var result = await _reportCardRepo.getPinsByStatusAsync(schoolId, campusId, termId, sessionId, isUsed);
+
+            return Ok(result);
+        }
+
+        [HttpDelete("deletePins")]
+        [Authorize]
+        public async Task<IActionResult> deletePinsAsync(long pinId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardRepo.deletePinsAsync(pinId);
 
             return Ok(result);
         }

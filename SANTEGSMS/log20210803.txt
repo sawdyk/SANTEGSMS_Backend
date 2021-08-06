@@ -1,0 +1,1582 @@
+2021-08-03 10:45:02.872 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 10:45:03.644 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 10:45:03.645 +01:00 [INF] Hosting environment: Development
+2021-08-03 10:45:03.646 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 10:45:03.700 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger  
+2021-08-03 10:45:03.761 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 10:45:03.771 +01:00 [INF] Request finished in 75.3692ms 301 
+2021-08-03 10:45:03.828 +01:00 [INF] Request finished in 70.4557ms 200 text/html;charset=utf-8
+2021-08-03 10:45:03.841 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui.css  
+2021-08-03 10:45:03.841 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui-bundle.js  
+2021-08-03 10:45:03.843 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/swagger-ui-standalone-preset.js  
+2021-08-03 10:45:03.907 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2021-08-03 10:45:03.907 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2021-08-03 10:45:03.907 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-08-03 10:45:03.909 +01:00 [INF] Request finished in 68.4241ms 200 text/css
+2021-08-03 10:45:03.909 +01:00 [INF] Request finished in 65.9446ms 200 application/javascript
+2021-08-03 10:45:03.909 +01:00 [INF] Request finished in 68.1094ms 200 application/javascript
+2021-08-03 10:45:04.164 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 10:45:04.196 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/favicon-32x32.png  
+2021-08-03 10:45:04.198 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2021-08-03 10:45:04.199 +01:00 [INF] Request finished in 2.6599ms 200 image/png
+2021-08-03 10:45:04.397 +01:00 [INF] Request finished in 233.719ms 200 application/json;charset=utf-8
+2021-08-03 10:50:08.839 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 38
+2021-08-03 10:50:08.972 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:50:09.038 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:50:09.158 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:50:13.769 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:50:15.276 +01:00 [INF] Executed DbCommand (155ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:50:15.374 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:50:15.403 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 6233.1701ms
+2021-08-03 10:50:15.404 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:50:15.432 +01:00 [INF] Request finished in 6596.0012ms 200 application/json; charset=utf-8
+2021-08-03 10:50:41.846 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 10:50:41.865 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:50:41.873 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:50:41.884 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:50:41.953 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:50:41.972 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:50:42.233 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 10:50:42.265 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:50:42.512 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 10:50:42.528 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:50:42.530 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 646.1243ms
+2021-08-03 10:50:42.531 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:50:42.531 +01:00 [INF] Request finished in 686.8668ms 200 application/json; charset=utf-8
+2021-08-03 10:50:53.055 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 10:50:53.058 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:50:53.062 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:50:53.064 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:50:53.101 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:50:53.109 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:50:53.115 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 10:50:53.118 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:50:53.121 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 10:50:53.137 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:50:53.183 +01:00 [INF] Executed DbCommand (36ms) [Parameters=[@__userSchool_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__userSchool_SchoolTypeId_0
+LIMIT 1
+2021-08-03 10:50:53.218 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@__getUser_CampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__getUser_CampusId_0
+LIMIT 1
+2021-08-03 10:50:53.482 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`UserId`, `s`.`RoleId`, `s0`.`RoleName`
+FROM `SchoolUserRoles` AS `s`
+LEFT JOIN `SchoolRoles` AS `s0` ON `s`.`RoleId` = `s0`.`Id`
+WHERE `s`.`UserId` = @__getUser_Id_0
+2021-08-03 10:50:53.484 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:50:53.522 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 457.5594ms
+2021-08-03 10:50:53.523 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:50:53.523 +01:00 [INF] Request finished in 468.5117ms 200 application/json; charset=utf-8
+2021-08-03 10:57:23.258 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 10:57:24.337 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 10:57:24.338 +01:00 [INF] Hosting environment: Development
+2021-08-03 10:57:24.338 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 10:57:24.391 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 10:57:24.517 +01:00 [INF] Request finished in 131.3934ms 200 text/html;charset=utf-8
+2021-08-03 10:57:25.211 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 10:57:25.710 +01:00 [INF] Request finished in 501.151ms 200 application/json;charset=utf-8
+2021-08-03 10:57:37.425 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 10:57:37.433 +01:00 [INF] Request finished in 8.1857ms 200 text/html;charset=utf-8
+2021-08-03 10:57:37.681 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 10:57:37.690 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/favicon-32x32.png  
+2021-08-03 10:57:37.744 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2021-08-03 10:57:37.745 +01:00 [INF] Request finished in 54.8478ms 200 image/png
+2021-08-03 10:57:37.906 +01:00 [INF] Request finished in 225.8036ms 200 application/json;charset=utf-8
+2021-08-03 10:57:51.063 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 10:57:51.853 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 10:57:51.871 +01:00 [INF] Hosting environment: Development
+2021-08-03 10:57:51.871 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 10:57:51.965 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 10:57:52.081 +01:00 [INF] Request finished in 121.8199ms 200 text/html;charset=utf-8
+2021-08-03 10:57:52.305 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 10:57:52.843 +01:00 [INF] Request finished in 537.9559ms 200 application/json;charset=utf-8
+2021-08-03 10:58:24.993 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 10:58:25.116 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:58:25.165 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:58:25.275 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:58:28.673 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:58:29.946 +01:00 [INF] Executed DbCommand (141ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:58:30.286 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 10:58:30.307 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:58:30.542 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 10:58:30.568 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:58:30.576 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userSchool_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__userSchool_SchoolTypeId_0
+LIMIT 1
+2021-08-03 10:58:30.594 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_CampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__getUser_CampusId_0
+LIMIT 1
+2021-08-03 10:58:30.820 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`UserId`, `s`.`RoleId`, `s0`.`RoleName`
+FROM `SchoolUserRoles` AS `s`
+LEFT JOIN `SchoolRoles` AS `s0` ON `s`.`RoleId` = `s0`.`Id`
+WHERE `s`.`UserId` = @__getUser_Id_0
+2021-08-03 10:58:30.831 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:58:30.906 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 5619.3923ms
+2021-08-03 10:58:30.907 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:58:30.915 +01:00 [INF] Request finished in 5929.4495ms 200 application/json; charset=utf-8
+2021-08-03 10:59:03.188 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 60
+2021-08-03 10:59:03.204 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:59:03.228 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:03.229 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:59:03.314 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:59:03.327 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:59:03.331 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 10:59:03.333 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:59:03.336 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 10:59:03.337 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:59:03.340 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 111.0808ms
+2021-08-03 10:59:03.340 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:03.341 +01:00 [INF] Request finished in 153.3773ms 200 application/json; charset=utf-8
+2021-08-03 10:59:25.938 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 62
+2021-08-03 10:59:25.940 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:59:25.944 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:25.944 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:59:25.970 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:59:25.975 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:59:25.978 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 10:59:25.980 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:59:25.983 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 10:59:25.984 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:59:25.986 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 40.9633ms
+2021-08-03 10:59:25.986 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:25.987 +01:00 [INF] Request finished in 54.4388ms 200 application/json; charset=utf-8
+2021-08-03 10:59:31.615 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 61
+2021-08-03 10:59:31.617 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:59:31.618 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:31.620 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:59:31.628 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:59:31.637 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:59:31.645 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 10:59:31.653 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:59:31.658 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 10:59:31.661 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:59:31.666 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 45.1941ms
+2021-08-03 10:59:31.671 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:31.672 +01:00 [INF] Request finished in 56.992ms 200 application/json; charset=utf-8
+2021-08-03 10:59:39.283 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 62
+2021-08-03 10:59:39.284 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:59:39.285 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:39.286 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:59:39.290 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:59:39.292 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:59:39.295 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 10:59:39.296 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:59:39.299 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 10:59:39.300 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:59:39.303 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 15.5484ms
+2021-08-03 10:59:39.303 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:39.330 +01:00 [INF] Request finished in 47.1277ms 200 application/json; charset=utf-8
+2021-08-03 10:59:54.337 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 61
+2021-08-03 10:59:54.338 +01:00 [INF] CORS policy execution successful.
+2021-08-03 10:59:54.339 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:54.340 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 10:59:54.345 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 10:59:54.350 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 10:59:54.354 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 10:59:54.358 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 10:59:54.362 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 10:59:54.364 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 10:59:54.365 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 24.6919ms
+2021-08-03 10:59:54.365 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 10:59:54.366 +01:00 [INF] Request finished in 28.8543ms 200 application/json; charset=utf-8
+2021-08-03 11:00:05.601 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 56
+2021-08-03 11:00:05.602 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:00:05.603 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 11:00:05.603 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 11:00:05.608 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:00:05.611 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 11:00:05.615 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 11:00:05.618 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 11:00:05.621 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 11:00:05.624 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 11:00:05.627 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userSchool_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__userSchool_SchoolTypeId_0
+LIMIT 1
+2021-08-03 11:00:05.631 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_CampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__getUser_CampusId_0
+LIMIT 1
+2021-08-03 11:00:05.636 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`UserId`, `s`.`RoleId`, `s0`.`RoleName`
+FROM `SchoolUserRoles` AS `s`
+LEFT JOIN `SchoolRoles` AS `s0` ON `s`.`RoleId` = `s0`.`Id`
+WHERE `s`.`UserId` = @__getUser_Id_0
+2021-08-03 11:00:05.637 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 11:00:05.645 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 41.816ms
+2021-08-03 11:00:05.646 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 11:00:05.646 +01:00 [INF] Request finished in 45.2664ms 200 application/json; charset=utf-8
+2021-08-03 11:00:27.248 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 11:00:28.017 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 11:00:28.021 +01:00 [INF] Hosting environment: Development
+2021-08-03 11:00:28.028 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 11:00:28.073 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 11:00:28.188 +01:00 [INF] Request finished in 122.6463ms 200 text/html;charset=utf-8
+2021-08-03 11:00:28.499 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 11:00:28.993 +01:00 [INF] Request finished in 497.2765ms 200 application/json;charset=utf-8
+2021-08-03 11:00:56.759 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/SuperAdmin/schools  
+2021-08-03 11:00:56.963 +01:00 [INF] Authorization was successful.
+2021-08-03 11:00:56.964 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.getAllSchoolsAsync (SANTEGSMS)'
+2021-08-03 11:00:57.076 +01:00 [INF] Route matched with {action = "getAllSchools", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSchoolsAsync() on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:01:00.764 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:01:01.906 +01:00 [INF] Executed DbCommand (121ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Schools` AS `s`
+2021-08-03 11:01:02.172 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolName`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s0`.`SchoolTypeName`, `s1`.`StateName`, `l`.`LocalGovtName`, `d`.`DistrictName`, CONCAT(CONCAT(`d0`.`FirstName`, ' '), `d0`.`LastName`) AS `DistricAdministratorFullName`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`DateCreated`, `s`.`DateUpdated`
+FROM `Schools` AS `s`
+LEFT JOIN `SchoolType` AS `s0` ON `s`.`SchoolTypeId` = `s0`.`Id`
+LEFT JOIN `States` AS `s1` ON `s`.`StateId` = `s1`.`Id`
+LEFT JOIN `LocalGovt` AS `l` ON `s`.`LocalGovtId` = `l`.`Id`
+LEFT JOIN `District` AS `d` ON `s`.`DistrictId` = `d`.`Id`
+LEFT JOIN `DistrictAdministrators` AS `d0` ON `d`.`DistrictAdminId` = `d0`.`Id`
+2021-08-03 11:01:02.197 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:01:02.245 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.getAllSchoolsAsync (SANTEGSMS) in 5158.2324ms
+2021-08-03 11:01:02.246 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.getAllSchoolsAsync (SANTEGSMS)'
+2021-08-03 11:01:02.254 +01:00 [INF] Request finished in 5499.7255ms 200 application/json; charset=utf-8
+2021-08-03 11:01:36.520 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/superAdminLogin application/json 54
+2021-08-03 11:01:36.543 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:01:36.546 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:01:36.571 +01:00 [INF] Route matched with {action = "superAdminLogin", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] superAdminLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:01:36.732 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:01:36.886 +01:00 [INF] Executed DbCommand (38ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 11:01:36.968 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:01:36.976 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS) in 403.3219ms
+2021-08-03 11:01:36.982 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:01:36.983 +01:00 [INF] Request finished in 465.6096ms 200 application/json; charset=utf-8
+2021-08-03 11:01:58.197 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/forgotPassword?email=SuperAdmin%40gmail.com  0
+2021-08-03 11:01:58.199 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:01:58.215 +01:00 [INF] Authorization was successful.
+2021-08-03 11:01:58.215 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.forgotPasswordAsync (SANTEGSMS)'
+2021-08-03 11:01:58.226 +01:00 [INF] Route matched with {action = "forgotPassword", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] forgotPasswordAsync(System.String) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:01:58.257 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:01:58.271 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 11:01:58.602 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@p2='?' (DbType = Guid), @p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `SuperAdmin` SET `PasswordHash` = @p0, `Salt` = @p1
+WHERE `Id` = @p2;
+SELECT ROW_COUNT();
+2021-08-03 11:01:58.696 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:01:58.705 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.forgotPasswordAsync (SANTEGSMS) in 479.1103ms
+2021-08-03 11:01:58.707 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.forgotPasswordAsync (SANTEGSMS)'
+2021-08-03 11:01:58.709 +01:00 [INF] Request finished in 512.0139ms 200 application/json; charset=utf-8
+2021-08-03 11:02:16.041 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/superAdminLogin application/json 54
+2021-08-03 11:02:16.043 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:02:16.044 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:02:16.046 +01:00 [INF] Route matched with {action = "superAdminLogin", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] superAdminLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:02:16.052 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:02:16.063 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 11:02:16.065 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:02:16.067 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS) in 20.3644ms
+2021-08-03 11:02:16.067 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:02:16.068 +01:00 [INF] Request finished in 27.3975ms 200 application/json; charset=utf-8
+2021-08-03 11:02:21.707 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/superAdminLogin application/json 56
+2021-08-03 11:02:21.708 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:02:21.710 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:02:21.711 +01:00 [INF] Route matched with {action = "superAdminLogin", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] superAdminLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:02:21.714 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:02:21.718 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 11:02:21.719 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:02:21.721 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS) in 9.6303ms
+2021-08-03 11:02:21.721 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:02:21.721 +01:00 [INF] Request finished in 14.3948ms 200 application/json; charset=utf-8
+2021-08-03 11:02:57.327 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/changePassword?email=SuperAdmin%40gmail.com&oldPassword=qF28Rij4Kjj&newPassword=Password  0
+2021-08-03 11:02:57.328 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:02:57.351 +01:00 [INF] Authorization was successful.
+2021-08-03 11:02:57.351 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.changePasswordAsync (SANTEGSMS)'
+2021-08-03 11:02:57.369 +01:00 [INF] Route matched with {action = "changePassword", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] changePasswordAsync(System.String, System.String, System.String) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:02:57.385 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:02:57.393 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 11:02:57.396 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:02:57.400 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.changePasswordAsync (SANTEGSMS) in 28.8477ms
+2021-08-03 11:02:57.405 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.changePasswordAsync (SANTEGSMS)'
+2021-08-03 11:02:57.406 +01:00 [INF] Request finished in 79.1719ms 200 application/json; charset=utf-8
+2021-08-03 11:03:01.878 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/changePassword?email=SuperAdmin%40gmail.com&oldPassword=qF28Rij4Kj&newPassword=Password  0
+2021-08-03 11:03:01.879 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:03:01.883 +01:00 [INF] Authorization was successful.
+2021-08-03 11:03:01.883 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.changePasswordAsync (SANTEGSMS)'
+2021-08-03 11:03:01.884 +01:00 [INF] Route matched with {action = "changePassword", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] changePasswordAsync(System.String, System.String, System.String) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:03:01.892 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:03:01.897 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 11:03:01.953 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@p2='?' (DbType = Guid), @p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `SuperAdmin` SET `PasswordHash` = @p0, `Salt` = @p1
+WHERE `Id` = @p2;
+SELECT ROW_COUNT();
+2021-08-03 11:03:01.958 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:03:01.959 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.changePasswordAsync (SANTEGSMS) in 75.4206ms
+2021-08-03 11:03:01.960 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.changePasswordAsync (SANTEGSMS)'
+2021-08-03 11:03:01.960 +01:00 [INF] Request finished in 82.4927ms 200 application/json; charset=utf-8
+2021-08-03 11:03:09.208 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/superAdminLogin application/json 56
+2021-08-03 11:03:09.209 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:03:09.210 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:03:09.211 +01:00 [INF] Route matched with {action = "superAdminLogin", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] superAdminLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:03:09.215 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:03:09.222 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 11:03:09.224 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:03:09.225 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS) in 14.0316ms
+2021-08-03 11:03:09.225 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:03:09.226 +01:00 [INF] Request finished in 17.9429ms 200 application/json; charset=utf-8
+2021-08-03 11:03:16.492 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/superAdminLogin application/json 54
+2021-08-03 11:03:16.493 +01:00 [INF] CORS policy execution successful.
+2021-08-03 11:03:16.494 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:03:16.495 +01:00 [INF] Route matched with {action = "superAdminLogin", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] superAdminLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 11:03:16.498 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 11:03:16.501 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 11:03:16.503 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 11:03:16.504 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS) in 9.4547ms
+2021-08-03 11:03:16.504 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 11:03:16.505 +01:00 [INF] Request finished in 16.3422ms 200 application/json; charset=utf-8
+2021-08-03 13:17:47.293 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 13:17:47.735 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 13:17:47.737 +01:00 [INF] Hosting environment: Development
+2021-08-03 13:17:47.741 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 13:17:47.770 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 13:17:47.831 +01:00 [INF] Request finished in 62.5051ms 200 text/html;charset=utf-8
+2021-08-03 13:17:47.921 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 13:17:48.077 +01:00 [INF] Request finished in 156.1649ms 200 application/json;charset=utf-8
+2021-08-03 13:19:58.663 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=1  0
+2021-08-03 13:19:58.721 +01:00 [INF] CORS policy execution successful.
+2021-08-03 13:19:58.747 +01:00 [INF] Authorization was successful.
+2021-08-03 13:19:58.747 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 13:19:58.784 +01:00 [INF] Route matched with {action = "approveOrDeclineSchoolCreation", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] approveOrDeclineSchoolCreationAsync(Boolean, Int64) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 13:19:59.926 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 13:20:00.347 +01:00 [INF] Executed DbCommand (46ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 13:20:00.467 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 13:20:00.474 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`RoleId` = 1
+2021-08-03 13:20:00.489 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Id` = @__rol_UserId_0
+LIMIT 1
+2021-08-03 13:20:00.542 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 13:20:00.666 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `Schools` SET `IsApproved` = @p0, `IsVerified` = @p1
+WHERE `Id` = @p2;
+SELECT ROW_COUNT();
+2021-08-03 13:20:00.699 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 13:20:00.712 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS) in 1923.9215ms
+2021-08-03 13:20:00.713 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 13:20:00.716 +01:00 [INF] Request finished in 2087.6968ms 200 application/json; charset=utf-8
+2021-08-03 13:36:47.085 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 13:36:47.482 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 13:36:47.488 +01:00 [INF] Hosting environment: Development
+2021-08-03 13:36:47.488 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 13:36:47.515 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 13:36:47.585 +01:00 [INF] Request finished in 73.5623ms 200 text/html;charset=utf-8
+2021-08-03 13:36:47.688 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 13:36:47.857 +01:00 [INF] Request finished in 169.1591ms 200 application/json;charset=utf-8
+2021-08-03 13:36:56.484 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 13:36:56.798 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 13:36:56.803 +01:00 [INF] Hosting environment: Development
+2021-08-03 13:36:56.803 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 13:36:56.847 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 13:36:56.969 +01:00 [INF] Request finished in 127.2338ms 200 text/html;charset=utf-8
+2021-08-03 13:36:57.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 13:36:57.256 +01:00 [INF] Request finished in 164.8987ms 200 application/json;charset=utf-8
+2021-08-03 13:37:29.825 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=1  0
+2021-08-03 13:37:29.875 +01:00 [INF] CORS policy execution successful.
+2021-08-03 13:37:29.900 +01:00 [INF] Authorization was successful.
+2021-08-03 13:37:29.900 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 13:37:29.940 +01:00 [INF] Route matched with {action = "approveOrDeclineSchoolCreation", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] approveOrDeclineSchoolCreationAsync(Boolean, Int64) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 13:37:31.117 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 13:37:31.537 +01:00 [INF] Executed DbCommand (41ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 13:37:31.659 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 13:37:31.672 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`RoleId` = 1
+2021-08-03 13:37:31.685 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 13:37:31.739 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 13:37:31.774 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 13:37:31.785 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS) in 1841.0968ms
+2021-08-03 13:37:31.785 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 13:37:31.790 +01:00 [INF] Request finished in 1967.454ms 200 application/json; charset=utf-8
+2021-08-03 13:38:16.204 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 13:38:16.213 +01:00 [INF] CORS policy execution successful.
+2021-08-03 13:38:16.221 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 13:38:16.226 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 13:38:16.266 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 13:38:16.271 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 13:38:16.276 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 13:38:16.280 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 13:38:16.291 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 13:38:16.297 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 13:38:16.301 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userSchool_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__userSchool_SchoolTypeId_0
+LIMIT 1
+2021-08-03 13:38:16.309 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_CampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__getUser_CampusId_0
+LIMIT 1
+2021-08-03 13:38:16.394 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`UserId`, `s`.`RoleId`, `s0`.`RoleName`
+FROM `SchoolUserRoles` AS `s`
+LEFT JOIN `SchoolRoles` AS `s0` ON `s`.`RoleId` = `s0`.`Id`
+WHERE `s`.`UserId` = @__getUser_Id_0
+2021-08-03 13:38:16.395 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 13:38:16.406 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 179.6571ms
+2021-08-03 13:38:16.406 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 13:38:16.406 +01:00 [INF] Request finished in 205.582ms 200 application/json; charset=utf-8
+2021-08-03 13:39:34.156 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 13:39:34.510 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 13:39:34.519 +01:00 [INF] Hosting environment: Development
+2021-08-03 13:39:34.519 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 13:39:34.560 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 13:39:34.665 +01:00 [INF] Request finished in 110.2989ms 200 text/html;charset=utf-8
+2021-08-03 13:39:34.760 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 13:39:34.930 +01:00 [INF] Request finished in 170.5963ms 200 application/json;charset=utf-8
+2021-08-03 13:40:39.743 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 13:40:39.811 +01:00 [INF] CORS policy execution successful.
+2021-08-03 13:40:39.827 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 13:40:39.867 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 13:40:40.909 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 13:40:41.313 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 13:40:41.422 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 13:40:41.430 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 13:40:41.497 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 13:40:41.504 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 13:40:41.514 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 1641.704ms
+2021-08-03 13:40:41.515 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 13:40:41.518 +01:00 [INF] Request finished in 1779.0141ms 200 application/json; charset=utf-8
+2021-08-03 13:41:47.483 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 13:41:47.930 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 13:41:47.935 +01:00 [INF] Hosting environment: Development
+2021-08-03 13:41:47.935 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 13:41:47.959 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 13:41:48.016 +01:00 [INF] Request finished in 59.6797ms 200 text/html;charset=utf-8
+2021-08-03 13:41:48.109 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 13:41:48.286 +01:00 [INF] Request finished in 177.008ms 200 application/json;charset=utf-8
+2021-08-03 13:42:24.219 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 13:42:24.272 +01:00 [INF] CORS policy execution successful.
+2021-08-03 13:42:24.287 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 13:42:24.329 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 13:42:25.381 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 13:42:25.791 +01:00 [INF] Executed DbCommand (41ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 13:42:25.899 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 13:42:25.907 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 13:42:25.977 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 13:42:25.987 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 13:42:25.996 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 1663.2545ms
+2021-08-03 13:42:25.996 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 13:42:25.999 +01:00 [INF] Request finished in 1784.0211ms 200 application/json; charset=utf-8
+2021-08-03 20:27:45.361 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 20:27:45.846 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 20:27:45.846 +01:00 [INF] Hosting environment: Development
+2021-08-03 20:27:45.846 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 20:27:45.885 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 20:27:45.952 +01:00 [INF] Request finished in 68.4213ms 200 text/html;charset=utf-8
+2021-08-03 20:27:46.072 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 20:27:46.306 +01:00 [INF] Request finished in 234.0783ms 200 application/json;charset=utf-8
+2021-08-03 20:30:21.121 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 314
+2021-08-03 20:30:21.186 +01:00 [INF] CORS policy execution successful.
+2021-08-03 20:30:21.213 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-08-03 20:30:21.218 +01:00 [INF] Authorization failed.
+2021-08-03 20:30:21.220 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2021-08-03 20:30:21.223 +01:00 [INF] Request finished in 105.1883ms 401 
+2021-08-03 20:31:02.578 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 20:31:03.028 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 20:31:03.032 +01:00 [INF] Hosting environment: Development
+2021-08-03 20:31:03.032 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 20:31:03.056 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 20:31:03.111 +01:00 [INF] Request finished in 57.764ms 200 text/html;charset=utf-8
+2021-08-03 20:31:03.197 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 20:31:03.367 +01:00 [INF] Request finished in 170.6689ms 200 application/json;charset=utf-8
+2021-08-03 20:31:36.550 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 314
+2021-08-03 20:31:36.611 +01:00 [INF] CORS policy execution successful.
+2021-08-03 20:31:36.646 +01:00 [INF] Authorization was successful.
+2021-08-03 20:31:36.646 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-08-03 20:31:36.700 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-08-03 20:31:37.925 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 20:31:38.371 +01:00 [INF] Executed DbCommand (44ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 20:31:38.407 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 20:31:38.414 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__schoolName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolName` = @__schoolName_0
+LIMIT 1
+2021-08-03 20:31:38.420 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCode_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolCode` = @__schoolCode_0
+LIMIT 1
+2021-08-03 20:31:38.655 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int64), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Schools` (`DateCreated`, `DateUpdated`, `DistrictId`, `IsActive`, `IsApproved`, `IsVerified`, `LocalGovtId`, `SchoolCode`, `SchoolLogoUrl`, `SchoolName`, `SchoolTypeId`, `StateId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `Schools`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 20:31:38.778 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolCampus` (`CampusAddress`, `CampusName`, `DateCreated`, `IsActive`, `SchoolId`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT `Id`
+FROM `SchoolCampus`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 20:31:38.848 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 4000), @p15='?' (DbType = Int64), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUsers` (`Id`, `CampusId`, `DateCreated`, `Email`, `EmailConfirmed`, `FirstName`, `IsActive`, `LastLoginDate`, `LastName`, `LastPasswordChangedDate`, `LastUpdatedDate`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `Salt`, `SchoolId`, `UserName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2021-08-03 20:31:38.869 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int64), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUserRoles` (`DateCreated`, `RoleId`, `UserId`)
+VALUES (@p0, @p1, @p2);
+SELECT `Id`
+FROM `SchoolUserRoles`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 20:31:38.901 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `EmailConfirmationCodes` (`Code`, `DateGenerated`, `UserId`)
+VALUES (@p0, @p1, @p2);
+SELECT `Id`
+FROM `EmailConfirmationCodes`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 20:31:43.244 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__newSch_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__newSch_SchoolTypeId_0
+LIMIT 1
+2021-08-03 20:31:43.257 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-08-03 20:31:43.280 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 6576.4313ms
+2021-08-03 20:31:43.281 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-08-03 20:31:43.285 +01:00 [INF] Request finished in 6739.3737ms 200 application/json; charset=utf-8
+2021-08-03 20:33:01.073 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 20:33:01.085 +01:00 [INF] CORS policy execution successful.
+2021-08-03 20:33:01.090 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 20:33:01.098 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 20:33:01.139 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 20:33:01.145 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 20:33:01.153 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 20:33:01.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 20:33:01.162 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 20:33:01.163 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 20:33:01.165 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 66.0705ms
+2021-08-03 20:33:01.165 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 20:33:01.165 +01:00 [INF] Request finished in 95.9296ms 200 application/json; charset=utf-8
+2021-08-03 20:35:55.764 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 60
+2021-08-03 20:35:55.770 +01:00 [INF] CORS policy execution successful.
+2021-08-03 20:35:55.772 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 20:35:55.773 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 20:35:55.786 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 20:35:55.789 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 20:35:55.791 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 20:35:55.792 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 20:35:55.794 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 20:35:55.796 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 20:35:55.796 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 22.9707ms
+2021-08-03 20:35:55.797 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 20:35:55.797 +01:00 [INF] Request finished in 34.8197ms 200 application/json; charset=utf-8
+2021-08-03 20:36:19.067 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 20:36:19.068 +01:00 [INF] CORS policy execution successful.
+2021-08-03 20:36:19.070 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 20:36:19.070 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 20:36:19.075 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 20:36:19.077 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 20:36:19.079 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 20:36:19.080 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 20:36:19.081 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 20:36:19.082 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 20:36:19.093 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 22.1044ms
+2021-08-03 20:36:19.093 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 20:36:19.093 +01:00 [INF] Request finished in 26.5422ms 200 application/json; charset=utf-8
+2021-08-03 21:25:39.745 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 21:25:40.152 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 21:25:40.152 +01:00 [INF] Hosting environment: Development
+2021-08-03 21:25:40.152 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 21:25:40.189 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 21:25:40.257 +01:00 [INF] Request finished in 70.7278ms 200 text/html;charset=utf-8
+2021-08-03 21:25:40.337 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 21:25:40.496 +01:00 [INF] Request finished in 159.1048ms 200 application/json;charset=utf-8
+2021-08-03 21:26:20.207 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 314
+2021-08-03 21:26:20.271 +01:00 [INF] CORS policy execution successful.
+2021-08-03 21:26:20.297 +01:00 [INF] Authorization was successful.
+2021-08-03 21:26:20.298 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-08-03 21:26:20.340 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-08-03 21:26:21.545 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 21:26:21.973 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 21:26:22.011 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 21:26:22.018 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolName` = @__schoolName_0
+LIMIT 1
+2021-08-03 21:26:22.108 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCode_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolCode` = @__schoolCode_0
+LIMIT 1
+2021-08-03 21:26:22.111 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-08-03 21:26:22.119 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 1775.2429ms
+2021-08-03 21:26:22.119 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-08-03 21:26:22.122 +01:00 [INF] Request finished in 1919.8966ms 200 application/json; charset=utf-8
+2021-08-03 21:27:04.960 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 314
+2021-08-03 21:27:04.967 +01:00 [INF] CORS policy execution successful.
+2021-08-03 21:27:04.977 +01:00 [INF] Authorization was successful.
+2021-08-03 21:27:04.977 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-08-03 21:27:04.978 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-08-03 21:27:05.010 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 21:27:05.014 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 21:27:05.015 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 21:27:05.016 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolName` = @__schoolName_0
+LIMIT 1
+2021-08-03 21:27:05.017 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCode_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolCode` = @__schoolCode_0
+LIMIT 1
+2021-08-03 21:27:05.170 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int64), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Schools` (`DateCreated`, `DateUpdated`, `DistrictId`, `IsActive`, `IsApproved`, `IsVerified`, `LocalGovtId`, `SchoolCode`, `SchoolLogoUrl`, `SchoolName`, `SchoolTypeId`, `StateId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `Schools`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 21:27:05.300 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolCampus` (`CampusAddress`, `CampusName`, `DateCreated`, `IsActive`, `SchoolId`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT `Id`
+FROM `SchoolCampus`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 21:27:05.371 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 4000), @p15='?' (DbType = Int64), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUsers` (`Id`, `CampusId`, `DateCreated`, `Email`, `EmailConfirmed`, `FirstName`, `IsActive`, `LastLoginDate`, `LastName`, `LastPasswordChangedDate`, `LastUpdatedDate`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `Salt`, `SchoolId`, `UserName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2021-08-03 21:27:05.391 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int64), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUserRoles` (`DateCreated`, `RoleId`, `UserId`)
+VALUES (@p0, @p1, @p2);
+SELECT `Id`
+FROM `SchoolUserRoles`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 21:27:05.410 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `EmailConfirmationCodes` (`Code`, `DateGenerated`, `UserId`)
+VALUES (@p0, @p1, @p2);
+SELECT `Id`
+FROM `EmailConfirmationCodes`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 21:27:09.805 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__newSch_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__newSch_SchoolTypeId_0
+LIMIT 1
+2021-08-03 21:27:09.813 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-08-03 21:27:09.824 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 4845.8719ms
+2021-08-03 21:27:09.825 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-08-03 21:27:09.825 +01:00 [INF] Request finished in 4868.6796ms 200 application/json; charset=utf-8
+2021-08-03 21:41:44.028 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 21:41:44.384 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 21:41:44.385 +01:00 [INF] Hosting environment: Development
+2021-08-03 21:41:44.385 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 21:41:44.412 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 21:41:44.468 +01:00 [INF] Request finished in 58.3576ms 200 text/html;charset=utf-8
+2021-08-03 21:41:44.557 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 21:41:44.742 +01:00 [INF] Request finished in 184.6923ms 200 application/json;charset=utf-8
+2021-08-03 21:42:34.391 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/School/activateAccount application/json 49
+2021-08-03 21:42:34.437 +01:00 [INF] CORS policy execution successful.
+2021-08-03 21:42:34.489 +01:00 [INF] Authorization was successful.
+2021-08-03 21:42:34.489 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS)'
+2021-08-03 21:42:34.529 +01:00 [INF] Route matched with {action = "activateAccount", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] activateAccountAsync(SANTEGSMS.RequestModels.ActivateSchoolAccountReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-08-03 21:42:35.731 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 21:42:36.141 +01:00 [INF] Executed DbCommand (43ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 21:42:36.246 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 21:42:36.249 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 21:42:36.259 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS) in 1726.1438ms
+2021-08-03 21:42:36.259 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS)'
+2021-08-03 21:42:36.262 +01:00 [INF] Request finished in 1902.884ms 200 application/json; charset=utf-8
+2021-08-03 22:28:24.354 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 22:28:24.733 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 22:28:24.734 +01:00 [INF] Hosting environment: Development
+2021-08-03 22:28:24.734 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 22:28:24.765 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 22:28:24.829 +01:00 [INF] Request finished in 66.5283ms 200 text/html;charset=utf-8
+2021-08-03 22:28:24.911 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 22:28:25.071 +01:00 [INF] Request finished in 159.8291ms 200 application/json;charset=utf-8
+2021-08-03 22:31:16.893 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/School/schoolSignUp application/json 315
+2021-08-03 22:31:16.953 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:31:16.979 +01:00 [INF] Authorization was successful.
+2021-08-03 22:31:16.979 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-08-03 22:31:17.017 +01:00 [INF] Route matched with {action = "schoolSignUp", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolSignUpAsync(SANTEGSMS.RequestModels.SchoolSignUpReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-08-03 22:31:18.227 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:31:18.642 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 22:31:18.680 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 22:31:18.684 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolName` = @__schoolName_0
+LIMIT 1
+2021-08-03 22:31:18.688 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCode_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`SchoolCode` = @__schoolCode_0
+LIMIT 1
+2021-08-03 22:31:18.921 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int64), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Int64), @p11='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Schools` (`DateCreated`, `DateUpdated`, `DistrictId`, `IsActive`, `IsApproved`, `IsVerified`, `LocalGovtId`, `SchoolCode`, `SchoolLogoUrl`, `SchoolName`, `SchoolTypeId`, `StateId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+SELECT `Id`
+FROM `Schools`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 22:31:19.051 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolCampus` (`CampusAddress`, `CampusName`, `DateCreated`, `IsActive`, `SchoolId`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT `Id`
+FROM `SchoolCampus`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 22:31:19.127 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int64), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 4000), @p15='?' (DbType = Int64), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUsers` (`Id`, `CampusId`, `DateCreated`, `Email`, `EmailConfirmed`, `FirstName`, `IsActive`, `LastLoginDate`, `LastName`, `LastPasswordChangedDate`, `LastUpdatedDate`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `Salt`, `SchoolId`, `UserName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2021-08-03 22:31:19.151 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int64), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `SchoolUserRoles` (`DateCreated`, `RoleId`, `UserId`)
+VALUES (@p0, @p1, @p2);
+SELECT `Id`
+FROM `SchoolUserRoles`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 22:31:19.174 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `EmailConfirmationCodes` (`Code`, `DateGenerated`, `UserId`)
+VALUES (@p0, @p1, @p2);
+SELECT `Id`
+FROM `EmailConfirmationCodes`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-08-03 22:31:19.182 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__newSch_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__newSch_SchoolTypeId_0
+LIMIT 1
+2021-08-03 22:31:22.099 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+LIMIT 1
+2021-08-03 22:31:24.184 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolSignUpRespModel'.
+2021-08-03 22:31:24.205 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS) in 7183.3008ms
+2021-08-03 22:31:24.206 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.schoolSignUpAsync (SANTEGSMS)'
+2021-08-03 22:31:24.210 +01:00 [INF] Request finished in 7321.0353ms 200 application/json; charset=utf-8
+2021-08-03 22:33:16.532 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 22:33:16.541 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:33:16.545 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 22:33:16.553 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 22:33:16.585 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:33:16.590 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 22:33:16.594 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 22:33:16.598 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 22:33:16.605 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 22:33:16.606 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 22:33:16.608 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 55.2577ms
+2021-08-03 22:33:16.609 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 22:33:16.609 +01:00 [INF] Request finished in 79.5602ms 200 application/json; charset=utf-8
+2021-08-03 22:33:51.014 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/School/activateAccount application/json 49
+2021-08-03 22:33:51.017 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:33:51.023 +01:00 [INF] Authorization was successful.
+2021-08-03 22:33:51.023 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS)'
+2021-08-03 22:33:51.029 +01:00 [INF] Route matched with {action = "activateAccount", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] activateAccountAsync(SANTEGSMS.RequestModels.ActivateSchoolAccountReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-08-03 22:33:51.047 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:33:51.049 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 22:33:51.051 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 22:33:51.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 22:33:51.060 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`Code`, `e`.`DateGenerated`, `e`.`UserId`
+FROM `EmailConfirmationCodes` AS `e`
+WHERE `e`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 22:33:51.064 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 22:33:51.095 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM `EmailConfirmationCodes`
+WHERE `Id` = @p0;
+SELECT ROW_COUNT();
+2021-08-03 22:33:51.100 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `SchoolUsers` SET `EmailConfirmed` = @p0
+WHERE `Id` = @p1;
+SELECT ROW_COUNT();
+2021-08-03 22:33:51.102 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Int64), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `Schools` SET `IsActive` = @p0
+WHERE `Id` = @p1;
+SELECT ROW_COUNT();
+2021-08-03 22:33:53.149 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:33:53.153 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS) in 2123.7947ms
+2021-08-03 22:33:53.154 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS)'
+2021-08-03 22:33:53.155 +01:00 [INF] Request finished in 2143.6345ms 200 application/json; charset=utf-8
+2021-08-03 22:34:36.107 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/School/activateAccount application/json 49
+2021-08-03 22:34:36.108 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:34:36.118 +01:00 [INF] Authorization was successful.
+2021-08-03 22:34:36.119 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS)'
+2021-08-03 22:34:36.120 +01:00 [INF] Route matched with {action = "activateAccount", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] activateAccountAsync(SANTEGSMS.RequestModels.ActivateSchoolAccountReqModel) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-08-03 22:34:36.130 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:34:36.133 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__email_0
+LIMIT 1
+2021-08-03 22:34:36.135 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 22:34:36.136 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:34:36.137 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS) in 16.2766ms
+2021-08-03 22:34:36.137 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.activateAccountAsync (SANTEGSMS)'
+2021-08-03 22:34:36.137 +01:00 [INF] Request finished in 30.877ms 200 application/json; charset=utf-8
+2021-08-03 22:35:03.029 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 22:35:03.032 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:35:03.033 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 22:35:03.034 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 22:35:03.055 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:35:03.061 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 22:35:03.066 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 22:35:03.069 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 22:35:03.072 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 22:35:03.074 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 22:35:03.075 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 41.2067ms
+2021-08-03 22:35:03.075 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 22:35:03.076 +01:00 [INF] Request finished in 49.2625ms 200 application/json; charset=utf-8
+2021-08-03 22:35:54.545 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/superAdminLogin application/json 59
+2021-08-03 22:35:54.546 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:35:54.550 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 22:35:54.554 +01:00 [INF] Route matched with {action = "superAdminLogin", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] superAdminLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:35:54.558 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:35:54.563 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 22:35:54.564 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:35:54.565 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS) in 11.072ms
+2021-08-03 22:35:54.565 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 22:35:54.565 +01:00 [INF] Request finished in 22.3657ms 200 application/json; charset=utf-8
+2021-08-03 22:36:03.401 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SuperAdmin/superAdminLogin application/json 55
+2021-08-03 22:36:03.403 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:36:03.404 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 22:36:03.404 +01:00 [INF] Route matched with {action = "superAdminLogin", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] superAdminLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:36:03.409 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:36:03.411 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`Email`, `s`.`FirstName`, `s`.`LastName`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`Salt`
+FROM `SuperAdmin` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 22:36:03.413 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:36:03.415 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS) in 11.1595ms
+2021-08-03 22:36:03.415 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.superAdminLoginAsync (SANTEGSMS)'
+2021-08-03 22:36:03.415 +01:00 [INF] Request finished in 14.5572ms 200 application/json; charset=utf-8
+2021-08-03 22:36:13.649 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/SuperAdmin/schools  
+2021-08-03 22:36:13.651 +01:00 [INF] Authorization was successful.
+2021-08-03 22:36:13.651 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.getAllSchoolsAsync (SANTEGSMS)'
+2021-08-03 22:36:13.655 +01:00 [INF] Route matched with {action = "getAllSchools", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSchoolsAsync() on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:36:13.660 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:36:13.690 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Schools` AS `s`
+2021-08-03 22:36:13.719 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolName`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s0`.`SchoolTypeName`, `s1`.`StateName`, `l`.`LocalGovtName`, `d`.`DistrictName`, CONCAT(CONCAT(`d0`.`FirstName`, ' '), `d0`.`LastName`) AS `DistricAdministratorFullName`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`DateCreated`, `s`.`DateUpdated`
+FROM `Schools` AS `s`
+LEFT JOIN `SchoolType` AS `s0` ON `s`.`SchoolTypeId` = `s0`.`Id`
+LEFT JOIN `States` AS `s1` ON `s`.`StateId` = `s1`.`Id`
+LEFT JOIN `LocalGovt` AS `l` ON `s`.`LocalGovtId` = `l`.`Id`
+LEFT JOIN `District` AS `d` ON `s`.`DistrictId` = `d`.`Id`
+LEFT JOIN `DistrictAdministrators` AS `d0` ON `d`.`DistrictAdminId` = `d0`.`Id`
+2021-08-03 22:36:13.720 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:36:13.726 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.getAllSchoolsAsync (SANTEGSMS) in 71.2953ms
+2021-08-03 22:36:13.726 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.getAllSchoolsAsync (SANTEGSMS)'
+2021-08-03 22:36:13.726 +01:00 [INF] Request finished in 77.3676ms 200 application/json; charset=utf-8
+2021-08-03 22:37:20.557 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=2  0
+2021-08-03 22:37:20.557 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:37:20.564 +01:00 [INF] Authorization was successful.
+2021-08-03 22:37:20.564 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:37:20.576 +01:00 [INF] Route matched with {action = "approveOrDeclineSchoolCreation", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] approveOrDeclineSchoolCreationAsync(Boolean, Int64) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:37:20.585 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:37:20.593 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:37:20.594 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:37:20.594 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS) in 18.1954ms
+2021-08-03 22:37:20.594 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:37:20.595 +01:00 [INF] Request finished in 37.8634ms 200 application/json; charset=utf-8
+2021-08-03 22:37:32.250 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=4  0
+2021-08-03 22:37:32.251 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:37:32.253 +01:00 [INF] Authorization was successful.
+2021-08-03 22:37:32.253 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:37:32.253 +01:00 [INF] Route matched with {action = "approveOrDeclineSchoolCreation", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] approveOrDeclineSchoolCreationAsync(Boolean, Int64) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:37:32.256 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:37:32.258 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:37:32.270 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:37:32.280 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`RoleId` = 1
+2021-08-03 22:37:32.286 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 22:39:08.179 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 22:39:08.546 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 22:39:08.550 +01:00 [INF] Hosting environment: Development
+2021-08-03 22:39:08.550 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 22:39:08.574 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 22:39:08.629 +01:00 [INF] Request finished in 56.6674ms 200 text/html;charset=utf-8
+2021-08-03 22:39:08.712 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 22:39:08.876 +01:00 [INF] Request finished in 164.6719ms 200 application/json;charset=utf-8
+2021-08-03 22:40:02.454 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=4  0
+2021-08-03 22:40:02.545 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:40:02.566 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-08-03 22:40:02.570 +01:00 [INF] Authorization failed.
+2021-08-03 22:40:02.571 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2021-08-03 22:40:02.574 +01:00 [INF] Request finished in 146.5669ms 401 
+2021-08-03 22:40:13.025 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=4  0
+2021-08-03 22:40:13.031 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:40:13.051 +01:00 [INF] Authorization was successful.
+2021-08-03 22:40:13.052 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:40:13.096 +01:00 [INF] Route matched with {action = "approveOrDeclineSchoolCreation", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] approveOrDeclineSchoolCreationAsync(Boolean, Int64) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:40:14.246 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:40:14.652 +01:00 [INF] Executed DbCommand (44ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:40:14.773 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:40:14.780 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`RoleId` = 1
+2021-08-03 22:40:19.679 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 22:40:25.362 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+2021-08-03 22:42:43.238 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+2021-08-03 22:42:52.001 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+2021-08-03 22:45:09.788 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-03 22:45:10.221 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-03 22:45:10.227 +01:00 [INF] Hosting environment: Development
+2021-08-03 22:45:10.227 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-03 22:45:10.251 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-03 22:45:10.317 +01:00 [INF] Request finished in 68.0298ms 200 text/html;charset=utf-8
+2021-08-03 22:45:10.405 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/swagger/v1/swagger.json  
+2021-08-03 22:45:10.574 +01:00 [INF] Request finished in 169.8501ms 200 application/json;charset=utf-8
+2021-08-03 22:46:54.474 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/School/schoolResources?schoolId=4  
+2021-08-03 22:46:54.557 +01:00 [INF] Authorization was successful.
+2021-08-03 22:46:54.557 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolController.getSchoolResourcesAsync (SANTEGSMS)'
+2021-08-03 22:46:54.596 +01:00 [INF] Route matched with {action = "getSchoolResources", controller = "School"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getSchoolResourcesAsync(Int64) on controller SANTEGSMS.Controllers.SchoolController (SANTEGSMS).
+2021-08-03 22:46:55.619 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:46:56.027 +01:00 [INF] Executed DbCommand (46ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:46:56.176 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `SchoolResources` AS `s`
+2021-08-03 22:46:56.183 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`ResourceName`, `s`.`ResourceLink`
+FROM `SchoolResources` AS `s`
+2021-08-03 22:46:56.187 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:46:56.200 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolController.getSchoolResourcesAsync (SANTEGSMS) in 1598.6644ms
+2021-08-03 22:46:56.201 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolController.getSchoolResourcesAsync (SANTEGSMS)'
+2021-08-03 22:46:56.204 +01:00 [INF] Request finished in 1732.5865ms 200 application/json; charset=utf-8
+2021-08-03 22:47:19.110 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=4  0
+2021-08-03 22:47:19.129 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:47:19.148 +01:00 [INF] Authorization was successful.
+2021-08-03 22:47:19.148 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:47:19.153 +01:00 [INF] Route matched with {action = "approveOrDeclineSchoolCreation", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] approveOrDeclineSchoolCreationAsync(Boolean, Int64) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:47:19.178 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:47:19.182 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:47:19.187 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:47:19.192 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`RoleId` = 1
+2021-08-03 22:47:25.618 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 22:47:37.154 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 22:48:09.512 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:48:09.635 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `Schools` SET `IsApproved` = @p0, `IsVerified` = @p1
+WHERE `Id` = @p2;
+SELECT ROW_COUNT();
+2021-08-03 22:48:12.096 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:48:12.103 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS) in 52949.9038ms
+2021-08-03 22:48:12.103 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:48:12.104 +01:00 [INF] Request finished in 52999.1866ms 200 application/json; charset=utf-8
+2021-08-03 22:49:15.077 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/SchoolUsers/schoolUserLogin application/json 59
+2021-08-03 22:49:15.082 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:49:15.088 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 22:49:15.092 +01:00 [INF] Route matched with {action = "schoolUserLogin", controller = "SchoolUsers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] schoolUserLoginAsync(SANTEGSMS.RequestModels.LoginReqModel) on controller SANTEGSMS.Controllers.SchoolUsersController (SANTEGSMS).
+2021-08-03 22:49:15.120 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:49:15.133 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@__obj_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE `s`.`Email` = @__obj_Email_0
+LIMIT 1
+2021-08-03 22:49:15.139 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Email` = @__email_0) AND (`s`.`EmailConfirmed` = FALSE)
+LIMIT 1
+2021-08-03 22:49:15.143 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 22:49:15.149 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`UserId` = @__getUser_Id_0
+LIMIT 1
+2021-08-03 22:49:15.155 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__getUser_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__getUser_SchoolId_0
+LIMIT 1
+2021-08-03 22:49:15.159 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userSchool_SchoolTypeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`SchoolTypeName`
+FROM `SchoolType` AS `s`
+WHERE `s`.`Id` = @__userSchool_SchoolTypeId_0
+LIMIT 1
+2021-08-03 22:49:15.164 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_CampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__getUser_CampusId_0
+LIMIT 1
+2021-08-03 22:49:15.234 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__getUser_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`UserId`, `s`.`RoleId`, `s0`.`RoleName`
+FROM `SchoolUserRoles` AS `s`
+LEFT JOIN `SchoolRoles` AS `s0` ON `s`.`RoleId` = `s0`.`Id`
+WHERE `s`.`UserId` = @__getUser_Id_0
+2021-08-03 22:49:15.235 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.SchoolUsersLoginRespModel'.
+2021-08-03 22:49:15.246 +01:00 [INF] Executed action SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS) in 153.8128ms
+2021-08-03 22:49:15.246 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SchoolUsersController.schoolUserLoginAsync (SANTEGSMS)'
+2021-08-03 22:49:15.247 +01:00 [INF] Request finished in 169.8281ms 200 application/json; charset=utf-8
+2021-08-03 22:49:36.411 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=4  0
+2021-08-03 22:49:36.413 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:49:36.418 +01:00 [INF] Authorization was successful.
+2021-08-03 22:49:36.418 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:49:36.419 +01:00 [INF] Route matched with {action = "approveOrDeclineSchoolCreation", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] approveOrDeclineSchoolCreationAsync(Boolean, Int64) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:49:36.422 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:49:36.425 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:49:36.427 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:49:36.430 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`RoleId` = 1
+2021-08-03 22:49:41.633 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 22:49:41.634 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 22:49:41.636 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:49:43.592 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:49:43.593 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS) in 7174.2191ms
+2021-08-03 22:49:43.597 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:49:43.598 +01:00 [INF] Request finished in 7189.3869ms 200 application/json; charset=utf-8
+2021-08-03 22:50:10.879 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/SuperAdmin/approveOrDeclineSchoolCreation?isApproved=true&schoolId=4  0
+2021-08-03 22:50:10.879 +01:00 [INF] CORS policy execution successful.
+2021-08-03 22:50:10.885 +01:00 [INF] Authorization was successful.
+2021-08-03 22:50:10.885 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:50:10.886 +01:00 [INF] Route matched with {action = "approveOrDeclineSchoolCreation", controller = "SuperAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] approveOrDeclineSchoolCreationAsync(Boolean, Int64) on controller SANTEGSMS.Controllers.SuperAdminController (SANTEGSMS).
+2021-08-03 22:50:10.893 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-03 22:50:10.897 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:50:10.902 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:50:10.906 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`RoleId` = 1
+2021-08-03 22:50:10.911 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 22:50:10.914 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__rol_UserId_0='?' (DbType = Guid), @__8__locals1_schoolId_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`DateCreated`, `s`.`Email`, `s`.`EmailConfirmed`, `s`.`FirstName`, `s`.`IsActive`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`PasswordHash`, `s`.`PhoneNumber`, `s`.`PhoneNumberConfirmed`, `s`.`Salt`, `s`.`SchoolId`, `s`.`UserName`
+FROM `SchoolUsers` AS `s`
+WHERE (`s`.`Id` = @__rol_UserId_0) AND (`s`.`SchoolId` = @__8__locals1_schoolId_1)
+LIMIT 1
+2021-08-03 22:50:10.917 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`RoleId`, `s`.`UserId`
+FROM `SchoolUserRoles` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-03 22:50:12.882 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-03 22:50:12.884 +01:00 [INF] Executed action SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS) in 1997.1941ms
+2021-08-03 22:50:12.886 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.SuperAdminController.approveOrDeclineSchoolCreationAsync (SANTEGSMS)'
+2021-08-03 22:50:12.886 +01:00 [INF] Request finished in 2008.0533ms 200 application/json; charset=utf-8

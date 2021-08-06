@@ -1327,5 +1327,44 @@ namespace SANTEGSMS.Repos
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
         }
+
+        public async Task<GenericRespModel> deleteClassAndClassGradesAssignedToTeacherAsync(Guid teacherId, long schoolId, long campusId, long classId, long classGradeId)
+        {
+            try
+            {
+                var getTeacher = _context.Teachers.Where(s => s.SchoolUserId == teacherId && s.SchoolId == schoolId && s.CampusId == campusId).FirstOrDefault();
+                if (getTeacher != null)
+                {
+                    var getGradeTeacher = _context.GradeTeachers.Where(s => s.SchoolUserId == getTeacher.SchoolUserId && s.SchoolId == schoolId && s.CampusId == campusId
+                    && s.ClassId == classId && s.ClassGradeId == classGradeId).FirstOrDefault();
+
+                    if (getGradeTeacher != null)
+                    {
+                        //delete the classGrade assigned and update the classgrade table
+                        _context.GradeTeachers.Remove(getGradeTeacher);
+
+                        var classGrade = _context.ClassGrades.Where(s => s.Id == getGradeTeacher.ClassGradeId && s.ClassId == getGradeTeacher.ClassId && s.SchoolId == schoolId && s.CampusId == campusId).FirstOrDefault();
+                        classGrade.isAssignedToTeacher = false;
+
+                        await _context.SaveChangesAsync();
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Class/ClassGrade Assigned to the Teacher has been Deleted Successfully" };
+                    }
+
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "This Teacher is not Assigned to this Class!" };
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "No Teacher with the specified ID!" };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
     }
 }

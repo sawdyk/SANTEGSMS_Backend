@@ -308,5 +308,32 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
+        [HttpPost("forgotPassword")]
+        [Authorize]
+        public async Task<IActionResult> forgotPasswordAsync(string admissionNumber)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _studentRepo.forgotPasswordAsync(admissionNumber);
+
+            return Ok(result);
+        }
+
+        [HttpPut("changePassword")]
+        [Authorize]
+        public async Task<IActionResult> changePasswordAsync(string admissionNumber, string oldPassword, string newPassword)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _studentRepo.changePasswordAsync(admissionNumber, oldPassword, newPassword);
+
+            return Ok(result);
+        }
     }
 }

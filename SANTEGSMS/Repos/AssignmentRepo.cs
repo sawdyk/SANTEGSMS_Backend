@@ -55,8 +55,31 @@ namespace SANTEGSMS.Repos
 
                     await _context.Assignments.AddAsync(ass);
                     await _context.SaveChangesAsync();
+                   
+                    var result = from asgnmt in _context.Assignments
+                                 where asgnmt.Id == ass.Id
+                                 select new
+                                 {
+                                     asgnmt.Id,
+                                     asgnmt.Description,
+                                     asgnmt.ObtainableScore,
+                                     asgnmt.FileUrl,
+                                     asgnmt.SchoolSubjects.SubjectName,
+                                     asgnmt.TeacherId,
+                                     asgnmt.Classes.ClassName,
+                                     asgnmt.ClassGrades.GradeName,
+                                     asgnmt.SchoolId,
+                                     asgnmt.CampusId,
+                                     asgnmt.Sessions.SessionName,
+                                     asgnmt.Terms.TermName,
+                                     asgnmt.IsActive,
+                                     asgnmt.DueDate,
+                                     asgnmt.DateUploaded,
+                                     asgnmt.LastDateUpdated,
+                                 };
 
-                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Assignment Created Successfully!" };
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Assignment Created Successfully!", Data = result };
 
                 }
 

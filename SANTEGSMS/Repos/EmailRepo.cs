@@ -3,6 +3,7 @@ using MimeKit;
 using SANTEGSMS.IRepos;
 using SANTEGSMS.Services.Email;
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,13 +37,13 @@ namespace SANTEGSMS.Repos
                 //message.Body = bodyBuilder.ToMessageBody();
 
                 BodyBuilder bodyBuilder = new BodyBuilder();
-                bodyBuilder.HtmlBody = "<h2>SANTEG</h2>";
+                //bodyBuilder.HtmlBody = "<h2>SANTEG SCHOOL MANAGEMENT SYSTEM</h2>";
                 bodyBuilder.TextBody = message.Content;
 
                 var emailMessage = new MimeMessage();
                 emailMessage.From.Add(new MailboxAddress(_emailConfig.From));
                 emailMessage.To.Add(message.To);
-                emailMessage.Subject = "SANTEG Registration";
+                emailMessage.Subject = "SANTEG SCHOOL MANAGEMENT SYSTEM";
                 emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = message.Content };
 
                 return emailMessage;

@@ -26,6 +26,8 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getPinByIdAsync(long pinId);
         Task<GenericRespModel> getAllPinsAsync(long schoolId, long campusId, long termId, long sessionId);
         Task<GenericRespModel> getPinsByStatusAsync(long schoolId, long campusId, long termId, long sessionId, bool isUsed);
+        Task<GenericRespModel> deletePinsAsync(long pinId);
+
 
 
     }

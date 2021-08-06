@@ -15,5 +15,13 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getSchoolUsersByRoleIdAsync(long schoolId, long campusId, long roleId);
         Task<GenericRespModel> updateSchoolUserDetailsAsync(Guid schoolUserId, UpdateSchoolUsersDetailsReqModel obj);
         Task<GenericRespModel> deleteSchoolUsersAsync(Guid schoolUserId, long schoolId, long campusId);
+        Task<GenericRespModel> getSchoolUsersBySchoolIdAsync(long schoolId);
+        Task<GenericRespModel> getSchoolAdminsBySchoolIdAsync(long schoolId);
+        Task<GenericRespModel> getSchoolAdminsByCampusIdAsync(long campusId);
+        Task<GenericRespModel> getSchoolUsersByCampuslIdAsync(long campusId);
+
+        Task<GenericRespModel> forgotPasswordAsync(string email);
+        Task<GenericRespModel> changePasswordAsync(string email, string oldPassword, string newPassword);
+
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SANTEGSMS.Entities
 {
+    [Table("AppTypes")]
     public class AppTypes
     {
         [Key]

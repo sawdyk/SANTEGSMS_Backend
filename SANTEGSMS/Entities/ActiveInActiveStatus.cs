@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SANTEGSMS.Entities
 {
+    [Table("ActiveInActiveStatus")]
     public class ActiveInActiveStatus
     {
         [Key]

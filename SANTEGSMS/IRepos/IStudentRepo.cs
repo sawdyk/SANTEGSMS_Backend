@@ -34,5 +34,9 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getStudentDuplicateByStudentIdAsync(Guid studentId, long schoolId, long campusId);
         Task<GenericRespModel> updateStudentDuplicateAsync(StudentDuplicateReqModel obj);
         Task<GenericRespModel> deleteStudentDuplicateAsync(Guid studentId, long schoolId, long campusId);
+
+        Task<GenericRespModel> forgotPasswordAsync(string admissionNumber);
+        Task<GenericRespModel> changePasswordAsync(string admissionNumber, string oldPassword, string newPassword);
+
     }
 }

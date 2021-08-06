@@ -78,6 +78,9 @@ namespace SANTEGSMS.DatabaseContext
         public DbSet<AppTypes> AppTypes { get; set; }
         public DbSet<FolderTypes> FolderTypes { get; set; }
         public DbSet<ReportCardPin> ReportCardPin { get; set; }
+        public DbSet<SchoolResources> SchoolResources { get; set; }
+        public DbSet<SuperAdmin> SuperAdmin { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -98,6 +101,7 @@ namespace SANTEGSMS.DatabaseContext
             builder.SeedReportCardConfig();
             builder.SeedAppTypes();
             builder.SeedFolderTypes();
+            builder.SeedSystemSuperAdmin();
         }
     }
 }

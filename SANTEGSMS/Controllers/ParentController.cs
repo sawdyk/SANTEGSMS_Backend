@@ -219,5 +219,47 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("forgotPassword")]
+        [Authorize]
+        public async Task<IActionResult> forgotPasswordAsync(string email)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _parentRepo.forgotPasswordAsync(email);
+
+            return Ok(result);
+        }
+
+        [HttpPut("changePassword")]
+        [Authorize]
+        public async Task<IActionResult> changePasswordAsync(string email, string oldPassword, string newPassword)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _parentRepo.changePasswordAsync(email, oldPassword, newPassword);
+
+            return Ok(result);
+        }
+
+        [HttpPut("updateParentDetails")]
+        [Authorize]
+        public async Task<IActionResult> updateParentDetailsAsync(Guid parentId, UpdateParentReqModel obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _parentRepo.updateParentDetailsAsync(parentId, obj);
+
+            return Ok(result);
+        }
     }
 }

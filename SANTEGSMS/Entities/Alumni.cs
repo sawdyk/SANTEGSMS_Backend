@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SANTEGSMS.Entities
 {
+    [Table("Alumni")]
     public class Alumni
     {
         [Key]

@@ -18,12 +18,13 @@ namespace SANTEGSMS.Repos
     {
         private readonly AppDbContext _context;
         private readonly IEmailRepo _emailRepo;
-        public SchoolUsersRepo(AppDbContext context, IEmailRepo emailRepo)
+        private readonly EmailTemplate _emailTemplate;
+        public SchoolUsersRepo(AppDbContext context, IEmailRepo emailRepo, EmailTemplate emailTemplate)
         {
             _context = context;
             _emailRepo = emailRepo;
+            _emailTemplate = emailTemplate;
         }
-
         //------------------------SchoolUsers------------------------------------------------------------------
 
         public async Task<SchoolUsersRespModel> createSchoolUsersAsync(SchoolUsersReqModel obj)
@@ -159,6 +160,9 @@ namespace SANTEGSMS.Repos
                 {
                     var accountCheckResult = emailcheck.checkIfAccountExistAndNotConfirmed(obj.Email, Convert.ToInt64(EnumUtility.UserCategoty.SchoolUsers));
 
+                    //get the school
+                    var getSch = _context.Schools.Where(r => r.Id == getUser.SchoolId).FirstOrDefault();
+
                     //get the school user Role
                     var getSchUserRole = _context.SchoolUserRoles.Where(r => r.UserId == getUser.Id).FirstOrDefault();
 
@@ -181,6 +185,18 @@ namespace SANTEGSMS.Repos
                     else if (accountCheckResult == true && schUserRoleId == (int)EnumUtility.SchoolRoles.SuperAdministrator)
                     {
                         return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "This Account Exist but has not been Activated!" };
+                    }
+                    else if (getUser.IsActive != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "Your Account has been deactivated, Kindly Contact your Admninistrator!" };
+                    }
+                    else if (getSch.IsApproved != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "This School has not been Verified and Approved by the System Super Admninistrator!" };
+                    }
+                    else if (getSch.IsActive != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "This School Account has been Disabled by the System Admninistrator, Kindly Contact the System Admninistrator!" };
                     }
                     else
                     {
@@ -219,6 +235,9 @@ namespace SANTEGSMS.Repos
                         schData.CampusName = getCampus.CampusName;
                         schData.CampusAddress = getCampus.CampusAddress;
 
+                        getUser.LastLoginDate = DateTime.Now;
+                        await _context.SaveChangesAsync();
+
                         //The data to be sent as response
                         respData.StatusCode = 200;
                         respData.StatusMessage = "Login Successful";
@@ -254,7 +273,25 @@ namespace SANTEGSMS.Repos
                              join usr in _context.SchoolUsers on usRol.UserId equals usr.Id
                              where usr.SchoolId == schoolId
                              && usr.CampusId == campusId && usRol.RoleId == roleId
-                             select usr;
+                             select new
+                             {
+                                 usr.Id,
+                                 usRol.RoleId,
+                                 usRol.SchoolRoles.RoleName,
+                                 usr.CampusId,
+                                 usr.SchoolCampus.CampusName,
+                                 usr.SchoolId,
+                                 usr.Schools.SchoolName,
+                                 usr.FirstName,
+                                 usr.LastName,
+                                 usr.PhoneNumber,
+                                 usr.UserName,
+                                 usr.Email,
+                                 usr.IsActive,
+                                 usr.LastLoginDate,
+                                 usr.LastPasswordChangedDate,
+                                 usr.DateCreated
+                             };
 
                 if (result.Count() > 0)
                 {
@@ -296,6 +333,7 @@ namespace SANTEGSMS.Repos
                         getSchUser.PhoneNumber = obj.PhoneNumber;
                         getSchUser.SchoolId = obj.SchoolId;
                         getSchUser.CampusId = obj.CampusId;
+                        getSchUser.LastUpdatedDate = DateTime.Now;
 
                         await _context.SaveChangesAsync();
 
@@ -341,5 +379,294 @@ namespace SANTEGSMS.Repos
             }
         }
 
+        public async Task<GenericRespModel> getSchoolUsersBySchoolIdAsync(long schoolId)
+        {
+            try
+            {
+                var result = from usRol in _context.SchoolUserRoles
+                             join usr in _context.SchoolUsers on usRol.UserId equals usr.Id
+                             where usr.SchoolId == schoolId
+                             select new
+                             {
+                                 usr.Id,
+                                 usRol.RoleId,
+                                 usRol.SchoolRoles.RoleName,
+                                 usr.CampusId,
+                                 usr.SchoolCampus.CampusName,
+                                 usr.SchoolId,
+                                 usr.Schools.SchoolName,
+                                 usr.FirstName,
+                                 usr.LastName,
+                                 usr.PhoneNumber,
+                                 usr.UserName,
+                                 usr.Email,
+                                 usr.IsActive,
+                                 usr.LastLoginDate,
+                                 usr.LastPasswordChangedDate,
+                                 usr.DateCreated
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getSchoolAdminsBySchoolIdAsync(long schoolId)
+        {
+            try
+            {
+                var result = from usRol in _context.SchoolUserRoles
+                             join usr in _context.SchoolUsers on usRol.UserId equals usr.Id
+                             where usr.SchoolId == schoolId
+                             && usRol.RoleId == (int)EnumUtility.SchoolRoles.Administrator
+                             select new
+                             {
+                                 usr.Id,
+                                 usRol.RoleId,
+                                 usRol.SchoolRoles.RoleName,
+                                 usr.CampusId,
+                                 usr.SchoolCampus.CampusName,
+                                 usr.SchoolId,
+                                 usr.Schools.SchoolName,
+                                 usr.FirstName,
+                                 usr.LastName,
+                                 usr.PhoneNumber,
+                                 usr.UserName,
+                                 usr.Email,
+                                 usr.IsActive,
+                                 usr.LastLoginDate,
+                                 usr.LastPasswordChangedDate,
+                                 usr.DateCreated
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getSchoolAdminsByCampusIdAsync(long campusId)
+        {
+            try
+            {
+                var result = from usRol in _context.SchoolUserRoles
+                             join usr in _context.SchoolUsers on usRol.UserId equals usr.Id
+                             where usr.CampusId == campusId
+                             && usRol.RoleId == (int)EnumUtility.SchoolRoles.Administrator
+                             select new
+                             {
+                                 usr.Id,
+                                 usRol.RoleId,
+                                 usRol.SchoolRoles.RoleName,
+                                 usr.CampusId,
+                                 usr.SchoolCampus.CampusName,
+                                 usr.SchoolId,
+                                 usr.Schools.SchoolName,
+                                 usr.FirstName,
+                                 usr.LastName,
+                                 usr.PhoneNumber,
+                                 usr.UserName,
+                                 usr.Email,
+                                 usr.IsActive,
+                                 usr.LastLoginDate,
+                                 usr.LastPasswordChangedDate,
+                                 usr.DateCreated
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+      
+        public async Task<GenericRespModel> getSchoolUsersByCampuslIdAsync(long campusId)
+        {
+            try
+            {
+                var result = from usRol in _context.SchoolUserRoles
+                             join usr in _context.SchoolUsers on usRol.UserId equals usr.Id
+                             where usr.CampusId == campusId
+                             select new
+                             {
+                                 usr.Id,
+                                 usRol.RoleId,
+                                 usRol.SchoolRoles.RoleName,
+                                 usr.CampusId,
+                                 usr.SchoolCampus.CampusName,
+                                 usr.SchoolId,
+                                 usr.Schools.SchoolName,
+                                 usr.FirstName,
+                                 usr.LastName,
+                                 usr.PhoneNumber,
+                                 usr.UserName,
+                                 usr.Email,
+                                 usr.IsActive,
+                                 usr.LastLoginDate,
+                                 usr.LastPasswordChangedDate,
+                                 usr.DateCreated
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> forgotPasswordAsync(string email)
+        {
+            try
+            {
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation emailcheck = new CheckerValidation(_context);
+
+                var getUser = _context.SchoolUsers.FirstOrDefault(u => u.Email == email);
+
+                if (getUser != null)
+                {
+                    var paswordHasher = new PasswordHasher();
+                    //the salt
+                    string salt = paswordHasher.getSalt();
+                    //get deafault password
+                    string password = RandomNumberGenerator.RandomString();
+                    //Hash the password and salt
+                    string passwordHash = paswordHasher.hashedPassword(password, salt);
+                   
+                    getUser.Salt = salt;
+                    getUser.PasswordHash = passwordHash;
+                    await _context.SaveChangesAsync();
+
+                    //code to send Mail to user for account activation
+                    string MailContent = _emailTemplate.EmailForgotPassword(password);
+                    EmailMessage message = new EmailMessage(getUser.Email, MailContent);
+                    _emailRepo.SendEmail(message);
+
+                    //response
+                    response.StatusCode = 200;
+                    response.StatusMessage = "Default Password Generated and sent to mail Successfully, Kindly Change Password after Login!";
+
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid User!"};
+                }
+
+                return response;
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> changePasswordAsync(string email, string oldPassword, string newPassword)
+        {
+            try
+            {
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation emailcheck = new CheckerValidation(_context);
+
+                var getUser = _context.SchoolUsers.FirstOrDefault(u => u.Email == email);
+
+                if (getUser != null)
+                {
+                    var paswordHasher = new PasswordHasher();
+                    string salt = getUser.Salt; //gets the salt used to hash the user password
+                    string decryptedPassword = paswordHasher.hashedPassword(oldPassword, salt); //decrypts the password
+
+                    if (getUser.PasswordHash != decryptedPassword)
+                    {
+                        return new GenericRespModel { StatusCode = 409, StatusMessage = "Old Password MisMatch!" };
+                    }
+                    else
+                    {
+                        var paswordHasher2 = new PasswordHasher();
+                        //the salt
+                        string salt2 = paswordHasher2.getSalt();
+                        //Hash the password and salt
+                        string passwordHash = paswordHasher2.hashedPassword(newPassword, salt2);
+
+                        getUser.Salt = salt2;
+                        getUser.PasswordHash = passwordHash;
+                        await _context.SaveChangesAsync();
+
+                        //response
+                        response.StatusCode = 200;
+                        response.StatusMessage = "Password Chnaged Successfully!";
+                    }
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid User!" };
+                }
+
+                return response;
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
     }
 }

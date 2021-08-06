@@ -254,5 +254,19 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+        [HttpDelete("deleteClassAndClassGradesAssignedToTeacher")]
+        [Authorize]
+        public async Task<IActionResult> deleteClassAndClassGradesAssignedToTeacherAsync(Guid teacherId, long schoolId, long campusId, long classId, long classGradeId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _teacherRepo.deleteClassAndClassGradesAssignedToTeacherAsync(teacherId, schoolId, campusId, classId, classGradeId);
+
+            return Ok(result);
+        }
     }
 }

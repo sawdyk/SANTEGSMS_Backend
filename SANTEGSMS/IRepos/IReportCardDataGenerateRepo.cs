@@ -10,5 +10,6 @@ namespace SANTEGSMS.IRepos
     public interface IReportCardDataGenerateRepo
     {
         Task<ReportCardDataRespModel> getReportCardDataByStudentIdAsync(ReportCardDataReqModel obj);
+        Task<ReportCardDataRespModel> getReportCardDataByStudentIdAndPinAsync(ReportCardDataWithPinReqModel obj);
     }
 }

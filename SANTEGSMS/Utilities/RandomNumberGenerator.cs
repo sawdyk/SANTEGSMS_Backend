@@ -39,5 +39,20 @@ namespace SANTEGSMS.Utilities
                 throw exMessage;
             }
         }
+
+        //For generating a Unique name for Files uploaded to the server
+        public static string UniqueFileName(int length = 27)
+        {
+            try
+            {
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                return new string(Enumerable.Repeat(chars, length)
+                  .Select(s => s[random.Next(s.Length)]).ToArray());
+            }
+            catch (Exception exMessage)
+            {
+                throw exMessage;
+            }
+        }
     }
 }

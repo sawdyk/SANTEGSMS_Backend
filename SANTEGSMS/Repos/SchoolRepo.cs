@@ -18,10 +18,13 @@ namespace SANTEGSMS.Repos
     {
         private readonly AppDbContext _context;
         private readonly IEmailRepo _emailRepo;
-        public SchoolRepo(AppDbContext context, IEmailRepo emailRepo)
+        private readonly EmailTemplate _emailTemplate;
+
+        public SchoolRepo(AppDbContext context, IEmailRepo emailRepo, EmailTemplate emailTemplate)
         {
             _context = context;
             _emailRepo = emailRepo;
+            _emailTemplate = emailTemplate;
         }
 
         //------------------------School-----------------------------------------------------------------------
@@ -70,7 +73,7 @@ namespace SANTEGSMS.Repos
                         SchoolName = obj.SchoolName,
                         SchoolCode = obj.SchoolCode,
                         SchoolTypeId = obj.SchoolTypeId,
-                        IsActive = true,
+                        IsActive = false,
                         IsApproved = false,
                         IsVerified = false,
                         DateCreated = DateTime.Now
@@ -104,7 +107,7 @@ namespace SANTEGSMS.Repos
                         FirstName = obj.FirstName,
                         LastName = obj.LastName,
                         Email = obj.Email,
-                        EmailConfirmed = true,  //change to false on production and activate email sending
+                        EmailConfirmed = false, 
                         PhoneNumber = obj.PhoneNumber,
                         PhoneNumberConfirmed = false,
                         Salt = salt,
@@ -134,21 +137,14 @@ namespace SANTEGSMS.Repos
                     string codeGenerated = confirmationCode.randomCodesGen();
 
                     //save the code generated
-                    //var emailConfirmation = new EmailConfirmationCodes
-                    //{
-                    //    UserId = schUsr.Id,
-                    //    Code = codeGenerated,
-                    //    DateGenerated = DateTime.Now
-                    //};
-                    //await _context.AddAsync(emailConfirmation);
-                    //await _context.SaveChangesAsync();
-
-
-                    //code to send Mail to user for account activation
-                    //string MailContent = "Welcome to SANTEG School Management, use this code " + codeGenerated + " to Activate Your School Account";
-
-                    //EmailMessage message = new EmailMessage(schUsr.Email, MailContent);
-                    //_emailRepo.SendEmail(message);
+                    var emailConfirmation = new EmailConfirmationCodes
+                    {
+                        UserId = schUsr.Id,
+                        Code = codeGenerated,
+                        DateGenerated = DateTime.Now
+                    };
+                    await _context.AddAsync(emailConfirmation);
+                    await _context.SaveChangesAsync();
 
                     //The data collected from the user 
                     schUserRespData.UserId = schUsr.Id.ToString();
@@ -174,6 +170,22 @@ namespace SANTEGSMS.Repos
                     respObj.SchoolUserDetails = schUserRespData;
                     respObj.SchoolDetails = schBasicRespData;
 
+
+                    //code to send Mail to user for account activation
+                    string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM - REGISTRATION";
+                    string MailContent = _emailTemplate.EmailAccountCreation(codeGenerated);
+                    EmailMessage message = new EmailMessage(schUsr.Email, MailContent);
+                    _emailRepo.SendEmail(message);
+
+                    //code to send Mail to system super admin for new school Created
+                    var getSysAdmin = _context.SuperAdmin.FirstOrDefault();
+                    if (getSysAdmin != null)
+                    {
+                        string mailSubjectSysAdmin = "SANTEG SCHOOL MANAGEMENT SYSTEM - REGISTRATION";
+                        string systemAdminMail = _emailTemplate.EmailSchoolCreationNotify(schUsr.FirstName, schUsr.LastName, schUsr.Email, newSch.SchoolName, newSch.SchoolCode, getSchType.SchoolTypeName, DateTime.Now.ToString("MM/dd/yyy"));
+                        EmailMessage messageSysAdmin = new EmailMessage(getSysAdmin.Email, systemAdminMail);
+                        _emailRepo.SendEmail(messageSysAdmin);
+                    }
                 }
 
                 return respObj;
@@ -205,19 +217,31 @@ namespace SANTEGSMS.Repos
                 else if (emailCheckResult == true) //email exist
                 {
                     SchoolUsers getUser = _context.SchoolUsers.FirstOrDefault(u => u.Email == obj.Email);
-                    EmailConfirmationCodes getUserCode = _context.EmailConfirmationCodes.FirstOrDefault(u => u.UserId == getUser.Id);
 
-                    if (getUserCode != null && getUserCode.Code == obj.Code.Trim())
+                    if (getUser != null)
                     {
-                        getUser.EmailConfirmed = true; //Update the user account as confirmed (EmailConfirmed set to true)
+                        EmailConfirmationCodes getUserCode = _context.EmailConfirmationCodes.FirstOrDefault(u => u.UserId == getUser.Id);
+                        Schools getUserSch = _context.Schools.FirstOrDefault(u => u.Id == getUser.SchoolId);
 
-                        _context.EmailConfirmationCodes.Remove(getUserCode);
-                        await _context.SaveChangesAsync();
+                        if (getUserCode != null && getUserCode.Code == obj.Code.Trim())
+                        {
+                            getUser.EmailConfirmed = true; //Update the user account as confirmed (EmailConfirmed set to true)
+                            getUserSch.IsActive = true; //Update the school IsActive to true
+
+                            _context.EmailConfirmationCodes.Remove(getUserCode);
+                            await _context.SaveChangesAsync();
+                        }
+                        else
+                        {
+                            return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid Code Entered!" };
+                        }
                     }
-                    else
-                    {
-                        return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid Code Entered!" };
-                    }
+
+                    //send mail for account activation
+                    string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM - ACTIVATION";
+                    string MailContent = _emailTemplate.EmailAccountActivation();
+                    EmailMessage message = new EmailMessage(getUser.Email, MailContent);
+                    _emailRepo.SendEmail(message);
 
                     return new GenericRespModel { StatusCode = 200, StatusMessage = "Account Verification Successful!" };
                 }
@@ -263,13 +287,13 @@ namespace SANTEGSMS.Repos
                         codeGenerated = getUserCode.Code;
 
                         //send Mail to user for account activation
-                        string MailContent = "Welcome to SANTEG School Management, use this code " + codeGenerated + " to Activate Your School Account";
-
+                        //send mail for account activation
+                        string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM - ACTIVATION";
+                        string MailContent = _emailTemplate.EmailAccountCreation(codeGenerated);
                         EmailMessage message = new EmailMessage(getUser.Email, MailContent);
                         _emailRepo.SendEmail(message);
-
-                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Activation Code Sent Successfully" };
-
+                        
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Activation Code Sent Successfully"};
                     }
                     else
                     {
@@ -287,11 +311,10 @@ namespace SANTEGSMS.Repos
                         await _context.AddAsync(emailConfirmation);
                         await _context.SaveChangesAsync();
 
-                        //EmailTemplate emailTemp = new EmailTemplate();
-                        //var MailContent = emailTemp.EmailHtmlTemplate(codeGenerated);
-                        //code to send Mail to user for account activation
-                        string MailContent = "Welcome to SANTEG School Management, use this code " + codeGenerated + " to Activate Your School Account";
-
+                        //send Mail to user for account activation
+                        //send mail for account activation
+                        string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM - ACTIVATION";
+                        string MailContent = _emailTemplate.EmailAccountCreation(codeGenerated);
                         EmailMessage message = new EmailMessage(getUser.Email, MailContent);
                         _emailRepo.SendEmail(message);
 
@@ -342,6 +365,301 @@ namespace SANTEGSMS.Repos
                 }
 
                 return new GenericRespModel { StatusCode = 200, StatusMessage = "No School With the Specified ID" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getSchoolResourcesAsync(long schoolId)
+        {
+            try
+            {
+                var getSch = _context.Schools.Where(s => s.Id == schoolId).FirstOrDefault();
+                if (getSch != null)
+                {
+                    var result = from rsc in _context.SchoolResources
+                                 select new
+                                 {
+                                     rsc.Id,
+                                     rsc.ResourceName,
+                                     rsc.ResourceLink
+                                 };
+
+                    if (result.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList(), };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "No School With the Specified ID" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+
+        public async Task<GenericRespModel> enableOrDisableStaffAsync(bool isEnabled, Guid schoolUserId, long schoolId, long campusId)
+        {
+            try
+            {
+                SuperAdminInfoRespModel userData = new SuperAdminInfoRespModel();
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation schoolCheck = new CheckerValidation(_context);
+                var checkSchool = schoolCheck.checkSchoolById(schoolId);
+                var checkCampus = schoolCheck.checkSchoolCampusById(campusId);
+
+                if (checkSchool == true && checkCampus == true)
+                {
+                    var getSchUser = _context.SchoolUsers.Where(u => u.Id == schoolUserId && u.SchoolId == schoolId && u.CampusId == campusId).FirstOrDefault();
+
+                    if (getSchUser != null)
+                    {
+                        string statusMessage = string.Empty;
+                        string notification = string.Empty;
+
+                        if (isEnabled == true)
+                        {
+                            getSchUser.IsActive = true;
+                            await _context.SaveChangesAsync();
+
+                            statusMessage = "Enabled";
+                            notification = "Your School User Account has been Enabled Successfully!";
+
+                            //code to send Mail to user for account activation
+                            string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM";
+                            string MailContent = _emailTemplate.EmailSchoolUsersApproved(statusMessage, notification, getSchUser.FirstName, getSchUser.LastName);
+                            EmailMessage message = new EmailMessage(getSchUser.Email, MailContent);
+                            _emailRepo.SendEmail(message);
+
+                            //add email logs here!
+
+                            //response
+                            response.StatusCode = 200;
+                            response.StatusMessage = $"{getSchUser.FirstName + " " + getSchUser.LastName} School User Account Enabled Successfully!";
+                            response.Data = getSchUser.Email;
+                        }
+                        else
+                        {
+                            getSchUser.IsActive = false;
+                            await _context.SaveChangesAsync();
+
+                            statusMessage = "Disabled";
+                            notification = "Your School User Account has been Disabled, Kindly Contact the School Administrator for Further Details!";
+                            string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM";
+                            //code to send Mail to user for account activation
+                            string MailContent = _emailTemplate.EmailSchoolUsersApproved(statusMessage, notification, getSchUser.FirstName, getSchUser.LastName);
+                            EmailMessage message = new EmailMessage(getSchUser.Email, MailContent);
+                            _emailRepo.SendEmail(message);
+
+                            //response
+                            response.StatusCode = 200;
+                            response.StatusMessage = $"{getSchUser.FirstName + " " + getSchUser.LastName} School User Account Disabled Successfully!";
+                            response.Data = getSchUser.Email;
+                        }
+                    }
+                    else
+                    {
+                        return new GenericRespModel { StatusCode = 409, StatusMessage = "No School User with the specified ID!" };
+                    }
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No School/Campus with the specified ID!" };
+                }
+
+                return response;
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> enableOrDisableStudentAsync(bool isEnabled, Guid studentId, long schoolId, long campusId)
+        {
+            try
+            {
+                SuperAdminInfoRespModel userData = new SuperAdminInfoRespModel();
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation schoolCheck = new CheckerValidation(_context);
+                var checkSchool = schoolCheck.checkSchoolById(schoolId);
+                var checkCampus = schoolCheck.checkSchoolCampusById(campusId);
+
+                if (checkSchool == true && checkCampus == true)
+                {
+                    var getStudent = _context.Students.Where(u => u.Id == studentId && u.SchoolId == schoolId && u.CampusId == campusId).FirstOrDefault();
+
+                    if (getStudent != null)
+                    {
+                        var getParent = _context.ParentsStudentsMap.FirstOrDefault(u => u.StudentId == getStudent.Id);
+
+                        if (getParent != null)
+                        {
+                            var parentDetails = _context.Parents.FirstOrDefault(u => u.Id == getParent.ParentId);
+
+                            if (parentDetails != null)
+                            {
+                                string statusMessage = string.Empty;
+                                string notification = string.Empty;
+
+                                if (isEnabled == true)
+                                {
+                                    getStudent.IsActive = true;
+                                    await _context.SaveChangesAsync();
+
+                                    statusMessage = "Enabled";
+                                    notification = $"Your Child/Ward {getStudent.FirstName + " " + getStudent.LastName} School User Account has been Enabled Successfully!";
+
+                                    //code to send Mail to user for account activation
+                                    string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM";
+                                    string MailContent = _emailTemplate.EmailSchoolUsersApproved(statusMessage, notification, parentDetails.FirstName, parentDetails.LastName);
+                                    EmailMessage message = new EmailMessage(parentDetails.Email, MailContent);
+                                    _emailRepo.SendEmail(message);
+
+                                    //add email logs here!
+
+                                    //response
+                                    response.StatusCode = 200;
+                                    response.StatusMessage = $"Your Child/Ward {getStudent.FirstName + " " + getStudent.LastName} School User Account has been Enabled Successfully!";
+                                    response.Data = parentDetails.Email;
+                                }
+                                else
+                                {
+                                    getStudent.IsActive = false;
+                                    await _context.SaveChangesAsync();
+
+                                    statusMessage = "Disabled";
+                                    notification = $"Your Child/Ward {getStudent.FirstName + " " + getStudent.LastName} School User Account has been Disabled, Kindly Contact the School Administrator for Further Details!";
+                                    string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM";
+                                    //code to send Mail to user for account activation
+                                    string MailContent = _emailTemplate.EmailSchoolUsersApproved(statusMessage, notification, parentDetails.FirstName, parentDetails.LastName);
+                                    EmailMessage message = new EmailMessage(parentDetails.Email, MailContent);
+                                    _emailRepo.SendEmail(message);
+
+                                    //response
+                                    response.StatusCode = 200;
+                                    response.StatusMessage = $"Your Child/Ward {getStudent.FirstName + " " + getStudent.LastName} School User Account has been Disabled Successfully!";
+                                    response.Data = parentDetails.Email;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return new GenericRespModel { StatusCode = 409, StatusMessage = "No Student with the specified ID!" };
+                    }
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No School/Campus with the specified ID!" };
+                }
+
+                return response;
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> enableOrDisableParentAsync(bool isEnabled, Guid parentId, long schoolId, long campusId)
+        {
+            try
+            {
+                SuperAdminInfoRespModel userData = new SuperAdminInfoRespModel();
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation schoolCheck = new CheckerValidation(_context);
+                var checkSchool = schoolCheck.checkSchoolById(schoolId);
+                var checkCampus = schoolCheck.checkSchoolCampusById(campusId);
+
+                if (checkSchool == true && checkCampus == true)
+                {
+                    var getParent = _context.Parents.Where(u => u.Id == parentId && u.SchoolId == schoolId && u.CampusId == campusId).FirstOrDefault();
+
+                    if (getParent != null)
+                    {
+                        string statusMessage = string.Empty;
+                        string notification = string.Empty;
+
+                        if (isEnabled == true)
+                        {
+                            getParent.IsActive = true;
+                            await _context.SaveChangesAsync();
+
+                            statusMessage = "Enabled";
+                            notification = "Your School User Account has been Enabled Successfully!";
+
+                            //code to send Mail to user for account activation
+                            string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM";
+                            string MailContent = _emailTemplate.EmailSchoolUsersApproved(statusMessage, notification, getParent.FirstName, getParent.LastName);
+                            EmailMessage message = new EmailMessage(getParent.Email, MailContent);
+                            _emailRepo.SendEmail(message);
+
+                            //add email logs here!
+
+                            //response
+                            response.StatusCode = 200;
+                            response.StatusMessage = $"{getParent.FirstName + " " + getParent.LastName} School User Account Enabled Successfully!";
+                            response.Data = getParent.Email;
+                        }
+                        else
+                        {
+                            getParent.IsActive = false;
+                            await _context.SaveChangesAsync();
+
+                            statusMessage = "Disabled";
+                            notification = "Your School User Account has been Disabled, Kindly Contact the School Administrator for Further Details!";
+                            string mailSubject = "SANTEG SCHOOL MANAGEMENT SYSTEM";
+                            //code to send Mail to user for account activation
+                            string MailContent = _emailTemplate.EmailSchoolUsersApproved(statusMessage, notification, getParent.FirstName, getParent.LastName);
+                            EmailMessage message = new EmailMessage(getParent.Email, MailContent);
+                            _emailRepo.SendEmail(message);
+
+                            //response
+                            response.StatusCode = 200;
+                            response.StatusMessage = $"{getParent.FirstName + " " + getParent.LastName} School User Account Disabled Successfully!";
+                            response.Data = getParent.Email;
+                        }
+                    }
+                    else
+                    {
+                        return new GenericRespModel { StatusCode = 409, StatusMessage = "No Parent with the specified ID!" };
+                    }
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No School/Campus with the specified ID!" };
+                }
+
+                return response;
+
             }
             catch (Exception exMessage)
             {

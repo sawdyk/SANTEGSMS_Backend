@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SANTEGSMS.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

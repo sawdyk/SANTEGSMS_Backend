@@ -77,6 +77,62 @@ namespace SANTEGSMS.Controllers
             var result = await _schoolRepo.updateSchoolDetailsAsync(schoolId, obj);
 
             return Ok(result);
-        }        
+        }
+
+        [HttpGet("schoolResources")]
+        [Authorize]
+        public async Task<IActionResult> getSchoolResourcesAsync(long schoolId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolRepo.getSchoolResourcesAsync(schoolId);
+
+            return Ok(result);
+        }
+
+        [HttpPut("enableOrDisableStaff")]
+        [Authorize]
+        public async Task<IActionResult> enableOrDisableStaffAsync(bool isEnabled, Guid schoolUserId, long schoolId, long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolRepo.enableOrDisableStaffAsync(isEnabled, schoolUserId, schoolId, campusId);
+
+            return Ok(result);
+        }
+
+        [HttpPut("enableOrDisableStudent")]
+        [Authorize]
+        public async Task<IActionResult> enableOrDisableStudentAsync(bool isEnabled, Guid studentId, long schoolId, long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolRepo.enableOrDisableStudentAsync(isEnabled, studentId, schoolId, campusId);
+
+            return Ok(result);
+        }
+
+        [HttpPut("enableOrDisableParent")]
+        [Authorize]
+        public async Task<IActionResult> enableOrDisableParentAsync(bool isEnabled, Guid parentId, long schoolId, long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolRepo.enableOrDisableParentAsync(isEnabled, parentId, schoolId, campusId);
+
+            return Ok(result);
+        }
     }
 }

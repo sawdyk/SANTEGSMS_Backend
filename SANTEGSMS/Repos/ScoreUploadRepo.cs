@@ -1440,9 +1440,14 @@ namespace SANTEGSMS.Repos
                                 await obj.File.CopyToAsync(stream);
                             }
 
+                           
                             FileInfo existingFile = new FileInfo(FilePath);
                             using (ExcelPackage package = new ExcelPackage(existingFile))
                             {
+                                // If you use EPPlus in a noncommercial context
+                                // according to the Polyform Noncommercial license:
+                                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
                                 //get the first worksheet in the workbook
                                 ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
                                 int colCount = worksheet.Dimension.Columns;  //get Column Count
@@ -1616,6 +1621,8 @@ namespace SANTEGSMS.Repos
                             FileInfo existingFile = new FileInfo(FilePath);
                             using (ExcelPackage package = new ExcelPackage(existingFile))
                             {
+                                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
                                 //get the first worksheet in the workbook
                                 ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
                                 int colCount = worksheet.Dimension.Columns;  //get Column Count
@@ -1919,7 +1926,7 @@ namespace SANTEGSMS.Repos
                     string description = obj.Description.Replace(" ", "_");
 
                     //Generate a FileName
-                    string FileName1 = className + gradeName + allSubjectId + description + ".xls";
+                    string FileName1 = className + gradeName + allSubjectId + description + ".xlsx";
                     string FileName = FileName1.Replace(",", "_");
 
                     //checks if a Template has been created with the description

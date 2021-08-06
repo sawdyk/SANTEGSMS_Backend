@@ -13,18 +13,21 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using SANTEGSMS.Services.Email;
 
 namespace SANTEGSMS.Repos
 {
     public class StudentRepo : IStudentRepo
     {
         private readonly AppDbContext _context;
-
-        public StudentRepo(AppDbContext context)
+        private readonly IEmailRepo _emailRepo;
+        private readonly EmailTemplate _emailTemplate;
+        public StudentRepo(AppDbContext context, IEmailRepo emailRepo, EmailTemplate emailTemplate)
         {
             _context = context;
+            _emailRepo = emailRepo;
+            _emailTemplate = emailTemplate;
         }
-
         public async Task<GenericRespModel> createStudentAsync(StudentCreationReqModel obj)
         {
             try
@@ -275,9 +278,24 @@ namespace SANTEGSMS.Repos
                     string salt = getUser.Salt; //gets the salt used to hash the user password
                     string decryptedPassword = paswordHasher.hashedPassword(obj.Password, salt); //decrypts the password
 
+                    //get the student school
+                    var getSch = _context.Schools.FirstOrDefault(u => u.Id == getUser.SchoolId);
+
                     if (getUser != null && getUser.PasswordHash != decryptedPassword)
                     {
                         return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "Invalid Username/Password!" };
+                    }
+                    else if (getUser.IsActive != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "Your Student Account has been deactivated, Kindly Contact your Admninistrator!" };
+                    }
+                    else if (getSch.IsApproved != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "This School has not been Verified and Approved by the System Super Admninistrator!" };
+                    }
+                    else if (getSch.IsActive != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "This School Accoun has been Disabled by the System Admninistrator, Kindly Contact the System Admninistrator!" };
                     }
                     else
                     {
@@ -351,6 +369,9 @@ namespace SANTEGSMS.Repos
                         schData.CampusName = getCampus.CampusName;
                         schData.CampusAddress = getCampus.CampusAddress;
 
+                        getUser.LastLoginDate = DateTime.Now;
+                        await _context.SaveChangesAsync();
+
                         //The data to be sent as response
                         respData.StatusCode = 200;
                         respData.StatusMessage = "Login Successful!";
@@ -407,8 +428,20 @@ namespace SANTEGSMS.Repos
                                      std.CampusId,
                                      std.FirstName,
                                      std.LastName,
+                                     std.MiddleName,
                                      std.UserName,
                                      std.AdmissionNumber,
+                                     std.YearOfAdmission,
+                                     std.Status,
+                                     std.StaffStatus,
+                                     std.State,
+                                     std.City,
+                                     std.DateOfBirth,
+                                     std.StateOfOrigin,
+                                     std.LocalGovt,
+                                     std.ProfilePictureUrl,
+                                     std.HomeAddress,
+                                     std.Gender.GenderName,
                                      std.hasParent,
                                      std.IsActive,
                                      std.LastPasswordChangedDate,
@@ -1408,6 +1441,7 @@ namespace SANTEGSMS.Repos
                     getStudent.StudentStatus = "";
                     getStudent.ProfilePictureUrl = obj.ProfilePictureUrl;
                     getStudent.Status = "";
+                    getStudent.LastUpdatedDate = DateTime.Now;
 
                     await _context.SaveChangesAsync();
 
@@ -1717,6 +1751,130 @@ namespace SANTEGSMS.Repos
                 }
 
                 return new GenericRespModel { StatusCode = 409, StatusMessage = "Student with the specified ID does not have a duplicate record!" };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> forgotPasswordAsync(string admissionNumber)
+        {
+            try
+            {
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation emailcheck = new CheckerValidation(_context);
+
+                var getStudent = _context.Students.FirstOrDefault(u => u.AdmissionNumber == admissionNumber);
+
+                if (getStudent != null)
+                {
+                    var getParent = _context.ParentsStudentsMap.FirstOrDefault(u => u.StudentId == getStudent.Id);
+
+                    if (getParent != null)
+                    {
+                        var parentDetails = _context.Parents.FirstOrDefault(u => u.Id == getParent.ParentId);
+
+                        if (parentDetails != null)
+                        {
+                            var paswordHasher = new PasswordHasher();
+                            //the salt
+                            string salt = paswordHasher.getSalt();
+                            //get deafault password
+                            string password = RandomNumberGenerator.RandomString();
+                            //Hash the password and salt
+                            string passwordHash = paswordHasher.hashedPassword(password, salt);
+
+                            getStudent.Salt = salt;
+                            getStudent.PasswordHash = passwordHash;
+                            await _context.SaveChangesAsync();
+
+                            //code to send Mail to user for account activation
+                            string MailContent = _emailTemplate.EmailForgotPassword(password);
+                            EmailMessage message = new EmailMessage(parentDetails.Email, MailContent);
+                            _emailRepo.SendEmail(message);
+
+                            //response
+                            response.StatusCode = 200;
+                            response.StatusMessage = "Default Password has been Generated for you and sent to your Parent's mail Successfully, Kindly Change your Password after Login!";
+                        }
+                        else
+                        {
+                            return new GenericRespModel { StatusCode = 409, StatusMessage = "Parent Details does not exist!" };
+                        }
+                    }
+                    else
+                    {
+                        return new GenericRespModel { StatusCode = 409, StatusMessage = "Student Parent Details does not exist!" };
+                    }
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid Student!" };
+                }
+
+                return response;
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> changePasswordAsync(string admissionNumber, string oldPassword, string newPassword)
+        {
+            try
+            {
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation emailcheck = new CheckerValidation(_context);
+
+                var getUser = _context.Students.FirstOrDefault(u => u.AdmissionNumber == admissionNumber);
+
+                if (getUser != null)
+                {
+                    var paswordHasher = new PasswordHasher();
+                    string salt = getUser.Salt; //gets the salt used to hash the user password
+                    string decryptedPassword = paswordHasher.hashedPassword(oldPassword, salt); //decrypts the password
+
+                    if (getUser.PasswordHash != decryptedPassword)
+                    {
+                        return new GenericRespModel { StatusCode = 409, StatusMessage = "Old Password MisMatch!" };
+                    }
+                    else
+                    {
+                        var paswordHasher2 = new PasswordHasher();
+                        //the salt
+                        string salt2 = paswordHasher2.getSalt();
+                        //Hash the password and salt
+                        string passwordHash = paswordHasher2.hashedPassword(newPassword, salt2);
+
+                        getUser.Salt = salt2;
+                        getUser.PasswordHash = passwordHash;
+                        await _context.SaveChangesAsync();
+
+                        //response
+                        response.StatusCode = 200;
+                        response.StatusMessage = "Password Chnaged Successfully!";
+                    }
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid Student!" };
+                }
+
+                return response;
 
             }
             catch (Exception exMessage)

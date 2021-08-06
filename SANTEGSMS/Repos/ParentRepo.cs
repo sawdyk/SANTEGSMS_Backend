@@ -5,6 +5,7 @@ using SANTEGSMS.IRepos;
 using SANTEGSMS.RequestModels;
 using SANTEGSMS.ResponseModels;
 using SANTEGSMS.Reusables;
+using SANTEGSMS.Services.Email;
 using SANTEGSMS.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,13 @@ namespace SANTEGSMS.Repos
     public class ParentRepo :IParentRepo
     {
         private readonly AppDbContext _context;
-
-        public ParentRepo(AppDbContext context)
+        private readonly IEmailRepo _emailRepo;
+        private readonly EmailTemplate _emailTemplate;
+        public ParentRepo(AppDbContext context, IEmailRepo emailRepo, EmailTemplate emailTemplate)
         {
             _context = context;
+            _emailRepo = emailRepo;
+            _emailTemplate = emailTemplate;
         }
 
         public async Task<SchoolUsersLoginRespModel> parentLoginAsync(LoginReqModel obj)
@@ -45,10 +49,24 @@ namespace SANTEGSMS.Repos
                     string salt = getUser.Salt; //gets the salt used to hash the user password
                     string decryptedPassword = paswordHasher.hashedPassword(obj.Password, salt); //decrypts the password
 
+                    //get the parent school
+                    var getSch = _context.Schools.FirstOrDefault(u => u.Id == getUser.SchoolId);
 
                     if (getUser != null && getUser.PasswordHash != decryptedPassword)
                     {
                         return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "Invalid Username/Password!" };
+                    }
+                    else if (getUser.IsActive != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "Your Account has been deactivated, Kindly Contact your Admninistrator!" };
+                    }
+                    else if (getSch.IsApproved != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "This School has not been Verified and Approved by the System Super Admninistrator!" };
+                    }
+                    else if (getSch.IsActive != true)
+                    {
+                        return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "This School Account has been Disabled by the System Admninistrator, Kindly Contact the System Admninistrator!" };
                     }
                     //else if (getUser != null && getUser.PasswordHash == decryptedPassword && accountCheckResult == true)
                     //{
@@ -82,6 +100,9 @@ namespace SANTEGSMS.Repos
                         schData.CampusId = getCampus.Id;
                         schData.CampusName = getCampus.CampusName;
                         schData.CampusAddress = getCampus.CampusAddress;
+
+                        getUser.LastLoginDate = DateTime.Now;
+                        await _context.SaveChangesAsync();
 
                         //The data to be sent as response
                         respData.StatusCode = 200;
@@ -950,6 +971,157 @@ namespace SANTEGSMS.Repos
                 await _context.ErrorLog.AddAsync(logError);
                 await _context.SaveChangesAsync();
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> forgotPasswordAsync(string email)
+        {
+            try
+            {
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation emailcheck = new CheckerValidation(_context);
+
+                var getUser = _context.Parents.FirstOrDefault(u => u.Email == email);
+
+                if (getUser != null)
+                {
+                    var paswordHasher = new PasswordHasher();
+                    //the salt
+                    string salt = paswordHasher.getSalt();
+                    //get deafault password
+                    string password = RandomNumberGenerator.RandomString();
+                    //Hash the password and salt
+                    string passwordHash = paswordHasher.hashedPassword(password, salt);
+
+                    getUser.Salt = salt;
+                    getUser.PasswordHash = passwordHash;
+                    await _context.SaveChangesAsync();
+
+                    //code to send Mail to user for account activation
+                    string MailContent = _emailTemplate.EmailForgotPassword(password);
+                    EmailMessage message = new EmailMessage(getUser.Email, MailContent);
+                    _emailRepo.SendEmail(message);
+
+                    //response
+                    response.StatusCode = 200;
+                    response.StatusMessage = "Default Password Generated and sent to mail Successfully, Kindly Change Password after Login!";
+
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid User!" };
+                }
+
+                return response;
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> changePasswordAsync(string email, string oldPassword, string newPassword)
+        {
+            try
+            {
+                var response = new GenericRespModel();
+                //Check if email exist
+                CheckerValidation emailcheck = new CheckerValidation(_context);
+
+                var getUser = _context.Parents.FirstOrDefault(u => u.Email == email);
+
+                if (getUser != null)
+                {
+                    var paswordHasher = new PasswordHasher();
+                    string salt = getUser.Salt; //gets the salt used to hash the user password
+                    string decryptedPassword = paswordHasher.hashedPassword(oldPassword, salt); //decrypts the password
+
+                    if (getUser.PasswordHash != decryptedPassword)
+                    {
+                        return new GenericRespModel { StatusCode = 409, StatusMessage = "Old Password MisMatch!" };
+                    }
+                    else
+                    {
+                        var paswordHasher2 = new PasswordHasher();
+                        //the salt
+                        string salt2 = paswordHasher2.getSalt();
+                        //Hash the password and salt
+                        string passwordHash = paswordHasher2.hashedPassword(newPassword, salt2);
+
+                        getUser.Salt = salt2;
+                        getUser.PasswordHash = passwordHash;
+                        await _context.SaveChangesAsync();
+
+                        //response
+                        response.StatusCode = 200;
+                        response.StatusMessage = "Password Chnaged Successfully!";
+                    }
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid User!" };
+                }
+
+                return response;
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> updateParentDetailsAsync(Guid parentId, UpdateParentReqModel obj)
+        {
+            try
+            {
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkPrt = check.checkParentById(parentId);
+                if (checkPrt == true)
+                {
+                    var getParent = _context.Parents.Where(p => p.Id == parentId).FirstOrDefault();
+
+                    getParent.FirstName = obj.ParentFirstName;
+                    getParent.LastName = obj.ParentLastName;
+                    getParent.Email = obj.ParentEmail;
+                    getParent.PhoneNumber = obj.ParentPhoneNumber;
+                    getParent.GenderId = obj.ParentGenderId;
+                    getParent.Nationality = obj.ParentNationality;
+                    getParent.State = obj.ParentState;
+                    getParent.City = obj.ParentCity;
+                    getParent.HomeAddress = obj.ParentHomeAddress;
+                    getParent.Occupation = obj.ParentOccupation;
+                    getParent.StateOfOrigin = obj.ParentStateOfOrigin;
+                    getParent.LocalGovt = obj.ParentLocalGovt;
+                    getParent.Religion = obj.ParentReligion;
+                    getParent.LastUpdatedDate = DateTime.Now;
+
+                    await _context.SaveChangesAsync();
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Parent Details Updated Successfully" };
+
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "No Parent with the specified ID" };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occurred!",};
             }
         }
     }

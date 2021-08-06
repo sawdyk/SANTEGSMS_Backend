@@ -80,5 +80,18 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
+        [HttpDelete("deleteSchoolCampus")]
+        [Authorize]
+        public async Task<IActionResult> deleteSchoolCampusAsync(long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _campusRepo.deleteSchoolCampusAsync(campusId);
+
+            return Ok(result);
+        }
     }
 }

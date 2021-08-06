@@ -14,5 +14,7 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getAllSchoolCampusAsync(long schoolId);
         Task<GenericRespModel> getSchoolCampusByIdAsync(long campusId);
         Task<GenericRespModel> updateCampusDetailsAsync(long campusId, SchoolCampusReqModel obj);
+        Task<GenericRespModel> deleteSchoolCampusAsync(long campusId);
+
     }
 }
