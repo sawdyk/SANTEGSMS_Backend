@@ -128,21 +128,6 @@ namespace SANTEGSMS.Repos
                 }
                 else
                 {
-                    //activityLog
-                    var activitylog = new ActivityLogs()
-                    {
-                        UserId = getUser.Id.ToString(),
-                        FirstName = getUser.FirstName,
-                        LastName = getUser.LastName,
-                        Action = "Parent Login",
-                        Message = "Failed Login",
-                        Description = "Invalid Username/Password!",
-                        ActionDate = DateTime.Now,
-                    };
-
-                    await _context.ActivityLogs.AddAsync(activitylog);
-                    await _context.SaveChangesAsync();
-
                     return new SchoolUsersLoginRespModel { StatusCode = 409, StatusMessage = "Invalid Username/Password!" };
                 }
 

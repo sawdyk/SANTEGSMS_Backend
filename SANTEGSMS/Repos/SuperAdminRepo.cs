@@ -78,21 +78,6 @@ namespace SANTEGSMS.Repos
                 }
                 else
                 {
-                    //activityLog
-                    var activitylog = new ActivityLogs()
-                    {
-                        UserId = getUser.Id.ToString(),
-                        FirstName = getUser.FirstName,
-                        LastName = getUser.LastName,
-                        Action = "System Super Administrator Login",
-                        Message = "Invalid Username/Password!",
-                        Description = "Failed to Login",
-                        ActionDate = DateTime.Now,
-                    };
-
-                    await _context.ActivityLogs.AddAsync(activitylog);
-                    await _context.SaveChangesAsync();
-
                     return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid Username/Password!" };
                 }
 

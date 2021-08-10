@@ -7,16 +7,22 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SANTEGSMS.DatabaseContext;
+using SANTEGSMS.Utilities;
+using MailKit;
+using SANTEGSMS.Entities;
 
 namespace SANTEGSMS.Repos
 {
     public class EmailRepo : IEmailRepo
     {
         private readonly EmailConfiguration _emailConfig;
+        private readonly AppDbContext _context;
 
-        public EmailRepo(EmailConfiguration emailConfig)
+        public EmailRepo(EmailConfiguration emailConfig, AppDbContext context)
         {
             _emailConfig = emailConfig;
+            _context = context;
         }
 
         public void SendEmail(EmailMessage message)
@@ -50,6 +56,10 @@ namespace SANTEGSMS.Repos
             }
             catch (Exception ex)
             {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(ex);
+                _context.ErrorLog.AddAsync(logError);
+                _context.SaveChangesAsync();
                 throw ex;
             }
         }
@@ -64,11 +74,65 @@ namespace SANTEGSMS.Repos
                     client.AuthenticationMechanisms.Remove("XOAUTH2");
                     client.Authenticate(_emailConfig.UserName, _emailConfig.Password);
                     client.Send(mailMessage);
+
+                    if (client.IsConnected && client.IsAuthenticated && client.IsSecure)
+                    {
+                        //activityLog
+                        var activitylog = new ActivityLogs()
+                        {
+                            UserId = "Mail Client Sender",
+                            FirstName = "IsConnected: "+ client.IsConnected.ToString() +"; IsAuthenticated: "+ client.IsAuthenticated.ToString() + "; IsSecured: " + client.IsSecure.ToString(),
+                            LastName = "TimeOut: "+ client.Timeout.ToString(),
+                            Action = "Mail Client Sender",
+                            Message = "Secured, Connected and Authenticated",
+                            Description = "Mail Sent Successfully",
+                            ActionDate = DateTime.Now,
+                        };
+
+                        _context.ActivityLogs.AddAsync(activitylog);
+                        _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        //activityLog
+                        var activitylog = new ActivityLogs()
+                        {
+                            UserId = "Mail Client Sender",
+                            FirstName = "IsConnected: " + client.IsConnected.ToString() + "; IsAuthenticated: " + client.IsAuthenticated.ToString() + "; IsSecured: " + client.IsSecure.ToString(),
+                            LastName = "TimeOut: " + client.Timeout.ToString(),
+                            Action = "Mail Client Sender",
+                            Message = "Not Secured or Not Connected or not Authenticated",
+                            Description = "Mail Failed to Send",
+                            ActionDate = DateTime.Now,
+                        };
+
+                        _context.ActivityLogs.AddAsync(activitylog);
+                        _context.SaveChangesAsync();
+                    }
                 }
-                catch(Exception ex)
+                catch (ServiceNotConnectedException ex)
                 {
                     //log an error message or throw an exception or both.
-                    throw ex;
+                    ErrorLogger err = new ErrorLogger();
+                    var logError = err.logError(ex);
+                    _context.ErrorLog.AddAsync(logError);
+                    _context.SaveChangesAsync();
+                }
+                catch (ServiceNotAuthenticatedException ex)
+                {
+                    //log an error message or throw an exception or both.
+                    ErrorLogger err = new ErrorLogger();
+                    var logError = err.logError(ex);
+                    _context.ErrorLog.AddAsync(logError);
+                    _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    //log an error message or throw an exception or both.
+                    ErrorLogger err = new ErrorLogger();
+                    var logError = err.logError(ex);
+                    _context.ErrorLog.AddAsync(logError);
+                    _context.SaveChangesAsync();
                 }
                 finally
                 {
