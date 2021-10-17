@@ -1,0 +1,1396 @@
+2021-08-19 13:21:17.690 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 13:21:18.323 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 13:21:18.324 +01:00 [INF] Hosting environment: Development
+2021-08-19 13:21:18.324 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 13:21:18.394 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 13:21:18.538 +01:00 [INF] Request finished in 149.7697ms 200 text/html;charset=utf-8
+2021-08-19 13:21:18.779 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 13:21:19.098 +01:00 [INF] Request finished in 319.9354ms 200 application/json;charset=utf-8
+2021-08-19 13:25:51.797 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByTeacherId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 13:25:51.927 +01:00 [INF] Authorization was successful.
+2021-08-19 13:25:51.928 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:25:51.972 +01:00 [INF] Route matched with {action = "getAllSubmittedAssignmentsByTeacherId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSubmittedAssignmentsByTeacherIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 13:25:53.362 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 13:25:55.009 +01:00 [INF] Executed DbCommand (121ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 13:25:55.140 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 13:25:55.212 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 13:25:55.219 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 13:25:55.292 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE ((((((`a`.`Id` IN (
+    SELECT `a0`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a0`
+    WHERE (((((`a0`.`SchoolId` = @__schoolId_0) AND (`a0`.`CampusId` = @__campusId_1)) AND (`a0`.`TermId` = @__termId_2)) AND (`a0`.`SessionId` = @__sessionId_3)) AND (`a0`.`ClassId` = @__classId_4)) AND (`a0`.`ClassGradeId` = @__classGradeId_5)
+)
+ AND (`a`.`SchoolId` = @__schoolId_0)) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)
+2021-08-19 13:25:55.301 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 13:25:55.402 +01:00 [INF] Executed DbCommand (27ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`AssignmentId`, `t1`.`StudentId`, `t1`.`c`, `t1`.`ObtainableScore`, `t1`.`ScoreObtained`, `t1`.`FileUrl`, `t1`.`ClassName`, `t1`.`GradeName`, `t1`.`SchoolId`, `t1`.`CampusId`, `t1`.`SessionName`, `t1`.`TermName`, `t1`.`ScoreStatusName`, `t1`.`DateSubmitted`, `t1`.`DateGraded`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+LEFT JOIN (
+    SELECT `a0`.`Id`, `a0`.`AssignmentId`, `a0`.`StudentId`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `c`, `a0`.`ObtainableScore`, `a0`.`ScoreObtained`, `a0`.`FileUrl`, `c1`.`ClassName`, `c2`.`GradeName`, `a0`.`SchoolId`, `a0`.`CampusId`, `s2`.`SessionName`, `t0`.`TermName`, `s3`.`ScoreStatusName`, `a0`.`DateSubmitted`, `a0`.`DateGraded`, `s1`.`Id` AS `Id0`, `c1`.`Id` AS `Id1`, `c2`.`Id` AS `Id2`, `s2`.`Id` AS `Id3`, `t0`.`Id` AS `Id4`, `s3`.`Id` AS `Id5`
+    FROM `AssignmentsSubmitted` AS `a0`
+    INNER JOIN `Students` AS `s1` ON `a0`.`StudentId` = `s1`.`Id`
+    INNER JOIN `Classes` AS `c1` ON `a0`.`ClassId` = `c1`.`Id`
+    INNER JOIN `ClassGrades` AS `c2` ON `a0`.`ClassGradeId` = `c2`.`Id`
+    INNER JOIN `Sessions` AS `s2` ON `a0`.`SessionId` = `s2`.`Id`
+    INNER JOIN `Terms` AS `t0` ON `a0`.`TermId` = `t0`.`Id`
+    INNER JOIN `ScoreStatus` AS `s3` ON `a0`.`ScoreStatusId` = `s3`.`Id`
+) AS `t1` ON `a`.`Id` = `t1`.`AssignmentId`
+WHERE ((((((`a`.`Id` IN (
+    SELECT `a1`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a1`
+    WHERE (((((`a1`.`SchoolId` = @__schoolId_0) AND (`a1`.`CampusId` = @__campusId_1)) AND (`a1`.`TermId` = @__termId_2)) AND (`a1`.`SessionId` = @__sessionId_3)) AND (`a1`.`ClassId` = @__classId_4)) AND (`a1`.`ClassGradeId` = @__classGradeId_5)
+)
+ AND (`a`.`SchoolId` = @__schoolId_0)) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)
+ORDER BY `a`.`Id`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+2021-08-19 13:25:55.422 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS) in 3446.4327ms
+2021-08-19 13:25:55.422 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:25:55.430 +01:00 [INF] Request finished in 3632.9741ms 200 application/json; charset=utf-8
+2021-08-19 13:28:08.970 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 13:28:09.303 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 13:28:09.305 +01:00 [INF] Hosting environment: Development
+2021-08-19 13:28:09.308 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 13:28:09.330 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 13:28:09.383 +01:00 [INF] Request finished in 55.8757ms 200 text/html;charset=utf-8
+2021-08-19 13:28:09.484 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 13:28:09.681 +01:00 [INF] Request finished in 196.5608ms 200 application/json;charset=utf-8
+2021-08-19 13:28:47.014 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/assignmentByTeacherId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 13:28:47.100 +01:00 [INF] Authorization was successful.
+2021-08-19 13:28:47.100 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAssignmentByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:28:47.141 +01:00 [INF] Route matched with {action = "getAssignmentByTeacherId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAssignmentByTeacherIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 13:28:48.190 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 13:28:48.592 +01:00 [INF] Executed DbCommand (43ms) [Parameters=[@__teacherId_0='?' (DbType = Guid), @__termId_1='?' (DbType = Int64), @__sessionId_2='?' (DbType = Int64), @__schoolId_3='?' (DbType = Int64), @__campusId_4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE ((((`a`.`TeacherId` = @__teacherId_0) AND (`a`.`TermId` = @__termId_1)) AND (`a`.`SessionId` = @__sessionId_2)) AND (`a`.`SchoolId` = @__schoolId_3)) AND (`a`.`CampusId` = @__campusId_4)
+2021-08-19 13:28:48.652 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__teacherId_0='?' (DbType = Guid), @__termId_1='?' (DbType = Int64), @__sessionId_2='?' (DbType = Int64), @__schoolId_3='?' (DbType = Int64), @__campusId_4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+WHERE ((((`a`.`TeacherId` = @__teacherId_0) AND (`a`.`TermId` = @__termId_1)) AND (`a`.`SessionId` = @__sessionId_2)) AND (`a`.`SchoolId` = @__schoolId_3)) AND (`a`.`CampusId` = @__campusId_4)
+2021-08-19 13:28:48.662 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 13:28:48.679 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getAssignmentByTeacherIdAsync (SANTEGSMS) in 1533.5052ms
+2021-08-19 13:28:48.679 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAssignmentByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:28:48.682 +01:00 [INF] Request finished in 1669.3707ms 200 application/json; charset=utf-8
+2021-08-19 13:29:06.465 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByTeacherId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 13:29:06.479 +01:00 [INF] Authorization was successful.
+2021-08-19 13:29:06.479 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:29:06.486 +01:00 [INF] Route matched with {action = "getAllSubmittedAssignmentsByTeacherId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSubmittedAssignmentsByTeacherIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 13:29:06.515 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 13:29:06.536 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 13:29:06.633 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 13:29:06.702 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 13:29:06.708 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 13:29:06.810 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`AssignmentId`, `t1`.`StudentId`, `t1`.`c`, `t1`.`ObtainableScore`, `t1`.`ScoreObtained`, `t1`.`FileUrl`, `t1`.`ClassName`, `t1`.`GradeName`, `t1`.`SchoolId`, `t1`.`CampusId`, `t1`.`SessionName`, `t1`.`TermName`, `t1`.`ScoreStatusName`, `t1`.`DateSubmitted`, `t1`.`DateGraded`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+LEFT JOIN (
+    SELECT `a0`.`Id`, `a0`.`AssignmentId`, `a0`.`StudentId`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `c`, `a0`.`ObtainableScore`, `a0`.`ScoreObtained`, `a0`.`FileUrl`, `c1`.`ClassName`, `c2`.`GradeName`, `a0`.`SchoolId`, `a0`.`CampusId`, `s2`.`SessionName`, `t0`.`TermName`, `s3`.`ScoreStatusName`, `a0`.`DateSubmitted`, `a0`.`DateGraded`, `s1`.`Id` AS `Id0`, `c1`.`Id` AS `Id1`, `c2`.`Id` AS `Id2`, `s2`.`Id` AS `Id3`, `t0`.`Id` AS `Id4`, `s3`.`Id` AS `Id5`
+    FROM `AssignmentsSubmitted` AS `a0`
+    INNER JOIN `Students` AS `s1` ON `a0`.`StudentId` = `s1`.`Id`
+    INNER JOIN `Classes` AS `c1` ON `a0`.`ClassId` = `c1`.`Id`
+    INNER JOIN `ClassGrades` AS `c2` ON `a0`.`ClassGradeId` = `c2`.`Id`
+    INNER JOIN `Sessions` AS `s2` ON `a0`.`SessionId` = `s2`.`Id`
+    INNER JOIN `Terms` AS `t0` ON `a0`.`TermId` = `t0`.`Id`
+    INNER JOIN `ScoreStatus` AS `s3` ON `a0`.`ScoreStatusId` = `s3`.`Id`
+) AS `t1` ON `a`.`Id` = `t1`.`AssignmentId`
+WHERE ((((((`a`.`Id` IN (
+    SELECT `a1`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a1`
+    WHERE (((((`a1`.`SchoolId` = @__schoolId_0) AND (`a1`.`CampusId` = @__campusId_1)) AND (`a1`.`TermId` = @__termId_2)) AND (`a1`.`SessionId` = @__sessionId_3)) AND (`a1`.`ClassId` = @__classId_4)) AND (`a1`.`ClassGradeId` = @__classGradeId_5)
+)
+ AND (`a`.`SchoolId` = @__schoolId_0)) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)
+ORDER BY `a`.`Id`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+2021-08-19 13:29:06.816 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 13:29:06.827 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS) in 341.2952ms
+2021-08-19 13:29:06.827 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:29:06.828 +01:00 [INF] Request finished in 362.6816ms 200 application/json; charset=utf-8
+2021-08-19 13:43:48.129 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 13:43:48.562 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 13:43:48.568 +01:00 [INF] Hosting environment: Development
+2021-08-19 13:43:48.568 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 13:43:48.597 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 13:43:48.666 +01:00 [INF] Request finished in 72.339ms 200 text/html;charset=utf-8
+2021-08-19 13:43:48.771 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 13:43:48.971 +01:00 [INF] Request finished in 200.7415ms 200 application/json;charset=utf-8
+2021-08-19 13:44:18.908 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByTeacherId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 13:44:19.004 +01:00 [INF] Authorization was successful.
+2021-08-19 13:44:19.004 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:44:19.061 +01:00 [INF] Route matched with {action = "getAllSubmittedAssignmentsByTeacherId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSubmittedAssignmentsByTeacherIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 13:44:20.316 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 13:44:20.763 +01:00 [INF] Executed DbCommand (51ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 13:44:20.881 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 13:44:20.941 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 13:44:20.947 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 13:44:21.009 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid), @__schoolId_7='?' (DbType = Int64), @__campusId_8='?' (DbType = Int64), @__termId_9='?' (DbType = Int64), @__sessionId_10='?' (DbType = Int64), @__classId_11='?' (DbType = Int64), @__classGradeId_12='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE (((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)) AND `a`.`Id` IN (
+    SELECT `a0`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a0`
+    WHERE (((((`a0`.`SchoolId` = @__schoolId_7) AND (`a0`.`CampusId` = @__campusId_8)) AND (`a0`.`TermId` = @__termId_9)) AND (`a0`.`SessionId` = @__sessionId_10)) AND (`a0`.`ClassId` = @__classId_11)) AND (`a0`.`ClassGradeId` = @__classGradeId_12)
+)
+2021-08-19 13:44:21.076 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid), @__schoolId_7='?' (DbType = Int64), @__campusId_8='?' (DbType = Int64), @__termId_9='?' (DbType = Int64), @__sessionId_10='?' (DbType = Int64), @__classId_11='?' (DbType = Int64), @__classGradeId_12='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`AssignmentId`, `t1`.`StudentId`, `t1`.`c`, `t1`.`ObtainableScore`, `t1`.`ScoreObtained`, `t1`.`FileUrl`, `t1`.`ClassName`, `t1`.`GradeName`, `t1`.`SchoolId`, `t1`.`CampusId`, `t1`.`SessionName`, `t1`.`TermName`, `t1`.`ScoreStatusName`, `t1`.`DateSubmitted`, `t1`.`DateGraded`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+LEFT JOIN (
+    SELECT `a0`.`Id`, `a0`.`AssignmentId`, `a0`.`StudentId`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `c`, `a0`.`ObtainableScore`, `a0`.`ScoreObtained`, `a0`.`FileUrl`, `c1`.`ClassName`, `c2`.`GradeName`, `a0`.`SchoolId`, `a0`.`CampusId`, `s2`.`SessionName`, `t0`.`TermName`, `s3`.`ScoreStatusName`, `a0`.`DateSubmitted`, `a0`.`DateGraded`, `s1`.`Id` AS `Id0`, `c1`.`Id` AS `Id1`, `c2`.`Id` AS `Id2`, `s2`.`Id` AS `Id3`, `t0`.`Id` AS `Id4`, `s3`.`Id` AS `Id5`
+    FROM `AssignmentsSubmitted` AS `a0`
+    INNER JOIN `Students` AS `s1` ON `a0`.`StudentId` = `s1`.`Id`
+    INNER JOIN `Classes` AS `c1` ON `a0`.`ClassId` = `c1`.`Id`
+    INNER JOIN `ClassGrades` AS `c2` ON `a0`.`ClassGradeId` = `c2`.`Id`
+    INNER JOIN `Sessions` AS `s2` ON `a0`.`SessionId` = `s2`.`Id`
+    INNER JOIN `Terms` AS `t0` ON `a0`.`TermId` = `t0`.`Id`
+    INNER JOIN `ScoreStatus` AS `s3` ON `a0`.`ScoreStatusId` = `s3`.`Id`
+) AS `t1` ON `a`.`Id` = `t1`.`AssignmentId`
+WHERE (((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)) AND `a`.`Id` IN (
+    SELECT `a1`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a1`
+    WHERE (((((`a1`.`SchoolId` = @__schoolId_7) AND (`a1`.`CampusId` = @__campusId_8)) AND (`a1`.`TermId` = @__termId_9)) AND (`a1`.`SessionId` = @__sessionId_10)) AND (`a1`.`ClassId` = @__classId_11)) AND (`a1`.`ClassGradeId` = @__classGradeId_12)
+)
+
+ORDER BY `a`.`Id`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+2021-08-19 13:44:21.084 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 13:44:21.108 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS) in 2042.064ms
+2021-08-19 13:44:21.108 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:44:21.111 +01:00 [INF] Request finished in 2203.452ms 200 application/json; charset=utf-8
+2021-08-19 13:44:51.261 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 13:44:51.653 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 13:44:51.654 +01:00 [INF] Hosting environment: Development
+2021-08-19 13:44:51.654 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 13:44:51.689 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 13:44:51.759 +01:00 [INF] Request finished in 73.634ms 200 text/html;charset=utf-8
+2021-08-19 13:44:51.863 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 13:44:52.123 +01:00 [INF] Request finished in 260.1454ms 200 application/json;charset=utf-8
+2021-08-19 13:45:31.395 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByTeacherId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 13:45:31.479 +01:00 [INF] Authorization was successful.
+2021-08-19 13:45:31.480 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:45:31.522 +01:00 [INF] Route matched with {action = "getAllSubmittedAssignmentsByTeacherId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSubmittedAssignmentsByTeacherIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 13:45:32.580 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 13:45:33.001 +01:00 [INF] Executed DbCommand (42ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 13:45:33.128 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 13:45:33.190 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 13:45:33.195 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 13:45:33.246 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE ((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)
+2021-08-19 13:45:33.310 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`AssignmentId`, `t1`.`StudentId`, `t1`.`c`, `t1`.`ObtainableScore`, `t1`.`ScoreObtained`, `t1`.`FileUrl`, `t1`.`ClassName`, `t1`.`GradeName`, `t1`.`SchoolId`, `t1`.`CampusId`, `t1`.`SessionName`, `t1`.`TermName`, `t1`.`ScoreStatusName`, `t1`.`DateSubmitted`, `t1`.`DateGraded`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+LEFT JOIN (
+    SELECT `a0`.`Id`, `a0`.`AssignmentId`, `a0`.`StudentId`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `c`, `a0`.`ObtainableScore`, `a0`.`ScoreObtained`, `a0`.`FileUrl`, `c1`.`ClassName`, `c2`.`GradeName`, `a0`.`SchoolId`, `a0`.`CampusId`, `s2`.`SessionName`, `t0`.`TermName`, `s3`.`ScoreStatusName`, `a0`.`DateSubmitted`, `a0`.`DateGraded`, `s1`.`Id` AS `Id0`, `c1`.`Id` AS `Id1`, `c2`.`Id` AS `Id2`, `s2`.`Id` AS `Id3`, `t0`.`Id` AS `Id4`, `s3`.`Id` AS `Id5`
+    FROM `AssignmentsSubmitted` AS `a0`
+    INNER JOIN `Students` AS `s1` ON `a0`.`StudentId` = `s1`.`Id`
+    INNER JOIN `Classes` AS `c1` ON `a0`.`ClassId` = `c1`.`Id`
+    INNER JOIN `ClassGrades` AS `c2` ON `a0`.`ClassGradeId` = `c2`.`Id`
+    INNER JOIN `Sessions` AS `s2` ON `a0`.`SessionId` = `s2`.`Id`
+    INNER JOIN `Terms` AS `t0` ON `a0`.`TermId` = `t0`.`Id`
+    INNER JOIN `ScoreStatus` AS `s3` ON `a0`.`ScoreStatusId` = `s3`.`Id`
+) AS `t1` ON `a`.`Id` = `t1`.`AssignmentId`
+WHERE ((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)
+ORDER BY `a`.`Id`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+2021-08-19 13:45:33.316 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 13:45:33.341 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS) in 1814.5306ms
+2021-08-19 13:45:33.341 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 13:45:33.345 +01:00 [INF] Request finished in 1951.3474ms 200 application/json; charset=utf-8
+2021-08-19 13:47:06.882 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 13:47:07.209 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 13:47:07.213 +01:00 [INF] Hosting environment: Development
+2021-08-19 13:47:07.213 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 13:47:07.238 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 13:47:07.294 +01:00 [INF] Request finished in 58.3273ms 200 text/html;charset=utf-8
+2021-08-19 13:47:07.384 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 13:47:07.576 +01:00 [INF] Request finished in 192.0432ms 200 application/json;charset=utf-8
+2021-08-19 13:47:25.779 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByTeacherIdAndSubjectId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&subjectId=1&classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 13:47:25.853 +01:00 [INF] Authorization was successful.
+2021-08-19 13:47:25.854 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS)'
+2021-08-19 13:47:25.895 +01:00 [INF] Route matched with {action = "getAllSubmittedAssignmentsByTeacherIdAndSubjectId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 13:47:26.984 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 13:47:27.431 +01:00 [INF] Executed DbCommand (42ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 13:47:27.553 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 13:47:27.618 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 13:47:27.624 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 13:47:27.653 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__subjectId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE `s`.`Id` = @__subjectId_0
+LIMIT 1
+2021-08-19 13:47:27.701 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid), @__subjectId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE (((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)) AND (`a`.`SubjectId` = @__subjectId_7)
+2021-08-19 13:47:27.705 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 13:47:27.786 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid), @__subjectId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`AssignmentId`, `t1`.`StudentId`, `t1`.`c`, `t1`.`ObtainableScore`, `t1`.`ScoreObtained`, `t1`.`FileUrl`, `t1`.`ClassName`, `t1`.`GradeName`, `t1`.`SchoolId`, `t1`.`CampusId`, `t1`.`SessionName`, `t1`.`TermName`, `t1`.`ScoreStatusName`, `t1`.`DateSubmitted`, `t1`.`DateGraded`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+LEFT JOIN (
+    SELECT `a0`.`Id`, `a0`.`AssignmentId`, `a0`.`StudentId`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `c`, `a0`.`ObtainableScore`, `a0`.`ScoreObtained`, `a0`.`FileUrl`, `c1`.`ClassName`, `c2`.`GradeName`, `a0`.`SchoolId`, `a0`.`CampusId`, `s2`.`SessionName`, `t0`.`TermName`, `s3`.`ScoreStatusName`, `a0`.`DateSubmitted`, `a0`.`DateGraded`, `s1`.`Id` AS `Id0`, `c1`.`Id` AS `Id1`, `c2`.`Id` AS `Id2`, `s2`.`Id` AS `Id3`, `t0`.`Id` AS `Id4`, `s3`.`Id` AS `Id5`
+    FROM `AssignmentsSubmitted` AS `a0`
+    INNER JOIN `Students` AS `s1` ON `a0`.`StudentId` = `s1`.`Id`
+    INNER JOIN `Classes` AS `c1` ON `a0`.`ClassId` = `c1`.`Id`
+    INNER JOIN `ClassGrades` AS `c2` ON `a0`.`ClassGradeId` = `c2`.`Id`
+    INNER JOIN `Sessions` AS `s2` ON `a0`.`SessionId` = `s2`.`Id`
+    INNER JOIN `Terms` AS `t0` ON `a0`.`TermId` = `t0`.`Id`
+    INNER JOIN `ScoreStatus` AS `s3` ON `a0`.`ScoreStatusId` = `s3`.`Id`
+) AS `t1` ON `a`.`Id` = `t1`.`AssignmentId`
+WHERE (((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)) AND (`a`.`SubjectId` = @__subjectId_7)
+ORDER BY `a`.`Id`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+2021-08-19 13:47:27.811 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS) in 1910.8249ms
+2021-08-19 13:47:27.812 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS)'
+2021-08-19 13:47:27.818 +01:00 [INF] Request finished in 2039.9235ms 200 application/json; charset=utf-8
+2021-08-19 13:47:39.239 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByTeacherIdAndSubjectId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&subjectId=2&classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 13:47:39.252 +01:00 [INF] Authorization was successful.
+2021-08-19 13:47:39.252 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS)'
+2021-08-19 13:47:39.253 +01:00 [INF] Route matched with {action = "getAllSubmittedAssignmentsByTeacherIdAndSubjectId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 13:47:39.282 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 13:47:39.286 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 13:47:39.288 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 13:47:39.289 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 13:47:39.289 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 13:47:39.291 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__subjectId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE `s`.`Id` = @__subjectId_0
+LIMIT 1
+2021-08-19 13:47:39.294 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid), @__subjectId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE (((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)) AND (`a`.`SubjectId` = @__subjectId_7)
+2021-08-19 13:47:39.294 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 13:47:39.296 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid), @__subjectId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`AssignmentId`, `t1`.`StudentId`, `t1`.`c`, `t1`.`ObtainableScore`, `t1`.`ScoreObtained`, `t1`.`FileUrl`, `t1`.`ClassName`, `t1`.`GradeName`, `t1`.`SchoolId`, `t1`.`CampusId`, `t1`.`SessionName`, `t1`.`TermName`, `t1`.`ScoreStatusName`, `t1`.`DateSubmitted`, `t1`.`DateGraded`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+LEFT JOIN (
+    SELECT `a0`.`Id`, `a0`.`AssignmentId`, `a0`.`StudentId`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `c`, `a0`.`ObtainableScore`, `a0`.`ScoreObtained`, `a0`.`FileUrl`, `c1`.`ClassName`, `c2`.`GradeName`, `a0`.`SchoolId`, `a0`.`CampusId`, `s2`.`SessionName`, `t0`.`TermName`, `s3`.`ScoreStatusName`, `a0`.`DateSubmitted`, `a0`.`DateGraded`, `s1`.`Id` AS `Id0`, `c1`.`Id` AS `Id1`, `c2`.`Id` AS `Id2`, `s2`.`Id` AS `Id3`, `t0`.`Id` AS `Id4`, `s3`.`Id` AS `Id5`
+    FROM `AssignmentsSubmitted` AS `a0`
+    INNER JOIN `Students` AS `s1` ON `a0`.`StudentId` = `s1`.`Id`
+    INNER JOIN `Classes` AS `c1` ON `a0`.`ClassId` = `c1`.`Id`
+    INNER JOIN `ClassGrades` AS `c2` ON `a0`.`ClassGradeId` = `c2`.`Id`
+    INNER JOIN `Sessions` AS `s2` ON `a0`.`SessionId` = `s2`.`Id`
+    INNER JOIN `Terms` AS `t0` ON `a0`.`TermId` = `t0`.`Id`
+    INNER JOIN `ScoreStatus` AS `s3` ON `a0`.`ScoreStatusId` = `s3`.`Id`
+) AS `t1` ON `a`.`Id` = `t1`.`AssignmentId`
+WHERE (((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)) AND (`a`.`SubjectId` = @__subjectId_7)
+ORDER BY `a`.`Id`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+2021-08-19 13:47:39.297 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS) in 43.3547ms
+2021-08-19 13:47:39.297 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS)'
+2021-08-19 13:47:39.297 +01:00 [INF] Request finished in 58.7326ms 200 application/json; charset=utf-8
+2021-08-19 13:48:42.401 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByTeacherIdAndSubjectId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&subjectId=4&classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 13:48:42.414 +01:00 [INF] Authorization was successful.
+2021-08-19 13:48:42.415 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS)'
+2021-08-19 13:48:42.415 +01:00 [INF] Route matched with {action = "getAllSubmittedAssignmentsByTeacherIdAndSubjectId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 13:48:42.429 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 13:48:42.432 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 13:48:42.434 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 13:48:42.435 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 13:48:42.436 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 13:48:42.436 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__subjectId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE `s`.`Id` = @__subjectId_0
+LIMIT 1
+2021-08-19 13:48:42.438 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid), @__subjectId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE (((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)) AND (`a`.`SubjectId` = @__subjectId_7)
+2021-08-19 13:48:42.439 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 13:48:42.440 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__termId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__classId_4='?' (DbType = Int64), @__classGradeId_5='?' (DbType = Int64), @__teacherId_6='?' (DbType = Guid), @__subjectId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`AssignmentId`, `t1`.`StudentId`, `t1`.`c`, `t1`.`ObtainableScore`, `t1`.`ScoreObtained`, `t1`.`FileUrl`, `t1`.`ClassName`, `t1`.`GradeName`, `t1`.`SchoolId`, `t1`.`CampusId`, `t1`.`SessionName`, `t1`.`TermName`, `t1`.`ScoreStatusName`, `t1`.`DateSubmitted`, `t1`.`DateGraded`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+LEFT JOIN (
+    SELECT `a0`.`Id`, `a0`.`AssignmentId`, `a0`.`StudentId`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `c`, `a0`.`ObtainableScore`, `a0`.`ScoreObtained`, `a0`.`FileUrl`, `c1`.`ClassName`, `c2`.`GradeName`, `a0`.`SchoolId`, `a0`.`CampusId`, `s2`.`SessionName`, `t0`.`TermName`, `s3`.`ScoreStatusName`, `a0`.`DateSubmitted`, `a0`.`DateGraded`, `s1`.`Id` AS `Id0`, `c1`.`Id` AS `Id1`, `c2`.`Id` AS `Id2`, `s2`.`Id` AS `Id3`, `t0`.`Id` AS `Id4`, `s3`.`Id` AS `Id5`
+    FROM `AssignmentsSubmitted` AS `a0`
+    INNER JOIN `Students` AS `s1` ON `a0`.`StudentId` = `s1`.`Id`
+    INNER JOIN `Classes` AS `c1` ON `a0`.`ClassId` = `c1`.`Id`
+    INNER JOIN `ClassGrades` AS `c2` ON `a0`.`ClassGradeId` = `c2`.`Id`
+    INNER JOIN `Sessions` AS `s2` ON `a0`.`SessionId` = `s2`.`Id`
+    INNER JOIN `Terms` AS `t0` ON `a0`.`TermId` = `t0`.`Id`
+    INNER JOIN `ScoreStatus` AS `s3` ON `a0`.`ScoreStatusId` = `s3`.`Id`
+) AS `t1` ON `a`.`Id` = `t1`.`AssignmentId`
+WHERE (((((((`a`.`SchoolId` = @__schoolId_0) AND (`a`.`CampusId` = @__campusId_1)) AND (`a`.`TermId` = @__termId_2)) AND (`a`.`SessionId` = @__sessionId_3)) AND (`a`.`ClassId` = @__classId_4)) AND (`a`.`ClassGradeId` = @__classGradeId_5)) AND (`a`.`TeacherId` = @__teacherId_6)) AND (`a`.`SubjectId` = @__subjectId_7)
+ORDER BY `a`.`Id`, `s`.`Id`, `c`.`Id`, `c0`.`Id`, `s0`.`Id`, `t`.`Id`, `t1`.`Id`, `t1`.`Id0`, `t1`.`Id1`, `t1`.`Id2`, `t1`.`Id3`, `t1`.`Id4`, `t1`.`Id5`
+2021-08-19 13:48:42.441 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS) in 25.1095ms
+2021-08-19 13:48:42.441 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync (SANTEGSMS)'
+2021-08-19 13:48:42.441 +01:00 [INF] Request finished in 43.0637ms 200 application/json; charset=utf-8
+2021-08-19 16:54:08.208 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 16:54:08.677 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 16:54:08.678 +01:00 [INF] Hosting environment: Development
+2021-08-19 16:54:08.678 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 16:54:08.715 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 16:54:08.778 +01:00 [INF] Request finished in 66.2776ms 200 text/html;charset=utf-8
+2021-08-19 16:54:08.882 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 16:54:09.104 +01:00 [INF] Request finished in 222.1476ms 200 application/json;charset=utf-8
+2021-08-19 16:55:09.953 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/v1/ScoresUpload/scoresByClassIdAndClassGradeId?schoolId=1&campusId=1&classId=1&classGradeId=1&categoryId=1&subCategoryId=1&termId=1&sessionId=1  
+2021-08-19 16:55:10.034 +01:00 [INF] Authorization was successful.
+2021-08-19 16:55:10.034 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 16:55:10.086 +01:00 [INF] Route matched with {action = "getAllScoresByClassIdAndClassGradeId", controller = "ScoresUpload"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllScoresByClassIdAndClassGradeIdAsync(Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.ScoresUploadController (SANTEGSMS).
+2021-08-19 16:55:11.356 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 16:55:11.818 +01:00 [INF] Executed DbCommand (44ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 16:55:11.955 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 16:55:12.014 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 16:55:12.020 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 16:55:12.050 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 16:55:12.088 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 16:55:12.134 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ExaminationScores` AS `e`
+WHERE (((((((`e`.`SchoolId` = @__schoolId_0) AND (`e`.`CampusId` = @__campusId_1)) AND (`e`.`ClassId` = @__classId_2)) AND (`e`.`ClassGradeId` = @__classGradeId_3)) AND (`e`.`TermId` = @__termId_4)) AND (`e`.`SessionId` = @__sessionId_5)) AND (`e`.`CategoryId` = @__categoryId_6)) AND (`e`.`SubCategoryId` = @__subCategoryId_7)
+2021-08-19 16:55:12.193 +01:00 [INF] Executed DbCommand (31ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`StudentId`, `e`.`SchoolId`, `e`.`CampusId`, `c`.`ClassName`, `c0`.`GradeName`, `s`.`SessionName`, `t`.`TermName`, `s0`.`SubjectName`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `StudentName`, `s1`.`AdmissionNumber`, `e`.`MarkObtainable`, `e`.`MarkObtained`, `s2`.`CategoryName`, `s3`.`SubCategoryName`, CONCAT(CONCAT(`s4`.`FirstName`, ' '), `s4`.`LastName`) AS `TeachersName`, `e`.`DateUploaded`, `e`.`DateUpdated`
+FROM `ExaminationScores` AS `e`
+INNER JOIN `Classes` AS `c` ON `e`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `e`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s` ON `e`.`SessionId` = `s`.`Id`
+INNER JOIN `Terms` AS `t` ON `e`.`TermId` = `t`.`Id`
+INNER JOIN `SchoolSubjects` AS `s0` ON `e`.`SubjectId` = `s0`.`Id`
+INNER JOIN `Students` AS `s1` ON `e`.`StudentId` = `s1`.`Id`
+INNER JOIN `ScoreCategory` AS `s2` ON `e`.`CategoryId` = `s2`.`Id`
+INNER JOIN `ScoreSubCategoryConfig` AS `s3` ON `e`.`SubCategoryId` = `s3`.`Id`
+INNER JOIN `SchoolUsers` AS `s4` ON `e`.`TeacherId` = `s4`.`Id`
+WHERE (((((((`e`.`SchoolId` = @__schoolId_0) AND (`e`.`CampusId` = @__campusId_1)) AND (`e`.`ClassId` = @__classId_2)) AND (`e`.`ClassGradeId` = @__classGradeId_3)) AND (`e`.`TermId` = @__termId_4)) AND (`e`.`SessionId` = @__sessionId_5)) AND (`e`.`CategoryId` = @__categoryId_6)) AND (`e`.`SubCategoryId` = @__subCategoryId_7)
+2021-08-19 16:55:12.198 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 16:55:12.219 +01:00 [INF] Executed action SANTEGSMS.Controllers.ScoresUploadController.getAllScoresByClassIdAndClassGradeIdAsync (SANTEGSMS) in 2128.3378ms
+2021-08-19 16:55:12.219 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 16:55:12.223 +01:00 [INF] Request finished in 2272.2951ms 200 application/json; charset=utf-8
+2021-08-19 16:55:28.332 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/v1/ScoresUpload/scoresByClassIdAndClassGradeId?schoolId=1&campusId=1&classId=1&classGradeId=1&categoryId=2&subCategoryId=1&termId=1&sessionId=1  
+2021-08-19 16:55:28.353 +01:00 [INF] Authorization was successful.
+2021-08-19 16:55:28.356 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 16:55:28.357 +01:00 [INF] Route matched with {action = "getAllScoresByClassIdAndClassGradeId", controller = "ScoresUpload"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllScoresByClassIdAndClassGradeIdAsync(Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.ScoresUploadController (SANTEGSMS).
+2021-08-19 16:55:28.391 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 16:55:28.398 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 16:55:28.400 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 16:55:28.401 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 16:55:28.402 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 16:55:28.403 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 16:55:28.404 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 16:55:28.427 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ContinousAssessmentScores` AS `c`
+WHERE (((((((`c`.`SchoolId` = @__schoolId_0) AND (`c`.`CampusId` = @__campusId_1)) AND (`c`.`ClassId` = @__classId_2)) AND (`c`.`ClassGradeId` = @__classGradeId_3)) AND (`c`.`TermId` = @__termId_4)) AND (`c`.`SessionId` = @__sessionId_5)) AND (`c`.`CategoryId` = @__categoryId_6)) AND (`c`.`SubCategoryId` = @__subCategoryId_7)
+2021-08-19 16:55:28.427 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 16:55:28.428 +01:00 [INF] Executed action SANTEGSMS.Controllers.ScoresUploadController.getAllScoresByClassIdAndClassGradeIdAsync (SANTEGSMS) in 71.1673ms
+2021-08-19 16:55:28.428 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 16:55:28.429 +01:00 [INF] Request finished in 96.8484ms 200 application/json; charset=utf-8
+2021-08-19 16:55:52.103 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/v1/ScoresUpload/scoresUploadedByTeacherId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&schoolId=1&campusId=1&classId=1&classGradeId=1&categoryId=1&subCategoryId=1&termId=1&sessionId=1  
+2021-08-19 16:55:52.111 +01:00 [INF] Authorization was successful.
+2021-08-19 16:55:52.112 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 16:55:52.120 +01:00 [INF] Route matched with {action = "getAllScoresUploadedByTeacherId", controller = "ScoresUpload"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllScoresUploadedByTeacherIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.ScoresUploadController (SANTEGSMS).
+2021-08-19 16:55:52.133 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 16:55:52.136 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 16:55:52.137 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 16:55:52.139 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 16:55:52.140 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 16:55:52.141 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 16:55:52.142 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 16:55:52.147 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64), @__teacherId_8='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ExaminationScores` AS `e`
+WHERE ((((((((`e`.`SchoolId` = @__schoolId_0) AND (`e`.`CampusId` = @__campusId_1)) AND (`e`.`ClassId` = @__classId_2)) AND (`e`.`ClassGradeId` = @__classGradeId_3)) AND (`e`.`TermId` = @__termId_4)) AND (`e`.`SessionId` = @__sessionId_5)) AND (`e`.`CategoryId` = @__categoryId_6)) AND (`e`.`SubCategoryId` = @__subCategoryId_7)) AND (`e`.`TeacherId` = @__teacherId_8)
+2021-08-19 16:55:52.156 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64), @__teacherId_8='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`StudentId`, `e`.`SchoolId`, `e`.`CampusId`, `c`.`ClassName`, `c0`.`GradeName`, `s`.`SessionName`, `t`.`TermName`, `s0`.`SubjectName`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `StudentName`, `s1`.`AdmissionNumber`, `e`.`MarkObtainable`, `e`.`MarkObtained`, `s2`.`CategoryName`, `s3`.`SubCategoryName`, `e`.`TeacherId`, CONCAT(CONCAT(`s4`.`FirstName`, ' '), `s4`.`LastName`) AS `TeachersName`, `e`.`DateUploaded`, `e`.`DateUpdated`
+FROM `ExaminationScores` AS `e`
+INNER JOIN `Classes` AS `c` ON `e`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `e`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s` ON `e`.`SessionId` = `s`.`Id`
+INNER JOIN `Terms` AS `t` ON `e`.`TermId` = `t`.`Id`
+INNER JOIN `SchoolSubjects` AS `s0` ON `e`.`SubjectId` = `s0`.`Id`
+INNER JOIN `Students` AS `s1` ON `e`.`StudentId` = `s1`.`Id`
+INNER JOIN `ScoreCategory` AS `s2` ON `e`.`CategoryId` = `s2`.`Id`
+INNER JOIN `ScoreSubCategoryConfig` AS `s3` ON `e`.`SubCategoryId` = `s3`.`Id`
+INNER JOIN `SchoolUsers` AS `s4` ON `e`.`TeacherId` = `s4`.`Id`
+WHERE ((((((((`e`.`SchoolId` = @__schoolId_0) AND (`e`.`CampusId` = @__campusId_1)) AND (`e`.`ClassId` = @__classId_2)) AND (`e`.`ClassGradeId` = @__classGradeId_3)) AND (`e`.`TermId` = @__termId_4)) AND (`e`.`SessionId` = @__sessionId_5)) AND (`e`.`CategoryId` = @__categoryId_6)) AND (`e`.`SubCategoryId` = @__subCategoryId_7)) AND (`e`.`TeacherId` = @__teacherId_8)
+2021-08-19 16:55:52.156 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 16:55:52.163 +01:00 [INF] Executed action SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS) in 42.5656ms
+2021-08-19 16:55:52.163 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 16:55:52.166 +01:00 [INF] Request finished in 64.7133ms 200 application/json; charset=utf-8
+2021-08-19 16:56:27.532 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/v1/ScoresUpload/scoresUploadedByTeacherId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&schoolId=1&campusId=1&classId=1&classGradeId=1&categoryId=2&subCategoryId=2&termId=1&sessionId=1  
+2021-08-19 16:56:27.540 +01:00 [INF] Authorization was successful.
+2021-08-19 16:56:27.541 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 16:56:27.541 +01:00 [INF] Route matched with {action = "getAllScoresUploadedByTeacherId", controller = "ScoresUpload"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllScoresUploadedByTeacherIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.ScoresUploadController (SANTEGSMS).
+2021-08-19 16:56:27.548 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 16:56:27.553 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 16:56:27.556 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 16:56:27.557 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 16:56:27.559 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 16:56:27.560 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 16:56:27.561 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 16:56:27.576 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64), @__teacherId_8='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ContinousAssessmentScores` AS `c`
+WHERE ((((((((`c`.`SchoolId` = @__schoolId_0) AND (`c`.`CampusId` = @__campusId_1)) AND (`c`.`ClassId` = @__classId_2)) AND (`c`.`ClassGradeId` = @__classGradeId_3)) AND (`c`.`TermId` = @__termId_4)) AND (`c`.`SessionId` = @__sessionId_5)) AND (`c`.`CategoryId` = @__categoryId_6)) AND (`c`.`SubCategoryId` = @__subCategoryId_7)) AND (`c`.`TeacherId` = @__teacherId_8)
+2021-08-19 16:56:27.588 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64), @__teacherId_8='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`StudentId`, `c`.`SchoolId`, `c`.`CampusId`, `c0`.`ClassName`, `c1`.`GradeName`, `s`.`SessionName`, `t`.`TermName`, `s0`.`SubjectName`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `StudentName`, `s1`.`AdmissionNumber`, `c`.`MarkObtainable`, `c`.`MarkObtained`, `s2`.`CategoryName`, `s3`.`SubCategoryName`, `c`.`TeacherId`, CONCAT(CONCAT(`s4`.`FirstName`, ' '), `s4`.`LastName`) AS `TeachersName`, `c`.`DateUploaded`, `c`.`DateUpdated`
+FROM `ContinousAssessmentScores` AS `c`
+INNER JOIN `Classes` AS `c0` ON `c`.`ClassId` = `c0`.`Id`
+INNER JOIN `ClassGrades` AS `c1` ON `c`.`ClassGradeId` = `c1`.`Id`
+INNER JOIN `Sessions` AS `s` ON `c`.`SessionId` = `s`.`Id`
+INNER JOIN `Terms` AS `t` ON `c`.`TermId` = `t`.`Id`
+INNER JOIN `SchoolSubjects` AS `s0` ON `c`.`SubjectId` = `s0`.`Id`
+INNER JOIN `Students` AS `s1` ON `c`.`StudentId` = `s1`.`Id`
+INNER JOIN `ScoreCategory` AS `s2` ON `c`.`CategoryId` = `s2`.`Id`
+INNER JOIN `ScoreSubCategoryConfig` AS `s3` ON `c`.`SubCategoryId` = `s3`.`Id`
+INNER JOIN `SchoolUsers` AS `s4` ON `c`.`TeacherId` = `s4`.`Id`
+WHERE ((((((((`c`.`SchoolId` = @__schoolId_0) AND (`c`.`CampusId` = @__campusId_1)) AND (`c`.`ClassId` = @__classId_2)) AND (`c`.`ClassGradeId` = @__classGradeId_3)) AND (`c`.`TermId` = @__termId_4)) AND (`c`.`SessionId` = @__sessionId_5)) AND (`c`.`CategoryId` = @__categoryId_6)) AND (`c`.`SubCategoryId` = @__subCategoryId_7)) AND (`c`.`TeacherId` = @__teacherId_8)
+2021-08-19 16:56:27.589 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 16:56:27.590 +01:00 [INF] Executed action SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS) in 47.7984ms
+2021-08-19 16:56:27.591 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 16:56:27.593 +01:00 [INF] Request finished in 61.8784ms 200 application/json; charset=utf-8
+2021-08-19 16:56:31.955 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/v1/ScoresUpload/scoresUploadedByTeacherId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&schoolId=1&campusId=1&classId=1&classGradeId=1&categoryId=2&subCategoryId=2&termId=1&sessionId=1  
+2021-08-19 16:56:31.958 +01:00 [INF] Authorization was successful.
+2021-08-19 16:56:31.958 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 16:56:31.958 +01:00 [INF] Route matched with {action = "getAllScoresUploadedByTeacherId", controller = "ScoresUpload"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllScoresUploadedByTeacherIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.ScoresUploadController (SANTEGSMS).
+2021-08-19 16:56:31.960 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 16:56:31.962 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 16:56:31.963 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 16:56:31.964 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 16:56:31.965 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 16:56:31.966 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 16:56:31.967 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 16:56:31.970 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64), @__teacherId_8='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ContinousAssessmentScores` AS `c`
+WHERE ((((((((`c`.`SchoolId` = @__schoolId_0) AND (`c`.`CampusId` = @__campusId_1)) AND (`c`.`ClassId` = @__classId_2)) AND (`c`.`ClassGradeId` = @__classGradeId_3)) AND (`c`.`TermId` = @__termId_4)) AND (`c`.`SessionId` = @__sessionId_5)) AND (`c`.`CategoryId` = @__categoryId_6)) AND (`c`.`SubCategoryId` = @__subCategoryId_7)) AND (`c`.`TeacherId` = @__teacherId_8)
+2021-08-19 16:56:31.972 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64), @__teacherId_8='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`StudentId`, `c`.`SchoolId`, `c`.`CampusId`, `c0`.`ClassName`, `c1`.`GradeName`, `s`.`SessionName`, `t`.`TermName`, `s0`.`SubjectName`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `StudentName`, `s1`.`AdmissionNumber`, `c`.`MarkObtainable`, `c`.`MarkObtained`, `s2`.`CategoryName`, `s3`.`SubCategoryName`, `c`.`TeacherId`, CONCAT(CONCAT(`s4`.`FirstName`, ' '), `s4`.`LastName`) AS `TeachersName`, `c`.`DateUploaded`, `c`.`DateUpdated`
+FROM `ContinousAssessmentScores` AS `c`
+INNER JOIN `Classes` AS `c0` ON `c`.`ClassId` = `c0`.`Id`
+INNER JOIN `ClassGrades` AS `c1` ON `c`.`ClassGradeId` = `c1`.`Id`
+INNER JOIN `Sessions` AS `s` ON `c`.`SessionId` = `s`.`Id`
+INNER JOIN `Terms` AS `t` ON `c`.`TermId` = `t`.`Id`
+INNER JOIN `SchoolSubjects` AS `s0` ON `c`.`SubjectId` = `s0`.`Id`
+INNER JOIN `Students` AS `s1` ON `c`.`StudentId` = `s1`.`Id`
+INNER JOIN `ScoreCategory` AS `s2` ON `c`.`CategoryId` = `s2`.`Id`
+INNER JOIN `ScoreSubCategoryConfig` AS `s3` ON `c`.`SubCategoryId` = `s3`.`Id`
+INNER JOIN `SchoolUsers` AS `s4` ON `c`.`TeacherId` = `s4`.`Id`
+WHERE ((((((((`c`.`SchoolId` = @__schoolId_0) AND (`c`.`CampusId` = @__campusId_1)) AND (`c`.`ClassId` = @__classId_2)) AND (`c`.`ClassGradeId` = @__classGradeId_3)) AND (`c`.`TermId` = @__termId_4)) AND (`c`.`SessionId` = @__sessionId_5)) AND (`c`.`CategoryId` = @__categoryId_6)) AND (`c`.`SubCategoryId` = @__subCategoryId_7)) AND (`c`.`TeacherId` = @__teacherId_8)
+2021-08-19 16:56:31.972 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 16:56:31.973 +01:00 [INF] Executed action SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS) in 15.2696ms
+2021-08-19 16:56:31.974 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAsync (SANTEGSMS)'
+2021-08-19 16:56:31.974 +01:00 [INF] Request finished in 19.2845ms 200 application/json; charset=utf-8
+2021-08-19 16:57:13.911 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/v1/ScoresUpload/scoresUploadedByTeacherIdAndSubjectId?teacherId=08d949f6-a6ab-4821-890c-fe5f83e7d657&subjectId=1&schoolId=1&campusId=1&classId=1&classGradeId=1&categoryId=1&subCategoryId=1&termId=1&sessionId=1  
+2021-08-19 16:57:13.928 +01:00 [INF] Authorization was successful.
+2021-08-19 16:57:13.928 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAndSubjectIdAsync (SANTEGSMS)'
+2021-08-19 16:57:13.943 +01:00 [INF] Route matched with {action = "getAllScoresUploadedByTeacherIdAndSubjectId", controller = "ScoresUpload"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getAllScoresUploadedByTeacherIdAndSubjectIdAsync(System.Guid, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.ScoresUploadController (SANTEGSMS).
+2021-08-19 16:57:13.952 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 16:57:13.956 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 16:57:13.958 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 16:57:13.960 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 16:57:13.961 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 16:57:13.961 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 16:57:13.963 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 16:57:13.969 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__subjectId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DepartmentId`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsAssignedToTeacher`, `s`.`MaximumScore`, `s`.`ReportCardOrder`, `s`.`SchoolId`, `s`.`SubjectCode`, `s`.`SubjectName`
+FROM `SchoolSubjects` AS `s`
+WHERE `s`.`Id` = @__subjectId_0
+LIMIT 1
+2021-08-19 16:57:13.993 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64), @__teacherId_8='?' (DbType = Guid), @__subjectId_9='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `ExaminationScores` AS `e`
+WHERE (((((((((`e`.`SchoolId` = @__schoolId_0) AND (`e`.`CampusId` = @__campusId_1)) AND (`e`.`ClassId` = @__classId_2)) AND (`e`.`ClassGradeId` = @__classGradeId_3)) AND (`e`.`TermId` = @__termId_4)) AND (`e`.`SessionId` = @__sessionId_5)) AND (`e`.`CategoryId` = @__categoryId_6)) AND (`e`.`SubCategoryId` = @__subCategoryId_7)) AND (`e`.`TeacherId` = @__teacherId_8)) AND (`e`.`SubjectId` = @__subjectId_9)
+2021-08-19 16:57:14.000 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__classGradeId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64), @__categoryId_6='?' (DbType = Int64), @__subCategoryId_7='?' (DbType = Int64), @__teacherId_8='?' (DbType = Guid), @__subjectId_9='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `e`.`Id`, `e`.`StudentId`, `e`.`SchoolId`, `e`.`CampusId`, `c`.`ClassName`, `c0`.`GradeName`, `s`.`SessionName`, `t`.`TermName`, `s0`.`SubjectName`, CONCAT(CONCAT(`s1`.`FirstName`, ' '), `s1`.`LastName`) AS `StudentName`, `s1`.`AdmissionNumber`, `e`.`MarkObtainable`, `e`.`MarkObtained`, `s2`.`CategoryName`, `s3`.`SubCategoryName`, `e`.`TeacherId`, CONCAT(CONCAT(`s4`.`FirstName`, ' '), `s4`.`LastName`) AS `TeachersName`, `e`.`DateUploaded`, `e`.`DateUpdated`
+FROM `ExaminationScores` AS `e`
+INNER JOIN `Classes` AS `c` ON `e`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `e`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s` ON `e`.`SessionId` = `s`.`Id`
+INNER JOIN `Terms` AS `t` ON `e`.`TermId` = `t`.`Id`
+INNER JOIN `SchoolSubjects` AS `s0` ON `e`.`SubjectId` = `s0`.`Id`
+INNER JOIN `Students` AS `s1` ON `e`.`StudentId` = `s1`.`Id`
+INNER JOIN `ScoreCategory` AS `s2` ON `e`.`CategoryId` = `s2`.`Id`
+INNER JOIN `ScoreSubCategoryConfig` AS `s3` ON `e`.`SubCategoryId` = `s3`.`Id`
+INNER JOIN `SchoolUsers` AS `s4` ON `e`.`TeacherId` = `s4`.`Id`
+WHERE (((((((((`e`.`SchoolId` = @__schoolId_0) AND (`e`.`CampusId` = @__campusId_1)) AND (`e`.`ClassId` = @__classId_2)) AND (`e`.`ClassGradeId` = @__classGradeId_3)) AND (`e`.`TermId` = @__termId_4)) AND (`e`.`SessionId` = @__sessionId_5)) AND (`e`.`CategoryId` = @__categoryId_6)) AND (`e`.`SubCategoryId` = @__subCategoryId_7)) AND (`e`.`TeacherId` = @__teacherId_8)) AND (`e`.`SubjectId` = @__subjectId_9)
+2021-08-19 16:57:14.001 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 16:57:14.002 +01:00 [INF] Executed action SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAndSubjectIdAsync (SANTEGSMS) in 58.8461ms
+2021-08-19 16:57:14.002 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ScoresUploadController.getAllScoresUploadedByTeacherIdAndSubjectIdAsync (SANTEGSMS)'
+2021-08-19 16:57:14.003 +01:00 [INF] Request finished in 94.5609ms 200 application/json; charset=utf-8
+2021-08-19 17:02:43.012 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 17:02:44.027 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 17:02:44.044 +01:00 [INF] Hosting environment: Development
+2021-08-19 17:02:44.044 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 17:02:44.130 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 17:02:44.291 +01:00 [INF] Request finished in 170.5208ms 200 text/html;charset=utf-8
+2021-08-19 17:02:44.538 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 17:02:45.044 +01:00 [INF] Request finished in 505.9533ms 200 application/json;charset=utf-8
+2021-08-19 17:03:11.705 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByClassIdAndClassGradeId?classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 17:03:11.880 +01:00 [INF] Authorization was successful.
+2021-08-19 17:03:11.881 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:03:11.962 +01:00 [INF] Route matched with {action = "getSubmittedAssignmentsByClassIdAndClassGradeId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getSubmittedAssignmentsByClassIdAndClassGradeIdAsync(Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 17:03:14.503 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 17:03:15.411 +01:00 [INF] Executed DbCommand (122ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 17:03:15.754 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 17:03:15.905 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 17:03:15.995 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 17:03:16.092 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 17:03:16.106 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 17:03:16.245 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE (((((`a`.`Id` IN (
+    SELECT `a0`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a0`
+    WHERE (((((`a0`.`ClassId` = @__classId_0) AND (`a0`.`ClassGradeId` = @__classGradeId_1)) AND (`a0`.`SchoolId` = @__schoolId_2)) AND (`a0`.`CampusId` = @__campusId_3)) AND (`a0`.`TermId` = @__termId_4)) AND (`a0`.`SessionId` = @__sessionId_5)
+)
+ AND (`a`.`ClassId` = @__classId_0)) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:03:16.255 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 17:03:16.325 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+WHERE (((((`a`.`Id` IN (
+    SELECT `a0`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a0`
+    WHERE (((((`a0`.`ClassId` = @__classId_0) AND (`a0`.`ClassGradeId` = @__classGradeId_1)) AND (`a0`.`SchoolId` = @__schoolId_2)) AND (`a0`.`CampusId` = @__campusId_3)) AND (`a0`.`TermId` = @__termId_4)) AND (`a0`.`SessionId` = @__sessionId_5)
+)
+ AND (`a`.`ClassId` = @__classId_0)) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:03:16.353 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS) in 4379.9712ms
+2021-08-19 17:03:16.354 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:03:16.373 +01:00 [INF] Request finished in 4672.8255ms 200 application/json; charset=utf-8
+2021-08-19 17:12:04.843 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 17:12:05.676 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 17:12:05.679 +01:00 [INF] Hosting environment: Development
+2021-08-19 17:12:05.687 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 17:12:05.740 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 17:12:05.858 +01:00 [INF] Request finished in 126.4582ms 200 text/html;charset=utf-8
+2021-08-19 17:12:06.101 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 17:12:06.495 +01:00 [INF] Request finished in 394.0763ms 200 application/json;charset=utf-8
+2021-08-19 17:12:54.043 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByClassIdAndClassGradeId?classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 17:12:54.278 +01:00 [INF] Authorization was successful.
+2021-08-19 17:12:54.280 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:12:54.424 +01:00 [INF] Route matched with {action = "getSubmittedAssignmentsByClassIdAndClassGradeId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getSubmittedAssignmentsByClassIdAndClassGradeIdAsync(Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 17:12:58.186 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 17:12:59.480 +01:00 [INF] Executed DbCommand (140ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 17:12:59.884 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 17:13:00.116 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 17:13:00.247 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 17:13:00.345 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 17:13:00.360 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 17:13:00.526 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `AssignmentsSubmitted` AS `a`
+WHERE (((((`a`.`ClassId` = @__classId_0) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:13:00.538 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 17:13:00.668 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a0`.`Description`, `a`.`StudentId`, CONCAT(CONCAT(`s`.`FirstName`, ' '), `s`.`LastName`) AS `StudentFullName`, `a`.`ObtainableScore`, `a`.`ScoreObtained`, `a`.`FileUrl`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `s1`.`ScoreStatusName`, `a`.`DateSubmitted`, `a`.`DateGraded`, `a0`.`Id`, `a0`.`CampusId`, `a0`.`ClassGradeId`, `a0`.`ClassId`, `a0`.`DateDeleted`, `a0`.`DateUploaded`, `a0`.`DeletedBy`, `a0`.`DueDate`, `a0`.`FileUrl`, `a0`.`IsActive`, `a0`.`IsDeleted`, `a0`.`LastDateUpdated`, `a0`.`ObtainableScore`, `a0`.`SchoolId`, `a0`.`SessionId`, `a0`.`SubjectId`, `a0`.`TeacherId`, `a0`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+INNER JOIN `Assignments` AS `a0` ON `a`.`AssignmentId` = `a0`.`Id`
+INNER JOIN `Students` AS `s` ON `a`.`StudentId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+INNER JOIN `ScoreStatus` AS `s1` ON `a`.`ScoreStatusId` = `s1`.`Id`
+WHERE (((((`a`.`ClassId` = @__classId_0) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:13:00.731 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS) in 6291.9609ms
+2021-08-19 17:13:00.732 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:13:00.754 +01:00 [INF] Request finished in 6715.557ms 200 application/json; charset=utf-8
+2021-08-19 17:13:51.566 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/unSubmittedAssignmentsByClassIdAndClassGradeId?classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 17:13:51.635 +01:00 [INF] Authorization was successful.
+2021-08-19 17:13:51.636 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:13:51.654 +01:00 [INF] Route matched with {action = "getUnSubmittedAssignmentsByClassIdAndClassGradeId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync(Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 17:13:51.740 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 17:13:51.752 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 17:13:51.755 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 17:13:51.758 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 17:13:51.760 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 17:13:51.763 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 17:13:51.765 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 17:13:51.803 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE (((((`a`.`Id` NOT IN (
+    SELECT `a0`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a0`
+    WHERE (((((`a0`.`ClassId` = @__classId_0) AND (`a0`.`ClassGradeId` = @__classGradeId_1)) AND (`a0`.`SchoolId` = @__schoolId_2)) AND (`a0`.`CampusId` = @__campusId_3)) AND (`a0`.`TermId` = @__termId_4)) AND (`a0`.`SessionId` = @__sessionId_5)
+)
+ AND (`a`.`ClassId` = @__classId_0)) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:13:51.805 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 17:13:51.837 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+WHERE (((((`a`.`Id` NOT IN (
+    SELECT `a0`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a0`
+    WHERE (((((`a0`.`ClassId` = @__classId_0) AND (`a0`.`ClassGradeId` = @__classGradeId_1)) AND (`a0`.`SchoolId` = @__schoolId_2)) AND (`a0`.`CampusId` = @__campusId_3)) AND (`a0`.`TermId` = @__termId_4)) AND (`a0`.`SessionId` = @__sessionId_5)
+)
+ AND (`a`.`ClassId` = @__classId_0)) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:13:51.853 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS) in 198.2667ms
+2021-08-19 17:13:51.853 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:13:51.854 +01:00 [INF] Request finished in 293.2486ms 200 application/json; charset=utf-8
+2021-08-19 17:13:52.484 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/unSubmittedAssignmentsByClassIdAndClassGradeId?classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 17:13:52.498 +01:00 [INF] Authorization was successful.
+2021-08-19 17:13:52.499 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:13:52.501 +01:00 [INF] Route matched with {action = "getUnSubmittedAssignmentsByClassIdAndClassGradeId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync(Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 17:13:52.526 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 17:13:52.534 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 17:13:52.538 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 17:13:52.541 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 17:13:52.545 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 17:13:52.548 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 17:13:52.551 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 17:13:52.557 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Assignments` AS `a`
+WHERE (((((`a`.`Id` NOT IN (
+    SELECT `a0`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a0`
+    WHERE (((((`a0`.`ClassId` = @__classId_0) AND (`a0`.`ClassGradeId` = @__classGradeId_1)) AND (`a0`.`SchoolId` = @__schoolId_2)) AND (`a0`.`CampusId` = @__campusId_3)) AND (`a0`.`TermId` = @__termId_4)) AND (`a0`.`SessionId` = @__sessionId_5)
+)
+ AND (`a`.`ClassId` = @__classId_0)) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:13:52.559 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 17:13:52.564 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`SubjectId`, `a`.`Description`, `a`.`ObtainableScore`, `a`.`FileUrl`, `s`.`SubjectName`, `a`.`TeacherId`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `a`.`IsActive`, `a`.`DueDate`, `a`.`DateUploaded`, `a`.`LastDateUpdated`
+FROM `Assignments` AS `a`
+INNER JOIN `SchoolSubjects` AS `s` ON `a`.`SubjectId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+WHERE (((((`a`.`Id` NOT IN (
+    SELECT `a0`.`AssignmentId`
+    FROM `AssignmentsSubmitted` AS `a0`
+    WHERE (((((`a0`.`ClassId` = @__classId_0) AND (`a0`.`ClassGradeId` = @__classGradeId_1)) AND (`a0`.`SchoolId` = @__schoolId_2)) AND (`a0`.`CampusId` = @__campusId_3)) AND (`a0`.`TermId` = @__termId_4)) AND (`a0`.`SessionId` = @__sessionId_5)
+)
+ AND (`a`.`ClassId` = @__classId_0)) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:13:52.566 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS) in 64.609ms
+2021-08-19 17:13:52.567 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:13:52.567 +01:00 [INF] Request finished in 83.4483ms 200 application/json; charset=utf-8
+2021-08-19 17:14:42.910 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/api/Assignments/submittedAssignmentsByClassIdAndClassGradeId?classId=1&classGradeId=1&schoolId=1&campusId=1&termId=1&sessionId=1  
+2021-08-19 17:14:42.924 +01:00 [INF] Authorization was successful.
+2021-08-19 17:14:42.924 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:14:42.925 +01:00 [INF] Route matched with {action = "getSubmittedAssignmentsByClassIdAndClassGradeId", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] getSubmittedAssignmentsByClassIdAndClassGradeIdAsync(Int64, Int64, Int64, Int64, Int64, Int64) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 17:14:42.930 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 17:14:42.936 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-08-19 17:14:42.939 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-08-19 17:14:42.942 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-08-19 17:14:42.944 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-08-19 17:14:42.946 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2021-08-19 17:14:42.948 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2021-08-19 17:14:42.952 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `AssignmentsSubmitted` AS `a`
+WHERE (((((`a`.`ClassId` = @__classId_0) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:14:42.953 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 17:14:42.965 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__classId_0='?' (DbType = Int64), @__classGradeId_1='?' (DbType = Int64), @__schoolId_2='?' (DbType = Int64), @__campusId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__sessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a0`.`Description`, `a`.`StudentId`, CONCAT(CONCAT(`s`.`FirstName`, ' '), `s`.`LastName`) AS `StudentFullName`, `a`.`ObtainableScore`, `a`.`ScoreObtained`, `a`.`FileUrl`, `c`.`ClassName`, `c0`.`GradeName`, `a`.`SchoolId`, `a`.`CampusId`, `s0`.`SessionName`, `t`.`TermName`, `s1`.`ScoreStatusName`, `a`.`DateSubmitted`, `a`.`DateGraded`, `a0`.`Id`, `a0`.`CampusId`, `a0`.`ClassGradeId`, `a0`.`ClassId`, `a0`.`DateDeleted`, `a0`.`DateUploaded`, `a0`.`DeletedBy`, `a0`.`DueDate`, `a0`.`FileUrl`, `a0`.`IsActive`, `a0`.`IsDeleted`, `a0`.`LastDateUpdated`, `a0`.`ObtainableScore`, `a0`.`SchoolId`, `a0`.`SessionId`, `a0`.`SubjectId`, `a0`.`TeacherId`, `a0`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+INNER JOIN `Assignments` AS `a0` ON `a`.`AssignmentId` = `a0`.`Id`
+INNER JOIN `Students` AS `s` ON `a`.`StudentId` = `s`.`Id`
+INNER JOIN `Classes` AS `c` ON `a`.`ClassId` = `c`.`Id`
+INNER JOIN `ClassGrades` AS `c0` ON `a`.`ClassGradeId` = `c0`.`Id`
+INNER JOIN `Sessions` AS `s0` ON `a`.`SessionId` = `s0`.`Id`
+INNER JOIN `Terms` AS `t` ON `a`.`TermId` = `t`.`Id`
+INNER JOIN `ScoreStatus` AS `s1` ON `a`.`ScoreStatusId` = `s1`.`Id`
+WHERE (((((`a`.`ClassId` = @__classId_0) AND (`a`.`ClassGradeId` = @__classGradeId_1)) AND (`a`.`SchoolId` = @__schoolId_2)) AND (`a`.`CampusId` = @__campusId_3)) AND (`a`.`TermId` = @__termId_4)) AND (`a`.`SessionId` = @__sessionId_5)
+2021-08-19 17:14:42.968 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS) in 42.1641ms
+2021-08-19 17:14:42.968 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync (SANTEGSMS)'
+2021-08-19 17:14:42.968 +01:00 [INF] Request finished in 63.9094ms 200 application/json; charset=utf-8
+2021-08-19 17:18:08.939 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 17:18:09.816 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 17:18:09.824 +01:00 [INF] Hosting environment: Development
+2021-08-19 17:18:09.825 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 17:18:09.874 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 17:18:09.993 +01:00 [INF] Request finished in 125.3311ms 200 text/html;charset=utf-8
+2021-08-19 17:18:10.251 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 17:18:10.775 +01:00 [INF] Request finished in 524.7361ms 200 application/json;charset=utf-8
+2021-08-19 17:36:01.517 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 17:36:02.614 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 17:36:02.626 +01:00 [INF] Hosting environment: Development
+2021-08-19 17:36:02.626 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 17:36:02.708 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 17:36:02.885 +01:00 [INF] Request finished in 188.6166ms 200 text/html;charset=utf-8
+2021-08-19 17:36:03.145 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 17:36:03.765 +01:00 [INF] Request finished in 621.0247ms 200 application/json;charset=utf-8
+2021-08-19 17:38:49.916 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/Assignments/gradeSubmittedAssignments application/json 312
+2021-08-19 17:38:50.108 +01:00 [INF] CORS policy execution successful.
+2021-08-19 17:38:50.187 +01:00 [INF] Authorization was successful.
+2021-08-19 17:38:50.188 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 17:38:50.318 +01:00 [INF] Route matched with {action = "gradeSubmittedAssignments", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] gradeSubmittedAssignmentsAsync(SANTEGSMS.RequestModels.GradeAssignmentsReqModel) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 17:38:54.138 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 17:38:55.560 +01:00 [INF] Executed DbCommand (169ms) [Parameters=[@__8__locals1_obj_AssignmentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateUploaded`, `a`.`DeletedBy`, `a`.`Description`, `a`.`DueDate`, `a`.`FileUrl`, `a`.`IsActive`, `a`.`IsDeleted`, `a`.`LastDateUpdated`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`SessionId`, `a`.`SubjectId`, `a`.`TeacherId`, `a`.`TermId`
+FROM `Assignments` AS `a`
+WHERE `a`.`Id` = @__8__locals1_obj_AssignmentId_0
+LIMIT 1
+2021-08-19 17:38:55.828 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 17:38:57.033 +01:00 [INF] Executed DbCommand (47ms) [Parameters=[@p5='?' (DbType = Int64), @p0='?' (DbType = DateTime), @p1='?' (DbType = Boolean), @p2='?' (DbType = Decimal), @p3='?' (DbType = Decimal), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0, `IsGraded` = @p1, `ObtainableScore` = @p2, `ScoreObtained` = @p3, `ScoreStatusId` = @p4
+WHERE `Id` = @p5;
+SELECT ROW_COUNT();
+2021-08-19 17:38:57.126 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 17:38:57.189 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p5='?' (DbType = Int64), @p0='?' (DbType = DateTime), @p1='?' (DbType = Boolean), @p2='?' (DbType = Decimal), @p3='?' (DbType = Decimal), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0, `IsGraded` = @p1, `ObtainableScore` = @p2, `ScoreObtained` = @p3, `ScoreStatusId` = @p4
+WHERE `Id` = @p5;
+SELECT ROW_COUNT();
+2021-08-19 17:38:57.213 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 17:38:57.249 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS) in 6915.247ms
+2021-08-19 17:38:57.251 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 17:38:57.261 +01:00 [INF] Request finished in 7348.9508ms 200 application/json; charset=utf-8
+2021-08-19 18:06:32.993 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 18:06:34.192 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 18:06:34.207 +01:00 [INF] Hosting environment: Development
+2021-08-19 18:06:34.207 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 18:06:34.283 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 18:06:34.477 +01:00 [INF] Request finished in 203.5362ms 200 text/html;charset=utf-8
+2021-08-19 18:06:34.755 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 18:06:35.267 +01:00 [INF] Request finished in 511.9753ms 200 application/json;charset=utf-8
+2021-08-19 18:12:36.322 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 18:12:37.414 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 18:12:37.425 +01:00 [INF] Hosting environment: Development
+2021-08-19 18:12:37.425 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 18:12:37.499 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 18:12:37.691 +01:00 [INF] Request finished in 200.2232ms 200 text/html;charset=utf-8
+2021-08-19 18:12:37.990 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 18:12:38.592 +01:00 [INF] Request finished in 602.5569ms 200 application/json;charset=utf-8
+2021-08-19 18:14:09.987 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/Assignments/gradeSubmittedAssignments application/json 314
+2021-08-19 18:14:10.165 +01:00 [INF] CORS policy execution successful.
+2021-08-19 18:14:10.249 +01:00 [INF] Authorization was successful.
+2021-08-19 18:14:10.250 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:14:10.403 +01:00 [INF] Route matched with {action = "gradeSubmittedAssignments", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] gradeSubmittedAssignmentsAsync(SANTEGSMS.RequestModels.GradeAssignmentsReqModel) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 18:14:14.349 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 18:14:15.666 +01:00 [INF] Executed DbCommand (164ms) [Parameters=[@__8__locals1_obj_AssignmentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateUploaded`, `a`.`DeletedBy`, `a`.`Description`, `a`.`DueDate`, `a`.`FileUrl`, `a`.`IsActive`, `a`.`IsDeleted`, `a`.`LastDateUpdated`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`SessionId`, `a`.`SubjectId`, `a`.`TeacherId`, `a`.`TermId`
+FROM `Assignments` AS `a`
+WHERE `a`.`Id` = @__8__locals1_obj_AssignmentId_0
+LIMIT 1
+2021-08-19 18:14:15.936 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 18:14:17.022 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (DbType = DateTime), @p1='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0, `ScoreObtained` = @p1
+WHERE `Id` = @p2;
+SELECT ROW_COUNT();
+2021-08-19 18:14:17.102 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 18:14:17.195 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (DbType = DateTime), @p1='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0, `ScoreObtained` = @p1
+WHERE `Id` = @p2;
+SELECT ROW_COUNT();
+2021-08-19 18:14:17.225 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 18:14:17.266 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS) in 6850.9034ms
+2021-08-19 18:14:17.269 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:14:17.281 +01:00 [INF] Request finished in 7297.6063ms 200 application/json; charset=utf-8
+2021-08-19 18:14:52.208 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/Assignments/gradeSubmittedAssignments application/json 315
+2021-08-19 18:14:52.237 +01:00 [INF] CORS policy execution successful.
+2021-08-19 18:14:52.282 +01:00 [INF] Authorization was successful.
+2021-08-19 18:14:52.282 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:14:52.283 +01:00 [INF] Route matched with {action = "gradeSubmittedAssignments", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] gradeSubmittedAssignmentsAsync(SANTEGSMS.RequestModels.GradeAssignmentsReqModel) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 18:14:52.350 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 18:14:52.364 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@__8__locals1_obj_AssignmentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateUploaded`, `a`.`DeletedBy`, `a`.`Description`, `a`.`DueDate`, `a`.`FileUrl`, `a`.`IsActive`, `a`.`IsDeleted`, `a`.`LastDateUpdated`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`SessionId`, `a`.`SubjectId`, `a`.`TeacherId`, `a`.`TermId`
+FROM `Assignments` AS `a`
+WHERE `a`.`Id` = @__8__locals1_obj_AssignmentId_0
+LIMIT 1
+2021-08-19 18:14:52.369 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 18:14:52.439 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[@p3='?' (DbType = Int64), @p0='?' (DbType = DateTime), @p1='?' (DbType = Decimal), @p2='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0, `ScoreObtained` = @p1, `ScoreStatusId` = @p2
+WHERE `Id` = @p3;
+SELECT ROW_COUNT();
+2021-08-19 18:14:52.445 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 18:14:52.448 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS) in 164.8743ms
+2021-08-19 18:14:52.448 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:14:52.449 +01:00 [INF] Request finished in 245.0065ms 200 application/json; charset=utf-8
+2021-08-19 18:18:56.898 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 18:18:57.584 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 18:18:57.585 +01:00 [INF] Hosting environment: Development
+2021-08-19 18:18:57.585 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 18:18:57.637 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 18:18:57.749 +01:00 [INF] Request finished in 114.2002ms 200 text/html;charset=utf-8
+2021-08-19 18:18:57.968 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 18:18:58.341 +01:00 [INF] Request finished in 373.9036ms 200 application/json;charset=utf-8
+2021-08-19 18:20:29.160 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/Assignments/gradeSubmittedAssignments application/json 315
+2021-08-19 18:20:29.256 +01:00 [INF] CORS policy execution successful.
+2021-08-19 18:20:29.309 +01:00 [INF] Authorization was successful.
+2021-08-19 18:20:29.310 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:20:29.394 +01:00 [INF] Route matched with {action = "gradeSubmittedAssignments", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] gradeSubmittedAssignmentsAsync(SANTEGSMS.RequestModels.GradeAssignmentsReqModel) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 18:20:31.514 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 18:20:32.332 +01:00 [INF] Executed DbCommand (83ms) [Parameters=[@__8__locals1_obj_AssignmentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateUploaded`, `a`.`DeletedBy`, `a`.`Description`, `a`.`DueDate`, `a`.`FileUrl`, `a`.`IsActive`, `a`.`IsDeleted`, `a`.`LastDateUpdated`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`SessionId`, `a`.`SubjectId`, `a`.`TeacherId`, `a`.`TermId`
+FROM `Assignments` AS `a`
+WHERE `a`.`Id` = @__8__locals1_obj_AssignmentId_0
+LIMIT 1
+2021-08-19 18:20:32.494 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 18:20:33.427 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@p1='?' (DbType = Int64), @p0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0
+WHERE `Id` = @p1;
+SELECT ROW_COUNT();
+2021-08-19 18:20:33.477 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 18:20:33.552 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS) in 4149.7471ms
+2021-08-19 18:20:33.554 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:20:33.557 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Text.Json.JsonException: A possible object cycle was detected which is not supported. This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_SerializerCycleDetected(Int32 maxDepth)
+   at System.Text.Json.JsonSerializer.Write(Utf8JsonWriter writer, Int32 originalWriterDepth, Int32 flushThreshold, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.JsonSerializer.WriteAsyncCore(Stream utf8Json, Object value, Type inputType, JsonSerializerOptions options, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-08-19 18:20:33.682 +01:00 [INF] Request finished in 4524.9632ms 500 text/plain
+2021-08-19 18:21:12.936 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 18:21:14.067 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 18:21:14.070 +01:00 [INF] Hosting environment: Development
+2021-08-19 18:21:14.070 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 18:21:14.162 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 18:21:14.359 +01:00 [INF] Request finished in 206.7592ms 200 text/html;charset=utf-8
+2021-08-19 18:21:14.642 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 18:21:15.205 +01:00 [INF] Request finished in 563.4958ms 200 application/json;charset=utf-8
+2021-08-19 18:21:37.286 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/Assignments/gradeSubmittedAssignments application/json 315
+2021-08-19 18:21:37.439 +01:00 [INF] CORS policy execution successful.
+2021-08-19 18:21:37.519 +01:00 [INF] Authorization was successful.
+2021-08-19 18:21:37.521 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:21:37.690 +01:00 [INF] Route matched with {action = "gradeSubmittedAssignments", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] gradeSubmittedAssignmentsAsync(SANTEGSMS.RequestModels.GradeAssignmentsReqModel) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 18:21:41.055 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 18:21:42.308 +01:00 [INF] Executed DbCommand (152ms) [Parameters=[@__8__locals1_obj_AssignmentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateUploaded`, `a`.`DeletedBy`, `a`.`Description`, `a`.`DueDate`, `a`.`FileUrl`, `a`.`IsActive`, `a`.`IsDeleted`, `a`.`LastDateUpdated`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`SessionId`, `a`.`SubjectId`, `a`.`TeacherId`, `a`.`TermId`
+FROM `Assignments` AS `a`
+WHERE `a`.`Id` = @__8__locals1_obj_AssignmentId_0
+LIMIT 1
+2021-08-19 18:21:42.566 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 18:21:43.623 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[@p1='?' (DbType = Int64), @p0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0
+WHERE `Id` = @p1;
+SELECT ROW_COUNT();
+2021-08-19 18:21:43.706 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 18:21:43.761 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS) in 6054.7688ms
+2021-08-19 18:21:43.762 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:21:43.773 +01:00 [INF] Request finished in 6495.369ms 200 application/json; charset=utf-8
+2021-08-19 18:23:09.815 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 18:23:10.532 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 18:23:10.541 +01:00 [INF] Hosting environment: Development
+2021-08-19 18:23:10.541 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 18:23:10.588 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 18:23:10.709 +01:00 [INF] Request finished in 126.017ms 200 text/html;charset=utf-8
+2021-08-19 18:23:10.991 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 18:23:11.351 +01:00 [INF] Request finished in 359.5406ms 200 application/json;charset=utf-8
+2021-08-19 18:26:44.911 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 18:26:45.873 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 18:26:45.885 +01:00 [INF] Hosting environment: Development
+2021-08-19 18:26:45.886 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 18:26:45.961 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 18:26:46.114 +01:00 [INF] Request finished in 161.26ms 200 text/html;charset=utf-8
+2021-08-19 18:26:46.414 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 18:26:46.977 +01:00 [INF] Request finished in 562.647ms 200 application/json;charset=utf-8
+2021-08-19 18:27:43.090 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/Assignments/gradeSubmittedAssignments application/json 315
+2021-08-19 18:27:43.263 +01:00 [INF] CORS policy execution successful.
+2021-08-19 18:27:43.357 +01:00 [INF] Authorization was successful.
+2021-08-19 18:27:43.359 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:27:43.490 +01:00 [INF] Route matched with {action = "gradeSubmittedAssignments", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] gradeSubmittedAssignmentsAsync(SANTEGSMS.RequestModels.GradeAssignmentsReqModel) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 18:27:46.964 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 18:27:48.399 +01:00 [INF] Executed DbCommand (147ms) [Parameters=[@__8__locals1_obj_AssignmentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateUploaded`, `a`.`DeletedBy`, `a`.`Description`, `a`.`DueDate`, `a`.`FileUrl`, `a`.`IsActive`, `a`.`IsDeleted`, `a`.`LastDateUpdated`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`SessionId`, `a`.`SubjectId`, `a`.`TeacherId`, `a`.`TermId`
+FROM `Assignments` AS `a`
+WHERE `a`.`Id` = @__8__locals1_obj_AssignmentId_0
+LIMIT 1
+2021-08-19 18:27:48.661 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 18:27:49.792 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@p1='?' (DbType = Int64), @p0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0
+WHERE `Id` = @p1;
+SELECT ROW_COUNT();
+2021-08-19 18:27:49.865 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 18:27:49.910 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS) in 6405.9968ms
+2021-08-19 18:27:49.911 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:27:49.923 +01:00 [INF] Request finished in 6842.7477ms 200 application/json; charset=utf-8
+2021-08-19 18:28:21.305 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-19 18:28:22.034 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-19 18:28:22.041 +01:00 [INF] Hosting environment: Development
+2021-08-19 18:28:22.042 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-08-19 18:28:22.086 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-08-19 18:28:22.217 +01:00 [INF] Request finished in 136.0814ms 200 text/html;charset=utf-8
+2021-08-19 18:28:22.497 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-08-19 18:28:22.861 +01:00 [INF] Request finished in 364.6885ms 200 application/json;charset=utf-8
+2021-08-19 18:28:48.182 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:1952/api/Assignments/gradeSubmittedAssignments application/json 315
+2021-08-19 18:28:48.303 +01:00 [INF] CORS policy execution successful.
+2021-08-19 18:28:48.350 +01:00 [INF] Authorization was successful.
+2021-08-19 18:28:48.350 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:28:48.442 +01:00 [INF] Route matched with {action = "gradeSubmittedAssignments", controller = "Assignments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] gradeSubmittedAssignmentsAsync(SANTEGSMS.RequestModels.GradeAssignmentsReqModel) on controller SANTEGSMS.Controllers.AssignmentsController (SANTEGSMS).
+2021-08-19 18:28:50.653 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-08-19 18:28:51.531 +01:00 [INF] Executed DbCommand (96ms) [Parameters=[@__8__locals1_obj_AssignmentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateUploaded`, `a`.`DeletedBy`, `a`.`Description`, `a`.`DueDate`, `a`.`FileUrl`, `a`.`IsActive`, `a`.`IsDeleted`, `a`.`LastDateUpdated`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`SessionId`, `a`.`SubjectId`, `a`.`TeacherId`, `a`.`TermId`
+FROM `Assignments` AS `a`
+WHERE `a`.`Id` = @__8__locals1_obj_AssignmentId_0
+LIMIT 1
+2021-08-19 18:28:51.697 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@__scr_AssignmentSubmittedId_0='?' (DbType = Int64), @__8__locals2_ass_Id_1='?' (DbType = Int64), @__scr_StudentId_2='?' (DbType = Guid), @__8__locals1_obj_ClassId_3='?' (DbType = Int64), @__8__locals1_obj_ClassGradeId_4='?' (DbType = Int64), @__8__locals1_obj_TermId_5='?' (DbType = Int64), @__8__locals1_obj_SessionId_6='?' (DbType = Int64), @__8__locals1_obj_SchoolId_7='?' (DbType = Int64), @__8__locals1_obj_CampusId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AssignmentId`, `a`.`CampusId`, `a`.`ClassGradeId`, `a`.`ClassId`, `a`.`DateDeleted`, `a`.`DateGraded`, `a`.`DateSubmitted`, `a`.`DeletedBy`, `a`.`FileUrl`, `a`.`IsDeleted`, `a`.`IsGraded`, `a`.`ObtainableScore`, `a`.`SchoolId`, `a`.`ScoreObtained`, `a`.`ScoreStatusId`, `a`.`SessionId`, `a`.`StudentId`, `a`.`TermId`
+FROM `AssignmentsSubmitted` AS `a`
+WHERE ((((((((`a`.`Id` = @__scr_AssignmentSubmittedId_0) AND (`a`.`AssignmentId` = @__8__locals2_ass_Id_1)) AND (`a`.`StudentId` = @__scr_StudentId_2)) AND (`a`.`ClassId` = @__8__locals1_obj_ClassId_3)) AND (`a`.`ClassGradeId` = @__8__locals1_obj_ClassGradeId_4)) AND (`a`.`TermId` = @__8__locals1_obj_TermId_5)) AND (`a`.`SessionId` = @__8__locals1_obj_SessionId_6)) AND (`a`.`SchoolId` = @__8__locals1_obj_SchoolId_7)) AND (`a`.`CampusId` = @__8__locals1_obj_CampusId_8)
+LIMIT 1
+2021-08-19 18:28:52.440 +01:00 [INF] Executed DbCommand (27ms) [Parameters=[@p1='?' (DbType = Int64), @p0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `AssignmentsSubmitted` SET `DateGraded` = @p0
+WHERE `Id` = @p1;
+SELECT ROW_COUNT();
+2021-08-19 18:28:52.510 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.GenericRespModel'.
+2021-08-19 18:28:52.540 +01:00 [INF] Executed action SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS) in 4089.7111ms
+2021-08-19 18:28:52.542 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.AssignmentsController.gradeSubmittedAssignmentsAsync (SANTEGSMS)'
+2021-08-19 18:28:52.550 +01:00 [INF] Request finished in 4372.3588ms 200 application/json; charset=utf-8

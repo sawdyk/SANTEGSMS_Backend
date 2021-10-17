@@ -91,7 +91,7 @@ namespace SANTEGSMS.Repos
                         City = obj.City,
                         State = obj.State,
                         StudentStatus = "",
-                        ProfilePictureUrl = "",
+                        ProfilePictureUrl = obj.ProfilePictureUrl,
                         Status = "",
                         IsAssignedToClass = false,
                         hasParent = true,
@@ -354,6 +354,7 @@ namespace SANTEGSMS.Repos
                         userData.FirstName = getUser.FirstName;
                         userData.LastName = getUser.LastName;
                         userData.UserName = getUser.UserName;
+                        userData.ProfilePictureUrl = getUser.ProfilePictureUrl;
                         userData.AdmissionNumber = getUser.AdmissionNumber;
                         userData.IsActive = getUser.IsActive;
                         userData.LastLoginDate = getUser.LastLoginDate;
@@ -366,6 +367,8 @@ namespace SANTEGSMS.Repos
                         schData.SchoolName = userSchool.SchoolName;
                         schData.SchoolCode = userSchool.SchoolCode;
                         schData.SchoolTypeName = getSchType.SchoolTypeName;
+                        schData.SchoolLogoUrl = userSchool.SchoolLogoUrl;
+                        schData.CampusId = getCampus.Id;
                         schData.CampusName = getCampus.CampusName;
                         schData.CampusAddress = getCampus.CampusAddress;
 
@@ -465,7 +468,7 @@ namespace SANTEGSMS.Repos
                                      std.DateCreated,
                                  };
 
-                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.FirstOrDefault(), };
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.FirstOrDefault()};
                 }
             }
             catch (Exception exMessage)
@@ -795,6 +798,7 @@ namespace SANTEGSMS.Repos
                                      std.Id,
                                      std.SchoolId,
                                      std.CampusId,
+                                     std.SchoolCampus.CampusName,
                                      std.FirstName,
                                      std.LastName,
                                      std.MiddleName,
@@ -925,6 +929,10 @@ namespace SANTEGSMS.Repos
                                      std.Id,
                                      std.SchoolId,
                                      std.CampusId,
+                                     std.ClassId,
+                                     std.Classes.ClassName,
+                                     std.ClassGradeId,
+                                     std.ClassGrades.GradeName,
                                      std.Students.FirstName,
                                      std.Students.LastName,
                                      std.Students.MiddleName,
@@ -1069,6 +1077,16 @@ namespace SANTEGSMS.Repos
                                 response.StatusMessage = $"Student with ID: {studentExists.StudentId} Already exists in this Session";
 
                                 responseList.Add(response);
+
+                                //studentExists.StudentId = stdId.Id;
+                                //studentExists.ClassId = obj.ClassId;
+                                //studentExists.ClassGradeId = obj.ClassGradeId;
+                                //studentExists.SchoolId = obj.SchoolId;
+                                //studentExists.CampusId = obj.CampusId;
+                                //studentExists.SessionId = obj.SessionId;
+                                //studentExists.HasGraduated = false;
+                                //studentExists.DateCreated = DateTime.Now;
+
                             }
                             else
                             {

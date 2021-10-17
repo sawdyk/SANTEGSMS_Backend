@@ -20,6 +20,10 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> deleteScoresPerSubjectForAllStudentAsync(long schoolId, long campusId, long classId, long classGradeId, long subjectId, long categoryId, long subCategoryId, long termId, long sessionId);
         Task<GenericRespModel> deleteScoresPerCategoryForSingleStudentAsync(Guid studentId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId);
         Task<GenericRespModel> deleteScoresPerCategoryForAllStudentAsync(long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId);
+        Task<GenericRespModel> getAllScoresByClassIdAndClassGradeIdAsync(long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId);
+        Task<GenericRespModel> getAllScoresUploadedByTeacherIdAsync(Guid teacherId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId);
+        Task<GenericRespModel> getAllScoresUploadedByTeacherIdAndSubjectIdAsync(Guid teacherId, long subjectId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId);
+
 
         //-----------------------------------------------------EXTENDED SCORES-----------------------------------------------------------------------------------------------
         Task<ExtendedScoresRespModel> getAllStudentAndSubjectScoresExtendedAsync(long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId, IList<SubjectId> subjectId);
@@ -29,6 +33,9 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getScoreSheetTemplateByIdAsync(long scoreSheetTemplateId);
         Task<GenericRespModel> getAllUsedScoreSheetTemplateAsync(long schoolId, long campusId, long classId, long classGradeId, Guid teacherId);
         Task<GenericRespModel> getAllUnUsedScoreSheetTemplateAsync(long schoolId, long campusId, long classId, long classGradeId, Guid teacherId);
+        Task<GenericRespModel> getAllScoreSheetTemplateAsync(long schoolId, long campusId, long classId, long classGradeId, Guid teacherId);
+        Task<GenericRespModel> deleteScoreSheetTemplateAsync(long scoreSheetTemplateId);
+
 
 
         //-----------------------------------------------------BULK UPLOAD OF SCORES(EXCEL)-----------------------------------------------------------------------------------------------

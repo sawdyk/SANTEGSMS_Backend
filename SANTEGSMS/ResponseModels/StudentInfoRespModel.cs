@@ -12,6 +12,7 @@ namespace SANTEGSMS.ResponseModels
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string AdmissionNumber { get; set; }
+        public string ProfilePictureUrl { get; set; }
         public bool IsActive { get; set; }
         public DateTime LastLoginDate { get; set; }
         public DateTime LastPasswordChangedDate { get; set; }

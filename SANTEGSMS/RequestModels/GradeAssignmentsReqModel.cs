@@ -30,6 +30,8 @@ namespace SANTEGSMS.RequestModels
     public class AssignmentScore
     {
         [Required]
+        public long AssignmentSubmittedId { get; set; }
+        [Required]
         public Guid StudentId { get; set; }
         [Required]
         public long ScoreObtained { get; set; }

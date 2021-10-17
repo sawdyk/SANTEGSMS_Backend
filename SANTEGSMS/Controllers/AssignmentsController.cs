@@ -139,16 +139,16 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
-        [HttpGet("submittedAssignmentsByStudentId")]
+        [HttpGet("submittedAssignmentsByStudentIdAndAssignmentId")]
         [Authorize]
-        public async Task<IActionResult> getAllSubmittedAssignmentsByStudentIdAsync(Guid studentId, long classId, long classGradeId, long assignmentId, long schoolId, long campusId, long termId, long sessionId)
+        public async Task<IActionResult> getAllSubmittedAssignmentsByStudentIdAndAssignmentIdAsync(Guid studentId, long classId, long classGradeId, long assignmentId, long schoolId, long campusId, long termId, long sessionId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var result = await _assignmentRepo.getAllSubmittedAssignmentsByStudentIdAsync(studentId, classId, classGradeId, assignmentId, schoolId, campusId, termId, sessionId);
+            var result = await _assignmentRepo.getAllSubmittedAssignmentsByStudentIdAndAssignmentIdAsync(studentId, classId, classGradeId, assignmentId, schoolId, campusId, termId, sessionId);
 
             return Ok(result);
         }
@@ -234,6 +234,106 @@ namespace SANTEGSMS.Controllers
             }
 
             var result = await _assignmentRepo.gradeSubmittedAssignmentsAsync(obj);
+
+            return Ok(result);
+        }
+
+        [HttpGet("submittedAssignmentsBySubjectId")]
+        [Authorize]
+        public async Task<IActionResult> getSubmittedAssignmentsBySubjectIdAsync(long subjectId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _assignmentRepo.getSubmittedAssignmentsBySubjectIdAsync(subjectId, schoolId, campusId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+
+        [HttpGet("unSubmittedAssignmentsByClassIdAndClassGradeId")]
+        [Authorize]
+        public async Task<IActionResult> getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync(long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _assignmentRepo.getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync(classId, classGradeId, schoolId, campusId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("submittedAssignmentsByClassIdAndClassGradeId")]
+        [Authorize]
+        public async Task<IActionResult> getSubmittedAssignmentsByClassIdAndClassGradeIdAsync(long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _assignmentRepo.getSubmittedAssignmentsByClassIdAndClassGradeIdAsync(classId, classGradeId, schoolId, campusId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+
+        [HttpGet("submittedAssignmentsByStudentId")]
+        [Authorize]
+        public async Task<IActionResult> getAllSubmittedAssignmentsByStudentIdAsync(Guid studentId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _assignmentRepo.getAllSubmittedAssignmentsByStudentIdAsync(studentId, classId, classGradeId, schoolId, campusId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("assignmentByTeacherId")]
+        [Authorize]
+        public async Task<IActionResult> getAssignmentByTeacherIdAsync(Guid teacherId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _assignmentRepo.getAssignmentByTeacherIdAsync(teacherId, schoolId, campusId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("submittedAssignmentsByTeacherId")]
+        [Authorize]
+        public async Task<IActionResult> getAllSubmittedAssignmentsByTeacherIdAsync(Guid teacherId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _assignmentRepo.getAllSubmittedAssignmentsByTeacherIdAsync(teacherId, classId, classGradeId, schoolId, campusId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("submittedAssignmentsByTeacherIdAndSubjectId")]
+        [Authorize]
+        public async Task<IActionResult> getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync(Guid teacherId, long subjectId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _assignmentRepo.getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync(teacherId, subjectId, classId, classGradeId, schoolId, campusId, termId, sessionId);
 
             return Ok(result);
         }

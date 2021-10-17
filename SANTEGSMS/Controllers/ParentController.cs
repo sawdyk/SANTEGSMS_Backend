@@ -261,5 +261,19 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("parentInSchoolPerSession")]
+        [Authorize]
+        public async Task<IActionResult> getAllParentInSchoolPerSessionAsync(long schoolId, long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _parentRepo.getAllParentInSchoolPerSessionAsync(schoolId, campusId);
+
+            return Ok(result);
+        }
     }
 }

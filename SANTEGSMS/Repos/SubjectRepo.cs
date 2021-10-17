@@ -360,6 +360,7 @@ namespace SANTEGSMS.Repos
                                  select new
                                  {
                                      sub.Id,
+                                     SubjectId = sub.SchoolSubjects.Id,
                                      sub.SchoolUserId,
                                      sub.ClassId,
                                      sub.Classes.ClassName,

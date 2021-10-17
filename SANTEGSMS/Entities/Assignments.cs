@@ -56,5 +56,8 @@ namespace SANTEGSMS.Entities
 
         [ForeignKey("TermId")]
         public virtual Terms Terms { get; set; }
+
+        public ICollection<AssignmentsSubmitted> AssignmentsSubmitted { get; set; }
+
     }
 }

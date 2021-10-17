@@ -351,7 +351,8 @@ namespace SANTEGSMS.Repos
 
                     if (schNameExist == true)
                     {
-                        return new GenericRespModel { StatusCode = 409, StatusMessage = "A School with this Name Already Exists" };
+                        getSch.SchoolName = obj.SchoolName;
+                        getSch.SchoolLogoUrl = obj.SchoolLogouRL;
                     }
                     else
                     {

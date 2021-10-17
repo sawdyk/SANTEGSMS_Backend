@@ -38,5 +38,9 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getScoreSubCategoryConfigByIdAsync(long scoreSubCategoryConfigId);
         Task<GenericRespModel> updateScoreSubCategoryConfigAsync(long scoreSubCategoryConfigId, ScoreSubCategoryConfigReqModel obj);
         Task<GenericRespModel> deleteScoreSubCategoryConfigAsync(long scoreSubCategoryConfigId);
+        Task<GenericRespModel> getScoreSubCategoryConfigByCategoryIdAsync(long scoreCategoryConfigId, long schoolId, long campusId, long classId, long termId, long sessionId);
+        Task<GenericRespModel> getScoreCategoryConfigAsync(long schoolId, long campusId, long classId, long termId, long sessionId);
+
+
     }
 }

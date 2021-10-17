@@ -1,4 +1,5 @@
-﻿using SANTEGSMS.DatabaseContext;
+﻿using Microsoft.EntityFrameworkCore;
+using SANTEGSMS.DatabaseContext;
 using SANTEGSMS.Entities;
 using SANTEGSMS.Helpers;
 using SANTEGSMS.IRepos;
@@ -445,7 +446,7 @@ namespace SANTEGSMS.Repos
             }
         }
 
-        public async Task<GenericRespModel> getAllSubmittedAssignmentsByStudentIdAsync(Guid studentId, long classId, long classGradeId, long assignmentId, long schoolId, long campusId, long termId, long sessionId)
+        public async Task<GenericRespModel> getAllSubmittedAssignmentsByStudentIdAndAssignmentIdAsync(Guid studentId, long classId, long classGradeId, long assignmentId, long schoolId, long campusId, long termId, long sessionId)
         {
             try
             {
@@ -807,22 +808,24 @@ namespace SANTEGSMS.Repos
             {
                 //check if the submitted assignment exists
                 var ass = _context.Assignments.Where(a => a.Id == obj.AssignmentId).FirstOrDefault();
+                var respList = new List<GenericRespModel>();
 
                 if (ass != null)
                 {
                     //get the obtainable score
                     long obtainableScore = ass.ObtainableScore;
-
+                    
                     foreach (var scr in obj.AssignmentScore)
                     {
                         if (scr.ScoreObtained > obtainableScore)
                         {
-                            return new GenericRespModel { StatusCode = 409, StatusMessage = "Score Obtained cannot be greater than Obtainable Score" };
+                            respList.Add(new GenericRespModel { StatusCode = 409, StatusMessage = $"Score Obtained {scr.ScoreObtained} cannot be greater than Obtainable Score {obtainableScore}"});
+                            //return new GenericRespModel { StatusCode = 409, StatusMessage = "Score Obtained cannot be greater than Obtainable Score" };
                         }
                         else
                         {
                             //the assignment submitted obj
-                            var assignmentSubmitted =  _context.AssignmentsSubmitted.Where(a => a.AssignmentId == ass.Id && a.StudentId == scr.StudentId
+                            var assignmentSubmitted =  _context.AssignmentsSubmitted.Where(a => a.Id == scr.AssignmentSubmittedId && a.AssignmentId == ass.Id && a.StudentId == scr.StudentId
                             && a.ClassId == obj.ClassId && a.ClassGradeId == obj.ClassGradeId && a.TermId == obj.TermId && a.SessionId == obj.SessionId
                             && a.SchoolId == obj.SchoolId && a.CampusId == obj.CampusId).FirstOrDefault();
 
@@ -840,15 +843,493 @@ namespace SANTEGSMS.Repos
                                 {
                                     assignmentSubmitted.ScoreStatusId = (long)EnumUtility.ScoreStatus.Failed;
                                 }
-                                await _context.SaveChangesAsync();
 
+                                await _context.SaveChangesAsync();
                             }
+
+                            respList.Add(new GenericRespModel { StatusCode = 200, StatusMessage = "Assignment Graded Successfully"});
                         }
                     }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Assignment Graded Successfully", Data = respList };
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 400, StatusMessage = "No Assignment with the specified ID!" };
+                }
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getSubmittedAssignmentsBySubjectIdAsync(long subjectId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == true && checkCampus == true && checkSession == true && checkTerm == true)
+                {
+                    var checksubject = _context.SchoolSubjects.Where(x => x.Id == subjectId).FirstOrDefault();
+
+                    if (checksubject != null)
+                    {
+                        var result = from ass in _context.Assignments.Include(c => c.AssignmentsSubmitted).AsNoTracking()
+                                    where (from asts in _context.AssignmentsSubmitted
+                                            where asts.SchoolId == schoolId && asts.CampusId == campusId
+                                            && asts.TermId == termId && asts.SessionId == sessionId
+                                            select asts.AssignmentId).Contains(ass.Id) && ass.SchoolId == schoolId && ass.CampusId == campusId
+                                             && ass.TermId == termId && ass.SessionId == sessionId && ass.SubjectId == subjectId
+                                    select new
+                                    {
+                                        ass.Id,
+                                        ass.SubjectId,
+                                        ass.Description,
+                                        ass.ObtainableScore,
+                                        ass.FileUrl,
+                                        ass.SchoolSubjects.SubjectName,
+                                        ass.TeacherId,
+                                        ass.Classes.ClassName,
+                                        ass.ClassGrades.GradeName,
+                                        ass.SchoolId,
+                                        ass.CampusId,
+                                        ass.Sessions.SessionName,
+                                        ass.Terms.TermName,
+                                        ass.IsActive,
+                                        ass.DueDate,
+                                        ass.DateUploaded,
+                                        ass.LastDateUpdated,
+                                        AssignmentsSubmitted = ass.AssignmentsSubmitted.Select(sub => 
+                                        new 
+                                        {
+                                            sub.Id,
+                                            sub.AssignmentId,
+                                            sub.StudentId,
+                                            StudentFullName = sub.Students.FirstName + " " + sub.Students.LastName,
+                                            sub.ObtainableScore,
+                                            sub.ScoreObtained,
+                                            sub.FileUrl,
+                                            sub.Classes.ClassName,
+                                            sub.ClassGrades.GradeName,
+                                            sub.SchoolId,
+                                            sub.CampusId,
+                                            sub.Sessions.SessionName,
+                                            sub.Terms.TermName,
+                                            sub.ScoreStatus.ScoreStatusName,
+                                            sub.DateSubmitted,
+                                            sub.DateGraded
+                                        }),
+                                    };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result};
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                    }
+
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No Subject with the Specified ID" };
                 }
 
-                return new GenericRespModel { StatusCode = 200, StatusMessage = "No Assignment with the specified ID!" };
+               return new GenericRespModel { StatusCode = 409, StatusMessage = "Some Parameters are Invalid" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
 
+        public async Task<GenericRespModel> getUnSubmittedAssignmentsByClassIdAndClassGradeIdAsync(long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkClass = check.checkClassById(classId);
+                var checkClassGrade = check.checkClassGradeById(classGradeId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == true && checkCampus == true && checkClass == true && checkClassGrade == true && checkSession == true && checkTerm == true)
+                {
+                    var reslt = from ass in _context.Assignments
+                                where !(from asts in _context.AssignmentsSubmitted
+                                        where asts.ClassId == classId && asts.ClassGradeId == classGradeId
+                                        && asts.SchoolId == schoolId && asts.CampusId == campusId
+                                        && asts.TermId == termId && asts.SessionId == sessionId
+                                        select asts.AssignmentId).Contains(ass.Id) && ass.ClassId == classId && ass.ClassGradeId == classGradeId
+                                         && ass.SchoolId == schoolId && ass.CampusId == campusId
+                                         && ass.TermId == termId && ass.SessionId == sessionId
+                                select new
+                                {
+                                    ass.Id,
+                                    ass.SubjectId,
+                                    ass.Description,
+                                    ass.ObtainableScore,
+                                    ass.FileUrl,
+                                    ass.SchoolSubjects.SubjectName,
+                                    ass.TeacherId,
+                                    ass.Classes.ClassName,
+                                    ass.ClassGrades.GradeName,
+                                    ass.SchoolId,
+                                    ass.CampusId,
+                                    ass.Sessions.SessionName,
+                                    ass.Terms.TermName,
+                                    ass.IsActive,
+                                    ass.DueDate,
+                                    ass.DateUploaded,
+                                    ass.LastDateUpdated,
+                                };
+
+                    if (reslt.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = reslt };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+                }
+
+                return new GenericRespModel { StatusCode = 400, StatusMessage = "Some Parameters are Invalid" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getSubmittedAssignmentsByClassIdAndClassGradeIdAsync(long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkClass = check.checkClassById(classId);
+                var checkClassGrade = check.checkClassGradeById(classGradeId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == true && checkCampus == true && checkClass == true && checkClassGrade == true && checkSession == true && checkTerm == true)
+                {
+                    var reslt = from ass in _context.AssignmentsSubmitted.Include(c => c.Assignments).AsNoTracking()
+                                where ass.ClassId == classId && ass.ClassGradeId == classGradeId
+                                 && ass.SchoolId == schoolId && ass.CampusId == campusId
+                                 && ass.TermId == termId && ass.SessionId == sessionId
+                                 select new
+                                 {
+                                     ass.Id,
+                                     ass.AssignmentId,
+                                     ass.Assignments.Description,
+                                     ass.StudentId,
+                                     StudentFullName = ass.Students.FirstName + " " + ass.Students.LastName,
+                                     ass.ObtainableScore,
+                                     ass.ScoreObtained,
+                                     ass.FileUrl,
+                                     ass.Classes.ClassName,
+                                     ass.ClassGrades.GradeName,
+                                     ass.SchoolId,
+                                     ass.CampusId,
+                                     ass.Sessions.SessionName,
+                                     ass.Terms.TermName,
+                                     ass.ScoreStatus.ScoreStatusName,
+                                     ass.DateSubmitted,
+                                     ass.DateGraded,
+                                     ass.Assignments,
+                                 };
+
+                    if (reslt.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = reslt };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+                }
+
+                return new GenericRespModel { StatusCode = 400, StatusMessage = "Some Parameters are Invalid" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAllSubmittedAssignmentsByStudentIdAsync(Guid studentId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            try
+            {
+                var result = from ass in _context.AssignmentsSubmitted
+                             where ass.ClassId == classId && ass.ClassGradeId == classGradeId && ass.SchoolId == schoolId && ass.CampusId == campusId
+                             && ass.TermId == termId && ass.SessionId == sessionId && ass.StudentId == studentId
+                             select new
+                             {
+                                 ass.Id,
+                                 ass.AssignmentId,
+                                 ass.Assignments.Description,
+                                 ass.StudentId,
+                                 ass.Students.FirstName,
+                                 ass.Students.LastName,
+                                 ass.ObtainableScore,
+                                 ass.ScoreObtained,
+                                 ass.FileUrl,
+                                 ass.Classes.ClassName,
+                                 ass.ClassGrades.GradeName,
+                                 ass.SchoolId,
+                                 ass.CampusId,
+                                 ass.Sessions.SessionName,
+                                 ass.Terms.TermName,
+                                 ass.ScoreStatus.ScoreStatusName,
+                                 ass.DateSubmitted,
+                                 ass.DateGraded
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList()};
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAssignmentByTeacherIdAsync(Guid teacherId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            try
+            {
+                var result = from ass in _context.Assignments
+                             where ass.TeacherId == teacherId && ass.TermId == termId && ass.SessionId == sessionId
+                             && ass.SchoolId == schoolId && ass.CampusId == campusId
+                             select new
+                             {
+                                 ass.Id,
+                                 ass.Description,
+                                 ass.ObtainableScore,
+                                 ass.FileUrl,
+                                 ass.SchoolSubjects.SubjectName,
+                                 ass.TeacherId,
+                                 ass.Classes.ClassName,
+                                 ass.ClassGrades.GradeName,
+                                 ass.SchoolId,
+                                 ass.CampusId,
+                                 ass.Sessions.SessionName,
+                                 ass.Terms.TermName,
+                                 ass.IsActive,
+                                 ass.DueDate,
+                                 ass.DateUploaded,
+                                 ass.LastDateUpdated,
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList()};
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAllSubmittedAssignmentsByTeacherIdAsync(Guid teacherId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == true && checkCampus == true && checkSession == true && checkTerm == true)
+                {
+                    var result = from ass in _context.Assignments.Include(c => c.AssignmentsSubmitted).AsNoTracking()
+                                 where ass.SchoolId == schoolId && ass.CampusId == campusId
+                                          && ass.TermId == termId && ass.SessionId == sessionId && ass.ClassId == classId
+                                          && ass.ClassGradeId == classGradeId && ass.TeacherId == teacherId
+                                 select new
+                                 {
+                                     ass.Id,
+                                     ass.SubjectId,
+                                     ass.Description,
+                                     ass.ObtainableScore,
+                                     ass.FileUrl,
+                                     ass.SchoolSubjects.SubjectName,
+                                     ass.TeacherId,
+                                     ass.Classes.ClassName,
+                                     ass.ClassGrades.GradeName,
+                                     ass.SchoolId,
+                                     ass.CampusId,
+                                     ass.Sessions.SessionName,
+                                     ass.Terms.TermName,
+                                     ass.IsActive,
+                                     ass.DueDate,
+                                     ass.DateUploaded,
+                                     ass.LastDateUpdated,
+                                     AssignmentsSubmitted = ass.AssignmentsSubmitted.Select(sub =>
+                                     new
+                                     {
+                                         sub.Id,
+                                         sub.AssignmentId,
+                                         sub.StudentId,
+                                         StudentFullName = sub.Students.FirstName + " " + sub.Students.LastName,
+                                         sub.ObtainableScore,
+                                         sub.ScoreObtained,
+                                         sub.FileUrl,
+                                         sub.Classes.ClassName,
+                                         sub.ClassGrades.GradeName,
+                                         sub.SchoolId,
+                                         sub.CampusId,
+                                         sub.Sessions.SessionName,
+                                         sub.Terms.TermName,
+                                         sub.ScoreStatus.ScoreStatusName,
+                                         sub.DateSubmitted,
+                                         sub.DateGraded
+                                     }),
+                                 };
+
+                    if (result.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "Some Parameters are Invalid" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAllSubmittedAssignmentsByTeacherIdAndSubjectIdAsync(Guid teacherId, long subjectId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == true && checkCampus == true && checkSession == true && checkTerm == true)
+                {
+                    var checksubject = _context.SchoolSubjects.Where(x => x.Id == subjectId).FirstOrDefault();
+
+                    if (checksubject != null)
+                    {
+                        var result = from ass in _context.Assignments.Include(c => c.AssignmentsSubmitted).AsNoTracking()
+                                     where ass.SchoolId == schoolId && ass.CampusId == campusId
+                                              && ass.TermId == termId && ass.SessionId == sessionId && ass.ClassId == classId
+                                              && ass.ClassGradeId == classGradeId && ass.TeacherId == teacherId && ass.SubjectId == subjectId
+                                     select new
+                                     {
+                                         ass.Id,
+                                         ass.SubjectId,
+                                         ass.Description,
+                                         ass.ObtainableScore,
+                                         ass.FileUrl,
+                                         ass.SchoolSubjects.SubjectName,
+                                         ass.TeacherId,
+                                         ass.Classes.ClassName,
+                                         ass.ClassGrades.GradeName,
+                                         ass.SchoolId,
+                                         ass.CampusId,
+                                         ass.Sessions.SessionName,
+                                         ass.Terms.TermName,
+                                         ass.IsActive,
+                                         ass.DueDate,
+                                         ass.DateUploaded,
+                                         ass.LastDateUpdated,
+                                         AssignmentsSubmitted = ass.AssignmentsSubmitted.Select(sub =>
+                                         new
+                                         {
+                                             sub.Id,
+                                             sub.AssignmentId,
+                                             sub.StudentId,
+                                             StudentFullName = sub.Students.FirstName + " " + sub.Students.LastName,
+                                             sub.ObtainableScore,
+                                             sub.ScoreObtained,
+                                             sub.FileUrl,
+                                             sub.Classes.ClassName,
+                                             sub.ClassGrades.GradeName,
+                                             sub.SchoolId,
+                                             sub.CampusId,
+                                             sub.Sessions.SessionName,
+                                             sub.Terms.TermName,
+                                             sub.ScoreStatus.ScoreStatusName,
+                                             sub.DateSubmitted,
+                                             sub.DateGraded
+                                         }),
+                                     };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result };
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                    }
+
+                    return new GenericRespModel { StatusCode = 400, StatusMessage = "No Subject With the Specified ID", };
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "Some Parameters are Invalid" };
             }
             catch (Exception exMessage)
             {

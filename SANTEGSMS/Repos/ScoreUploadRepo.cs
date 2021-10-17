@@ -69,77 +69,85 @@ namespace SANTEGSMS.Repos
                             {
                                 foreach (StudentScoreList scr in obj.StudentScoreLists)
                                 {
-                                    //Check if the examination scores for student has previously been uploaded
-                                    ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                    && s.SubjectId == obj.SubjectId && s.StudentId == scr.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                    //the subject departmentId
-                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
-                                    //the Student AdmissionNumber
-                                    var admissionNumber = _context.Students.Where(s => s.Id == scr.StudentId).FirstOrDefault().AdmissionNumber;
-
-                                    if (examScore == null)
+                                    if (scr.MarkObtained <= subCategoryConfig.ScoreObtainable)
                                     {
-                                        var examScr = new ExaminationScores
+                                        //Check if the examination scores for student has previously been uploaded
+                                        ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                        && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                        && s.SubjectId == obj.SubjectId && s.StudentId == scr.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
+
+                                        //the subject departmentId
+                                        var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
+                                        //the Student AdmissionNumber
+                                        var admissionNumber = _context.Students.Where(s => s.Id == scr.StudentId).FirstOrDefault().AdmissionNumber;
+
+                                        if (examScore == null)
                                         {
-                                            SchoolId = obj.SchoolId,
-                                            CampusId = obj.CampusId,
-                                            ClassId = obj.ClassId,
-                                            ClassGradeId = obj.ClassGradeId,
-                                            SessionId = obj.SessionId,
-                                            TermId = obj.TermId,
-                                            SubjectId = obj.SubjectId,
-                                            DepartmentId = departmentId,
-                                            StudentId = scr.StudentId,
-                                            AdmissionNumber = admissionNumber,
-                                            MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
-                                            MarkObtained = scr.MarkObtained,
-                                            CategoryId = obj.CategoryId,
-                                            SubCategoryId = obj.SubCategoryId,
-                                            TeacherId = obj.TeacherId,
-                                            DateUploaded = DateTime.Now,
-                                            DateUpdated = DateTime.Now,
-                                        };
+                                            var examScr = new ExaminationScores
+                                            {
+                                                SchoolId = obj.SchoolId,
+                                                CampusId = obj.CampusId,
+                                                ClassId = obj.ClassId,
+                                                ClassGradeId = obj.ClassGradeId,
+                                                SessionId = obj.SessionId,
+                                                TermId = obj.TermId,
+                                                SubjectId = obj.SubjectId,
+                                                DepartmentId = departmentId,
+                                                StudentId = scr.StudentId,
+                                                AdmissionNumber = admissionNumber,
+                                                MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
+                                                MarkObtained = scr.MarkObtained,
+                                                CategoryId = obj.CategoryId,
+                                                SubCategoryId = obj.SubCategoryId,
+                                                TeacherId = obj.TeacherId,
+                                                DateUploaded = DateTime.Now,
+                                                DateUpdated = DateTime.Now,
+                                            };
 
-                                        await _context.ExaminationScores.AddAsync(examScr);
-                                        await _context.SaveChangesAsync();
+                                            await _context.ExaminationScores.AddAsync(examScr);
+                                            await _context.SaveChangesAsync();
 
-                                        //Return the Scores uploaded
-                                        var newScr = (from ex in _context.ExaminationScores
-                                                      where ex.Id == examScr.Id
-                                                      select new
-                                                      {
-                                                          ex.Id,
-                                                          ex.SchoolId,
-                                                          ex.CampusId,
-                                                          ex.Classes.ClassName,
-                                                          ex.ClassGrades.GradeName,
-                                                          ex.Sessions.SessionName,
-                                                          ex.Terms.TermName,
-                                                          ex.SchoolSubjects.SubjectName,
-                                                          ex.SubjectDepartment.DepartmentName,
-                                                          StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
-                                                          ex.Students.AdmissionNumber,
-                                                          ex.MarkObtainable,
-                                                          ex.MarkObtained,
-                                                          ex.ScoreCategory.CategoryName,
-                                                          ex.ScoreSubCategoryConfig.SubCategoryName,
-                                                          TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
-                                                          ex.DateUploaded,
-                                                          ex.DateUpdated
-                                                      }).FirstOrDefault();
-                                        //list of scores uploaded
-                                        newScores.Add(newScr);
+                                            //Return the Scores uploaded
+                                            var newScr = (from ex in _context.ExaminationScores
+                                                          where ex.Id == examScr.Id
+                                                          select new
+                                                          {
+                                                              ex.Id,
+                                                              ex.SchoolId,
+                                                              ex.CampusId,
+                                                              ex.Classes.ClassName,
+                                                              ex.ClassGrades.GradeName,
+                                                              ex.Sessions.SessionName,
+                                                              ex.Terms.TermName,
+                                                              ex.SchoolSubjects.SubjectName,
+                                                              ex.SubjectDepartment.DepartmentName,
+                                                              StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                                              ex.Students.AdmissionNumber,
+                                                              ex.MarkObtainable,
+                                                              ex.MarkObtained,
+                                                              ex.ScoreCategory.CategoryName,
+                                                              ex.ScoreSubCategoryConfig.SubCategoryName,
+                                                              TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                                              ex.DateUploaded,
+                                                              ex.DateUpdated
+                                                          }).FirstOrDefault();
+                                            //list of scores uploaded
+                                            newScores.Add(newScr);
 
-                                        response.StatusCode = 200;
-                                        response.StatusMessage = "Scores Uploaded Successfully!";
-                                        response.ScoresUploaded = newScores.ToList();
+                                            response.StatusCode = 200;
+                                            response.StatusMessage = "Scores Uploaded Successfully!";
+                                            response.ScoresUploaded = newScores.ToList();
+                                        }
+                                        else
+                                        {
+                                            response.StatusCode = 409;
+                                            response.StatusMessage = "One or more Student Score Already Exits and Skipped!";
+                                        }
                                     }
                                     else
                                     {
                                         response.StatusCode = 409;
-                                        response.StatusMessage = "One or more Student Score Already Exits and Skipped!";
+                                        response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                     }
                                 }
                             }
@@ -173,76 +181,84 @@ namespace SANTEGSMS.Repos
                             {
                                 foreach (StudentScoreList scr in obj.StudentScoreLists)
                                 {
-                                    //Check if the examination scores for student has previously been uploaded
-                                    ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                    && s.SubjectId == obj.SubjectId && s.StudentId == scr.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                    //the subject departmentId
-                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
-                                    //the Student AdmissionNumber
-                                    var admissionNumber = _context.Students.Where(s => s.Id == scr.StudentId).FirstOrDefault().AdmissionNumber;
-
-                                    if (CAScore == null)
+                                    if (scr.MarkObtained <= subCategoryConfig.ScoreObtainable)
                                     {
-                                        var caScr = new ContinousAssessmentScores
+                                        //Check if the examination scores for student has previously been uploaded
+                                        ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                        && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                        && s.SubjectId == obj.SubjectId && s.StudentId == scr.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
+
+                                        //the subject departmentId
+                                        var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
+                                        //the Student AdmissionNumber
+                                        var admissionNumber = _context.Students.Where(s => s.Id == scr.StudentId).FirstOrDefault().AdmissionNumber;
+
+                                        if (CAScore == null)
                                         {
-                                            SchoolId = obj.SchoolId,
-                                            CampusId = obj.CampusId,
-                                            ClassId = obj.ClassId,
-                                            ClassGradeId = obj.ClassGradeId,
-                                            SessionId = obj.SessionId,
-                                            TermId = obj.TermId,
-                                            SubjectId = obj.SubjectId,
-                                            DepartmentId = departmentId,
-                                            StudentId = scr.StudentId,
-                                            AdmissionNumber = admissionNumber,
-                                            MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
-                                            MarkObtained = scr.MarkObtained,
-                                            CategoryId = obj.CategoryId,
-                                            SubCategoryId = obj.SubCategoryId,
-                                            TeacherId = obj.TeacherId,
-                                            DateUploaded = DateTime.Now,
-                                            DateUpdated = DateTime.Now,
-                                        };
+                                            var caScr = new ContinousAssessmentScores
+                                            {
+                                                SchoolId = obj.SchoolId,
+                                                CampusId = obj.CampusId,
+                                                ClassId = obj.ClassId,
+                                                ClassGradeId = obj.ClassGradeId,
+                                                SessionId = obj.SessionId,
+                                                TermId = obj.TermId,
+                                                SubjectId = obj.SubjectId,
+                                                DepartmentId = departmentId,
+                                                StudentId = scr.StudentId,
+                                                AdmissionNumber = admissionNumber,
+                                                MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
+                                                MarkObtained = scr.MarkObtained,
+                                                CategoryId = obj.CategoryId,
+                                                SubCategoryId = obj.SubCategoryId,
+                                                TeacherId = obj.TeacherId,
+                                                DateUploaded = DateTime.Now,
+                                                DateUpdated = DateTime.Now,
+                                            };
 
-                                        await _context.ContinousAssessmentScores.AddAsync(caScr);
-                                        await _context.SaveChangesAsync();
+                                            await _context.ContinousAssessmentScores.AddAsync(caScr);
+                                            await _context.SaveChangesAsync();
 
-                                        //Return the Scores uploaded
-                                        var newScr = (from ex in _context.ContinousAssessmentScores
-                                                      where ex.Id == caScr.Id
-                                                      select new
-                                                      {
-                                                          ex.Id,
-                                                          ex.SchoolId,
-                                                          ex.CampusId,
-                                                          ex.Classes.ClassName,
-                                                          ex.ClassGrades.GradeName,
-                                                          ex.Sessions.SessionName,
-                                                          ex.Terms.TermName,
-                                                          ex.SchoolSubjects.SubjectName,
-                                                          StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
-                                                          ex.Students.AdmissionNumber,
-                                                          ex.MarkObtainable,
-                                                          ex.MarkObtained,
-                                                          ex.ScoreCategory.CategoryName,
-                                                          ex.ScoreSubCategoryConfig.SubCategoryName,
-                                                          TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
-                                                          ex.DateUploaded,
-                                                          ex.DateUpdated
-                                                      }).FirstOrDefault();
-                                        //list of scores uploaded
-                                        newScores.Add(newScr);
+                                            //Return the Scores uploaded
+                                            var newScr = (from ex in _context.ContinousAssessmentScores
+                                                          where ex.Id == caScr.Id
+                                                          select new
+                                                          {
+                                                              ex.Id,
+                                                              ex.SchoolId,
+                                                              ex.CampusId,
+                                                              ex.Classes.ClassName,
+                                                              ex.ClassGrades.GradeName,
+                                                              ex.Sessions.SessionName,
+                                                              ex.Terms.TermName,
+                                                              ex.SchoolSubjects.SubjectName,
+                                                              StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                                              ex.Students.AdmissionNumber,
+                                                              ex.MarkObtainable,
+                                                              ex.MarkObtained,
+                                                              ex.ScoreCategory.CategoryName,
+                                                              ex.ScoreSubCategoryConfig.SubCategoryName,
+                                                              TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                                              ex.DateUploaded,
+                                                              ex.DateUpdated
+                                                          }).FirstOrDefault();
+                                            //list of scores uploaded
+                                            newScores.Add(newScr);
 
-                                        response.StatusCode = 200;
-                                        response.StatusMessage = "Scores Uploaded Successfully!";
-                                        response.ScoresUploaded = newScores.ToList();
+                                            response.StatusCode = 200;
+                                            response.StatusMessage = "Scores Uploaded Successfully!";
+                                            response.ScoresUploaded = newScores.ToList();
+                                        }
+                                        else
+                                        {
+                                            response.StatusCode = 409;
+                                            response.StatusMessage = "One or more Student Score Already Exits and Skipped";
+                                        }
                                     }
                                     else
                                     {
                                         response.StatusCode = 409;
-                                        response.StatusMessage = "One or more Student Score Already Exits and Skipped";
+                                        response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                     }
                                 }
                             }
@@ -306,6 +322,7 @@ namespace SANTEGSMS.Repos
                                      select new
                                      {
                                          ex.Id,
+                                         ex.StudentId,
                                          ex.SchoolId,
                                          ex.CampusId,
                                          ex.Classes.ClassName,
@@ -341,6 +358,7 @@ namespace SANTEGSMS.Repos
                                      select new
                                      {
                                          ex.Id,
+                                         ex.StudentId,
                                          ex.SchoolId,
                                          ex.CampusId,
                                          ex.Classes.ClassName,
@@ -408,6 +426,7 @@ namespace SANTEGSMS.Repos
                                      select new
                                      {
                                          ex.Id,
+                                         ex.StudentId,
                                          ex.SchoolId,
                                          ex.CampusId,
                                          ex.Classes.ClassName,
@@ -443,6 +462,7 @@ namespace SANTEGSMS.Repos
                                      select new
                                      {
                                          ex.Id,
+                                         ex.StudentId,
                                          ex.SchoolId,
                                          ex.CampusId,
                                          ex.Classes.ClassName,
@@ -511,6 +531,7 @@ namespace SANTEGSMS.Repos
                                      select new
                                      {
                                          ex.Id,
+                                         ex.StudentId,
                                          ex.SchoolId,
                                          ex.CampusId,
                                          ex.Classes.ClassName,
@@ -546,6 +567,7 @@ namespace SANTEGSMS.Repos
                                      select new
                                      {
                                          ex.Id,
+                                         ex.StudentId,
                                          ex.SchoolId,
                                          ex.CampusId,
                                          ex.Classes.ClassName,
@@ -621,44 +643,52 @@ namespace SANTEGSMS.Repos
                             {
                                 foreach (StudentScoreList scr in obj.StudentScoreLists)
                                 {
-                                    //Check if the examination scores for student has previously been uploaded
-                                    ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                    && s.SubjectId == obj.SubjectId && s.StudentId == scr.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                    //the subject departmentId
-                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
-                                    //the Student AdmissionNumber
-                                    var admissionNumber = _context.Students.Where(s => s.Id == scr.StudentId).FirstOrDefault().AdmissionNumber;
-
-                                    if (examScore != null)
+                                    if (scr.MarkObtained <= subCategoryConfig.ScoreObtainable)
                                     {
-                                        examScore.SchoolId = obj.SchoolId;
-                                        examScore.CampusId = obj.CampusId;
-                                        examScore.ClassId = obj.ClassId;
-                                        examScore.ClassGradeId = obj.ClassGradeId;
-                                        examScore.SessionId = obj.SessionId;
-                                        examScore.TermId = obj.TermId;
-                                        examScore.SubjectId = obj.SubjectId;
-                                        examScore.DepartmentId = departmentId;
-                                        examScore.StudentId = scr.StudentId;
-                                        examScore.AdmissionNumber = admissionNumber;
-                                        examScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
-                                        examScore.MarkObtained = scr.MarkObtained;
-                                        examScore.CategoryId = obj.CategoryId;
-                                        examScore.SubCategoryId = obj.SubCategoryId;
-                                        examScore.TeacherId = obj.TeacherId;
-                                        examScore.DateUpdated = DateTime.Now;
+                                        //Check if the examination scores for student has previously been uploaded
+                                        ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                        && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                        && s.SubjectId == obj.SubjectId && s.StudentId == scr.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
 
-                                        await _context.SaveChangesAsync();
+                                        //the subject departmentId
+                                        var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
+                                        //the Student AdmissionNumber
+                                        var admissionNumber = _context.Students.Where(s => s.Id == scr.StudentId).FirstOrDefault().AdmissionNumber;
 
-                                        response.StatusCode = 200;
-                                        response.StatusMessage = "Scores Updated Successfully!";
+                                        if (examScore != null)
+                                        {
+                                            examScore.SchoolId = obj.SchoolId;
+                                            examScore.CampusId = obj.CampusId;
+                                            examScore.ClassId = obj.ClassId;
+                                            examScore.ClassGradeId = obj.ClassGradeId;
+                                            examScore.SessionId = obj.SessionId;
+                                            examScore.TermId = obj.TermId;
+                                            examScore.SubjectId = obj.SubjectId;
+                                            examScore.DepartmentId = departmentId;
+                                            examScore.StudentId = scr.StudentId;
+                                            examScore.AdmissionNumber = admissionNumber;
+                                            examScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
+                                            examScore.MarkObtained = scr.MarkObtained;
+                                            examScore.CategoryId = obj.CategoryId;
+                                            examScore.SubCategoryId = obj.SubCategoryId;
+                                            examScore.TeacherId = obj.TeacherId;
+                                            examScore.DateUpdated = DateTime.Now;
+
+                                            await _context.SaveChangesAsync();
+
+                                            response.StatusCode = 200;
+                                            response.StatusMessage = "Scores Updated Successfully!";
+                                        }
+                                        else
+                                        {
+                                            response.StatusCode = 409;
+                                            response.StatusMessage = "Scores does not Exists!";
+                                        }
                                     }
                                     else
                                     {
                                         response.StatusCode = 409;
-                                        response.StatusMessage = "Scores does not Exists!";
+                                        response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                     }
                                 }
                             }
@@ -692,44 +722,52 @@ namespace SANTEGSMS.Repos
                             {
                                 foreach (StudentScoreList scr in obj.StudentScoreLists)
                                 {
-                                    //Check if the examination scores for student has previously been uploaded
-                                    ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                    && s.SubjectId == obj.SubjectId && s.StudentId == scr.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                    //the subject departmentId
-                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
-                                    //the Student AdmissionNumber
-                                    var admissionNumber = _context.Students.Where(s => s.Id == scr.StudentId).FirstOrDefault().AdmissionNumber;
-
-                                    if (CAScore != null)
+                                    if (scr.MarkObtained <= subCategoryConfig.ScoreObtainable)
                                     {
-                                        CAScore.SchoolId = obj.SchoolId;
-                                        CAScore.CampusId = obj.CampusId;
-                                        CAScore.ClassId = obj.ClassId;
-                                        CAScore.ClassGradeId = obj.ClassGradeId;
-                                        CAScore.SessionId = obj.SessionId;
-                                        CAScore.TermId = obj.TermId;
-                                        CAScore.SubjectId = obj.SubjectId;
-                                        CAScore.DepartmentId = departmentId;
-                                        CAScore.StudentId = scr.StudentId;
-                                        CAScore.AdmissionNumber = admissionNumber;
-                                        CAScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
-                                        CAScore.MarkObtained = scr.MarkObtained;
-                                        CAScore.CategoryId = obj.CategoryId;
-                                        CAScore.SubCategoryId = obj.SubCategoryId;
-                                        CAScore.TeacherId = obj.TeacherId;
-                                        CAScore.DateUpdated = DateTime.Now;
+                                        //Check if the examination scores for student has previously been uploaded
+                                        ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                        && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                        && s.SubjectId == obj.SubjectId && s.StudentId == scr.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
 
-                                        await _context.SaveChangesAsync();
+                                        //the subject departmentId
+                                        var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
+                                        //the Student AdmissionNumber
+                                        var admissionNumber = _context.Students.Where(s => s.Id == scr.StudentId).FirstOrDefault().AdmissionNumber;
 
-                                        response.StatusCode = 200;
-                                        response.StatusMessage = "Scores Updated Successfully!";
+                                        if (CAScore != null)
+                                        {
+                                            CAScore.SchoolId = obj.SchoolId;
+                                            CAScore.CampusId = obj.CampusId;
+                                            CAScore.ClassId = obj.ClassId;
+                                            CAScore.ClassGradeId = obj.ClassGradeId;
+                                            CAScore.SessionId = obj.SessionId;
+                                            CAScore.TermId = obj.TermId;
+                                            CAScore.SubjectId = obj.SubjectId;
+                                            CAScore.DepartmentId = departmentId;
+                                            CAScore.StudentId = scr.StudentId;
+                                            CAScore.AdmissionNumber = admissionNumber;
+                                            CAScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
+                                            CAScore.MarkObtained = scr.MarkObtained;
+                                            CAScore.CategoryId = obj.CategoryId;
+                                            CAScore.SubCategoryId = obj.SubCategoryId;
+                                            CAScore.TeacherId = obj.TeacherId;
+                                            CAScore.DateUpdated = DateTime.Now;
+
+                                            await _context.SaveChangesAsync();
+
+                                            response.StatusCode = 200;
+                                            response.StatusMessage = "Scores Updated Successfully!";
+                                        }
+                                        else
+                                        {
+                                            response.StatusCode = 409;
+                                            response.StatusMessage = "Scores does not Exists!";
+                                        }
                                     }
                                     else
                                     {
                                         response.StatusCode = 409;
-                                        response.StatusMessage = "Scores does not Exists!";
+                                        response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                     }
                                 }
                             }
@@ -804,78 +842,87 @@ namespace SANTEGSMS.Repos
 
                             if (subCategoryConfig != null)
                             {
-                                //Check if the examination scores for student has previously been uploaded
-                                ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                && s.SubjectId == obj.SubjectId && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                //the subject departmentId
-                                var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
-                                //the Student AdmissionNumber
-                                var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
-
-                                //if Exam scores does not exit, Save the new Exam scores
-                                if (examScore == null)
+                                if (obj.MarkObtained <= subCategoryConfig.ScoreObtainable)
                                 {
-                                    var examScr = new ExaminationScores
+                                        //Check if the examination scores for student has previously been uploaded
+                                         ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                     && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                     && s.SubjectId == obj.SubjectId && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
+
+                                    //the subject departmentId
+                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
+                                    //the Student AdmissionNumber
+                                    var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
+
+                                    //if Exam scores does not exit, Save the new Exam scores
+                                    if (examScore == null)
                                     {
-                                        SchoolId = obj.SchoolId,
-                                        CampusId = obj.CampusId,
-                                        ClassId = obj.ClassId,
-                                        ClassGradeId = obj.ClassGradeId,
-                                        SessionId = obj.SessionId,
-                                        TermId = obj.TermId,
-                                        SubjectId = obj.SubjectId,
-                                        DepartmentId = departmentId,
-                                        StudentId = obj.StudentId,
-                                        AdmissionNumber = admissionNumber,
-                                        MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
-                                        MarkObtained = obj.MarkObtained,
-                                        CategoryId = obj.CategoryId,
-                                        SubCategoryId = obj.SubCategoryId,
-                                        TeacherId = obj.TeacherId,
-                                        DateUploaded = DateTime.Now,
-                                        DateUpdated = DateTime.Now,
-                                    };
+                                        var examScr = new ExaminationScores
+                                        {
+                                            SchoolId = obj.SchoolId,
+                                            CampusId = obj.CampusId,
+                                            ClassId = obj.ClassId,
+                                            ClassGradeId = obj.ClassGradeId,
+                                            SessionId = obj.SessionId,
+                                            TermId = obj.TermId,
+                                            SubjectId = obj.SubjectId,
+                                            DepartmentId = departmentId,
+                                            StudentId = obj.StudentId,
+                                            AdmissionNumber = admissionNumber,
+                                            MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
+                                            MarkObtained = obj.MarkObtained,
+                                            CategoryId = obj.CategoryId,
+                                            SubCategoryId = obj.SubCategoryId,
+                                            TeacherId = obj.TeacherId,
+                                            DateUploaded = DateTime.Now,
+                                            DateUpdated = DateTime.Now,
+                                        };
 
-                                    await _context.ExaminationScores.AddAsync(examScr);
-                                    await _context.SaveChangesAsync();
+                                        await _context.ExaminationScores.AddAsync(examScr);
+                                        await _context.SaveChangesAsync();
 
-                                    //Return the Scores uploaded
-                                    var newScr = (from ex in _context.ExaminationScores
-                                                  where ex.Id == examScr.Id
-                                                  select new
-                                                  {
-                                                      ex.Id,
-                                                      ex.SchoolId,
-                                                      ex.CampusId,
-                                                      ex.Classes.ClassName,
-                                                      ex.ClassGrades.GradeName,
-                                                      ex.Sessions.SessionName,
-                                                      ex.Terms.TermName,
-                                                      ex.SchoolSubjects.SubjectName,
-                                                      StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
-                                                      ex.Students.AdmissionNumber,
-                                                      ex.MarkObtainable,
-                                                      ex.MarkObtained,
-                                                      ex.ScoreCategory.CategoryName,
-                                                      ex.ScoreSubCategoryConfig.SubCategoryName,
-                                                      TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
-                                                      ex.DateUploaded,
-                                                      ex.DateUpdated
-                                                  }).FirstOrDefault();
-                                    //list of scores uploaded
-                                    newScores.Add(newScr);
+                                        //Return the Scores uploaded
+                                        var newScr = (from ex in _context.ExaminationScores
+                                                      where ex.Id == examScr.Id
+                                                      select new
+                                                      {
+                                                          ex.Id,
+                                                          ex.SchoolId,
+                                                          ex.CampusId,
+                                                          ex.Classes.ClassName,
+                                                          ex.ClassGrades.GradeName,
+                                                          ex.Sessions.SessionName,
+                                                          ex.Terms.TermName,
+                                                          ex.SchoolSubjects.SubjectName,
+                                                          StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                                          ex.Students.AdmissionNumber,
+                                                          ex.MarkObtainable,
+                                                          ex.MarkObtained,
+                                                          ex.ScoreCategory.CategoryName,
+                                                          ex.ScoreSubCategoryConfig.SubCategoryName,
+                                                          TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                                          ex.DateUploaded,
+                                                          ex.DateUpdated
+                                                      }).FirstOrDefault();
+                                        //list of scores uploaded
+                                        newScores.Add(newScr);
 
-                                    response.StatusCode = 200;
-                                    response.StatusMessage = "Scores Uploaded Successfully!";
-                                    response.ScoresUploaded = newScores.ToList();
+                                        response.StatusCode = 200;
+                                        response.StatusMessage = "Scores Uploaded Successfully!";
+                                        response.ScoresUploaded = newScores.ToList();
+                                    }
+                                    else
+                                    {
+                                        response.StatusCode = 409;
+                                        response.StatusMessage = "One or more Student Score Already Exits and Skipped!";
+                                    }
                                 }
                                 else
                                 {
                                     response.StatusCode = 409;
-                                    response.StatusMessage = "One or more Student Score Already Exits and Skipped!";
+                                    response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                 }
+
                             }
                             else
                             {
@@ -905,77 +952,85 @@ namespace SANTEGSMS.Repos
 
                             if (subCategoryConfig != null)
                             {
-                                //Check if the examination scores for student has previously been uploaded
-                                ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                && s.SubjectId == obj.SubjectId && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                //the subject departmentId
-                                var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
-                                //the Student AdmissionNumber
-                                var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
-
-                                //if CA scores does not exit, Save the new CA scores
-                                if (CAScore == null)
+                                if (obj.MarkObtained <= subCategoryConfig.ScoreObtainable)
                                 {
-                                    var caScr = new ContinousAssessmentScores
+                                        //Check if the examination scores for student has previously been uploaded
+                                        ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                    && s.SubjectId == obj.SubjectId && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
+
+                                    //the subject departmentId
+                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
+                                    //the Student AdmissionNumber
+                                    var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
+
+                                    //if CA scores does not exit, Save the new CA scores
+                                    if (CAScore == null)
                                     {
-                                        SchoolId = obj.SchoolId,
-                                        CampusId = obj.CampusId,
-                                        ClassId = obj.ClassId,
-                                        ClassGradeId = obj.ClassGradeId,
-                                        SessionId = obj.SessionId,
-                                        TermId = obj.TermId,
-                                        SubjectId = obj.SubjectId,
-                                        DepartmentId = departmentId,
-                                        StudentId = obj.StudentId,
-                                        AdmissionNumber = admissionNumber,
-                                        MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
-                                        MarkObtained = obj.MarkObtained,
-                                        CategoryId = obj.CategoryId,
-                                        SubCategoryId = obj.SubCategoryId,
-                                        TeacherId = obj.TeacherId,
-                                        DateUploaded = DateTime.Now,
-                                        DateUpdated = DateTime.Now,
-                                    };
+                                        var caScr = new ContinousAssessmentScores
+                                        {
+                                            SchoolId = obj.SchoolId,
+                                            CampusId = obj.CampusId,
+                                            ClassId = obj.ClassId,
+                                            ClassGradeId = obj.ClassGradeId,
+                                            SessionId = obj.SessionId,
+                                            TermId = obj.TermId,
+                                            SubjectId = obj.SubjectId,
+                                            DepartmentId = departmentId,
+                                            StudentId = obj.StudentId,
+                                            AdmissionNumber = admissionNumber,
+                                            MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
+                                            MarkObtained = obj.MarkObtained,
+                                            CategoryId = obj.CategoryId,
+                                            SubCategoryId = obj.SubCategoryId,
+                                            TeacherId = obj.TeacherId,
+                                            DateUploaded = DateTime.Now,
+                                            DateUpdated = DateTime.Now,
+                                        };
 
-                                    await _context.ContinousAssessmentScores.AddAsync(caScr);
-                                    await _context.SaveChangesAsync();
+                                        await _context.ContinousAssessmentScores.AddAsync(caScr);
+                                        await _context.SaveChangesAsync();
 
-                                    //Return the Scores uploaded
-                                    var newScr = (from ex in _context.ContinousAssessmentScores
-                                                  where ex.Id == caScr.Id
-                                                  select new
-                                                  {
-                                                      ex.Id,
-                                                      ex.SchoolId,
-                                                      ex.CampusId,
-                                                      ex.Classes.ClassName,
-                                                      ex.ClassGrades.GradeName,
-                                                      ex.Sessions.SessionName,
-                                                      ex.Terms.TermName,
-                                                      ex.SchoolSubjects.SubjectName,
-                                                      StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
-                                                      ex.Students.AdmissionNumber,
-                                                      ex.MarkObtainable,
-                                                      ex.MarkObtained,
-                                                      ex.ScoreCategory.CategoryName,
-                                                      ex.ScoreSubCategoryConfig.SubCategoryName,
-                                                      TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
-                                                      ex.DateUploaded,
-                                                      ex.DateUpdated
-                                                  }).FirstOrDefault();
-                                    //list of scores uploaded
-                                    newScores.Add(newScr);
+                                        //Return the Scores uploaded
+                                        var newScr = (from ex in _context.ContinousAssessmentScores
+                                                      where ex.Id == caScr.Id
+                                                      select new
+                                                      {
+                                                          ex.Id,
+                                                          ex.SchoolId,
+                                                          ex.CampusId,
+                                                          ex.Classes.ClassName,
+                                                          ex.ClassGrades.GradeName,
+                                                          ex.Sessions.SessionName,
+                                                          ex.Terms.TermName,
+                                                          ex.SchoolSubjects.SubjectName,
+                                                          StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                                          ex.Students.AdmissionNumber,
+                                                          ex.MarkObtainable,
+                                                          ex.MarkObtained,
+                                                          ex.ScoreCategory.CategoryName,
+                                                          ex.ScoreSubCategoryConfig.SubCategoryName,
+                                                          TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                                          ex.DateUploaded,
+                                                          ex.DateUpdated
+                                                      }).FirstOrDefault();
+                                        //list of scores uploaded
+                                        newScores.Add(newScr);
 
-                                    response.StatusCode = 200;
-                                    response.StatusMessage = "Scores Uploaded Successfully!";
-                                    response.ScoresUploaded = newScores.ToList();
+                                        response.StatusCode = 200;
+                                        response.StatusMessage = "Scores Uploaded Successfully!";
+                                        response.ScoresUploaded = newScores.ToList();
+                                    }
+                                    else
+                                    {
+                                        response.StatusCode = 409;
+                                        response.StatusMessage = "One or more Student Score Already Exits!";
+                                    }
                                 }
                                 else
                                 {
                                     response.StatusCode = 409;
-                                    response.StatusMessage = "One or more Student Score Already Exits!";
+                                    response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                 }
                             }
                             else
@@ -1042,44 +1097,52 @@ namespace SANTEGSMS.Repos
 
                             if (subCategoryConfig != null)
                             {
-                                //Check if the examination scores for student has previously been uploaded
-                                ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                && s.SubjectId == obj.SubjectId && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                //the subject departmentId
-                                var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
-                                //the Student AdmissionNumber
-                                var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
-
-                                if (examScore != null)
+                                if (obj.MarkObtained <= subCategoryConfig.ScoreObtainable)
                                 {
-                                    examScore.SchoolId = obj.SchoolId;
-                                    examScore.CampusId = obj.CampusId;
-                                    examScore.ClassId = obj.ClassId;
-                                    examScore.ClassGradeId = obj.ClassGradeId;
-                                    examScore.SessionId = obj.SessionId;
-                                    examScore.TermId = obj.TermId;
-                                    examScore.SubjectId = obj.SubjectId;
-                                    examScore.DepartmentId = departmentId;
-                                    examScore.StudentId = obj.StudentId;
-                                    examScore.AdmissionNumber = admissionNumber;
-                                    examScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
-                                    examScore.MarkObtained = obj.MarkObtained;
-                                    examScore.CategoryId = obj.CategoryId;
-                                    examScore.SubCategoryId = obj.SubCategoryId;
-                                    examScore.TeacherId = obj.TeacherId;
-                                    examScore.DateUpdated = DateTime.Now;
+                                    //Check if the examination scores for student has previously been uploaded
+                                    ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                    && s.SubjectId == obj.SubjectId && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
 
-                                    await _context.SaveChangesAsync();
+                                    //the subject departmentId
+                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
+                                    //the Student AdmissionNumber
+                                    var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
 
-                                    response.StatusCode = 200;
-                                    response.StatusMessage = "Scores Updated Successfully!";
+                                    if (examScore != null)
+                                    {
+                                        examScore.SchoolId = obj.SchoolId;
+                                        examScore.CampusId = obj.CampusId;
+                                        examScore.ClassId = obj.ClassId;
+                                        examScore.ClassGradeId = obj.ClassGradeId;
+                                        examScore.SessionId = obj.SessionId;
+                                        examScore.TermId = obj.TermId;
+                                        examScore.SubjectId = obj.SubjectId;
+                                        examScore.DepartmentId = departmentId;
+                                        examScore.StudentId = obj.StudentId;
+                                        examScore.AdmissionNumber = admissionNumber;
+                                        examScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
+                                        examScore.MarkObtained = obj.MarkObtained;
+                                        examScore.CategoryId = obj.CategoryId;
+                                        examScore.SubCategoryId = obj.SubCategoryId;
+                                        examScore.TeacherId = obj.TeacherId;
+                                        examScore.DateUpdated = DateTime.Now;
+
+                                        await _context.SaveChangesAsync();
+
+                                        response.StatusCode = 200;
+                                        response.StatusMessage = "Scores Updated Successfully!";
+                                    }
+                                    else
+                                    {
+                                        response.StatusCode = 409;
+                                        response.StatusMessage = "Scores does not Exists!";
+                                    }
                                 }
                                 else
                                 {
                                     response.StatusCode = 409;
-                                    response.StatusMessage = "Scores does not Exists!";
+                                    response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                 }
                             }
                             else
@@ -1110,44 +1173,52 @@ namespace SANTEGSMS.Repos
 
                             if (subCategoryConfig != null)
                             {
-                                //Check if the examination scores for student has previously been uploaded
-                                ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                && s.SubjectId == obj.SubjectId && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                //the subject departmentId
-                                var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
-                                //the Student AdmissionNumber
-                                var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
-
-                                if (CAScore != null)
+                                if (obj.MarkObtained <= subCategoryConfig.ScoreObtainable)
                                 {
-                                    CAScore.SchoolId = obj.SchoolId;
-                                    CAScore.CampusId = obj.CampusId;
-                                    CAScore.ClassId = obj.ClassId;
-                                    CAScore.ClassGradeId = obj.ClassGradeId;
-                                    CAScore.SessionId = obj.SessionId;
-                                    CAScore.TermId = obj.TermId;
-                                    CAScore.SubjectId = obj.SubjectId;
-                                    CAScore.DepartmentId = departmentId;
-                                    CAScore.StudentId = obj.StudentId;
-                                    CAScore.AdmissionNumber = admissionNumber;
-                                    CAScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
-                                    CAScore.MarkObtained = obj.MarkObtained;
-                                    CAScore.CategoryId = obj.CategoryId;
-                                    CAScore.SubCategoryId = obj.SubCategoryId;
-                                    CAScore.TeacherId = obj.TeacherId;
-                                    CAScore.DateUpdated = DateTime.Now;
+                                    //Check if the examination scores for student has previously been uploaded
+                                    ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                    && s.SubjectId == obj.SubjectId && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
 
-                                    await _context.SaveChangesAsync();
+                                    //the subject departmentId
+                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == obj.SubjectId).FirstOrDefault().DepartmentId;
+                                    //the Student AdmissionNumber
+                                    var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
 
-                                    response.StatusCode = 200;
-                                    response.StatusMessage = "Scores Updated Successfully!";
+                                    if (CAScore != null)
+                                    {
+                                        CAScore.SchoolId = obj.SchoolId;
+                                        CAScore.CampusId = obj.CampusId;
+                                        CAScore.ClassId = obj.ClassId;
+                                        CAScore.ClassGradeId = obj.ClassGradeId;
+                                        CAScore.SessionId = obj.SessionId;
+                                        CAScore.TermId = obj.TermId;
+                                        CAScore.SubjectId = obj.SubjectId;
+                                        CAScore.DepartmentId = departmentId;
+                                        CAScore.StudentId = obj.StudentId;
+                                        CAScore.AdmissionNumber = admissionNumber;
+                                        CAScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
+                                        CAScore.MarkObtained = obj.MarkObtained;
+                                        CAScore.CategoryId = obj.CategoryId;
+                                        CAScore.SubCategoryId = obj.SubCategoryId;
+                                        CAScore.TeacherId = obj.TeacherId;
+                                        CAScore.DateUpdated = DateTime.Now;
+
+                                        await _context.SaveChangesAsync();
+
+                                        response.StatusCode = 200;
+                                        response.StatusMessage = "Scores Updated Successfully!";
+                                    }
+                                    else
+                                    {
+                                        response.StatusCode = 409;
+                                        response.StatusMessage = "Scores does not Exists!";
+                                    }
                                 }
                                 else
                                 {
                                     response.StatusCode = 409;
-                                    response.StatusMessage = "Scores does not Exists!";
+                                    response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                 }
                             }
                             else
@@ -1473,85 +1544,94 @@ namespace SANTEGSMS.Repos
 
                                             if (subCategoryConfig != null)
                                             {
-                                                //get the student by the admissionNumber
-                                                var getStudent =  _context.Students.Where(s => s.AdmissionNumber == worksheet.Cells[rowCounts, 3].Value.ToString().Trim()).FirstOrDefault();
-
-                                                //Check if the examination scores for student has previously been uploaded
-                                                ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                                && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                                && s.SubjectId == Convert.ToInt64(subId) && s.StudentId == getStudent.Id && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                                //the subject departmentId
-                                                var departmentId = _context.SchoolSubjects.Where(s => s.Id == Convert.ToInt64(subId)).FirstOrDefault().DepartmentId;
                                                 //the mark obtained
                                                 decimal markObtained = Convert.ToDecimal(worksheet.Cells[rowCounts, count + 3].Value.ToString());
 
-                                                if (examScore == null)
+                                                if (markObtained <= subCategoryConfig.ScoreObtainable)
                                                 {
-                                                    var examScr = new ExaminationScores
+                                                    //get the student by the admissionNumber
+                                                    var getStudent = _context.Students.Where(s => s.AdmissionNumber == worksheet.Cells[rowCounts, 3].Value.ToString().Trim()).FirstOrDefault();
+
+                                                    //Check if the examination scores for student has previously been uploaded
+                                                    ExaminationScores examScore = _context.ExaminationScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                                    && s.SubjectId == Convert.ToInt64(subId) && s.StudentId == getStudent.Id && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
+
+                                                    //the subject departmentId
+                                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == Convert.ToInt64(subId)).FirstOrDefault().DepartmentId;
+                                                   
+                                                    if (examScore == null)
                                                     {
-                                                        SchoolId = obj.SchoolId,
-                                                        CampusId = obj.CampusId,
-                                                        ClassId = obj.ClassId,
-                                                        ClassGradeId = obj.ClassGradeId,
-                                                        SessionId = obj.SessionId,
-                                                        TermId = obj.TermId,
-                                                        SubjectId = Convert.ToInt64(subId),
-                                                        DepartmentId = departmentId,
-                                                        StudentId = getStudent.Id,
-                                                        AdmissionNumber = worksheet.Cells[rowCounts, 3].Value.ToString().Trim(), //AdmissionNumber Row
-                                                        MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
-                                                        MarkObtained = Convert.ToDecimal(worksheet.Cells[rowCounts, count + 3].Value.ToString()), //MarkObtained Row
-                                                        CategoryId = obj.CategoryId,
-                                                        SubCategoryId = obj.SubCategoryId,
-                                                        TeacherId = obj.TeacherId,
-                                                        DateUploaded = DateTime.Now,
-                                                        DateUpdated = DateTime.Now,
-                                                    };
+                                                        var examScr = new ExaminationScores
+                                                        {
+                                                            SchoolId = obj.SchoolId,
+                                                            CampusId = obj.CampusId,
+                                                            ClassId = obj.ClassId,
+                                                            ClassGradeId = obj.ClassGradeId,
+                                                            SessionId = obj.SessionId,
+                                                            TermId = obj.TermId,
+                                                            SubjectId = Convert.ToInt64(subId),
+                                                            DepartmentId = departmentId,
+                                                            StudentId = getStudent.Id,
+                                                            AdmissionNumber = worksheet.Cells[rowCounts, 3].Value.ToString().Trim(), //AdmissionNumber Row
+                                                            MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
+                                                            MarkObtained = Convert.ToDecimal(worksheet.Cells[rowCounts, count + 3].Value.ToString()), //MarkObtained Row
+                                                            CategoryId = obj.CategoryId,
+                                                            SubCategoryId = obj.SubCategoryId,
+                                                            TeacherId = obj.TeacherId,
+                                                            DateUploaded = DateTime.Now,
+                                                            DateUpdated = DateTime.Now,
+                                                        };
 
-                                                    await _context.ExaminationScores.AddAsync(examScr);
-                                                    await _context.SaveChangesAsync();
+                                                        await _context.ExaminationScores.AddAsync(examScr);
+                                                        await _context.SaveChangesAsync();
 
-                                                    //Return the Scores uploaded
-                                                    var newScr = (from ex in _context.ExaminationScores
-                                                                  where ex.Id == examScr.Id
-                                                                  select new
-                                                                  {
-                                                                      ex.Id,
-                                                                      ex.SchoolId,
-                                                                      ex.CampusId,
-                                                                      ex.Classes.ClassName,
-                                                                      ex.ClassGrades.GradeName,
-                                                                      ex.Sessions.SessionName,
-                                                                      ex.Terms.TermName,
-                                                                      ex.SchoolSubjects.SubjectName,
-                                                                      ex.SubjectDepartment.DepartmentName,
-                                                                      StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
-                                                                      ex.Students.AdmissionNumber,
-                                                                      ex.MarkObtainable,
-                                                                      ex.MarkObtained,
-                                                                      ex.ScoreCategory.CategoryName,
-                                                                      ex.ScoreSubCategoryConfig.SubCategoryName,
-                                                                      TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
-                                                                      ex.DateUploaded,
-                                                                      ex.DateUpdated
-                                                                  }).FirstOrDefault();
-                                                    //list of scores uploaded
-                                                    newScores.Add(newScr);
+                                                        //Return the Scores uploaded
+                                                        var newScr = (from ex in _context.ExaminationScores
+                                                                      where ex.Id == examScr.Id
+                                                                      select new
+                                                                      {
+                                                                          ex.Id,
+                                                                          ex.SchoolId,
+                                                                          ex.CampusId,
+                                                                          ex.Classes.ClassName,
+                                                                          ex.ClassGrades.GradeName,
+                                                                          ex.Sessions.SessionName,
+                                                                          ex.Terms.TermName,
+                                                                          ex.SchoolSubjects.SubjectName,
+                                                                          ex.SubjectDepartment.DepartmentName,
+                                                                          StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                                                          ex.Students.AdmissionNumber,
+                                                                          ex.MarkObtainable,
+                                                                          ex.MarkObtained,
+                                                                          ex.ScoreCategory.CategoryName,
+                                                                          ex.ScoreSubCategoryConfig.SubCategoryName,
+                                                                          TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                                                          ex.DateUploaded,
+                                                                          ex.DateUpdated
+                                                                      }).FirstOrDefault();
+                                                        //list of scores uploaded
+                                                        newScores.Add(newScr);
 
-                                                    response.StatusCode = 200;
-                                                    response.StatusMessage = "Scores Uploaded Successfully!";
-                                                    response.ScoresUploaded = newScores.ToList();
+                                                        response.StatusCode = 200;
+                                                        response.StatusMessage = "Scores Uploaded Successfully!";
+                                                        response.ScoresUploaded = newScores.ToList();
 
-                                                    //Update the ScoreSheetTemplate IsUsed to True
-                                                    scoreSheetTemplate.IsUsed = true;
-                                                    await _context.SaveChangesAsync();
+                                                        //Update the ScoreSheetTemplate IsUsed to True
+                                                        scoreSheetTemplate.IsUsed = true;
+                                                        await _context.SaveChangesAsync();
 
+                                                    }
+                                                    else
+                                                    {
+                                                        response.StatusCode = 409;
+                                                        response.StatusMessage = "One or more Student Score Already Exits and Skipped";
+                                                    }
                                                 }
                                                 else
                                                 {
                                                     response.StatusCode = 409;
-                                                    response.StatusMessage = "One or more Student Score Already Exits and Skipped";
+                                                    response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                                 }
                                             }
                                             else
@@ -1648,85 +1728,95 @@ namespace SANTEGSMS.Repos
 
                                             if (subCategoryConfig != null)
                                             {
-                                                //get the student by the admissionNumber
-                                                var getStudent = _context.Students.Where(s => s.AdmissionNumber == worksheet.Cells[rowCounts, 3].Value.ToString().Trim()).FirstOrDefault();
-
-                                                //Check if the ContinousAssessmentScores scores for student has previously been uploaded
-                                                ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
-                                                && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
-                                                && s.SubjectId == Convert.ToInt64(subId) && s.StudentId == getStudent.Id && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
-
-                                                //the subject departmentId
-                                                var departmentId = _context.SchoolSubjects.Where(s => s.Id == Convert.ToInt64(subId)).FirstOrDefault().DepartmentId;
                                                 //the mark obtained
                                                 decimal markObtained = Convert.ToDecimal(worksheet.Cells[rowCounts, count + 3].Value.ToString());
 
-                                                if (CAScore == null)
+                                                if (markObtained <= subCategoryConfig.ScoreObtainable)
                                                 {
-                                                    var caScore = new ContinousAssessmentScores
+                                                    //get the student by the admissionNumber
+                                                    var getStudent = _context.Students.Where(s => s.AdmissionNumber == worksheet.Cells[rowCounts, 3].Value.ToString().Trim()).FirstOrDefault();
+
+                                                    //Check if the ContinousAssessmentScores scores for student has previously been uploaded
+                                                    ContinousAssessmentScores CAScore = _context.ContinousAssessmentScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                                    && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                                    && s.SubjectId == Convert.ToInt64(subId) && s.StudentId == getStudent.Id && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
+
+                                                    //the subject departmentId
+                                                    var departmentId = _context.SchoolSubjects.Where(s => s.Id == Convert.ToInt64(subId)).FirstOrDefault().DepartmentId;
+
+                                                    if (CAScore == null)
                                                     {
-                                                        SchoolId = obj.SchoolId,
-                                                        CampusId = obj.CampusId,
-                                                        ClassId = obj.ClassId,
-                                                        ClassGradeId = obj.ClassGradeId,
-                                                        SessionId = obj.SessionId,
-                                                        TermId = obj.TermId,
-                                                        SubjectId = Convert.ToInt64(subId),
-                                                        DepartmentId = departmentId,
-                                                        StudentId = getStudent.Id,
-                                                        AdmissionNumber = worksheet.Cells[rowCounts, 3].Value.ToString().Trim(),
-                                                        MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
-                                                        MarkObtained = Convert.ToDecimal(worksheet.Cells[rowCounts, count + 3].Value.ToString()),
-                                                        CategoryId = obj.CategoryId,
-                                                        SubCategoryId = obj.SubCategoryId,
-                                                        TeacherId = obj.TeacherId,
-                                                        DateUploaded = DateTime.Now,
-                                                        DateUpdated = DateTime.Now,
-                                                    };
+                                                        var caScore = new ContinousAssessmentScores
+                                                        {
+                                                            SchoolId = obj.SchoolId,
+                                                            CampusId = obj.CampusId,
+                                                            ClassId = obj.ClassId,
+                                                            ClassGradeId = obj.ClassGradeId,
+                                                            SessionId = obj.SessionId,
+                                                            TermId = obj.TermId,
+                                                            SubjectId = Convert.ToInt64(subId),
+                                                            DepartmentId = departmentId,
+                                                            StudentId = getStudent.Id,
+                                                            AdmissionNumber = worksheet.Cells[rowCounts, 3].Value.ToString().Trim(),
+                                                            MarkObtainable = subCategoryConfig.ScoreObtainable, //score obtainable from the subCategory Configured by school
+                                                            MarkObtained = Convert.ToDecimal(worksheet.Cells[rowCounts, count + 3].Value.ToString()),
+                                                            CategoryId = obj.CategoryId,
+                                                            SubCategoryId = obj.SubCategoryId,
+                                                            TeacherId = obj.TeacherId,
+                                                            DateUploaded = DateTime.Now,
+                                                            DateUpdated = DateTime.Now,
+                                                        };
 
-                                                    await _context.ContinousAssessmentScores.AddAsync(caScore);
-                                                    await _context.SaveChangesAsync();
+                                                        await _context.ContinousAssessmentScores.AddAsync(caScore);
+                                                        await _context.SaveChangesAsync();
 
-                                                    //Return the Scores uploaded
-                                                    var newScr = (from ex in _context.ContinousAssessmentScores
-                                                                  where ex.Id == caScore.Id
-                                                                  select new
-                                                                  {
-                                                                      ex.Id,
-                                                                      ex.SchoolId,
-                                                                      ex.CampusId,
-                                                                      ex.Classes.ClassName,
-                                                                      ex.ClassGrades.GradeName,
-                                                                      ex.Sessions.SessionName,
-                                                                      ex.Terms.TermName,
-                                                                      ex.SchoolSubjects.SubjectName,
-                                                                      ex.SubjectDepartment.DepartmentName,
-                                                                      StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
-                                                                      ex.Students.AdmissionNumber,
-                                                                      ex.MarkObtainable,
-                                                                      ex.MarkObtained,
-                                                                      ex.ScoreCategory.CategoryName,
-                                                                      ex.ScoreSubCategoryConfig.SubCategoryName,
-                                                                      TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
-                                                                      ex.DateUploaded,
-                                                                      ex.DateUpdated
-                                                                  }).FirstOrDefault();
-                                                    //list of scores uploaded
-                                                    newScores.Add(newScr);
+                                                        //Return the Scores uploaded
+                                                        var newScr = (from ex in _context.ContinousAssessmentScores
+                                                                      where ex.Id == caScore.Id
+                                                                      select new
+                                                                      {
+                                                                          ex.Id,
+                                                                          ex.SchoolId,
+                                                                          ex.CampusId,
+                                                                          ex.Classes.ClassName,
+                                                                          ex.ClassGrades.GradeName,
+                                                                          ex.Sessions.SessionName,
+                                                                          ex.Terms.TermName,
+                                                                          ex.SchoolSubjects.SubjectName,
+                                                                          ex.SubjectDepartment.DepartmentName,
+                                                                          StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                                                          ex.Students.AdmissionNumber,
+                                                                          ex.MarkObtainable,
+                                                                          ex.MarkObtained,
+                                                                          ex.ScoreCategory.CategoryName,
+                                                                          ex.ScoreSubCategoryConfig.SubCategoryName,
+                                                                          TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                                                          ex.DateUploaded,
+                                                                          ex.DateUpdated
+                                                                      }).FirstOrDefault();
+                                                        //list of scores uploaded
+                                                        newScores.Add(newScr);
 
-                                                    response.StatusCode = 200;
-                                                    response.StatusMessage = "Scores Uploaded Successfully!";
-                                                    response.ScoresUploaded = newScores.ToList();
+                                                        response.StatusCode = 200;
+                                                        response.StatusMessage = "Scores Uploaded Successfully!";
+                                                        response.ScoresUploaded = newScores.ToList();
 
-                                                    //Update the ScoreSheetTemplate IsUsed to True
-                                                    scoreSheetTemplate.IsUsed = true;
-                                                    await _context.SaveChangesAsync();
+                                                        //Update the ScoreSheetTemplate IsUsed to True
+                                                        scoreSheetTemplate.IsUsed = true;
+                                                        await _context.SaveChangesAsync();
+                                                    }
+                                                    else
+                                                    {
+                                                        response.StatusCode = 409;
+                                                        response.StatusMessage = "One or more Student Score Already Exits and Skipped";
+                                                    }
                                                 }
                                                 else
                                                 {
                                                     response.StatusCode = 409;
-                                                    response.StatusMessage = "One or more Student Score Already Exits and Skipped";
+                                                    response.StatusMessage = "Score/Mark Obtained Cannot be greater than Score/Mark Obtainable";
                                                 }
+
                                             }
                                             else
                                             {
@@ -2165,6 +2255,93 @@ namespace SANTEGSMS.Repos
         }
 
 
+        public async Task<GenericRespModel> getAllScoreSheetTemplateAsync(long schoolId, long campusId, long classId, long classGradeId, Guid teacherId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkClass = check.checkClassById(classId);
+                var checkClassGarade = check.checkClassGradeById(classGradeId);
+
+                //check if all parameters supplied is Valid
+                if (checkSchool == true && checkCampus == true && checkClass == true && checkClassGarade == true)
+                {
+                    var result = from ex in _context.ScoreUploadSheetTemplates
+                                 where ex.SchoolId == schoolId && ex.CampusId == campusId && ex.ClassId == classId
+                                 && ex.ClassGradeId == classGradeId && ex.TeacherId == teacherId
+                                 select new
+                                 {
+                                     ex.Id,
+                                     ex.SchoolId,
+                                     ex.CampusId,
+                                     ex.Classes.ClassName,
+                                     ex.ClassGrades.GradeName,
+                                     ex.Description,
+                                     ex.SubjectId,
+                                     ex.TotalNumberOfSubjects,
+                                     TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                     ex.IsUsed,
+                                     ex.DateGenerated
+                                 };
+
+                    if (result.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList(), };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                }
+                else
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "A Paremeter With Specified ID does not exist" };
+                }
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> deleteScoreSheetTemplateAsync(long scoreSheetTemplateId)
+        {
+            try
+            {
+                //Check if the ScoreUploadSheetTemplates Exists
+                ScoreUploadSheetTemplates scoreSheetTemp = _context.ScoreUploadSheetTemplates.Where(s => s.Id == scoreSheetTemplateId).FirstOrDefault();
+                if (scoreSheetTemp != null)
+                {
+                    if (scoreSheetTemp.IsUsed == false)
+                    {
+                        _context.ScoreUploadSheetTemplates.Remove(scoreSheetTemp);
+                        await _context.SaveChangesAsync();
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "ScoreSheet Template Deleted Successfully" };
+                    }
+                    else
+                    {
+                        return new GenericRespModel { StatusCode = 409, StatusMessage = "ScoreSheet Template has been Used and cannot be Deleted"};
+                    }
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "No ScoreSheet With the Specified ID", };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
         public async Task<GenericRespModel> studentGradeBookScoresPerSubjectAndCategoryAsync(Guid studentId, long schoolId, long campusId, long categoryId, long subCategoryId)
         {
             try
@@ -2332,6 +2509,324 @@ namespace SANTEGSMS.Repos
                 }
 
                 return new GenericRespModel { StatusCode = 200, StatusMessage = "Current Academic Session and Term has not been Set!" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAllScoresByClassIdAndClassGradeIdAsync(long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+                var checkClass = check.checkClassById(classId);
+                var checkClassGrade = check.checkClassGradeById(classGradeId);
+
+                if (checkSchool != true && checkCampus != true && checkTerm != true && checkSession != true && checkClass != true && checkClassGrade != true)
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No One or More Parameters with the specified ID" };
+                }
+                else
+                {
+                    if (categoryId == (long)EnumUtility.ScoreCategory.Exam)
+                    {
+                        var result = from ex in _context.ExaminationScores
+                                     where ex.SchoolId == schoolId && ex.CampusId == campusId
+                                      && ex.ClassId == classId && ex.ClassGradeId == classGradeId && ex.TermId == termId && ex.SessionId == sessionId
+                                      && ex.CategoryId == categoryId && ex.SubCategoryId == subCategoryId
+                                     select new
+                                     {
+                                         ex.Id,
+                                         ex.StudentId,
+                                         ex.SchoolId,
+                                         ex.CampusId,
+                                         ex.Classes.ClassName,
+                                         ex.ClassGrades.GradeName,
+                                         ex.Sessions.SessionName,
+                                         ex.Terms.TermName,
+                                         ex.SchoolSubjects.SubjectName,
+                                         StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                         ex.Students.AdmissionNumber,
+                                         ex.MarkObtainable,
+                                         ex.MarkObtained,
+                                         ex.ScoreCategory.CategoryName,
+                                         ex.ScoreSubCategoryConfig.SubCategoryName,
+                                         TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                         ex.DateUploaded,
+                                         ex.DateUpdated
+                                     };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList(), };
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+                    }
+                    else if (categoryId == (long)EnumUtility.ScoreCategory.CA)
+                    {
+                        var result = from ex in _context.ContinousAssessmentScores
+                                     where ex.SchoolId == schoolId && ex.CampusId == campusId
+                                       && ex.ClassId == classId && ex.ClassGradeId == classGradeId && ex.TermId == termId && ex.SessionId == sessionId
+                                       && ex.CategoryId == categoryId && ex.SubCategoryId == subCategoryId
+                                     select new
+                                     {
+                                         ex.Id,
+                                         ex.StudentId,
+                                         ex.SchoolId,
+                                         ex.CampusId,
+                                         ex.Classes.ClassName,
+                                         ex.ClassGrades.GradeName,
+                                         ex.Sessions.SessionName,
+                                         ex.Terms.TermName,
+                                         ex.SchoolSubjects.SubjectName,
+                                         StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                         ex.Students.AdmissionNumber,
+                                         ex.MarkObtainable,
+                                         ex.MarkObtained,
+                                         ex.ScoreCategory.CategoryName,
+                                         ex.ScoreSubCategoryConfig.SubCategoryName,
+                                         TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                         ex.DateUploaded,
+                                         ex.DateUpdated
+                                     };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList(), };
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Kindly Select the Category", };
+                }
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAllScoresUploadedByTeacherIdAsync(Guid teacherId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+                var checkClass = check.checkClassById(classId);
+                var checkClassGrade = check.checkClassGradeById(classGradeId);
+
+                if (checkSchool != true && checkCampus != true && checkTerm != true && checkSession != true && checkClass != true && checkClassGrade != true)
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No One or More Parameters with the specified ID" };
+                }
+                else
+                {
+                    if (categoryId == (long)EnumUtility.ScoreCategory.Exam)
+                    {
+                        var result = from ex in _context.ExaminationScores
+                                     where ex.SchoolId == schoolId && ex.CampusId == campusId
+                                      && ex.ClassId == classId && ex.ClassGradeId == classGradeId && ex.TermId == termId && ex.SessionId == sessionId
+                                      && ex.CategoryId == categoryId && ex.SubCategoryId == subCategoryId && ex.TeacherId == teacherId
+                                     select new
+                                     {
+                                         ex.Id,
+                                         ex.StudentId,
+                                         ex.SchoolId,
+                                         ex.CampusId,
+                                         ex.Classes.ClassName,
+                                         ex.ClassGrades.GradeName,
+                                         ex.Sessions.SessionName,
+                                         ex.Terms.TermName,
+                                         ex.SchoolSubjects.SubjectName,
+                                         StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                         ex.Students.AdmissionNumber,
+                                         ex.MarkObtainable,
+                                         ex.MarkObtained,
+                                         ex.ScoreCategory.CategoryName,
+                                         ex.ScoreSubCategoryConfig.SubCategoryName,
+                                         ex.TeacherId,
+                                         TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                         ex.DateUploaded,
+                                         ex.DateUpdated
+                                     };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList(), };
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+                    }
+                    else if (categoryId == (long)EnumUtility.ScoreCategory.CA)
+                    {
+                        var result = from ex in _context.ContinousAssessmentScores
+                                     where ex.SchoolId == schoolId && ex.CampusId == campusId
+                                       && ex.ClassId == classId && ex.ClassGradeId == classGradeId && ex.TermId == termId && ex.SessionId == sessionId
+                                       && ex.CategoryId == categoryId && ex.SubCategoryId == subCategoryId && ex.TeacherId == teacherId
+                                     select new
+                                     {
+                                         ex.Id,
+                                         ex.StudentId,
+                                         ex.SchoolId,
+                                         ex.CampusId,
+                                         ex.Classes.ClassName,
+                                         ex.ClassGrades.GradeName,
+                                         ex.Sessions.SessionName,
+                                         ex.Terms.TermName,
+                                         ex.SchoolSubjects.SubjectName,
+                                         StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                         ex.Students.AdmissionNumber,
+                                         ex.MarkObtainable,
+                                         ex.MarkObtained,
+                                         ex.ScoreCategory.CategoryName,
+                                         ex.ScoreSubCategoryConfig.SubCategoryName,
+                                         ex.TeacherId,
+                                         TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                         ex.DateUploaded,
+                                         ex.DateUpdated
+                                     };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList(), };
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Kindly Select the Category", };
+                }
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAllScoresUploadedByTeacherIdAndSubjectIdAsync(Guid teacherId, long subjectId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+                var checkClass = check.checkClassById(classId);
+                var checkClassGrade = check.checkClassGradeById(classGradeId);
+
+                var checksubject = _context.SchoolSubjects.Where(x => x.Id == subjectId).FirstOrDefault();
+
+                if (checkSchool != true && checkCampus != true && checkTerm != true && checkSession != true && checkClass != true && checkClassGrade != true && checksubject == null)
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No One or More Parameters with the specified ID" };
+                }
+                else
+                {
+                    if (categoryId == (long)EnumUtility.ScoreCategory.Exam)
+                    {
+                        var result = from ex in _context.ExaminationScores
+                                     where ex.SchoolId == schoolId && ex.CampusId == campusId
+                                      && ex.ClassId == classId && ex.ClassGradeId == classGradeId && ex.TermId == termId && ex.SessionId == sessionId
+                                      && ex.CategoryId == categoryId && ex.SubCategoryId == subCategoryId && ex.TeacherId == teacherId && ex.SubjectId == subjectId
+                                     select new
+                                     {
+                                         ex.Id,
+                                         ex.StudentId,
+                                         ex.SchoolId,
+                                         ex.CampusId,
+                                         ex.Classes.ClassName,
+                                         ex.ClassGrades.GradeName,
+                                         ex.Sessions.SessionName,
+                                         ex.Terms.TermName,
+                                         ex.SchoolSubjects.SubjectName,
+                                         StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                         ex.Students.AdmissionNumber,
+                                         ex.MarkObtainable,
+                                         ex.MarkObtained,
+                                         ex.ScoreCategory.CategoryName,
+                                         ex.ScoreSubCategoryConfig.SubCategoryName,
+                                         ex.TeacherId,
+                                         TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                         ex.DateUploaded,
+                                         ex.DateUpdated
+                                     };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList(), };
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+                    }
+                    else if (categoryId == (long)EnumUtility.ScoreCategory.CA)
+                    {
+                        var result = from ex in _context.ContinousAssessmentScores
+                                     where ex.SchoolId == schoolId && ex.CampusId == campusId
+                                       && ex.ClassId == classId && ex.ClassGradeId == classGradeId && ex.TermId == termId && ex.SessionId == sessionId
+                                       && ex.CategoryId == categoryId && ex.SubCategoryId == subCategoryId && ex.TeacherId == teacherId && ex.SubjectId == subjectId
+                                     select new
+                                     {
+                                         ex.Id,
+                                         ex.StudentId,
+                                         ex.SchoolId,
+                                         ex.CampusId,
+                                         ex.Classes.ClassName,
+                                         ex.ClassGrades.GradeName,
+                                         ex.Sessions.SessionName,
+                                         ex.Terms.TermName,
+                                         ex.SchoolSubjects.SubjectName,
+                                         StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
+                                         ex.Students.AdmissionNumber,
+                                         ex.MarkObtainable,
+                                         ex.MarkObtained,
+                                         ex.ScoreCategory.CategoryName,
+                                         ex.ScoreSubCategoryConfig.SubCategoryName,
+                                         ex.TeacherId,
+                                         TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
+                                         ex.DateUploaded,
+                                         ex.DateUpdated
+                                     };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList(), };
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Kindly Select the Category", };
+                }
             }
             catch (Exception exMessage)
             {

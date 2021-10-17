@@ -149,7 +149,7 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
-        [HttpGet("scoreCategoryConfig")]
+        [HttpGet("allScoreCategoryConfig")]
         [Authorize]
         public async Task<IActionResult> getAllScoreCategoryConfigAsync(long schoolId, long campusId)
         {
@@ -273,6 +273,34 @@ namespace SANTEGSMS.Controllers
             }
 
             var result = await _scoresConfigRepo.deleteScoreSubCategoryConfigAsync(scoreSubCategoryConfigId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("scoreSubCategoryConfigByCategoryId")]
+        [Authorize]
+        public async Task<IActionResult> getScoreSubCategoryConfigByCategoryIdAsync(long scoreCategoryConfigId, long schoolId, long campusId, long classId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _scoresConfigRepo.getScoreSubCategoryConfigByCategoryIdAsync(scoreCategoryConfigId, schoolId, campusId, classId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("scoreCategoryConfig")]
+        [Authorize]
+        public async Task<IActionResult> getScoreCategoryConfigAsync(long schoolId, long campusId, long classId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _scoresConfigRepo.getScoreCategoryConfigAsync(schoolId, campusId, classId, termId, sessionId);
 
             return Ok(result);
         }

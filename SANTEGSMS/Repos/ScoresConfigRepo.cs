@@ -557,46 +557,57 @@ namespace SANTEGSMS.Repos
 
                 if (catConfig == null)
                 {
-                    //create score Sub category if it doesnt exist
-                    var cat = new ScoreSubCategoryConfig
+                    decimal totalScoreObtainable = _context.ScoreSubCategoryConfig.Where(c => c.SchoolId == obj.SchoolId
+                    && c.CampusId == obj.CampusId && c.ClassId == obj.ClassId && c.SessionId == obj.SessionId && c.TermId == obj.TermId).Sum(p => p.ScoreObtainable);
+
+                    //adds
+                    decimal configScoreObtainable = totalScoreObtainable + obj.ScoreObtainable;
+
+                    if (configScoreObtainable <= 100)
                     {
-                        CategoryId = obj.CategoryId,
-                        SchoolId = obj.SchoolId,
-                        CampusId = obj.CampusId,
-                        ClassId = obj.ClassId,
-                        TermId = obj.TermId,
-                        SessionId = obj.SessionId,
-                        SubCategoryName = obj.SubCategoryName,
-                        ScoreObtainable = obj.ScoreObtainable,
-                        DateCreated = DateTime.Now,
-                    };
+                        //create score Sub category if it doesnt exist
+                        var cat = new ScoreSubCategoryConfig
+                        {
+                            CategoryId = obj.CategoryId,
+                            SchoolId = obj.SchoolId,
+                            CampusId = obj.CampusId,
+                            ClassId = obj.ClassId,
+                            TermId = obj.TermId,
+                            SessionId = obj.SessionId,
+                            SubCategoryName = obj.SubCategoryName,
+                            ScoreObtainable = obj.ScoreObtainable,
+                            DateCreated = DateTime.Now,
+                        };
 
-                    await _context.ScoreSubCategoryConfig.AddAsync(cat);
-                    await _context.SaveChangesAsync();
+                        await _context.ScoreSubCategoryConfig.AddAsync(cat);
+                        await _context.SaveChangesAsync();
 
 
-                    //returns the Score Sub Category Config
-                    var result = from cl in _context.ScoreSubCategoryConfig
-                                 where cl.Id == cat.Id
-                                 select new
-                                 {
-                                     cl.Id,
-                                     cl.CategoryId,
-                                     cl.SchoolId,
-                                     cl.CampusId,
-                                     cl.ClassId,
-                                     cl.Classes.ClassName,
-                                     cl.ScoreCategory.CategoryName,
-                                     cl.SubCategoryName,
-                                     cl.ScoreObtainable,
-                                     cl.TermId,
-                                     cl.Terms.TermName,
-                                     cl.SessionId,
-                                     cl.Sessions.SessionName,
-                                     cl.DateCreated
-                                 };
+                        //returns the Score Sub Category Config
+                        var result = from cl in _context.ScoreSubCategoryConfig
+                                     where cl.Id == cat.Id
+                                     select new
+                                     {
+                                         cl.Id,
+                                         cl.CategoryId,
+                                         cl.SchoolId,
+                                         cl.CampusId,
+                                         cl.ClassId,
+                                         cl.Classes.ClassName,
+                                         cl.ScoreCategory.CategoryName,
+                                         cl.SubCategoryName,
+                                         cl.ScoreObtainable,
+                                         cl.TermId,
+                                         cl.Terms.TermName,
+                                         cl.SessionId,
+                                         cl.Sessions.SessionName,
+                                         cl.DateCreated
+                                     };
 
-                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Score Sub Category Created Successfully", Data = result.FirstOrDefault() };
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Score Sub Category Created Successfully", Data = result.FirstOrDefault() };
+                    }
+
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Score Sub Category total Cannot be greater than 100%"};
                 }
 
                 return new GenericRespModel { StatusCode = 409, StatusMessage = "This Score Sub Category Already Exist", };
@@ -777,6 +788,89 @@ namespace SANTEGSMS.Repos
             }
         }
 
+        public async Task<GenericRespModel> getScoreSubCategoryConfigByCategoryIdAsync(long scoreCategoryConfigId, long schoolId, long campusId, long classId, long termId, long sessionId)
+        {
+            try
+            {
+                //returns all the Score Category Config
+                var result = from cl in _context.ScoreSubCategoryConfig
+                             where cl.CategoryId == scoreCategoryConfigId && cl.SchoolId == schoolId && cl.CampusId == campusId
+                             && cl.ClassId == classId && cl.TermId == termId && cl.SessionId == sessionId
+                             orderby cl.CategoryId
+                             select new
+                             {
+                                 cl.Id,
+                                 cl.CategoryId,
+                                 cl.SchoolId,
+                                 cl.CampusId,
+                                 cl.ClassId,
+                                 cl.Classes.ClassName,
+                                 cl.ScoreCategory.CategoryName,
+                                 cl.SubCategoryName,
+                                 cl.ScoreObtainable,
+                                 cl.TermId,
+                                 cl.Terms.TermName,
+                                 cl.SessionId,
+                                 cl.Sessions.SessionName,
+                                 cl.DateCreated
+                             };
 
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured" };
+            }
+        }
+
+        public async Task<GenericRespModel> getScoreCategoryConfigAsync(long schoolId, long campusId, long classId, long termId, long sessionId)
+        {
+            try
+            {
+                //returns all the Score Category Config
+                var result = from cl in _context.ScoreCategoryConfig
+                             where cl.SchoolId == schoolId && cl.CampusId == campusId && cl.ClassId == classId
+                             && cl.TermId == termId && cl.SessionId == sessionId orderby cl.CategoryId
+                             select new
+                             {
+                                 cl.CategoryId,
+                                 cl.ScoreCategory.CategoryName,
+                                 cl.SchoolId,
+                                 cl.CampusId,
+                                 cl.ClassId,
+                                 cl.Classes.ClassName,
+                                 cl.Percentage,
+                                 cl.TermId,
+                                 cl.Terms.TermName,
+                                 cl.SessionId,
+                                 cl.Sessions.SessionName,
+                                 cl.DateCreated
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured" };
+            }
+        }
     }
 }

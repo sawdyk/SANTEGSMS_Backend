@@ -166,5 +166,19 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("allDistrictAdministrator")]
+        [Authorize]
+        public async Task<IActionResult> getAllDistrictAdministratorAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _districtRepo.getAllDistrictAdministratorAsync();
+
+            return Ok(result);
+        }
     }
 }

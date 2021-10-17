@@ -15,6 +15,8 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getAllParentAsync(long schoolId, long campusId);
         Task<ParentChildRespModel> getAllParentChildAsync(Guid parentId, long schoolId, long campusId);
         Task<GenericRespModel> updateParentDetailsAsync(Guid parentId, UpdateParentReqModel obj);
+        Task<GenericRespModel> getAllParentInSchoolPerSessionAsync(long schoolId, long campusId);
+
 
 
         //-------------------------------------ChildrenProfile-----------------------------------------------

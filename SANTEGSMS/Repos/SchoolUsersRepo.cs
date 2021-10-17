@@ -205,6 +205,7 @@ namespace SANTEGSMS.Repos
                         userData.FirstName = getUser.FirstName;
                         userData.LastName = getUser.LastName;
                         userData.Email = getUser.Email;
+                        userData.PhoneNumber = getUser.PhoneNumber;
                         userData.EmailConfirmed = getUser.EmailConfirmed;
                         userData.IsActive = getUser.IsActive;
                         userData.LastLoginDate = getUser.LastLoginDate;
@@ -231,6 +232,7 @@ namespace SANTEGSMS.Repos
                         schData.SchoolName = userSchool.SchoolName;
                         schData.SchoolCode = userSchool.SchoolCode;
                         schData.SchoolTypeName = getSchType.SchoolTypeName;
+                        schData.SchoolLogoUrl = userSchool.SchoolLogoUrl;
                         schData.CampusId = getCampus.Id;
                         schData.CampusName = getCampus.CampusName;
                         schData.CampusAddress = getCampus.CampusAddress;

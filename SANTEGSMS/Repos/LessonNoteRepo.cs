@@ -372,7 +372,7 @@ namespace SANTEGSMS.Repos
                 var checkSubjectNote =  _context.SubjectNotes.Where(x => x.Description == obj.Description && x.TeacherId == obj.TeacherId && x.ClassId == obj.ClassId && x.SubjectId == obj.SubjectId
                 && x.ClassGradeId == obj.ClassGradeId && x.TermId == obj.TermId && x.SessionId == obj.SessionId && x.SchoolId == obj.SchoolId && x.CampusId == obj.CampusId).FirstOrDefault();
 
-                if (checkSubjectNote != null)
+                if (checkSubjectNote == null)
                 {
                     var subjNote = new SubjectNotes
                     {

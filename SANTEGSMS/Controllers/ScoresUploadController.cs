@@ -247,6 +247,36 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
+
+        [HttpGet("scoreSheetTemplate")]
+        [Authorize]
+        public async Task<IActionResult> getAllScoreSheetTemplateAsync(long schoolId, long campusId, long classId, long classGradeId, Guid teacherId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _scoreUploadRepo.getAllScoreSheetTemplateAsync(schoolId, campusId, classId, classGradeId, teacherId);
+
+            return Ok(result);
+        }
+
+
+        [HttpDelete("deleteScoreSheetTemplate")]
+        [Authorize]
+        public async Task<IActionResult> deleteScoreSheetTemplateAsync(long scoreSheetTemplateId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _scoreUploadRepo.deleteScoreSheetTemplateAsync(scoreSheetTemplateId);
+
+            return Ok(result);
+        }
+
         [HttpPost("bulkScoresUpload")]
         [Authorize]
         public async Task<IActionResult> bulkScoresUploadAsync([FromForm] BulkScoresUploadReqModel obj)
@@ -271,6 +301,48 @@ namespace SANTEGSMS.Controllers
             }
 
             var result = await _scoreUploadRepo.studentGradeBookScoresPerSubjectAndCategoryAsync(studentId, schoolId, campusId, categoryId, subCategoryId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("scoresByClassIdAndClassGradeId")]
+        [Authorize]
+        public async Task<IActionResult> getAllScoresByClassIdAndClassGradeIdAsync(long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _scoreUploadRepo.getAllScoresByClassIdAndClassGradeIdAsync(schoolId, campusId, classId, classGradeId, categoryId, subCategoryId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("scoresUploadedByTeacherId")]
+        [Authorize]
+        public async Task<IActionResult> getAllScoresUploadedByTeacherIdAsync(Guid teacherId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _scoreUploadRepo.getAllScoresUploadedByTeacherIdAsync(teacherId, schoolId, campusId, classId, classGradeId, categoryId, subCategoryId, termId, sessionId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("scoresUploadedByTeacherIdAndSubjectId")]
+        [Authorize]
+        public async Task<IActionResult> getAllScoresUploadedByTeacherIdAndSubjectIdAsync(Guid teacherId, long subjectId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _scoreUploadRepo.getAllScoresUploadedByTeacherIdAndSubjectIdAsync(teacherId, subjectId, schoolId, campusId, classId, classGradeId, categoryId, subCategoryId, termId, sessionId);
 
             return Ok(result);
         }

@@ -22,6 +22,8 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> createDistrictAdministratorAsync(DistrictAdminReqModel obj);
         Task<GenericRespModel> getAllDistrictAssignedToDistrictAdministratorAsync(Guid districtAdminId);
         Task<GenericRespModel> getDistrictAdministratorByIdAsync(Guid districtAdminId);
+        Task<GenericRespModel> getAllDistrictAdministratorAsync();
+
 
     }
 }

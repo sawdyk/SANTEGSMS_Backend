@@ -460,5 +460,44 @@ namespace SANTEGSMS.Repos
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
         }
+
+        public async Task<GenericRespModel> getAllDistrictAdministratorAsync()
+        {
+            try
+            {
+                //return the districtAdmin Created
+                var result = from st in _context.DistrictAdministrators
+                             select new
+                             {
+                                 st.Id,
+                                 st.FirstName,
+                                 st.LastName,
+                                 st.UserName,
+                                 st.Email,
+                                 st.EmailConfirmed,
+                                 st.PhoneNumber,
+                                 st.LastPasswordChangedDate,
+                                 st.LastLoginDate,
+                                 st.LastUpdatedDate,
+                                 st.DateCreated,
+                             };
+
+                if (result.Count() > 0)
+                {
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList()};
+                }
+
+                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
     }
 }
