@@ -353,11 +353,20 @@ namespace SANTEGSMS.Repos
                     {
                         getSch.SchoolName = obj.SchoolName;
                         getSch.SchoolLogoUrl = obj.SchoolLogouRL;
+                        getSch.PhoneNumber = obj.PhoneNumber;
+                        getSch.Address = obj.Address;
+                        getSch.EmailAddress = obj.EmailAddress;
+                        getSch.Motto = obj.Motto;
+
                     }
                     else
                     {
                         getSch.SchoolName = obj.SchoolName;
                         getSch.SchoolLogoUrl = obj.SchoolLogouRL;
+                        getSch.PhoneNumber = obj.PhoneNumber;
+                        getSch.Address = obj.Address;
+                        getSch.EmailAddress = obj.EmailAddress;
+                        getSch.Motto = obj.Motto;
 
                         await _context.SaveChangesAsync();
 

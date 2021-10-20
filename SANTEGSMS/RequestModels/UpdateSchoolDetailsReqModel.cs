@@ -9,5 +9,9 @@ namespace SANTEGSMS.RequestModels
     {
         public string SchoolName { get; set; }
         public string SchoolLogouRL { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public string EmailAddress { get; set; }
+        public string Motto { get; set; }
     }
 }
