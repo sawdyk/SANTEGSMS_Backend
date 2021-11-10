@@ -64,6 +64,20 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
+        [HttpPut("updateSingleStudentExtraCurricularBehavioralScores")]
+        [Authorize]
+        public async Task<IActionResult> updateSingleStudentExtraCurricularBehavioralScoresAsync([FromBody] UploadSingleStudentScoreReqModel obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _extraCurricularBehavioralScoresRepo.updateSingleStudentExtraCurricularBehavioralScoresAsync(obj);
+
+            return Ok(result);
+        }
+
         [HttpGet("extraCurricularBehavioralScores")]
         [Authorize]
         public async Task<IActionResult> getExtraCurricularBehavioralScoresAsync(long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId)

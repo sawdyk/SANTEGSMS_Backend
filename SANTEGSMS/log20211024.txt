@@ -1,0 +1,130 @@
+2021-10-24 20:30:40.087 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-10-24 20:30:41.228 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-10-24 20:30:41.229 +01:00 [INF] Hosting environment: Development
+2021-10-24 20:30:41.230 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-10-24 20:30:41.306 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-10-24 20:30:41.441 +01:00 [INF] Request finished in 141.7824ms 200 text/html;charset=utf-8
+2021-10-24 20:30:41.811 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-10-24 20:30:42.062 +01:00 [INF] Request finished in 251.8773ms 200 application/json;charset=utf-8
+2021-10-24 20:31:13.917 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/ExtraCurricularBehaviouralScores/uploadSingleStudentExtraCurricularBehavioralScore application/json 233
+2021-10-24 20:31:13.998 +01:00 [INF] CORS policy execution successful.
+2021-10-24 20:31:14.028 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-10-24 20:31:14.034 +01:00 [INF] Authorization failed.
+2021-10-24 20:31:14.035 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2021-10-24 20:31:14.038 +01:00 [INF] Request finished in 121.7725ms 401 
+2021-10-24 20:31:26.506 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/ExtraCurricularBehaviouralScores/uploadSingleStudentExtraCurricularBehavioralScore application/json 233
+2021-10-24 20:31:26.516 +01:00 [INF] CORS policy execution successful.
+2021-10-24 20:31:26.530 +01:00 [INF] Authorization was successful.
+2021-10-24 20:31:26.530 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ExtraCurricularBehaviouralScoresController.uploadSingleStudentExtraCurricularBehavioralScoreAsync (SANTEGSMS)'
+2021-10-24 20:31:26.577 +01:00 [INF] Route matched with {action = "uploadSingleStudentExtraCurricularBehavioralScore", controller = "ExtraCurricularBehaviouralScores"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] uploadSingleStudentExtraCurricularBehavioralScoreAsync(SANTEGSMS.RequestModels.UploadScorePerStudentReqModel) on controller SANTEGSMS.Controllers.ExtraCurricularBehaviouralScoresController (SANTEGSMS).
+2021-10-24 20:31:28.125 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-10-24 20:31:30.157 +01:00 [INF] Executed DbCommand (223ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-10-24 20:31:30.759 +01:00 [INF] Executed DbCommand (159ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-10-24 20:31:31.289 +01:00 [INF] Executed DbCommand (154ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-10-24 20:31:31.779 +01:00 [INF] Executed DbCommand (154ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-10-24 20:31:32.290 +01:00 [INF] Executed DbCommand (167ms) [Parameters=[@__8__locals2_obj_CategoryId_0='?' (DbType = Int64), @__8__locals2_obj_SchoolId_1='?' (DbType = Int64), @__8__locals2_obj_CampusId_2='?' (DbType = Int64), @__8__locals2_obj_ClassId_3='?' (DbType = Int64), @__8__locals2_obj_TermId_4='?' (DbType = Int64), @__8__locals2_obj_SessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`CategoryId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`Percentage`, `s`.`SchoolId`, `s`.`SessionId`, `s`.`TermId`
+FROM `ScoreCategoryConfig` AS `s`
+WHERE (((((`s`.`CategoryId` = @__8__locals2_obj_CategoryId_0) AND (`s`.`SchoolId` = @__8__locals2_obj_SchoolId_1)) AND (`s`.`CampusId` = @__8__locals2_obj_CampusId_2)) AND (`s`.`ClassId` = @__8__locals2_obj_ClassId_3)) AND (`s`.`TermId` = @__8__locals2_obj_TermId_4)) AND (`s`.`SessionId` = @__8__locals2_obj_SessionId_5)
+LIMIT 1
+2021-10-24 20:31:32.771 +01:00 [INF] Executed DbCommand (156ms) [Parameters=[@__8__locals2_obj_SubCategoryId_0='?' (DbType = Int64), @__categoryConfig_CategoryId_1='?' (DbType = Int64), @__8__locals2_obj_SchoolId_2='?' (DbType = Int64), @__8__locals2_obj_CampusId_3='?' (DbType = Int64), @__8__locals2_obj_ClassId_4='?' (DbType = Int64), @__8__locals2_obj_TermId_5='?' (DbType = Int64), @__8__locals2_obj_SessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`CategoryId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`ScoreObtainable`, `s`.`SessionId`, `s`.`SubCategoryName`, `s`.`TermId`
+FROM `ScoreSubCategoryConfig` AS `s`
+WHERE ((((((`s`.`Id` = @__8__locals2_obj_SubCategoryId_0) AND (`s`.`CategoryId` = @__categoryConfig_CategoryId_1)) AND (`s`.`SchoolId` = @__8__locals2_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals2_obj_CampusId_3)) AND (`s`.`ClassId` = @__8__locals2_obj_ClassId_4)) AND (`s`.`TermId` = @__8__locals2_obj_TermId_5)) AND (`s`.`SessionId` = @__8__locals2_obj_SessionId_6)
+LIMIT 1
+2021-10-24 20:31:33.263 +01:00 [INF] Executed DbCommand (160ms) [Parameters=[@__8__locals2_obj_SchoolId_0='?' (DbType = Int64), @__8__locals2_obj_CampusId_1='?' (DbType = Int64), @__8__locals2_obj_ClassId_2='?' (DbType = Int64), @__8__locals2_obj_ClassGradeId_3='?' (DbType = Int64), @__8__locals2_obj_TermId_4='?' (DbType = Int64), @__8__locals2_obj_SessionId_5='?' (DbType = Int64), @__8__locals2_obj_StudentId_6='?' (DbType = Guid), @__8__locals2_obj_CategoryId_7='?' (DbType = Int64), @__8__locals2_obj_SubCategoryId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `b`.`Id`, `b`.`AdmissionNumber`, `b`.`CampusId`, `b`.`CategoryId`, `b`.`ClassGradeId`, `b`.`ClassId`, `b`.`DateDeleted`, `b`.`DateUpdated`, `b`.`DateUploaded`, `b`.`DeletedBy`, `b`.`IsDeleted`, `b`.`MarkObtainable`, `b`.`MarkObtained`, `b`.`SchoolId`, `b`.`SessionId`, `b`.`StudentId`, `b`.`SubCategoryId`, `b`.`TeacherId`, `b`.`TermId`
+FROM `BehavioralScores` AS `b`
+WHERE ((((((((`b`.`SchoolId` = @__8__locals2_obj_SchoolId_0) AND (`b`.`CampusId` = @__8__locals2_obj_CampusId_1)) AND (`b`.`ClassId` = @__8__locals2_obj_ClassId_2)) AND (`b`.`ClassGradeId` = @__8__locals2_obj_ClassGradeId_3)) AND (`b`.`TermId` = @__8__locals2_obj_TermId_4)) AND (`b`.`SessionId` = @__8__locals2_obj_SessionId_5)) AND (`b`.`StudentId` = @__8__locals2_obj_StudentId_6)) AND (`b`.`CategoryId` = @__8__locals2_obj_CategoryId_7)) AND (`b`.`SubCategoryId` = @__8__locals2_obj_SubCategoryId_8)
+LIMIT 1
+2021-10-24 20:31:33.725 +01:00 [INF] Executed DbCommand (162ms) [Parameters=[@__8__locals2_obj_StudentId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`AdmissionNumber`, `s`.`CampusId`, `s`.`City`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DateOfBirth`, `s`.`DeletedBy`, `s`.`FirstName`, `s`.`GenderId`, `s`.`HomeAddress`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsDeleted`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`LocalGovt`, `s`.`MiddleName`, `s`.`PasswordHash`, `s`.`ProfilePictureUrl`, `s`.`Religion`, `s`.`Salt`, `s`.`SchoolId`, `s`.`StaffStatus`, `s`.`State`, `s`.`StateOfOrigin`, `s`.`Status`, `s`.`StudentStatus`, `s`.`UserName`, `s`.`YearOfAdmission`, `s`.`hasParent`
+FROM `Students` AS `s`
+WHERE `s`.`Id` = @__8__locals2_obj_StudentId_0
+LIMIT 1
+2021-10-24 20:31:34.733 +01:00 [INF] Executed DbCommand (172ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `ErrorLog` (`ErrorDate`, `ErrorMessage`, `ErrorSource`, `ErrorStackTrace`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`
+FROM `ErrorLog`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2021-10-24 20:31:34.929 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.UploadScoreRespModel'.
+2021-10-24 20:31:34.945 +01:00 [INF] Executed action SANTEGSMS.Controllers.ExtraCurricularBehaviouralScoresController.uploadSingleStudentExtraCurricularBehavioralScoreAsync (SANTEGSMS) in 8362.843ms
+2021-10-24 20:31:34.946 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.ExtraCurricularBehaviouralScoresController.uploadSingleStudentExtraCurricularBehavioralScoreAsync (SANTEGSMS)'
+2021-10-24 20:31:34.950 +01:00 [INF] Request finished in 8444.0782ms 200 application/json; charset=utf-8
+2021-10-24 20:32:21.073 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-10-24 20:32:21.901 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-10-24 20:32:21.907 +01:00 [INF] Hosting environment: Development
+2021-10-24 20:32:21.907 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2021-10-24 20:32:21.938 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2021-10-24 20:32:22.015 +01:00 [INF] Request finished in 79.9228ms 200 text/html;charset=utf-8
+2021-10-24 20:32:22.220 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2021-10-24 20:32:22.473 +01:00 [INF] Request finished in 253.495ms 200 application/json;charset=utf-8
+2021-10-24 20:32:36.046 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/ExtraCurricularBehaviouralScores/uploadSingleStudentExtraCurricularBehavioralScore application/json 233
+2021-10-24 20:32:36.098 +01:00 [INF] CORS policy execution successful.
+2021-10-24 20:32:36.123 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2021-10-24 20:32:36.128 +01:00 [INF] Authorization failed.
+2021-10-24 20:32:36.130 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2021-10-24 20:32:36.132 +01:00 [INF] Request finished in 87.5341ms 401 
+2021-10-24 20:32:44.605 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/ExtraCurricularBehaviouralScores/uploadSingleStudentExtraCurricularBehavioralScore application/json 233
+2021-10-24 20:32:44.615 +01:00 [INF] CORS policy execution successful.
+2021-10-24 20:32:44.624 +01:00 [INF] Authorization was successful.
+2021-10-24 20:32:44.624 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.ExtraCurricularBehaviouralScoresController.uploadSingleStudentExtraCurricularBehavioralScoreAsync (SANTEGSMS)'
+2021-10-24 20:32:44.671 +01:00 [INF] Route matched with {action = "uploadSingleStudentExtraCurricularBehavioralScore", controller = "ExtraCurricularBehaviouralScores"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] uploadSingleStudentExtraCurricularBehavioralScoreAsync(SANTEGSMS.RequestModels.UploadScorePerStudentReqModel) on controller SANTEGSMS.Controllers.ExtraCurricularBehaviouralScoresController (SANTEGSMS).
+2021-10-24 20:32:50.116 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2021-10-24 20:32:51.997 +01:00 [INF] Executed DbCommand (179ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2021-10-24 20:32:54.306 +01:00 [INF] Executed DbCommand (153ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2021-10-24 20:32:54.905 +01:00 [INF] Executed DbCommand (159ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2021-10-24 20:32:56.143 +01:00 [INF] Executed DbCommand (152ms) [Parameters=[@__classGradeId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassId`, `c`.`DateCreated`, `c`.`DateDeleted`, `c`.`DeletedBy`, `c`.`GradeName`, `c`.`IsDeleted`, `c`.`SchoolId`, `c`.`isAssignedToTeacher`
+FROM `ClassGrades` AS `c`
+WHERE `c`.`Id` = @__classGradeId_0
+LIMIT 1
+2021-10-24 20:33:03.624 +01:00 [INF] Executed DbCommand (149ms) [Parameters=[@__8__locals2_obj_CategoryId_0='?' (DbType = Int64), @__8__locals2_obj_SchoolId_1='?' (DbType = Int64), @__8__locals2_obj_CampusId_2='?' (DbType = Int64), @__8__locals2_obj_ClassId_3='?' (DbType = Int64), @__8__locals2_obj_TermId_4='?' (DbType = Int64), @__8__locals2_obj_SessionId_5='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`CategoryId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`Percentage`, `s`.`SchoolId`, `s`.`SessionId`, `s`.`TermId`
+FROM `ScoreCategoryConfig` AS `s`
+WHERE (((((`s`.`CategoryId` = @__8__locals2_obj_CategoryId_0) AND (`s`.`SchoolId` = @__8__locals2_obj_SchoolId_1)) AND (`s`.`CampusId` = @__8__locals2_obj_CampusId_2)) AND (`s`.`ClassId` = @__8__locals2_obj_ClassId_3)) AND (`s`.`TermId` = @__8__locals2_obj_TermId_4)) AND (`s`.`SessionId` = @__8__locals2_obj_SessionId_5)
+LIMIT 1
+2021-10-24 20:33:07.665 +01:00 [INF] Executed DbCommand (171ms) [Parameters=[@__8__locals2_obj_SubCategoryId_0='?' (DbType = Int64), @__categoryConfig_CategoryId_1='?' (DbType = Int64), @__8__locals2_obj_SchoolId_2='?' (DbType = Int64), @__8__locals2_obj_CampusId_3='?' (DbType = Int64), @__8__locals2_obj_ClassId_4='?' (DbType = Int64), @__8__locals2_obj_TermId_5='?' (DbType = Int64), @__8__locals2_obj_SessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusId`, `s`.`CategoryId`, `s`.`ClassId`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`ScoreObtainable`, `s`.`SessionId`, `s`.`SubCategoryName`, `s`.`TermId`
+FROM `ScoreSubCategoryConfig` AS `s`
+WHERE ((((((`s`.`Id` = @__8__locals2_obj_SubCategoryId_0) AND (`s`.`CategoryId` = @__categoryConfig_CategoryId_1)) AND (`s`.`SchoolId` = @__8__locals2_obj_SchoolId_2)) AND (`s`.`CampusId` = @__8__locals2_obj_CampusId_3)) AND (`s`.`ClassId` = @__8__locals2_obj_ClassId_4)) AND (`s`.`TermId` = @__8__locals2_obj_TermId_5)) AND (`s`.`SessionId` = @__8__locals2_obj_SessionId_6)
+LIMIT 1
+2021-10-24 20:33:16.068 +01:00 [INF] Executed DbCommand (154ms) [Parameters=[@__8__locals2_obj_SchoolId_0='?' (DbType = Int64), @__8__locals2_obj_CampusId_1='?' (DbType = Int64), @__8__locals2_obj_ClassId_2='?' (DbType = Int64), @__8__locals2_obj_ClassGradeId_3='?' (DbType = Int64), @__8__locals2_obj_TermId_4='?' (DbType = Int64), @__8__locals2_obj_SessionId_5='?' (DbType = Int64), @__8__locals2_obj_StudentId_6='?' (DbType = Guid), @__8__locals2_obj_CategoryId_7='?' (DbType = Int64), @__8__locals2_obj_SubCategoryId_8='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `b`.`Id`, `b`.`AdmissionNumber`, `b`.`CampusId`, `b`.`CategoryId`, `b`.`ClassGradeId`, `b`.`ClassId`, `b`.`DateDeleted`, `b`.`DateUpdated`, `b`.`DateUploaded`, `b`.`DeletedBy`, `b`.`IsDeleted`, `b`.`MarkObtainable`, `b`.`MarkObtained`, `b`.`SchoolId`, `b`.`SessionId`, `b`.`StudentId`, `b`.`SubCategoryId`, `b`.`TeacherId`, `b`.`TermId`
+FROM `BehavioralScores` AS `b`
+WHERE ((((((((`b`.`SchoolId` = @__8__locals2_obj_SchoolId_0) AND (`b`.`CampusId` = @__8__locals2_obj_CampusId_1)) AND (`b`.`ClassId` = @__8__locals2_obj_ClassId_2)) AND (`b`.`ClassGradeId` = @__8__locals2_obj_ClassGradeId_3)) AND (`b`.`TermId` = @__8__locals2_obj_TermId_4)) AND (`b`.`SessionId` = @__8__locals2_obj_SessionId_5)) AND (`b`.`StudentId` = @__8__locals2_obj_StudentId_6)) AND (`b`.`CategoryId` = @__8__locals2_obj_CategoryId_7)) AND (`b`.`SubCategoryId` = @__8__locals2_obj_SubCategoryId_8)
+LIMIT 1
+2021-10-24 20:33:18.976 +01:00 [INF] Executed DbCommand (205ms) [Parameters=[@__8__locals2_obj_StudentId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`AdmissionNumber`, `s`.`CampusId`, `s`.`City`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DateOfBirth`, `s`.`DeletedBy`, `s`.`FirstName`, `s`.`GenderId`, `s`.`HomeAddress`, `s`.`IsActive`, `s`.`IsAssignedToClass`, `s`.`IsDeleted`, `s`.`LastLoginDate`, `s`.`LastName`, `s`.`LastPasswordChangedDate`, `s`.`LastUpdatedDate`, `s`.`LocalGovt`, `s`.`MiddleName`, `s`.`PasswordHash`, `s`.`ProfilePictureUrl`, `s`.`Religion`, `s`.`Salt`, `s`.`SchoolId`, `s`.`StaffStatus`, `s`.`State`, `s`.`StateOfOrigin`, `s`.`Status`, `s`.`StudentStatus`, `s`.`UserName`, `s`.`YearOfAdmission`, `s`.`hasParent`
+FROM `Students` AS `s`
+WHERE `s`.`Id` = @__8__locals2_obj_StudentId_0
+LIMIT 1

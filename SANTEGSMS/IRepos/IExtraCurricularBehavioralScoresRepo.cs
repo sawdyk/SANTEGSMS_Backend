@@ -15,6 +15,7 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getExtraCurricularBehavioralScoresByStudentIdAndCategoryIdAsync(Guid studentId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long termId, long sessionId);
         Task<UploadScoreRespModel> uploadSingleStudentExtraCurricularBehavioralScoreAsync(UploadScorePerStudentReqModel obj);
         Task<UploadScoreRespModel> updateExtraCurricularBehavioralScoresAsync(UploadScoreReqModel obj);
+        Task<UploadScoreRespModel> updateSingleStudentExtraCurricularBehavioralScoresAsync(UploadSingleStudentScoreReqModel obj);
         Task<GenericRespModel> deleteExtraCurricularBehavioralScoresForSingleStudentAsync(Guid studentId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId);
         Task<GenericRespModel> deleteExtraCurricularBehavioralScoresForAllStudentAsync(long schoolId, long campusId, long classId, long classGradeId, long categoryId, long subCategoryId, long termId, long sessionId);
         Task<GenericRespModel> deleteExtraCurricularBehavioralScoresPerCategoryForSingleStudentAsync(Guid studentId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long termId, long sessionId);

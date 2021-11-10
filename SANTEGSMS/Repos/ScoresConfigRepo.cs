@@ -464,7 +464,7 @@ namespace SANTEGSMS.Repos
                 {
                     //get the totalpercentage
                     decimal totalPercentage = _context.ScoreCategoryConfig.Where(c => c.SchoolId == obj.SchoolId
-                    && c.CampusId == obj.CampusId && c.ClassId == obj.ClassId && c.SessionId == obj.SessionId && c.TermId == obj.TermId).Sum(p => p.Percentage);
+                    && c.CampusId == obj.CampusId && c.ClassId == obj.ClassId && c.SessionId == obj.SessionId && c.TermId == obj.TermId && c.Id != scoreCategoryConfigId).Sum(p => p.Percentage);
 
                     //adds the total percentage with the new percentage
                     decimal configPercentage = totalPercentage + obj.Percentage;
@@ -715,39 +715,50 @@ namespace SANTEGSMS.Repos
 
                 if (con != null)
                 {
-                    con.CategoryId = obj.CategoryId;
-                    con.SchoolId = obj.SchoolId;
-                    con.CampusId = obj.CampusId;
-                    con.ClassId = obj.ClassId;
-                    con.TermId = obj.TermId;
-                    con.SessionId = obj.SessionId;
-                    con.SubCategoryName = obj.SubCategoryName;
-                    con.ScoreObtainable = obj.ScoreObtainable;
+                    decimal totalScoreObtainable = _context.ScoreSubCategoryConfig.Where(c => c.SchoolId == obj.SchoolId
+                   && c.CampusId == obj.CampusId && c.ClassId == obj.ClassId && c.SessionId == obj.SessionId && c.TermId == obj.TermId && c.Id != scoreSubCategoryConfigId).Sum(p => p.ScoreObtainable);
 
-                    await _context.SaveChangesAsync();
+                    //adds
+                    decimal configScoreObtainable = totalScoreObtainable + obj.ScoreObtainable;
 
-                    //returns the Score Sub Category Config
-                    var result = from cl in _context.ScoreSubCategoryConfig
-                                 where cl.Id == con.Id
-                                 select new
-                                 {
-                                     cl.Id,
-                                     cl.CategoryId,
-                                     cl.SchoolId,
-                                     cl.CampusId,
-                                     cl.ClassId,
-                                     cl.Classes.ClassName,
-                                     cl.ScoreCategory.CategoryName,
-                                     cl.SubCategoryName,
-                                     cl.ScoreObtainable,
-                                     cl.TermId,
-                                     cl.Terms.TermName,
-                                     cl.SessionId,
-                                     cl.Sessions.SessionName,
-                                     cl.DateCreated
-                                 };
+                    if (configScoreObtainable <= 100)
+                    {
+                        con.CategoryId = obj.CategoryId;
+                        con.SchoolId = obj.SchoolId;
+                        con.CampusId = obj.CampusId;
+                        con.ClassId = obj.ClassId;
+                        con.TermId = obj.TermId;
+                        con.SessionId = obj.SessionId;
+                        con.SubCategoryName = obj.SubCategoryName;
+                        con.ScoreObtainable = obj.ScoreObtainable;
 
-                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Score Sub Category Updated Successfully", Data = result.FirstOrDefault() };
+                        await _context.SaveChangesAsync();
+
+                        //returns the Score Sub Category Config
+                        var result = from cl in _context.ScoreSubCategoryConfig
+                                     where cl.Id == con.Id
+                                     select new
+                                     {
+                                         cl.Id,
+                                         cl.CategoryId,
+                                         cl.SchoolId,
+                                         cl.CampusId,
+                                         cl.ClassId,
+                                         cl.Classes.ClassName,
+                                         cl.ScoreCategory.CategoryName,
+                                         cl.SubCategoryName,
+                                         cl.ScoreObtainable,
+                                         cl.TermId,
+                                         cl.Terms.TermName,
+                                         cl.SessionId,
+                                         cl.Sessions.SessionName,
+                                         cl.DateCreated
+                                     };
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Score Sub Category Updated Successfully", Data = result.FirstOrDefault() };
+                    }
+
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Score Sub Category total Cannot be greater than 100%" };
                 }
 
                 return new GenericRespModel { StatusCode = 409, StatusMessage = "No Score Sub Category with the specified Id", };

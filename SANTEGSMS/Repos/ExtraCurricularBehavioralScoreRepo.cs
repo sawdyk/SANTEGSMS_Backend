@@ -685,6 +685,7 @@ namespace SANTEGSMS.Repos
                                      select new
                                      {
                                          ex.Id,
+                                         ex.StudentId,
                                          ex.SchoolId,
                                          ex.CampusId,
                                          ex.Classes.ClassName,
@@ -719,6 +720,7 @@ namespace SANTEGSMS.Repos
                                      select new
                                      {
                                          ex.Id,
+                                         ex.StudentId,
                                          ex.SchoolId,
                                          ex.CampusId,
                                          ex.Classes.ClassName,
@@ -887,16 +889,24 @@ namespace SANTEGSMS.Repos
                                          ex.Id,
                                          ex.SchoolId,
                                          ex.CampusId,
+                                         ex.ClassId,
+                                         ex.ClassGradeId,
+                                         ex.CategoryId,
+                                         ex.SubCategoryId,
+                                         ex.TermId,
+                                         ex.SessionId,
                                          ex.Classes.ClassName,
                                          ex.ClassGrades.GradeName,
                                          ex.Sessions.SessionName,
                                          ex.Terms.TermName,
+                                         ex.StudentId,
                                          StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
                                          ex.Students.AdmissionNumber,
                                          ex.MarkObtainable,
                                          ex.MarkObtained,
                                          ex.ScoreCategory.CategoryName,
                                          ex.ScoreSubCategoryConfig.SubCategoryName,
+                                         ex.TeacherId,
                                          TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
                                          ex.DateUploaded,
                                          ex.DateUpdated
@@ -921,16 +931,24 @@ namespace SANTEGSMS.Repos
                                          ex.Id,
                                          ex.SchoolId,
                                          ex.CampusId,
+                                         ex.ClassId,
+                                         ex.ClassGradeId,
+                                         ex.CategoryId,
+                                         ex.SubCategoryId,
+                                         ex.TermId,
+                                         ex.SessionId,
                                          ex.Classes.ClassName,
                                          ex.ClassGrades.GradeName,
                                          ex.Sessions.SessionName,
                                          ex.Terms.TermName,
+                                         ex.StudentId,
                                          StudentName = ex.Students.FirstName + " " + ex.Students.LastName,
                                          ex.Students.AdmissionNumber,
                                          ex.MarkObtainable,
                                          ex.MarkObtained,
                                          ex.ScoreCategory.CategoryName,
                                          ex.ScoreSubCategoryConfig.SubCategoryName,
+                                         ex.TeacherId,
                                          TeachersName = ex.SchoolUsers.FirstName + " " + ex.SchoolUsers.LastName,
                                          ex.DateUploaded,
                                          ex.DateUpdated
@@ -1161,6 +1179,174 @@ namespace SANTEGSMS.Repos
                 await _context.ErrorLog.AddAsync(logError);
                 await _context.SaveChangesAsync();
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<UploadScoreRespModel> updateSingleStudentExtraCurricularBehavioralScoresAsync(UploadSingleStudentScoreReqModel obj)
+        {
+            try
+            {
+                IList<object> existingScores = new List<object>();
+                IList<object> newScores = new List<object>();
+                IList<object> dataResponse = new List<object>();
+
+                UploadScoreRespModel response = new UploadScoreRespModel();
+
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(obj.SchoolId);
+                var checkCampus = check.checkSchoolCampusById(obj.CampusId);
+                var checkClass = check.checkClassById(obj.ClassId);
+                var checkClassGarade = check.checkClassGradeById(obj.ClassGradeId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == true && checkCampus == true && checkClass == true && checkClassGarade == true)
+                {
+                    //--------------------------------------------------------------------EXTRACURRICULAR SCORES---------------------------------------------------------------------------------------------
+
+                    if (obj.CategoryId == (long)EnumUtility.ScoreCategory.ExtraCurricular)
+                    {
+                        //Using one table for Category and SubCategory Configuration
+                        var categoryConfig = _context.ScoreCategoryConfig.Where(s => s.CategoryId == obj.CategoryId && s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                        && s.ClassId == obj.ClassId && s.TermId == obj.TermId && s.SessionId == obj.SessionId).FirstOrDefault();
+
+                        if (categoryConfig != null)
+                        {
+                            var subCategoryConfig = _context.ScoreSubCategoryConfig.Where(s => s.Id == obj.SubCategoryId && s.CategoryId == categoryConfig.CategoryId && s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                            && s.ClassId == obj.ClassId && s.TermId == obj.TermId && s.SessionId == obj.SessionId).FirstOrDefault();
+
+                            if (subCategoryConfig != null)
+                            {
+                                //Check if the examination scores for student has previously been uploaded
+                                ExtraCurricularScores extScore = _context.ExtraCurricularScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
+
+                                //the Student AdmissionNumber
+                                var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
+
+                                if (extScore != null)
+                                {
+                                    extScore.SchoolId = obj.SchoolId;
+                                    extScore.CampusId = obj.CampusId;
+                                    extScore.ClassId = obj.ClassId;
+                                    extScore.ClassGradeId = obj.ClassGradeId;
+                                    extScore.SessionId = obj.SessionId;
+                                    extScore.TermId = obj.TermId;
+                                    extScore.StudentId = obj.StudentId;
+                                    extScore.AdmissionNumber = admissionNumber;
+                                    extScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
+                                    extScore.MarkObtained = obj.MarkObtained;
+                                    extScore.CategoryId = obj.CategoryId;
+                                    extScore.SubCategoryId = obj.SubCategoryId;
+                                    extScore.TeacherId = obj.TeacherId;
+                                    extScore.DateUpdated = DateTime.Now;
+
+                                    await _context.SaveChangesAsync();
+
+                                    response.StatusCode = 200;
+                                    response.StatusMessage = "Scores Updated Successfully!";
+                                }
+                                else
+                                {
+                                    response.StatusCode = 409;
+                                    response.StatusMessage = "Scores does not Exists!";
+                                }
+
+                            }
+                            else
+                            {
+                                response.StatusCode = 409;
+                                response.StatusMessage = "Kindly Configure the Extracurricular Score SubCategory for this Class!";
+                            }
+                        }
+                        else
+                        {
+                            response.StatusCode = 409;
+                            response.StatusMessage = "Kindly Configure the Extracurricular Score Category for this Class!";
+                        }
+                    }
+
+                    //--------------------------------------------------------------------BEHAVIOURAL SCORES---------------------------------------------------------------------------------------------
+
+                    if (obj.CategoryId == (long)EnumUtility.ScoreCategory.Behavioural)
+                    {
+                        //Using one table for Category and SubCategory Configuration
+                        var categoryConfig = _context.ScoreCategoryConfig.Where(s => s.CategoryId == obj.CategoryId && s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                        && s.ClassId == obj.ClassId && s.TermId == obj.TermId && s.SessionId == obj.SessionId).FirstOrDefault();
+
+                        if (categoryConfig != null)
+                        {
+                            var subCategoryConfig = _context.ScoreSubCategoryConfig.Where(s => s.Id == obj.SubCategoryId && s.CategoryId == categoryConfig.CategoryId && s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                            && s.ClassId == obj.ClassId && s.TermId == obj.TermId && s.SessionId == obj.SessionId).FirstOrDefault();
+
+                            if (subCategoryConfig != null)
+                            {
+                                //Check if the examination scores for student has previously been uploaded
+                                BehavioralScores behvScore = _context.BehavioralScores.Where(s => s.SchoolId == obj.SchoolId && s.CampusId == obj.CampusId
+                                && s.ClassId == obj.ClassId && s.ClassGradeId == obj.ClassGradeId && s.TermId == obj.TermId && s.SessionId == obj.SessionId
+                                && s.StudentId == obj.StudentId && s.CategoryId == obj.CategoryId && s.SubCategoryId == obj.SubCategoryId).FirstOrDefault();
+
+                                //the Student AdmissionNumber
+                                var admissionNumber = _context.Students.Where(s => s.Id == obj.StudentId).FirstOrDefault().AdmissionNumber;
+
+                                if (behvScore != null)
+                                {
+                                    behvScore.SchoolId = obj.SchoolId;
+                                    behvScore.CampusId = obj.CampusId;
+                                    behvScore.ClassId = obj.ClassId;
+                                    behvScore.ClassGradeId = obj.ClassGradeId;
+                                    behvScore.SessionId = obj.SessionId;
+                                    behvScore.TermId = obj.TermId;
+                                    behvScore.StudentId = obj.StudentId;
+                                    behvScore.AdmissionNumber = admissionNumber;
+                                    behvScore.MarkObtainable = subCategoryConfig.ScoreObtainable; //score obtainable from the subCategory Configured by school
+                                    behvScore.MarkObtained = obj.MarkObtained;
+                                    behvScore.CategoryId = obj.CategoryId;
+                                    behvScore.SubCategoryId = obj.SubCategoryId;
+                                    behvScore.TeacherId = obj.TeacherId;
+                                    behvScore.DateUpdated = DateTime.Now;
+
+                                    await _context.SaveChangesAsync();
+
+                                    response.StatusCode = 200;
+                                    response.StatusMessage = "Scores Updated Successfully!";
+                                }
+                                else
+                                {
+                                    response.StatusCode = 409;
+                                    response.StatusMessage = "Scores does not Exists!";
+                                }
+
+                            }
+                            else
+                            {
+                                response.StatusCode = 409;
+                                response.StatusMessage = "Kindly Configure the Behavioural Score SubCategory for this Class or SubCategory does not exists!";
+                            }
+                        }
+                        else
+                        {
+                            response.StatusCode = 409;
+                            response.StatusMessage = "Kindly Configure the Behavioural Score Category for this Class!";
+                        }
+                    }
+                }
+                else
+                {
+                    response.StatusCode = 409;
+                    response.StatusMessage = "A Parameter with the Specified ID does not Exist!";
+                }
+
+                return response;
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new UploadScoreRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
         }
     }
