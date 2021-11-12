@@ -346,32 +346,19 @@ namespace SANTEGSMS.Repos
                 var getSch = _context.Schools.Where(s => s.Id == schoolId).FirstOrDefault();
                 if (getSch != null)
                 {
-                    CheckerValidation chk = new CheckerValidation(_context);
-                    var schNameExist = chk.checkIfSchoolNameExist(obj.SchoolName);
+                    //CheckerValidation chk = new CheckerValidation(_context);
+                    //var schNameExist = chk.checkIfSchoolNameExist(obj.SchoolName);
 
-                    if (schNameExist == true)
-                    {
-                        getSch.SchoolName = obj.SchoolName;
-                        getSch.SchoolLogoUrl = obj.SchoolLogouRL;
-                        getSch.PhoneNumber = obj.PhoneNumber;
-                        getSch.Address = obj.Address;
-                        getSch.EmailAddress = obj.EmailAddress;
-                        getSch.Motto = obj.Motto;
+                    getSch.SchoolName = obj.SchoolName;
+                    getSch.SchoolLogoUrl = obj.SchoolLogouRL;
+                    getSch.PhoneNumber = obj.PhoneNumber;
+                    getSch.Address = obj.Address;
+                    getSch.EmailAddress = obj.EmailAddress;
+                    getSch.Motto = obj.Motto;
 
-                    }
-                    else
-                    {
-                        getSch.SchoolName = obj.SchoolName;
-                        getSch.SchoolLogoUrl = obj.SchoolLogouRL;
-                        getSch.PhoneNumber = obj.PhoneNumber;
-                        getSch.Address = obj.Address;
-                        getSch.EmailAddress = obj.EmailAddress;
-                        getSch.Motto = obj.Motto;
+                    await _context.SaveChangesAsync();
 
-                        await _context.SaveChangesAsync();
-
-                        return new GenericRespModel { StatusCode = 200, StatusMessage = "School Details Updated Successfully" };
-                    }
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "School Details Updated Successfully" };
                 }
 
                 return new GenericRespModel { StatusCode = 200, StatusMessage = "No School With the Specified ID" };

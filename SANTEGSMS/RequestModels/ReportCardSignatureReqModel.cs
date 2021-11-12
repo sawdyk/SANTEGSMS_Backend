@@ -15,6 +15,26 @@ namespace SANTEGSMS.RequestModels
         [Required]
         public Guid UploadedById { get; set; }
         [Required]
+        public long ClassId { get; set; }
+        [Required]
+        public long ClassGradeId { get; set; }
+        [Required]
+        public long TermId { get; set; }
+        [Required]
+        public long SessionId { get; set; }
+        [Required]
+        public string SignatureUrl { get; set; }
+    }
+
+    public class PrincipalReportCardSignatureReqModel
+    {
+        [Required]
+        public long SchoolId { get; set; }
+        [Required]
+        public long CampusId { get; set; }
+        [Required]
+        public Guid UploadedById { get; set; }
+        [Required]
         public string SignatureUrl { get; set; }
     }
 }

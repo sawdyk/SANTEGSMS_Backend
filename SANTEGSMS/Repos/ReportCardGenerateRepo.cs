@@ -59,8 +59,8 @@ namespace SANTEGSMS.Repos
                             SchoolInfo SchoolInfo = new SchoolInfo();
                             StudentInfo StudentInfo = new StudentInfo();
                             ReportCardResult ReportCardResult = new ReportCardResult();
-                            object ExtraCurricularData = new object();
-                            object BehaviouralData = new object();
+                            IList<object> ExtraCurricularData = new List<object>();
+                            IList<object> BehaviouralData = new List<object>();
                             CumulativeReportCardData CumulativeReportCardData = new CumulativeReportCardData();
                             object LegendData = new object();
                             RemarksAndCommentData RemarksAndCommentData = new RemarksAndCommentData();
@@ -117,10 +117,10 @@ namespace SANTEGSMS.Repos
                                 SchoolInfo.SchoolName = rptSchInfo.SchoolName;
                                 SchoolInfo.SchoolType = reportCardReUsables.getSchoolTypeName(obj.SchoolId);
                                 SchoolInfo.LogoUrl = rptSchInfo.SchoolLogoUrl;
-                                SchoolInfo.PhoneNumber = rptSchInfo.PhoneNumber; ;
-                                SchoolInfo.Address = rptSchInfo.Address; ;
-                                SchoolInfo.EmailAddress = rptSchInfo.EmailAddress; ;
-                                SchoolInfo.Motto = rptSchInfo.Motto; ;
+                                SchoolInfo.PhoneNumber = rptSchInfo.PhoneNumber;
+                                SchoolInfo.Address = rptSchInfo.Address;
+                                SchoolInfo.EmailAddress = rptSchInfo.EmailAddress;
+                                SchoolInfo.Motto = rptSchInfo.Motto;
                             }
 
                             //------------------------------------------STUDENT INFORMATION-------------------------------------------------------
@@ -370,7 +370,8 @@ namespace SANTEGSMS.Repos
                             OtherData.NoInClass = reportCardReUsables.getNumberOfStudentInClass(obj.SchoolId, obj.CampusId, obj.ClassId, obj.ClassGradeId);
                             OtherData.Session = reportCardReUsables.getCurrentSessionName(obj.SchoolId);
                             OtherData.Term = reportCardReUsables.getTermName(obj.TermId);
-                            OtherData.Signature = reportCardReUsables.getReportCardSignature(obj.SchoolId, obj.CampusId);
+                            OtherData.ClassTeacherSignature = reportCardReUsables.getReportCardSignature(obj.SchoolId, obj.CampusId, obj.ClassId, obj.ClassGradeId, obj.TermId, obj.SessionId);
+                            OtherData.PrincipalSignature = reportCardReUsables.getPrincipalReportCardSignature(obj.SchoolId, obj.CampusId);
                             OtherData.DateGenerated = DateTime.Now.ToString();
 
 
@@ -463,8 +464,8 @@ namespace SANTEGSMS.Repos
                                     SchoolInfo SchoolInfo = new SchoolInfo();
                                     StudentInfo StudentInfo = new StudentInfo();
                                     ReportCardResult ReportCardResult = new ReportCardResult();
-                                    object ExtraCurricularData = new object();
-                                    object BehaviouralData = new object();
+                                    IList<object> ExtraCurricularData = new List<object>();
+                                    IList<object> BehaviouralData = new List<object>();
                                     CumulativeReportCardData CumulativeReportCardData = new CumulativeReportCardData();
                                     object LegendData = new object();
                                     RemarksAndCommentData RemarksAndCommentData = new RemarksAndCommentData();
@@ -773,7 +774,8 @@ namespace SANTEGSMS.Repos
                                     OtherData.NoInClass = reportCardReUsables.getNumberOfStudentInClass(obj.SchoolId, obj.CampusId, obj.ClassId, obj.ClassGradeId);
                                     OtherData.Session = reportCardReUsables.getCurrentSessionName(obj.SchoolId);
                                     OtherData.Term = reportCardReUsables.getTermName(obj.TermId);
-                                    OtherData.Signature = reportCardReUsables.getReportCardSignature(obj.SchoolId, obj.CampusId);
+                                    OtherData.ClassTeacherSignature = reportCardReUsables.getReportCardSignature(obj.SchoolId, obj.CampusId, obj.ClassId, obj.ClassGradeId, obj.TermId, obj.SessionId);
+                                    OtherData.PrincipalSignature = reportCardReUsables.getPrincipalReportCardSignature(obj.SchoolId, obj.CampusId);
                                     OtherData.DateGenerated = DateTime.Now.ToString();
 
                                     //------------------------------------------------RESPONSE DATA----------------------------------------------------------------------------

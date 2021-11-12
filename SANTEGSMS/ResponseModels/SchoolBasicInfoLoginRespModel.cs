@@ -12,6 +12,10 @@ namespace SANTEGSMS.ResponseModels
         public string SchoolCode { get; set; }
         public string SchoolTypeName { get; set; }
         public string SchoolLogoUrl { get; set; }
+        public string SchoolPhoneNumber { get; set; }
+        public string SchoolAddress { get; set; }
+        public string SchoolEmailAddress { get; set; }
+        public string SchoolMotto { get; set; }
         public long CampusId { get; set; }
         public string CampusName { get; set; }
         public string CampusAddress { get; set; }

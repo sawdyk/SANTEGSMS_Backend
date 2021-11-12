@@ -106,6 +106,20 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
+        [HttpPut("updateReportCardSignature")]
+        [Authorize]
+        public async Task<IActionResult> updateReportCardSignatureAsync(long reportCardSignatureId, [FromBody] ReportCardSignatureReqModel obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardConfigurationRepo.updateReportCardSignatureAsync(reportCardSignatureId,obj);
+
+            return Ok(result);
+        }
+
         [HttpGet("reportCardSignature")]
         [Authorize]
         public async Task<IActionResult> getReportCardSignatureAsync(long schoolId, long campusId)
@@ -116,6 +130,63 @@ namespace SANTEGSMS.Controllers
             }
 
             var result = await _reportCardConfigurationRepo.getReportCardSignatureAsync(schoolId, campusId);
+
+            return Ok(result);
+        }
+
+        [HttpGet("reportCardSignatureById")]
+        [Authorize]
+        public async Task<IActionResult> getReportCardSignatureByIdAsync(long reportCardSignatureId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardConfigurationRepo.getReportCardSignatureByIdAsync(reportCardSignatureId);
+
+            return Ok(result);
+        }
+
+        [HttpDelete("deleteReportCardSignature")]
+        [Authorize]
+        public async Task<IActionResult> deleteReportCardSignatureAsync(long reportCardSignatureId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardConfigurationRepo.deleteReportCardSignatureAsync(reportCardSignatureId);
+
+            return Ok(result);
+        }
+
+
+        [HttpPost("principalReportCardSignature")]
+        [Authorize]
+        public async Task<IActionResult> uploadPrincipalReportCardSignatureAsync([FromBody] PrincipalReportCardSignatureReqModel obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardConfigurationRepo.uploadPrincipalReportCardSignatureAsync(obj);
+
+            return Ok(result);
+        }
+
+        [HttpGet("principalReportCardSignature")]
+        [Authorize]
+        public async Task<IActionResult> getPrincipalReportCardSignatureAsync(long schoolId, long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _reportCardConfigurationRepo.getPrincipalReportCardSignatureAsync(schoolId, campusId);
 
             return Ok(result);
         }

@@ -233,6 +233,10 @@ namespace SANTEGSMS.Repos
                         schData.SchoolCode = userSchool.SchoolCode;
                         schData.SchoolTypeName = getSchType.SchoolTypeName;
                         schData.SchoolLogoUrl = userSchool.SchoolLogoUrl;
+                        schData.SchoolEmailAddress = userSchool.EmailAddress;
+                        schData.SchoolMotto = userSchool.Motto;
+                        schData.SchoolPhoneNumber = userSchool.PhoneNumber;
+                        schData.SchoolAddress = userSchool.Address;
                         schData.CampusId = getCampus.Id;
                         schData.CampusName = getCampus.CampusName;
                         schData.CampusAddress = getCampus.CampusAddress;

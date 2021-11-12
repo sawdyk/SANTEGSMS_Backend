@@ -288,8 +288,8 @@ namespace SANTEGSMS.Repos
                 if (checkSchool == true && checkCampus == true)
                 {
                     //check if signature already exists
-                    var checkSign = _context.ReportCardSignature.Where(x => x.SchoolId == obj.SchoolId && x.CampusId == obj.CampusId).FirstOrDefault();
-
+                    var checkSign = _context.ReportCardSignature.Where(x => x.SchoolId == obj.SchoolId && x.CampusId == obj.CampusId && x.ClassId == obj.ClassId
+                    && x.ClassGradeId == obj.ClassGradeId && x.TermId == obj.TermId && x.SessionId == obj.SessionId).FirstOrDefault();
                     if (checkSign == null)
                     {
                         //add new signature
@@ -297,6 +297,10 @@ namespace SANTEGSMS.Repos
                         {
                             SchoolId = obj.SchoolId,
                             CampusId = obj.CampusId,
+                            ClassId = obj.ClassId,
+                            ClassGradeId = obj.ClassGradeId,
+                            TermId = obj.TermId,
+                            SessionId = obj.SessionId,
                             UploadedById = obj.UploadedById,
                             SignatureUrl = obj.SignatureUrl,
                             DateCreated = DateTime.Now,
@@ -308,6 +312,274 @@ namespace SANTEGSMS.Repos
 
                         //return the result
                         var result = (from co in _context.ReportCardSignature
+                                      where co.Id == newSign.Id
+                                      select new
+                                      {
+                                          co.Id,
+                                          co.SchoolId,
+                                          co.CampusId,
+                                          co.UploadedById,
+                                          UploadedBy = co.SchoolUsers.FirstName + " " + co.SchoolUsers.LastName,
+                                          co.ClassId,
+                                          co.Classes.ClassName,
+                                          co.ClassGradeId,
+                                          co.ClassGrades.GradeName,
+                                          co.TermId,
+                                          co.Terms.TermName,
+                                          co.SessionId,
+                                          co.Sessions.SessionName,
+                                          co.SignatureUrl,
+                                          co.DateCreated,
+                                          co.LastDateUpdated
+                                      }).FirstOrDefault();
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Report Card Signature Added Successfully!", Data = result };
+                    }
+
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Report Card Signature Already exist" };
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "School or Campus With Specified ID does not exist" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> updateReportCardSignatureAsync(long reportCardSignatureId, ReportCardSignatureReqModel obj)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(obj.SchoolId);
+                var checkCampus = check.checkSchoolCampusById(obj.CampusId);
+
+                //check if all parameters supplied is Valid
+                if (checkSchool == true && checkCampus == true)
+                {
+                    //check if signature already exists
+                    var checkSign = _context.ReportCardSignature.Where(x => x.Id == reportCardSignatureId).FirstOrDefault();
+                    if (checkSign != null)
+                    {
+                        checkSign.SchoolId = obj.SchoolId;
+                        checkSign.CampusId = obj.CampusId;
+                        checkSign.UploadedById = obj.UploadedById;
+                        checkSign.ClassId = obj.ClassId;
+                        checkSign.ClassGradeId = obj.ClassGradeId;
+                        checkSign.TermId = obj.TermId;
+                        checkSign.SessionId = obj.SessionId;
+                        checkSign.SignatureUrl = obj.SignatureUrl;
+                        checkSign.LastDateUpdated = DateTime.Now;
+
+                        await _context.SaveChangesAsync();
+
+                        //return the result
+                        var result = (from co in _context.ReportCardSignature
+                                      where co.Id == checkSign.Id
+                                      select new
+                                      {
+                                          co.Id,
+                                          co.SchoolId,
+                                          co.CampusId,
+                                          co.UploadedById,
+                                          UploadedBy = co.SchoolUsers.FirstName + " " + co.SchoolUsers.LastName,
+                                          co.ClassId,
+                                          co.Classes.ClassName,
+                                          co.ClassGradeId,
+                                          co.ClassGrades.GradeName,
+                                          co.TermId,
+                                          co.Terms.TermName,
+                                          co.SessionId,
+                                          co.Sessions.SessionName,
+                                          co.SignatureUrl,
+                                          co.DateCreated,
+                                          co.LastDateUpdated
+
+                                      }).FirstOrDefault();
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Report Card Signature Updated Successfully", Data = result };
+                    }
+
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No Report Card Signature with the Specified ID" };
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "School or Campus With Specified ID does not exist" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getReportCardSignatureAsync(long schoolId, long campusId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+
+                //check if all parameters supplied is Valid
+                if (checkSchool == true && checkCampus == true)
+                {
+                    var result = from co in _context.ReportCardSignature
+                                 where co.SchoolId == schoolId && co.CampusId == campusId
+                                 select new
+                                 {
+                                     co.Id,
+                                     co.SchoolId,
+                                     co.CampusId,
+                                     co.UploadedById,
+                                     UploadedBy = co.SchoolUsers.FirstName + " " + co.SchoolUsers.LastName,
+                                     co.ClassId,
+                                     co.Classes.ClassName,
+                                     co.ClassGradeId,
+                                     co.ClassGrades.GradeName,
+                                     co.TermId,
+                                     co.Terms.TermName,
+                                     co.SessionId,
+                                     co.Sessions.SessionName,
+                                     co.SignatureUrl,
+                                     co.DateCreated,
+                                     co.LastDateUpdated
+                                 };
+                    if (result.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList()};
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "School or Campus With Specified ID does not exist" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getReportCardSignatureByIdAsync(long reportCardSignatureId)
+        {
+            try
+            {
+                var checkSign = _context.ReportCardSignature.Where(x => x.Id == reportCardSignatureId).FirstOrDefault();
+                if (checkSign != null)
+                {
+                    var result = from co in _context.ReportCardSignature
+                                 where co.Id == reportCardSignatureId
+                                 select new
+                                 {
+                                     co.Id,
+                                     co.SchoolId,
+                                     co.CampusId,
+                                     co.UploadedById,
+                                     UploadedBy = co.SchoolUsers.FirstName + " " + co.SchoolUsers.LastName,
+                                     co.ClassId,
+                                     co.Classes.ClassName,
+                                     co.ClassGradeId,
+                                     co.ClassGrades.GradeName,
+                                     co.TermId,
+                                     co.Terms.TermName,
+                                     co.SessionId,
+                                     co.Sessions.SessionName,
+                                     co.SignatureUrl,
+                                     co.DateCreated,
+                                     co.LastDateUpdated
+                                 };
+                    if (result.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.FirstOrDefault()};
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "No Report Card Signature with the Specified ID" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+
+        public async Task<GenericRespModel> deleteReportCardSignatureAsync(long reportCardSignatureId)
+        {
+            try
+            {
+                var checkSign = _context.ReportCardSignature.Where(x => x.Id == reportCardSignatureId).FirstOrDefault();
+                if (checkSign != null)
+                {
+                    _context.ReportCardSignature.Remove(checkSign);
+                    await _context.SaveChangesAsync();
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Report Card Signature Deleted Successfully!"};
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "No Report Card Signature with the Specified ID" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> uploadPrincipalReportCardSignatureAsync(PrincipalReportCardSignatureReqModel obj)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(obj.SchoolId);
+                var checkCampus = check.checkSchoolCampusById(obj.CampusId);
+
+                //check if all parameters supplied is Valid
+                if (checkSchool == true && checkCampus == true)
+                {
+                    //check if signature already exists
+                    var checkSign = _context.PrincipalReportCardSignature.Where(x => x.SchoolId == obj.SchoolId && x.CampusId == obj.CampusId).FirstOrDefault();
+                    if (checkSign == null)
+                    {
+                        //add new signature
+                        var newSign = new PrincipalReportCardSignature
+                        {
+                            SchoolId = obj.SchoolId,
+                            CampusId = obj.CampusId,
+                            UploadedById = obj.UploadedById,
+                            SignatureUrl = obj.SignatureUrl,
+                            DateCreated = DateTime.Now,
+                            LastDateUpdated = DateTime.Now,
+                        };
+
+                        await _context.PrincipalReportCardSignature.AddAsync(newSign);
+                        await _context.SaveChangesAsync();
+
+                        //return the result
+                        var result = (from co in _context.PrincipalReportCardSignature
                                       where co.Id == newSign.Id
                                       select new
                                       {
@@ -334,7 +606,7 @@ namespace SANTEGSMS.Repos
                         await _context.SaveChangesAsync();
 
                         //return the result
-                        var result = (from co in _context.ReportCardSignature
+                        var result = (from co in _context.PrincipalReportCardSignature
                                       where co.Id == checkSign.Id
                                       select new
                                       {
@@ -366,7 +638,7 @@ namespace SANTEGSMS.Repos
             }
         }
 
-        public async Task<GenericRespModel> getReportCardSignatureAsync(long schoolId, long campusId)
+        public async Task<GenericRespModel> getPrincipalReportCardSignatureAsync(long schoolId, long campusId)
         {
             try
             {
@@ -378,7 +650,7 @@ namespace SANTEGSMS.Repos
                 //check if all parameters supplied is Valid
                 if (checkSchool == true && checkCampus == true)
                 {
-                    var result = from co in _context.ReportCardSignature
+                    var result = from co in _context.PrincipalReportCardSignature
                                  where co.SchoolId == schoolId && co.CampusId == campusId
                                  select new
                                  {
@@ -412,6 +684,7 @@ namespace SANTEGSMS.Repos
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
         }
+
 
         public async Task<GenericRespModel> nextTermBeginsAsync(NextTermBeginsReqModel obj)
         {

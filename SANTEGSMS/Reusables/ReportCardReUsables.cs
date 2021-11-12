@@ -305,7 +305,7 @@ namespace SANTEGSMS.Reusables
 
         //------------------------------------------------------------------BEHAVIOURAL SCORES------------------------------------------------------------------
 
-        public object getStudentBehaviouralScores(Guid studentId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long termId, long sessionId)
+        public IList<object> getStudentBehaviouralScores(Guid studentId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long termId, long sessionId)
         {
             try
             {
@@ -319,7 +319,7 @@ namespace SANTEGSMS.Reusables
                                  ex.MarkObtained,
                                  ex.ScoreCategory.CategoryName,
                                  ex.ScoreSubCategoryConfig.SubCategoryName,
-                             }).FirstOrDefault();
+                             }).ToList<object>();
 
                 return result;
             }
@@ -331,7 +331,7 @@ namespace SANTEGSMS.Reusables
 
         //------------------------------------------------------------------EXTRACURRICULAR SCORES------------------------------------------------------------------
 
-        public object getStudentExtracurricularScores(Guid studentId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long termId, long sessionId)
+        public IList<object> getStudentExtracurricularScores(Guid studentId, long schoolId, long campusId, long classId, long classGradeId, long categoryId, long termId, long sessionId)
         {
             try
             {
@@ -345,7 +345,7 @@ namespace SANTEGSMS.Reusables
                                  ex.MarkObtained,
                                  ex.ScoreCategory.CategoryName,
                                  ex.ScoreSubCategoryConfig.SubCategoryName,
-                             }).FirstOrDefault();
+                             }).ToList<object>();
 
                 return result;
             }
@@ -567,13 +567,14 @@ namespace SANTEGSMS.Reusables
 
         //------------------------------------------------------------------REPORT CARD SIGNATURE------------------------------------------------------------------
 
-        public string getReportCardSignature(long schoolId, long campusId)
+        public string getReportCardSignature(long schoolId, long campusId, long classId, long classGradeId, long termId, long sessionId)
         {
             try
             {
                 string signatureURL = string.Empty;
 
-                ReportCardSignature rptSign = _context.ReportCardSignature.Where(x => x.SchoolId == schoolId && x.CampusId == campusId).FirstOrDefault();
+                ReportCardSignature rptSign = _context.ReportCardSignature.Where(x => x.SchoolId == schoolId && x.CampusId == campusId
+                && x.ClassId == classId && x.ClassGradeId == classGradeId && x.TermId == termId && x.SessionId == sessionId).FirstOrDefault();
                 if (rptSign != null)
                 {
                     signatureURL = rptSign.SignatureUrl;
@@ -586,6 +587,27 @@ namespace SANTEGSMS.Reusables
                 throw ex;
             }
         }
+
+        public string getPrincipalReportCardSignature(long schoolId, long campusId)
+        {
+            try
+            {
+                string signatureURL = string.Empty;
+
+                PrincipalReportCardSignature rptSign = _context.PrincipalReportCardSignature.Where(x => x.SchoolId == schoolId && x.CampusId == campusId).FirstOrDefault();
+                if (rptSign != null)
+                {
+                    signatureURL = rptSign.SignatureUrl;
+                }
+
+                return signatureURL;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public string ToOrdinal(int value)
         {

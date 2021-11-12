@@ -1287,5 +1287,74 @@ namespace SANTEGSMS.Repos
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
         }
+
+        public async Task<GenericRespModel> getAllParentInSchoolPerSessionAsync(long schoolId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation checker = new CheckerValidation(_context);
+                var checkSchool = checker.checkSchoolById(schoolId);
+
+                //get School Current Session and Term
+                long currentSessionId = new SessionAndTerm(_context).getCurrentSessionId(schoolId);
+                //long currentTermId = new SessionAndTerm(_context).getCurrentTermId(campusId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == true)
+                {
+                    if (currentSessionId > 0)
+                    {
+                        var result = from prt in _context.ParentsStudentsMap
+                                     where (from grd in _context.GradeStudents
+                                            where grd.SchoolId == schoolId && grd.SessionId == currentSessionId
+                                            select grd.StudentId).Contains(prt.StudentId) && prt.SchoolId == schoolId
+                                     select new
+                                     {
+                                         prt.Parents.Id,
+                                         prt.CampusId,
+                                         prt.SchoolId,
+                                         prt.Parents.FirstName,
+                                         prt.Parents.LastName,
+                                         prt.Parents.UserName,
+                                         prt.Parents.Email,
+                                         prt.Parents.Gender.GenderName,
+                                         prt.Parents.PhoneNumber,
+                                         prt.Parents.HomeAddress,
+                                         prt.Parents.StateOfOrigin,
+                                         prt.Parents.LocalGovt,
+                                         prt.Parents.Nationality,
+                                         prt.Parents.Occupation,
+                                         prt.Parents.Religion,
+                                         prt.Parents.State,
+                                         prt.Parents.IsActive,
+                                         prt.Parents.LastLoginDate,
+                                         prt.Parents.LastPasswordChangedDate,
+                                         prt.Parents.LastUpdatedDate,
+                                         prt.Parents.DateCreated,
+                                     };
+
+                        if (result.Count() > 0)
+                        {
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList() };
+                        }
+
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                    }
+
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "School Current Academic Session and Term has not been Set" };
+                }
+
+                return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid School or CampusId" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
     }
 }

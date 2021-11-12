@@ -22,8 +22,8 @@ namespace SANTEGSMS.ResponseModels
         public ReportCardHeaderInfo ReportCardHeaderInfo { get; set; }
         public ReportCardResult ReportCardResult { get; set; }
         public CumulativeReportCardData CumulativeReportCardData { get; set; }
-        public object ExtraCurricularData { get; set; }
-        public object BehaviouralData { get; set; }
+        public IList<object> ExtraCurricularData { get; set; }
+        public IList<object> BehaviouralData { get; set; }
         public object LegendData { get; set; }
         public RemarksAndCommentData RemarksAndCommentData { get; set; }
         public OtherData OtherData { get; set; }
@@ -149,7 +149,8 @@ namespace SANTEGSMS.ResponseModels
         public long NoInClass { get; set; }
         public string NextTermBeginsDate { get; set; }
         public string ClassTeachersFullName { get; set; }
-        public string Signature { get; set; }
+        public string ClassTeacherSignature { get; set; }
+        public string PrincipalSignature { get; set; }
         public string DateGenerated { get; set; }
     }
 
