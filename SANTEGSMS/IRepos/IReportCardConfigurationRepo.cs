@@ -15,7 +15,6 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> updateCommentsAsync(long commentId, UpdateCommentReqModel obj);
         Task<GenericRespModel> deleteCommentsAsync(long commentId);
         Task<GenericRespModel> uploadReportCardSignatureAsync(ReportCardSignatureReqModel obj);
-        Task<GenericRespModel> updateReportCardSignatureAsync(long reportCardSignatureId, ReportCardSignatureReqModel obj);
         Task<GenericRespModel> getReportCardSignatureAsync(long schoolId, long campusId);
         Task<GenericRespModel> getReportCardSignatureByIdAsync(long reportCardSignatureId);
         Task<GenericRespModel> deleteReportCardSignatureAsync(long reportCardSignatureId);

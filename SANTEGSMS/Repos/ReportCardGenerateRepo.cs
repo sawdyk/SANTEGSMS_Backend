@@ -522,10 +522,10 @@ namespace SANTEGSMS.Repos
                                         SchoolInfo.SchoolName = rptSchInfo.SchoolName;
                                         SchoolInfo.SchoolType = reportCardReUsables.getSchoolTypeName(obj.SchoolId);
                                         SchoolInfo.LogoUrl = rptSchInfo.SchoolLogoUrl;
-                                        SchoolInfo.PhoneNumber = "";
-                                        SchoolInfo.Address = "";
-                                        SchoolInfo.EmailAddress = "";
-                                        SchoolInfo.Motto = "";
+                                        SchoolInfo.PhoneNumber = rptSchInfo.PhoneNumber;
+                                        SchoolInfo.Address = rptSchInfo.Address;
+                                        SchoolInfo.EmailAddress = rptSchInfo.EmailAddress;
+                                        SchoolInfo.Motto = rptSchInfo.Motto;
                                     }
 
                                     //------------------------------------------STUDENT INFORMATION-------------------------------------------------------

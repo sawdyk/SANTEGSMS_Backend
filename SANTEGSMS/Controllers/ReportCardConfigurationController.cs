@@ -106,20 +106,6 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
-        [HttpPut("updateReportCardSignature")]
-        [Authorize]
-        public async Task<IActionResult> updateReportCardSignatureAsync(long reportCardSignatureId, [FromBody] ReportCardSignatureReqModel obj)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
-            var result = await _reportCardConfigurationRepo.updateReportCardSignatureAsync(reportCardSignatureId,obj);
-
-            return Ok(result);
-        }
-
         [HttpGet("reportCardSignature")]
         [Authorize]
         public async Task<IActionResult> getReportCardSignatureAsync(long schoolId, long campusId)

@@ -332,40 +332,8 @@ namespace SANTEGSMS.Repos
                                           co.DateCreated,
                                           co.LastDateUpdated
                                       }).FirstOrDefault();
-
-                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Report Card Signature Added Successfully!", Data = result };
                     }
-
-                    return new GenericRespModel { StatusCode = 409, StatusMessage = "Report Card Signature Already exist" };
-                }
-
-                return new GenericRespModel { StatusCode = 409, StatusMessage = "School or Campus With Specified ID does not exist" };
-            }
-            catch (Exception exMessage)
-            {
-                ErrorLogger err = new ErrorLogger();
-                var logError = err.logError(exMessage);
-                await _context.ErrorLog.AddAsync(logError);
-                await _context.SaveChangesAsync();
-                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
-            }
-        }
-
-        public async Task<GenericRespModel> updateReportCardSignatureAsync(long reportCardSignatureId, ReportCardSignatureReqModel obj)
-        {
-            try
-            {
-                //Validations
-                CheckerValidation check = new CheckerValidation(_context);
-                var checkSchool = check.checkSchoolById(obj.SchoolId);
-                var checkCampus = check.checkSchoolCampusById(obj.CampusId);
-
-                //check if all parameters supplied is Valid
-                if (checkSchool == true && checkCampus == true)
-                {
-                    //check if signature already exists
-                    var checkSign = _context.ReportCardSignature.Where(x => x.Id == reportCardSignatureId).FirstOrDefault();
-                    if (checkSign != null)
+                    else
                     {
                         checkSign.SchoolId = obj.SchoolId;
                         checkSign.CampusId = obj.CampusId;
@@ -400,13 +368,10 @@ namespace SANTEGSMS.Repos
                                           co.SignatureUrl,
                                           co.DateCreated,
                                           co.LastDateUpdated
-
                                       }).FirstOrDefault();
 
                         return new GenericRespModel { StatusCode = 200, StatusMessage = "Report Card Signature Updated Successfully", Data = result };
                     }
-
-                    return new GenericRespModel { StatusCode = 409, StatusMessage = "No Report Card Signature with the Specified ID" };
                 }
 
                 return new GenericRespModel { StatusCode = 409, StatusMessage = "School or Campus With Specified ID does not exist" };
@@ -420,7 +385,7 @@ namespace SANTEGSMS.Repos
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
         }
-
+      
         public async Task<GenericRespModel> getReportCardSignatureAsync(long schoolId, long campusId)
         {
             try
