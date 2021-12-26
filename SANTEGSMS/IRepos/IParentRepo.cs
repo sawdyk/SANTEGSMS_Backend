@@ -9,6 +9,7 @@ namespace SANTEGSMS.IRepos
 {
     public interface IParentRepo
     {
+        Task<GenericRespModel> createParentInfoAndMapStudentAsync(CreateParentReqModel obj);
         Task<GenericRespModel> getParentDetailsByEmailAsync(string email, long schoolId, long campusId);
         Task<SchoolUsersLoginRespModel> parentLoginAsync(LoginReqModel obj);
         Task<GenericRespModel> getParentDetailsByIdAsync(Guid parentId, long schoolId, long campusId);

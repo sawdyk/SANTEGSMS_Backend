@@ -34,7 +34,8 @@ namespace SANTEGSMS.Repos
             {
                 //check if the parent email exist
                 CheckerValidation check = new CheckerValidation(_context);
-                var emailCheckResult = check.checkIfEmailExist(obj.ParentEmail, Convert.ToInt64(EnumUtility.UserCategoty.Parents));
+                Parents parentExistsInSchool = _context.Parents.Where(u => u.Email == obj.ParentEmail && u.SchoolId == obj.SchoolId).FirstOrDefault();
+                Parents parentEmailExists = _context.Parents.Where(u => u.Email == obj.ParentEmail).FirstOrDefault();
 
                 //check for exsting students in the school
                 var getStudentIfExist = _context.Students.Where(x => x.LastName == obj.StudentLastName
@@ -46,9 +47,13 @@ namespace SANTEGSMS.Repos
                 //check if the student admissionNumber exist
                 //var studentAdmissionNumberCheck = check.checkStudentByAdmissionNumber(obj.AdmissionNumber);
 
-                if (emailCheckResult == true)
+                if (parentExistsInSchool != null)
                 {
-                    return new GenericRespModel { StatusCode = 409, StatusMessage = "This Parent Email Address already exist, Kindly add the student to the exsting parent details!" };
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "This Parent Email Address already exist in the school, Kindly add the student to the exsting parent details!" };
+                }
+                else if (parentEmailExists != null)
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "This Parent Email Address already exist for Another School, Kinldy use a different Email Address!" };
                 }
                 else if (getStudentIfExist != null)
                 {
@@ -1136,10 +1141,10 @@ namespace SANTEGSMS.Repos
                 StudentBulkCreationRespModel response = new StudentBulkCreationRespModel();
                 long numberOfStudentsCreated = 0;
                 long numberOfExistingStudents = 0;
-                IList<object> listOfParentThatExists = new List<object>();
+                IList<object> listOfParentThatExistsInSchool = new List<object>();
                 IList<object> listOfStudentThatExists = new List<object>();
                 IList<object> listOfStudentsCreated = new List<object>();
-
+                IList<object> listOfParentEmailThatExists = new List<object>();
                 //Validations
                 CheckerValidation check = new CheckerValidation(_context);
                 var checkSchool = check.checkSchoolById(obj.SchoolId);
@@ -1300,7 +1305,7 @@ namespace SANTEGSMS.Repos
                                     SchoolId = obj.SchoolId,
                                     CampusId = obj.CampusId,
                                     IsAssignedToClass = false,
-                                    hasParent = true,
+                                    hasParent = false,
                                     IsActive = true,
                                     ProfilePictureUrl = "",
                                     Status = "",
@@ -1336,8 +1341,8 @@ namespace SANTEGSMS.Repos
                                 //the parents email Address
                                 string parentsEmailAddress = worksheet.Cells[row, 17].Value.ToString(); //gets the parent email Address
 
-                                //Check if the parent exists
-                                var parentExists = _context.Parents.Where(P => P.Email == parentsEmailAddress).FirstOrDefault();
+                                //Check if the parent exists in the school and map student to the parent if true
+                                var parentExists = _context.Parents.Where(P => P.Email == parentsEmailAddress && P.SchoolId == obj.SchoolId).FirstOrDefault();
 
                                 if (parentExists != null)
                                 {
@@ -1350,6 +1355,10 @@ namespace SANTEGSMS.Repos
                                         CampusId = obj.CampusId,
                                         DateCreated = DateTime.Now
                                     };
+
+                                    //student was mapped to a parent
+                                    var getStudent = _context.Students.Where(s => s.Id == std.Id).FirstOrDefault();
+                                    getStudent.hasParent = true;
 
                                     await _context.ParentsStudentsMap.AddAsync(mapp);
                                     await _context.SaveChangesAsync();
@@ -1372,51 +1381,67 @@ namespace SANTEGSMS.Repos
                                                     prt.DateCreated,
                                                 }).FirstOrDefault();
                                     //add all existing parent to a list and send as part of API respponse
-                                    listOfParentThatExists.Add(prts);
+                                    listOfParentThatExistsInSchool.Add(prts);
                                 }
                                 else
                                 {
-                                    //Save new parents details
-                                    var parent = new Parents
+                                    //Check if the parent exists in the Database
+                                    var parentExistsInDb = _context.Parents.Where(P => P.Email == parentsEmailAddress).FirstOrDefault();
+                                    if (parentExistsInDb == null)
                                     {
-                                        FirstName = worksheet.Cells[row, 14].Value.ToString(),
-                                        LastName = worksheet.Cells[row, 15].Value.ToString(),
-                                        UserName = parentsEmailAddress,
-                                        GenderId = (long)Converters.stringToGender(worksheet.Cells[row, 16].Value.ToString()),
-                                        Email = parentsEmailAddress,
-                                        PhoneNumber = worksheet.Cells[row, 18].Value.ToString(),
-                                        Salt = salt,
-                                        PasswordHash = passwordHash,
-                                        SchoolId = obj.SchoolId,
-                                        CampusId = obj.CampusId,
-                                        Nationality = worksheet.Cells[row, 19].Value.ToString(),
-                                        State = worksheet.Cells[row, 20].Value.ToString(),
-                                        City = worksheet.Cells[row, 21].Value.ToString(),
-                                        HomeAddress = worksheet.Cells[row, 22].Value.ToString(),
-                                        Occupation = worksheet.Cells[row, 23].Value.ToString(),
-                                        StateOfOrigin = worksheet.Cells[row, 24].Value.ToString(),
-                                        LocalGovt = worksheet.Cells[row, 25].Value.ToString(),
-                                        Religion = worksheet.Cells[row, 26].Value.ToString(),
-                                        IsActive = true,
-                                        hasChild = true,
-                                        DateCreated = DateTime.Now,
-                                    };
+                                        //Save new parents details
+                                        var parent = new Parents
+                                        {
+                                            FirstName = worksheet.Cells[row, 14].Value.ToString(),
+                                            LastName = worksheet.Cells[row, 15].Value.ToString(),
+                                            UserName = parentsEmailAddress,
+                                            GenderId = (long)Converters.stringToGender(worksheet.Cells[row, 16].Value.ToString()),
+                                            Email = parentsEmailAddress,
+                                            PhoneNumber = worksheet.Cells[row, 18].Value.ToString(),
+                                            Salt = salt,
+                                            PasswordHash = passwordHash,
+                                            SchoolId = obj.SchoolId,
+                                            CampusId = obj.CampusId,
+                                            Nationality = worksheet.Cells[row, 19].Value.ToString(),
+                                            State = worksheet.Cells[row, 20].Value.ToString(),
+                                            City = worksheet.Cells[row, 21].Value.ToString(),
+                                            HomeAddress = worksheet.Cells[row, 22].Value.ToString(),
+                                            Occupation = worksheet.Cells[row, 23].Value.ToString(),
+                                            StateOfOrigin = worksheet.Cells[row, 24].Value.ToString(),
+                                            LocalGovt = worksheet.Cells[row, 25].Value.ToString(),
+                                            Religion = worksheet.Cells[row, 26].Value.ToString(),
+                                            IsActive = true,
+                                            hasChild = true,
+                                            DateCreated = DateTime.Now,
+                                        };
 
-                                    await _context.Parents.AddAsync(parent);
-                                    await _context.SaveChangesAsync();
+                                        await _context.Parents.AddAsync(parent);
+                                        await _context.SaveChangesAsync();
 
-                                    //map student and parent
-                                    var mapp = new ParentsStudentsMap
+                                        //map student and parent
+                                        var mapp = new ParentsStudentsMap
+                                        {
+                                            ParentId = parent.Id,
+                                            StudentId = std.Id,
+                                            SchoolId = obj.SchoolId,
+                                            CampusId = obj.CampusId,
+                                            DateCreated = DateTime.Now
+                                        };
+
+                                        //student was mapped to a parent
+                                        var getStudent = _context.Students.Where(s => s.Id == std.Id).FirstOrDefault();
+                                        getStudent.hasParent = true;
+
+                                        await _context.ParentsStudentsMap.AddAsync(mapp);
+                                        await _context.SaveChangesAsync();
+                                    }
+                                    else
                                     {
-                                        ParentId = parent.Id,
-                                        StudentId = std.Id,
-                                        SchoolId = obj.SchoolId,
-                                        CampusId = obj.CampusId,
-                                        DateCreated = DateTime.Now
-                                    };
-
-                                    await _context.ParentsStudentsMap.AddAsync(mapp);
-                                    await _context.SaveChangesAsync();
+                                        //This parent info will not be created, but student info will be created.
+                                        //Parent profile should be created with a different email that doesn't exists in the DB and 
+                                        //student created should be mapped to the parent
+                                        listOfParentEmailThatExists.Add(parentsEmailAddress);
+                                    }
                                 }
 
                                 //increments the numbers of students created from the excel file
@@ -1427,9 +1452,10 @@ namespace SANTEGSMS.Repos
                             response.StatusMessage = "Uploaded Successfully!, Student(s) with existing Parent Details was updated Successfully!";
                             response.NumberOfStudentsCreated = numberOfStudentsCreated;
                             response.StudentsData = listOfStudentsCreated.ToList();
-                            response.NumberOfExistingParents = listOfParentThatExists.Count();
-                            response.ExistingParentsInfo = listOfParentThatExists.ToList();
+                            response.NumberOfExistingParents = listOfParentThatExistsInSchool.Count();
+                            response.ExistingParentsInfoInSchool = listOfParentThatExistsInSchool.ToList();
                             response.ExistingStudentsInfo = listOfStudentThatExists.ToList();
+                            response.ExistingParentsEmail = listOfParentEmailThatExists.ToList();
                         }
                     }
                 }
@@ -1955,6 +1981,68 @@ namespace SANTEGSMS.Repos
 
                 return response;
 
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
+        public async Task<GenericRespModel> getAllStudentWithoutParentsInfoAsync(long schoolId, long campusId)
+        {
+            try
+            {
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+
+                if (checkSchool != true && checkCampus != true)
+                {
+                    return new GenericRespModel { StatusCode = 400, StatusMessage = "No School or Campus with the specified ID" };
+                }
+                else
+                {
+                    var result = from std in _context.Students
+                                 where std.SchoolId == schoolId && std.CampusId == campusId && std.hasParent == false
+                                 select new
+                                 {
+                                     std.Id,
+                                     std.SchoolId,
+                                     std.CampusId,
+                                     std.FirstName,
+                                     std.LastName,
+                                     std.MiddleName,
+                                     std.UserName,
+                                     std.AdmissionNumber,
+                                     std.YearOfAdmission,
+                                     std.Status,
+                                     std.StaffStatus,
+                                     std.State,
+                                     std.City,
+                                     std.DateOfBirth,
+                                     std.StateOfOrigin,
+                                     std.LocalGovt,
+                                     std.ProfilePictureUrl,
+                                     std.HomeAddress,
+                                     std.Gender.GenderName,
+                                     std.hasParent,
+                                     std.IsActive,
+                                     std.LastPasswordChangedDate,
+                                     std.LastLoginDate,
+                                     std.LastUpdatedDate,
+                                     std.DateCreated,
+                                 };
+                    if (result.Count() > 0)
+                    {
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = result.ToList()};
+                    }
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
+                }
             }
             catch (Exception exMessage)
             {

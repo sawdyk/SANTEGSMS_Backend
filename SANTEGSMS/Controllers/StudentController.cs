@@ -335,5 +335,19 @@ namespace SANTEGSMS.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("studentWithoutParentsInfo")]
+        [Authorize]
+        public async Task<IActionResult> getAllStudentWithoutParentsInfoAsync(long schoolId, long campusId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _studentRepo.getAllStudentWithoutParentsInfoAsync(schoolId, campusId);
+
+            return Ok(result);
+        }
     }
 }

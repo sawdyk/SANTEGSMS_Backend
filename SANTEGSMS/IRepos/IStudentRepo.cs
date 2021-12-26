@@ -24,6 +24,7 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> updateStudentDetailsAsync(Guid studentId, UpdateStudentReqModel obj);
         Task<GenericRespModel> deleteStudentsAssignedToClassAsync(DeleteStudentAssignedReqModel obj);
         Task<GenericRespModel> deleteStudentAsync(Guid studentId, long schoolId, long campusId);
+        Task<GenericRespModel> getAllStudentWithoutParentsInfoAsync(long schoolId, long campusId);
 
 
         //--------------------------BULK CREATION OF STUDENTS-----------------------------------------------

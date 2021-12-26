@@ -26,6 +26,89 @@ namespace SANTEGSMS.Repos
             _emailTemplate = emailTemplate;
         }
 
+        public async Task<GenericRespModel> createParentInfoAndMapStudentAsync(CreateParentReqModel obj)
+        {
+            try
+            {
+                //check if the parent email exist
+                CheckerValidation check = new CheckerValidation(_context);
+                Parents parentExistsInSchool = _context.Parents.Where(u => u.Email == obj.ParentEmail && u.SchoolId == obj.SchoolId).FirstOrDefault();
+                Parents parentEmailExists = _context.Parents.Where(u => u.Email == obj.ParentEmail).FirstOrDefault();
+
+                if (parentExistsInSchool != null)
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "This Parent Email Address already exist in the school, Kindly add the student to the exsting parent details!" };
+                }
+                else if (parentEmailExists != null)
+                {
+                    return new GenericRespModel { StatusCode = 409, StatusMessage = "This Parent Email Address already exist for Another School, Kinldy use a different Email Address!" };
+                }
+                else
+                {
+                    //default password
+                    string defaultPassword = DefaultPasswordReUsable.DefaultPassword();
+                    var paswordHasher = new PasswordHasher();
+                    //the salt
+                    string salt = paswordHasher.getSalt();
+                    //Hash the password and salt
+                    string passwordHash = paswordHasher.hashedPassword(defaultPassword, salt);
+
+                    //Save the Parent details
+                    var prt = new Parents
+                    {
+                        FirstName = obj.ParentFirstName,
+                        LastName = obj.ParentLastName,
+                        Email = obj.ParentEmail,
+                        EmailConfirmed = false,
+                        PhoneNumber = obj.ParentPhoneNumber,
+                        Salt = salt,
+                        PasswordHash = passwordHash,
+                        SchoolId = obj.SchoolId,
+                        CampusId = obj.CampusId,
+                        UserName = obj.ParentEmail,
+                        GenderId = obj.ParentGenderId,
+                        Nationality = obj.ParentNationality,
+                        State = obj.ParentState,
+                        City = obj.ParentCity,
+                        HomeAddress = obj.ParentHomeAddress,
+                        Occupation = obj.ParentOccupation,
+                        StateOfOrigin = obj.ParentStateOfOrigin,
+                        LocalGovt = obj.ParentLocalGovt,
+                        Religion = obj.ParentReligion,
+                        hasChild = true,
+                        IsActive = true,
+                        DateCreated = DateTime.Now
+                    };
+
+                    await _context.Parents.AddAsync(prt);
+                    await _context.SaveChangesAsync();
+
+                    //map student and parent
+                    var mapp = new ParentsStudentsMap
+                    {
+                        ParentId = prt.Id,
+                        StudentId = obj.StudentId,
+                        SchoolId = obj.SchoolId,
+                        CampusId = obj.CampusId,
+                        DateCreated = DateTime.Now
+                    };
+                    await _context.ParentsStudentsMap.AddAsync(mapp);
+                    await _context.SaveChangesAsync();
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Parent Profile Created, and Student mapped to the Parent Successfully!"};
+
+                }
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
         public async Task<SchoolUsersLoginRespModel> parentLoginAsync(LoginReqModel obj)
         {
             try
@@ -1355,6 +1438,6 @@ namespace SANTEGSMS.Repos
                 await _context.SaveChangesAsync();
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
-        }
+        }       
     }
 }

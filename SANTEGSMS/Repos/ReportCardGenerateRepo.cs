@@ -109,9 +109,11 @@ namespace SANTEGSMS.Repos
                                 ReportCardTemplateInfo.Description = rptTemplate.Description;
                             }
 
-                            //------------------------------------------SCHOOL INFORMATION-------------------------------------------------------
+                            //------------------------------------------SCHOOL AND CAMPUS INFORMATION-------------------------------------------------------
 
                             Schools rptSchInfo = _context.Schools.Where(rp => rp.Id == obj.SchoolId).FirstOrDefault();
+                            SchoolCampus rptCampusInfo = _context.SchoolCampus.Where(rp => rp.Id == obj.CampusId).FirstOrDefault();
+
                             if (rptSchInfo != null)
                             {
                                 SchoolInfo.SchoolName = rptSchInfo.SchoolName;
@@ -121,6 +123,12 @@ namespace SANTEGSMS.Repos
                                 SchoolInfo.Address = rptSchInfo.Address;
                                 SchoolInfo.EmailAddress = rptSchInfo.EmailAddress;
                                 SchoolInfo.Motto = rptSchInfo.Motto;
+                            }
+
+                            if (rptCampusInfo != null)
+                            {
+                                SchoolInfo.CampusName = rptCampusInfo.CampusName;
+                                SchoolInfo.CampusAddress = rptCampusInfo.CampusAddress;
                             }
 
                             //------------------------------------------STUDENT INFORMATION-------------------------------------------------------
@@ -514,9 +522,11 @@ namespace SANTEGSMS.Repos
                                         ReportCardTemplateInfo.Description = rptTemplate.Description;
                                     }
 
-                                    //------------------------------------------SCHOOL INFORMATION-------------------------------------------------------
+                                    //------------------------------------------SCHOOL AND CAMPUS INFORMATION-------------------------------------------------------
 
                                     Schools rptSchInfo = _context.Schools.Where(rp => rp.Id == obj.SchoolId).FirstOrDefault();
+                                    SchoolCampus rptCampusInfo = _context.SchoolCampus.Where(rp => rp.Id == obj.CampusId).FirstOrDefault();
+
                                     if (rptSchInfo != null)
                                     {
                                         SchoolInfo.SchoolName = rptSchInfo.SchoolName;
@@ -526,6 +536,12 @@ namespace SANTEGSMS.Repos
                                         SchoolInfo.Address = rptSchInfo.Address;
                                         SchoolInfo.EmailAddress = rptSchInfo.EmailAddress;
                                         SchoolInfo.Motto = rptSchInfo.Motto;
+                                    }
+
+                                    if (rptCampusInfo != null)
+                                    {
+                                        SchoolInfo.CampusName = rptCampusInfo.CampusName;
+                                        SchoolInfo.CampusAddress = rptCampusInfo.CampusAddress;
                                     }
 
                                     //------------------------------------------STUDENT INFORMATION-------------------------------------------------------

@@ -26,7 +26,7 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getAllSubmittedAssignmentsByStudentIdAndAssignmentIdAsync(Guid studentId, long classId, long classGradeId, long assignmentId, long schoolId, long campusId, long termId, long sessionId);
         Task<GenericRespModel> getAllUnSubmittedAssignmentsByStudentIdAsync(Guid studentId, long classId, long classGradeId, long schoolId, long campusId, long termId, long sessionId);
         Task<GenericRespModel> getAllUnSubmittedAssignmentsByIndividualStudentIdAsync(Guid studentId, long schoolId, long campusId);
-        Task<GenericRespModel> getSubmittedAssignmentsByIndividualStudentIdAsync(Guid studentId, long assignmentId, long schoolId, long campusId);
+        Task<GenericRespModel> getSubmittedAssignmentsByIndividualStudentIdAsync(Guid studentId, long schoolId, long campusId);
         Task<GenericRespModel> updateSubmittedAssignmentsAsync(long assignmentSubmittedId, SubmitAssignmentReqModel obj);
         Task<GenericRespModel> deleteSubmittedAssignmentsAsync(long assignmentSubmittedId, long schoolId, long campusId);
         Task<GenericRespModel> gradeSubmittedAssignmentsAsync(GradeAssignmentsReqModel obj);

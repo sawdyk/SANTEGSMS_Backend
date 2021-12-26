@@ -14,7 +14,8 @@ namespace SANTEGSMS.ResponseModels
         public long NumberOfStudentsCreated { get; set; }
         public long NumberOfExistingParents { get; set; }
         public object StudentsData { get; set; }
-        public object ExistingParentsInfo { get; set; }
+        public object ExistingParentsInfoInSchool { get; set; }
         public object ExistingStudentsInfo { get; set; }
+        public object ExistingParentsEmail{ get; set; }
     }
 }

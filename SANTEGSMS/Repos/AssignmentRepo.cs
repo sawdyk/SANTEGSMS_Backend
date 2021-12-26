@@ -562,55 +562,60 @@ namespace SANTEGSMS.Repos
                 //check if the School and CampusId is Valid
                 if (checkSchool == true && checkCampus == true)
                 {
-                    if (currentSessionId > 0)
+                    if (currentSessionId > 0 && currentTermId > 0)
                     {
                         //get the Student Class and ClassGrade
                         var getStudent = _context.GradeStudents.Where(x => x.StudentId == studentId && x.SessionId == currentSessionId).FirstOrDefault();
 
-                        //Students Class and ClassGrade
-                        long classId = getStudent.ClassId;
-                        long classGradeId = getStudent.ClassGradeId;
-
-                        var reslt = from ass in _context.Assignments
-                                    where !(from asts in _context.AssignmentsSubmitted
-                                            where asts.StudentId == studentId && asts.ClassId == classId && asts.ClassGradeId == classGradeId
-                                            && asts.SchoolId == schoolId && asts.CampusId == campusId
-                                            && asts.TermId == currentTermId && asts.SessionId == currentSessionId
-                                            select asts.AssignmentId).Contains(ass.Id) && ass.ClassId == classId && ass.ClassGradeId == classGradeId
-                                             && ass.SchoolId == schoolId && ass.CampusId == campusId
-                                             && ass.TermId == currentTermId && ass.SessionId == currentSessionId
-                                    select new
-                                    {
-                                        ass.Id,
-                                        ass.Description,
-                                        ass.ObtainableScore,
-                                        ass.FileUrl,
-                                        ass.SchoolSubjects.SubjectName,
-                                        ass.TeacherId,
-                                        ass.Classes.ClassName,
-                                        ass.ClassGrades.GradeName,
-                                        ass.SchoolId,
-                                        ass.CampusId,
-                                        ass.Sessions.SessionName,
-                                        ass.Terms.TermName,
-                                        ass.IsActive,
-                                        ass.DueDate,
-                                        ass.DateUploaded,
-                                        ass.LastDateUpdated,
-                                    };
-
-                        if (reslt.Count() > 0)
+                        if (getStudent != null)
                         {
-                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = reslt };
+                            //Students Class and ClassGrade
+                            long classId = getStudent.ClassId;
+                            long classGradeId = getStudent.ClassGradeId;
+
+                            var reslt = from ass in _context.Assignments
+                                        where !(from asts in _context.AssignmentsSubmitted
+                                                where asts.StudentId == studentId && asts.ClassId == classId && asts.ClassGradeId == classGradeId
+                                                && asts.SchoolId == schoolId && asts.CampusId == campusId
+                                                && asts.TermId == currentTermId && asts.SessionId == currentSessionId
+                                                select asts.AssignmentId).Contains(ass.Id) && ass.ClassId == classId && ass.ClassGradeId == classGradeId
+                                                 && ass.SchoolId == schoolId && ass.CampusId == campusId
+                                                 && ass.TermId == currentTermId && ass.SessionId == currentSessionId
+                                        select new
+                                        {
+                                            ass.Id,
+                                            ass.Description,
+                                            ass.ObtainableScore,
+                                            ass.FileUrl,
+                                            ass.SchoolSubjects.SubjectName,
+                                            ass.TeacherId,
+                                            ass.Classes.ClassName,
+                                            ass.ClassGrades.GradeName,
+                                            ass.SchoolId,
+                                            ass.CampusId,
+                                            ass.Sessions.SessionName,
+                                            ass.Terms.TermName,
+                                            ass.IsActive,
+                                            ass.DueDate,
+                                            ass.DateUploaded,
+                                            ass.LastDateUpdated,
+                                        };
+
+                            if (reslt.Count() > 0)
+                            {
+                                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = reslt };
+                            }
+
+                            return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
                         }
 
-                        return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+                        return new GenericRespModel { StatusCode = 400, StatusMessage = "Student has not been Assigned to a Class/ClassGrade!"};
                     }
 
-                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+                    return new GenericRespModel { StatusCode = 400, StatusMessage = "School Current Academic Session and Term has not been Set" };
                 }
 
-                return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available" };
+                return new GenericRespModel { StatusCode = 400, StatusMessage = "No School or Campus with the specified ID!" };
             }
             catch (Exception exMessage)
             {
@@ -622,7 +627,7 @@ namespace SANTEGSMS.Repos
             }
         }
 
-        public async Task<GenericRespModel> getSubmittedAssignmentsByIndividualStudentIdAsync(Guid studentId, long assignmentId, long schoolId, long campusId)
+        public async Task<GenericRespModel> getSubmittedAssignmentsByIndividualStudentIdAsync(Guid studentId, long schoolId, long campusId)
         {
             try
             {
@@ -643,19 +648,21 @@ namespace SANTEGSMS.Repos
                         //get the Student Class and ClassGrade
                         var getStudent = _context.GradeStudents.Where(x => x.StudentId == studentId && x.SessionId == currentSessionId).FirstOrDefault();
 
-                        //Students Class and ClassGrade
-                        long classId = getStudent.ClassId;
-                        long classGradeId = getStudent.ClassGradeId;
-
                         if (getStudent != null)
                         {
+                            //Students Class and ClassGrade
+                            long classId = getStudent.ClassId;
+                            long classGradeId = getStudent.ClassGradeId;
+
                             var result = from ass in _context.AssignmentsSubmitted
                                          where ass.StudentId == studentId && ass.ClassId == classId && ass.ClassGradeId == classGradeId
-                                         && ass.AssignmentId == assignmentId && ass.SchoolId == schoolId && ass.CampusId == campusId
+                                         && ass.SchoolId == schoolId && ass.CampusId == campusId
                                          && ass.TermId == currentTermId && ass.SessionId == currentSessionId
                                          select new
                                          {
                                              ass.Id,
+                                             SubjectId = ass.Assignments.SchoolSubjects.Id,
+                                             ass.Assignments.SchoolSubjects.SubjectName,
                                              ass.AssignmentId,
                                              ass.Assignments.Description,
                                              ass.StudentId,
@@ -683,13 +690,13 @@ namespace SANTEGSMS.Repos
                             return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful, No Record Available", };
                         }
 
-                        return new GenericRespModel { StatusCode = 409, StatusMessage = "This Student does not Belong to a Class for the session Specified" };
+                        return new GenericRespModel { StatusCode = 400, StatusMessage = "Student has not been Assigned to a Class/ClassGrade!" };
                     }
 
-                    return new GenericRespModel { StatusCode = 409, StatusMessage = "School Current Academic Session and Term has not been Set" };
+                    return new GenericRespModel { StatusCode = 400, StatusMessage = "School Current Academic Session and Term has not been Set" };
                 }
 
-                return new GenericRespModel { StatusCode = 409, StatusMessage = "Invalid School or CampusId" };
+                return new GenericRespModel { StatusCode = 400, StatusMessage = "No School or Campus with the specified ID!" };
             }
             catch (Exception exMessage)
             {

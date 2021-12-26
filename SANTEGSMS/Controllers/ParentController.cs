@@ -22,6 +22,20 @@ namespace SANTEGSMS.Controllers
             _parentRepo = parentRepo;
         }
 
+        [HttpPost("createParentInfoAndMapStudent")]
+        [Authorize]
+        public async Task<IActionResult> createParentInfoAndMapStudentAsync(CreateParentReqModel obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _parentRepo.createParentInfoAndMapStudentAsync(obj);
+
+            return Ok(result);
+        }
+
         [HttpPost("parentLogin")]
         [AllowAnonymous]
         public async Task<IActionResult> parentLoginAsync(LoginReqModel obj)

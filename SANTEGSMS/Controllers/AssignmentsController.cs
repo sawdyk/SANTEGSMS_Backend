@@ -183,14 +183,14 @@ namespace SANTEGSMS.Controllers
 
         [HttpGet("submittedAssignmentsByIndividualStudentId")]
         [Authorize]
-        public async Task<IActionResult> getSubmittedAssignmentsByIndividualStudentIdAsync(Guid studentId, long assignmentId, long schoolId, long campusId)
+        public async Task<IActionResult> getSubmittedAssignmentsByIndividualStudentIdAsync(Guid studentId, long schoolId, long campusId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var result = await _assignmentRepo.getSubmittedAssignmentsByIndividualStudentIdAsync(studentId, assignmentId, schoolId, campusId);
+            var result = await _assignmentRepo.getSubmittedAssignmentsByIndividualStudentIdAsync(studentId, schoolId, campusId);
 
             return Ok(result);
         }

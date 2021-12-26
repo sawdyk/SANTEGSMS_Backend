@@ -23,4 +23,11 @@ namespace SANTEGSMS.RequestModels
         public string ParentLocalGovt { get; set; }
         public string ParentReligion { get; set; }
     }
+
+    public class CreateParentReqModel : UpdateParentReqModel
+    {
+        public long SchoolId { get; set; }
+        public long CampusId { get; set; }
+        public Guid StudentId { get; set; }
+    }
 }

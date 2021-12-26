@@ -58,6 +58,8 @@ namespace SANTEGSMS.ResponseModels
     public class SchoolInfo
     {
         public string SchoolName { get; set; }
+        public string CampusName { get; set; }
+        public string CampusAddress { get; set; }
         public string SchoolType { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
