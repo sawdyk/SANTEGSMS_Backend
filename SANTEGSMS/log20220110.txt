@@ -1,0 +1,423 @@
+2022-01-10 13:55:23.529 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-01-10 13:55:24.154 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-10 13:55:24.155 +01:00 [INF] Hosting environment: Development
+2022-01-10 13:55:24.155 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2022-01-10 13:55:24.197 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2022-01-10 13:55:24.286 +01:00 [INF] Request finished in 91.6203ms 200 text/html;charset=utf-8
+2022-01-10 13:55:24.530 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2022-01-10 13:55:24.799 +01:00 [INF] Request finished in 270.0067ms 200 application/json;charset=utf-8
+2022-01-10 14:06:11.507 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-01-10 14:06:11.909 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-10 14:06:11.915 +01:00 [INF] Hosting environment: Development
+2022-01-10 14:06:11.915 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2022-01-10 14:06:11.940 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2022-01-10 14:06:11.998 +01:00 [INF] Request finished in 60.9091ms 200 text/html;charset=utf-8
+2022-01-10 14:06:12.112 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2022-01-10 14:06:12.301 +01:00 [INF] Request finished in 189.0484ms 200 application/json;charset=utf-8
+2022-01-10 14:15:17.394 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/BroadSheet/generatePerformanceAnalysisSheet application/json 69
+2022-01-10 14:15:17.457 +01:00 [INF] CORS policy execution successful.
+2022-01-10 14:15:17.482 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2022-01-10 14:15:17.485 +01:00 [INF] Authorization failed.
+2022-01-10 14:15:17.486 +01:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2022-01-10 14:15:17.488 +01:00 [INF] Request finished in 98.401ms 401 
+2022-01-10 14:15:26.687 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:1952/api/BroadSheet/generatePerformanceAnalysisSheet application/json 69
+2022-01-10 14:15:26.694 +01:00 [INF] CORS policy execution successful.
+2022-01-10 14:15:26.727 +01:00 [INF] Authorization was successful.
+2022-01-10 14:15:26.727 +01:00 [INF] Executing endpoint 'SANTEGSMS.Controllers.BroadSheetController.generatePerformanceAnalysisSheetAsync (SANTEGSMS)'
+2022-01-10 14:15:26.780 +01:00 [INF] Route matched with {action = "generatePerformanceAnalysisSheet", controller = "BroadSheet"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] generatePerformanceAnalysisSheetAsync(SANTEGSMS.RequestModels.PerformanceAnalysisReqModel) on controller SANTEGSMS.Controllers.BroadSheetController (SANTEGSMS).
+2022-01-10 14:15:28.102 +01:00 [INF] Entity Framework Core 3.1.13 initialized 'AppDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: DetailedErrorsEnabled 
+2022-01-10 14:15:28.601 +01:00 [INF] Executed DbCommand (51ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:28.733 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:28.796 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:28.803 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:28.840 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__obj_SchoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__obj_SchoolId_0
+LIMIT 1
+2022-01-10 14:15:28.844 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__obj_CampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__obj_CampusId_0
+LIMIT 1
+2022-01-10 14:15:28.852 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`DateCreated`, `a`.`DateDeleted`, `a`.`DateEnd`, `a`.`DateStart`, `a`.`DeletedBy`, `a`.`IsApproved`, `a`.`IsClosed`, `a`.`IsCurrent`, `a`.`IsDeleted`, `a`.`IsOpened`, `a`.`SchoolId`, `a`.`SessionId`, `a`.`TermId`, `a`.`UserId`
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+LIMIT 1
+2022-01-10 14:15:28.865 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__acdSession_SessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__acdSession_SessionId_0
+LIMIT 1
+2022-01-10 14:15:28.869 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:28.876 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2022-01-10 14:15:28.916 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:28.927 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+2022-01-10 14:15:28.935 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`SessionId`
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+LIMIT 1
+2022-01-10 14:15:28.952 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__8__locals1_schoolId_0='?' (DbType = Int64), @__8__locals1_campusId_1='?' (DbType = Int64), @__8__locals1_genderId_2='?' (DbType = Int64), @__8__locals1_classId_3='?' (DbType = Int64), @__8__locals1_schoolId_4='?' (DbType = Int64), @__8__locals1_campusId_5='?' (DbType = Int64), @__currentSessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Students` AS `s`
+WHERE (((`s`.`SchoolId` = @__8__locals1_schoolId_0) AND (`s`.`CampusId` = @__8__locals1_campusId_1)) AND (`s`.`GenderId` = @__8__locals1_genderId_2)) AND `s`.`Id` IN (
+    SELECT `g`.`StudentId`
+    FROM `GradeStudents` AS `g`
+    WHERE (((`g`.`ClassId` = @__8__locals1_classId_3) AND (`g`.`SchoolId` = @__8__locals1_schoolId_4)) AND (`g`.`CampusId` = @__8__locals1_campusId_5)) AND (`g`.`SessionId` = @__currentSessionId_6)
+)
+2022-01-10 14:15:28.953 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__8__locals1_schoolId_0='?' (DbType = Int64), @__8__locals1_campusId_1='?' (DbType = Int64), @__8__locals1_genderId_2='?' (DbType = Int64), @__8__locals1_classId_3='?' (DbType = Int64), @__8__locals1_schoolId_4='?' (DbType = Int64), @__8__locals1_campusId_5='?' (DbType = Int64), @__currentSessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Students` AS `s`
+WHERE (((`s`.`SchoolId` = @__8__locals1_schoolId_0) AND (`s`.`CampusId` = @__8__locals1_campusId_1)) AND (`s`.`GenderId` = @__8__locals1_genderId_2)) AND `s`.`Id` IN (
+    SELECT `g`.`StudentId`
+    FROM `GradeStudents` AS `g`
+    WHERE (((`g`.`ClassId` = @__8__locals1_classId_3) AND (`g`.`SchoolId` = @__8__locals1_schoolId_4)) AND (`g`.`CampusId` = @__8__locals1_campusId_5)) AND (`g`.`SessionId` = @__currentSessionId_6)
+)
+2022-01-10 14:15:28.954 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:28.955 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+2022-01-10 14:15:28.957 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`SessionId`
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+LIMIT 1
+2022-01-10 14:15:28.958 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__8__locals1_schoolId_0='?' (DbType = Int64), @__8__locals1_campusId_1='?' (DbType = Int64), @__8__locals1_genderId_2='?' (DbType = Int64), @__8__locals1_classId_3='?' (DbType = Int64), @__8__locals1_schoolId_4='?' (DbType = Int64), @__8__locals1_campusId_5='?' (DbType = Int64), @__currentSessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Students` AS `s`
+WHERE (((`s`.`SchoolId` = @__8__locals1_schoolId_0) AND (`s`.`CampusId` = @__8__locals1_campusId_1)) AND (`s`.`GenderId` = @__8__locals1_genderId_2)) AND `s`.`Id` IN (
+    SELECT `g`.`StudentId`
+    FROM `GradeStudents` AS `g`
+    WHERE (((`g`.`ClassId` = @__8__locals1_classId_3) AND (`g`.`SchoolId` = @__8__locals1_schoolId_4)) AND (`g`.`CampusId` = @__8__locals1_campusId_5)) AND (`g`.`SessionId` = @__currentSessionId_6)
+)
+2022-01-10 14:15:28.960 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__8__locals1_schoolId_0='?' (DbType = Int64), @__8__locals1_campusId_1='?' (DbType = Int64), @__8__locals1_genderId_2='?' (DbType = Int64), @__8__locals1_classId_3='?' (DbType = Int64), @__8__locals1_schoolId_4='?' (DbType = Int64), @__8__locals1_campusId_5='?' (DbType = Int64), @__currentSessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Students` AS `s`
+WHERE (((`s`.`SchoolId` = @__8__locals1_schoolId_0) AND (`s`.`CampusId` = @__8__locals1_campusId_1)) AND (`s`.`GenderId` = @__8__locals1_genderId_2)) AND `s`.`Id` IN (
+    SELECT `g`.`StudentId`
+    FROM `GradeStudents` AS `g`
+    WHERE (((`g`.`ClassId` = @__8__locals1_classId_3) AND (`g`.`SchoolId` = @__8__locals1_schoolId_4)) AND (`g`.`CampusId` = @__8__locals1_campusId_5)) AND (`g`.`SessionId` = @__currentSessionId_6)
+)
+2022-01-10 14:15:28.962 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:28.963 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:28.964 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:28.965 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:28.971 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:28.974 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:28.975 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:28.976 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:28.977 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:28.978 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:28.980 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:28.982 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:28.983 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:28.984 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:28.985 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:28.986 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:28.988 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:28.990 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:28.991 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:28.992 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:28.993 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:28.994 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:28.996 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:28.998 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2022-01-10 14:15:29.002 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2022-01-10 14:15:29.004 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2022-01-10 14:15:29.005 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:29.006 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+2022-01-10 14:15:29.007 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`SessionId`
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+LIMIT 1
+2022-01-10 14:15:29.010 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__8__locals1_schoolId_0='?' (DbType = Int64), @__8__locals1_campusId_1='?' (DbType = Int64), @__8__locals1_genderId_2='?' (DbType = Int64), @__8__locals1_classId_3='?' (DbType = Int64), @__8__locals1_schoolId_4='?' (DbType = Int64), @__8__locals1_campusId_5='?' (DbType = Int64), @__currentSessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Students` AS `s`
+WHERE (((`s`.`SchoolId` = @__8__locals1_schoolId_0) AND (`s`.`CampusId` = @__8__locals1_campusId_1)) AND (`s`.`GenderId` = @__8__locals1_genderId_2)) AND `s`.`Id` IN (
+    SELECT `g`.`StudentId`
+    FROM `GradeStudents` AS `g`
+    WHERE (((`g`.`ClassId` = @__8__locals1_classId_3) AND (`g`.`SchoolId` = @__8__locals1_schoolId_4)) AND (`g`.`CampusId` = @__8__locals1_campusId_5)) AND (`g`.`SessionId` = @__currentSessionId_6)
+)
+2022-01-10 14:15:29.010 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:29.011 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+2022-01-10 14:15:29.012 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`SessionId`
+FROM `AcademicSessions` AS `a`
+WHERE (`a`.`SchoolId` = @__schoolId_0) AND (`a`.`IsCurrent` = TRUE)
+LIMIT 1
+2022-01-10 14:15:29.014 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__8__locals1_schoolId_0='?' (DbType = Int64), @__8__locals1_campusId_1='?' (DbType = Int64), @__8__locals1_genderId_2='?' (DbType = Int64), @__8__locals1_classId_3='?' (DbType = Int64), @__8__locals1_schoolId_4='?' (DbType = Int64), @__8__locals1_campusId_5='?' (DbType = Int64), @__currentSessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Students` AS `s`
+WHERE (((`s`.`SchoolId` = @__8__locals1_schoolId_0) AND (`s`.`CampusId` = @__8__locals1_campusId_1)) AND (`s`.`GenderId` = @__8__locals1_genderId_2)) AND `s`.`Id` IN (
+    SELECT `g`.`StudentId`
+    FROM `GradeStudents` AS `g`
+    WHERE (((`g`.`ClassId` = @__8__locals1_classId_3) AND (`g`.`SchoolId` = @__8__locals1_schoolId_4)) AND (`g`.`CampusId` = @__8__locals1_campusId_5)) AND (`g`.`SessionId` = @__currentSessionId_6)
+)
+2022-01-10 14:15:29.016 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__8__locals1_schoolId_0='?' (DbType = Int64), @__8__locals1_campusId_1='?' (DbType = Int64), @__8__locals1_genderId_2='?' (DbType = Int64), @__8__locals1_classId_3='?' (DbType = Int64), @__8__locals1_schoolId_4='?' (DbType = Int64), @__8__locals1_campusId_5='?' (DbType = Int64), @__currentSessionId_6='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Students` AS `s`
+WHERE (((`s`.`SchoolId` = @__8__locals1_schoolId_0) AND (`s`.`CampusId` = @__8__locals1_campusId_1)) AND (`s`.`GenderId` = @__8__locals1_genderId_2)) AND `s`.`Id` IN (
+    SELECT `g`.`StudentId`
+    FROM `GradeStudents` AS `g`
+    WHERE (((`g`.`ClassId` = @__8__locals1_classId_3) AND (`g`.`SchoolId` = @__8__locals1_schoolId_4)) AND (`g`.`CampusId` = @__8__locals1_campusId_5)) AND (`g`.`SessionId` = @__currentSessionId_6)
+)
+2022-01-10 14:15:29.017 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:29.017 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:29.018 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:29.018 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:29.020 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:29.021 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:29.022 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:29.023 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:29.024 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:29.026 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:29.027 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:29.028 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:29.029 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:29.030 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:29.031 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:29.033 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`Address`, `s`.`DateCreated`, `s`.`DateUpdated`, `s`.`DistrictId`, `s`.`EmailAddress`, `s`.`IsActive`, `s`.`IsApproved`, `s`.`IsVerified`, `s`.`LocalGovtId`, `s`.`Motto`, `s`.`PhoneNumber`, `s`.`SchoolCode`, `s`.`SchoolLogoUrl`, `s`.`SchoolName`, `s`.`SchoolTypeId`, `s`.`StateId`
+FROM `Schools` AS `s`
+WHERE `s`.`Id` = @__schoolId_0
+LIMIT 1
+2022-01-10 14:15:29.033 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolCampusId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`CampusAddress`, `s`.`CampusName`, `s`.`DateCreated`, `s`.`IsActive`, `s`.`SchoolId`
+FROM `SchoolCampus` AS `s`
+WHERE `s`.`Id` = @__schoolCampusId_0
+LIMIT 1
+2022-01-10 14:15:29.034 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__termId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`TermName`
+FROM `Terms` AS `t`
+WHERE `t`.`Id` = @__termId_0
+LIMIT 1
+2022-01-10 14:15:29.035 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__sessionId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `s`.`Id`, `s`.`DateCreated`, `s`.`DateDeleted`, `s`.`DeletedBy`, `s`.`IsDeleted`, `s`.`SchoolId`, `s`.`SessionName`
+FROM `Sessions` AS `s`
+WHERE `s`.`Id` = @__sessionId_0
+LIMIT 1
+2022-01-10 14:15:29.037 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__schoolId_0='?' (DbType = Int64), @__campusId_1='?' (DbType = Int64), @__classId_2='?' (DbType = Int64), @__sessionId_3='?' (DbType = Int64), @__termId_4='?' (DbType = Int64), @__genderId_5='?' (DbType = Int64), @__Trim_6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `BroadSheetData` AS `b`
+WHERE ((((((`b`.`SchoolId` = @__schoolId_0) AND (`b`.`CampusId` = @__campusId_1)) AND (`b`.`ClassId` = @__classId_2)) AND (`b`.`SessionId` = @__sessionId_3)) AND (`b`.`TermId` = @__termId_4)) AND (`b`.`GenderId` = @__genderId_5)) AND (`b`.`Remark` = @__Trim_6)
+2022-01-10 14:15:29.038 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2022-01-10 14:15:29.039 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__classId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CampusId`, `c`.`ClassName`, `c`.`DateCreated`, `c`.`SchoolId`
+FROM `Classes` AS `c`
+WHERE `c`.`Id` = @__classId_0
+LIMIT 1
+2022-01-10 14:15:29.043 +01:00 [INF] Executing ObjectResult, writing value of type 'SANTEGSMS.ResponseModels.PerformanceRespModel'.
+2022-01-10 14:15:29.060 +01:00 [INF] Executed action SANTEGSMS.Controllers.BroadSheetController.generatePerformanceAnalysisSheetAsync (SANTEGSMS) in 2274.3623ms
+2022-01-10 14:15:29.060 +01:00 [INF] Executed endpoint 'SANTEGSMS.Controllers.BroadSheetController.generatePerformanceAnalysisSheetAsync (SANTEGSMS)'
+2022-01-10 14:15:29.064 +01:00 [INF] Request finished in 2376.9622ms 200 application/json; charset=utf-8

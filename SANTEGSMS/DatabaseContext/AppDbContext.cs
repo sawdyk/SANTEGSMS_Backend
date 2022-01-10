@@ -82,6 +82,9 @@ namespace SANTEGSMS.DatabaseContext
         public DbSet<SuperAdmin> SuperAdmin { get; set; }
         public DbSet<ActivityLogs> ActivityLogs { get; set; }
         public DbSet<PrincipalReportCardSignature> PrincipalReportCardSignature { get; set; }
+        public DbSet<BroadSheetGrading> BroadSheetGrading { get; set; }
+        public DbSet<BroadSheetRemark> BroadSheetRemark { get; set; }
+        public DbSet<BroadSheetData> BroadSheetData { get; set; }
 
 
 

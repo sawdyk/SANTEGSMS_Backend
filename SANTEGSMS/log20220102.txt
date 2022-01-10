@@ -1,0 +1,10 @@
+2022-01-02 10:21:52.901 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-01-02 10:21:53.292 +01:00 [INF] Creating key {e985a330-b977-41f6-b87f-055fff706209} with creation date 2022-01-02 09:21:53Z, activation date 2022-01-03 22:46:14Z, and expiration date 2022-04-02 09:21:53Z.
+2022-01-02 10:21:53.351 +01:00 [INF] Writing data to file 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys\key-e985a330-b977-41f6-b87f-055fff706209.xml'.
+2022-01-02 10:21:54.828 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-02 10:21:54.830 +01:00 [INF] Hosting environment: Development
+2022-01-02 10:21:54.830 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
+2022-01-02 10:21:54.927 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
+2022-01-02 10:21:55.127 +01:00 [INF] Request finished in 208.609ms 200 text/html;charset=utf-8
+2022-01-02 10:21:55.405 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
+2022-01-02 10:21:56.154 +01:00 [INF] Request finished in 749.77ms 200 application/json;charset=utf-8

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SANTEGSMS.DatabaseContext;
 
 namespace SANTEGSMS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211231133237_broadsheetMigration2")]
+    partial class broadsheetMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -496,84 +498,6 @@ namespace SANTEGSMS.Migrations
                     b.HasIndex("TermId");
 
                     b.ToTable("BehavioralScores");
-                });
-
-            modelBuilder.Entity("SANTEGSMS.Entities.BroadSheetData", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("CampusId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("ClassGradeId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("ClassId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("DateComputed")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DateDeleted")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<long?>("GenderId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Grade")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<long>("NoOfSubjectsComputed")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal>("PercentageScore")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("Remark")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<long>("SchoolId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("SessionId")
-                        .HasColumnType("bigint");
-
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<long>("TermId")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal>("TotalScore")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CampusId");
-
-                    b.HasIndex("ClassGradeId");
-
-                    b.HasIndex("ClassId");
-
-                    b.HasIndex("GenderId");
-
-                    b.HasIndex("SchoolId");
-
-                    b.HasIndex("SessionId");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("TermId");
-
-                    b.ToTable("BroadSheetData");
                 });
 
             modelBuilder.Entity("SANTEGSMS.Entities.BroadSheetGrading", b =>
@@ -3521,14 +3445,14 @@ namespace SANTEGSMS.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b6d57aab-65bd-4bb9-bb25-e8f4024b7556"),
-                            DateCreated = new DateTime(2022, 1, 9, 8, 28, 41, 889, DateTimeKind.Local).AddTicks(7653),
+                            Id = new Guid("cd35562f-d70b-46e9-86a1-6268cead3343"),
+                            DateCreated = new DateTime(2021, 12, 31, 14, 32, 35, 849, DateTimeKind.Local).AddTicks(509),
                             Email = "Ahmedsodiq7@gmail.com",
                             FirstName = "Super Admin",
                             LastName = "Super Admin",
-                            PasswordHash = "a01a8a38b94826cc63de0ad78f04e406b5cbbf4d344d683d488ee4e56c28199a",
+                            PasswordHash = "e1958df31e7fa1d1b9f2d8ae47dad2140217ee351ac49439a2620597e9a19c60",
                             PhoneNumber = "09000990099",
-                            Salt = "8bfeb595f29aab2dc37d28b7c3124b6b"
+                            Salt = "7b8ef6c6d54c68170de8eeb447dd3b74"
                         });
                 });
 
@@ -3852,55 +3776,6 @@ namespace SANTEGSMS.Migrations
                     b.HasOne("SANTEGSMS.Entities.SchoolUsers", "SchoolUsers")
                         .WithMany()
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SANTEGSMS.Entities.Terms", "Terms")
-                        .WithMany()
-                        .HasForeignKey("TermId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SANTEGSMS.Entities.BroadSheetData", b =>
-                {
-                    b.HasOne("SANTEGSMS.Entities.SchoolCampus", "SchoolCampus")
-                        .WithMany()
-                        .HasForeignKey("CampusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SANTEGSMS.Entities.ClassGrades", "ClassGrades")
-                        .WithMany()
-                        .HasForeignKey("ClassGradeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SANTEGSMS.Entities.Classes", "Classes")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SANTEGSMS.Entities.Gender", "Gender")
-                        .WithMany()
-                        .HasForeignKey("GenderId");
-
-                    b.HasOne("SANTEGSMS.Entities.Schools", "Schools")
-                        .WithMany()
-                        .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SANTEGSMS.Entities.Sessions", "Sessions")
-                        .WithMany()
-                        .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SANTEGSMS.Entities.Students", "Students")
-                        .WithMany()
-                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

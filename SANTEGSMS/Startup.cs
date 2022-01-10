@@ -93,8 +93,10 @@ namespace SANTEGSMS
             services.AddScoped<IReportCardDataGenerateRepo, ReportCardGenerateRepo>();
             services.AddScoped<ISuperAdminRepo, SuperAdminRepo>();
             services.AddScoped<IFileUploadRepo, FileUploadRepo>();
+            services.AddScoped<IBroadSheetRepo, BroadSheetRepo>();
 
             services.AddScoped<ReportCardReUsables>();
+            services.AddScoped<BroadSheetReusables>();
             services.AddScoped<EmailTemplate>();
             services.AddScoped<ServerPath>();
 

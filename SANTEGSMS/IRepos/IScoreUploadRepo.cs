@@ -42,7 +42,7 @@ namespace SANTEGSMS.IRepos
         Task<UploadScoreRespModel> bulkScoresUploadAsync(BulkScoresUploadReqModel obj);
 
         //-----------------------------------------------------STUDENT GRADE BOOK (Student Ability to View their scores per subject, category and subcategory)-----------------------------------------------------------------------------------------------
-        Task<GenericRespModel> studentGradeBookScoresPerSubjectAndCategoryAsync(Guid studentId, long schoolId, long campusId, long categoryId, long subCategoryId);
+        Task<GenericRespModel> studentGradeBookScoresPerSubjectAndCategoryAsync(Guid studentId, long schoolId, long campusId, long categoryId, long subCategoryId);      
 
     }
 }
