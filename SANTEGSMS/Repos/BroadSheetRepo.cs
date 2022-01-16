@@ -143,12 +143,13 @@ namespace SANTEGSMS.Repos
             }
         }
 
-        public async Task<GenericRespModel> getBroadsheetGradingConfigAsync()
+        public async Task<GenericRespModel> getBroadsheetGradingConfigAsync(long schoolId, long campusId, long sessionId)
         {
             try
             {
                 //returns all the Score Grading
-                var result = from cl in _context.BroadSheetGrading
+                var result = from cl in _context.BroadSheetGrading where cl.SchoolId == schoolId 
+                             && cl.CampusId == campusId && cl.SessionId == sessionId
                              select new
                              {
                                  cl.Id,
@@ -267,12 +268,13 @@ namespace SANTEGSMS.Repos
             }
         }
 
-        public async Task<GenericRespModel> getBroadsheetRemarkConfigAsync()
+        public async Task<GenericRespModel> getBroadsheetRemarkConfigAsync(long schoolId, long campusId, long classId)
         {
             try
             {
                 //returns all the Score Grading
-                var result = from cl in _context.BroadSheetRemark
+                var result = from cl in _context.BroadSheetRemark where cl.SchoolId == schoolId 
+                             && cl.CampusId == campusId && cl.ClassId == classId
                              select new
                              {
                                  cl.Id,

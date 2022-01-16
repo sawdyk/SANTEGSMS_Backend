@@ -14,12 +14,12 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> updateBroadsheetGradingConfigAsync(BroadsheetGradeReqModel obj, long broadSheetConfigId);
         Task<GenericRespModel> deleteBroadsheetGradingConfigAsync(long broadSheetConfigId);
         Task<GenericRespModel> getBroadsheetGradingConfigByIdAsync(long broadSheetConfigId);
-        Task<GenericRespModel> getBroadsheetGradingConfigAsync();
+        Task<GenericRespModel> getBroadsheetGradingConfigAsync(long schoolId, long campusId, long sessionId);
 
 
         //------------------------------------------------------BROADSHEET REMARK CONFIG--------------------------------------------------------------------
         Task<GenericRespModel> createBroadsheetRemarkConfigAsync(BroadSheetRemarkReqModel obj);
-        Task<GenericRespModel> getBroadsheetRemarkConfigAsync();
+        Task<GenericRespModel> getBroadsheetRemarkConfigAsync(long schoolId, long campusId, long classId);
 
 
         //------------------------------------------------------BROADSHEET GENERATION------------------------------------------------------------------------

@@ -65,14 +65,14 @@ namespace SANTEGSMS.Controllers
 
         [HttpGet("broadsheetGradingConfig")]
         [Authorize]
-        public async Task<IActionResult> getBroadsheetGradingConfigAsync()
+        public async Task<IActionResult> getBroadsheetGradingConfigAsync(long schoolId, long campusId, long sessionId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var result = await _broadSheetRepo.getBroadsheetGradingConfigAsync();
+            var result = await _broadSheetRepo.getBroadsheetGradingConfigAsync(schoolId, campusId, sessionId);
 
             return Ok(result);
         }
@@ -108,14 +108,14 @@ namespace SANTEGSMS.Controllers
 
         [HttpGet("broadsheetRemarkConfig")]
         [Authorize]
-        public async Task<IActionResult> getBroadsheetRemarkConfigAsync()
+        public async Task<IActionResult> getBroadsheetRemarkConfigAsync(long schoolId, long campusId, long classId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var result = await _broadSheetRepo.getBroadsheetRemarkConfigAsync();
+            var result = await _broadSheetRepo.getBroadsheetRemarkConfigAsync(schoolId, campusId, classId);
 
             return Ok(result);
         }
