@@ -10,7 +10,7 @@ namespace SANTEGSMS.Security.BasicAuth
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
         private List<Users> _users = new List<Users>
         {
-            new Users { Id = 1, FirstName = "Test", LastName = "User", Username = "santegLive", Password = "santegLive321#$" }
+            new Users { Id = 1, FirstName = "Test", LastName = "User", Username = "santeg", Password = "santeg" }
         };
 
         public async Task<Users> Authenticate(string username, string password)
