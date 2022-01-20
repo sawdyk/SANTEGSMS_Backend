@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SANTEGSMS.DatabaseContext;
 
 namespace SANTEGSMS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220120125128_schResource")]
+    partial class schResource
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2408,6 +2410,20 @@ namespace SANTEGSMS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SchoolResources");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            ResourceLink = "http://161.97.77.250:8080/santegfilesrepository/schooldocuments/others/SubjectBulkUpload.xlsx",
+                            ResourceName = "Subject Bulk Upload Template"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            ResourceLink = "http://161.97.77.250/santegfilesrepository/schooldocuments/others/StudentBulkUpload.xlsx",
+                            ResourceName = "Student Bulk Upload Template"
+                        });
                 });
 
             modelBuilder.Entity("SANTEGSMS.Entities.SchoolRoles", b =>
@@ -3521,14 +3537,14 @@ namespace SANTEGSMS.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("626f2482-9e48-4aa8-949e-6c22b240855b"),
-                            DateCreated = new DateTime(2022, 1, 20, 13, 52, 52, 26, DateTimeKind.Local).AddTicks(1611),
+                            Id = new Guid("c350d7a4-79b7-43aa-b3ff-c1f5120b3c07"),
+                            DateCreated = new DateTime(2022, 1, 20, 13, 51, 27, 999, DateTimeKind.Local).AddTicks(9701),
                             Email = "Oluagbe1@gmail.com",
                             FirstName = "Super Admin",
                             LastName = "Super Admin",
-                            PasswordHash = "5565b9a7f1c679be17b3d741eb326525f58e4f3fd520ff6809bbaded262adacd",
+                            PasswordHash = "9977a1e88e7e4d7eb7fc19367eed073ea841ecaef35922d7b8072111c7abecd7",
                             PhoneNumber = "08024174777",
-                            Salt = "19a9bcf9fe22f6cce5c0949ffc32c302"
+                            Salt = "09f07b2437aa3d0a0b897a395e49cc7c"
                         });
                 });
 

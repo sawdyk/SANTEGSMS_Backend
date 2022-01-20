@@ -14,8 +14,10 @@ namespace SANTEGSMS.Entities
         public long Id { get; set; }
         public Guid StudentId { get; set; }
         public string AdmissionNumber { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal TotalScore { get; set; }
         public long TotalScoreObtainable { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal PercentageScore { get; set; }
         public long Position { get; set; }
         public long SubjectComputed { get; set; }

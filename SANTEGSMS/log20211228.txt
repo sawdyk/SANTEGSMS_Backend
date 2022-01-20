@@ -1,8 +1,0 @@
-2021-12-28 15:54:11.165 +01:00 [INF] User profile is available. Using 'C:\Users\P8623\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
-2021-12-28 15:54:12.444 +01:00 [INF] Application started. Press Ctrl+C to shut down.
-2021-12-28 15:54:12.445 +01:00 [INF] Hosting environment: Development
-2021-12-28 15:54:12.449 +01:00 [INF] Content root path: C:\Users\P8623\Desktop\P8623\PP\SANTEGSMS\SANTEGSMS
-2021-12-28 15:54:12.545 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/index.html  
-2021-12-28 15:54:12.728 +01:00 [INF] Request finished in 190.9583ms 200 text/html;charset=utf-8
-2021-12-28 15:54:13.008 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:1952/Swagger/v1/swagger.json  
-2021-12-28 15:54:13.482 +01:00 [INF] Request finished in 474.5272ms 200 application/json;charset=utf-8

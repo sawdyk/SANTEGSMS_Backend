@@ -107,6 +107,7 @@ namespace SANTEGSMS.DatabaseContext
             builder.SeedAppTypes();
             builder.SeedFolderTypes();
             builder.SeedSystemSuperAdmin();
+            builder.SeedSchoolResources();
         }
     }
 }

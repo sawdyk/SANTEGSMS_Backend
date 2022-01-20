@@ -21,7 +21,9 @@ namespace SANTEGSMS.Entities
         public long SessionId { get; set; }
         public long TermId { get; set; }
         public long NoOfSubjectsComputed { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal TotalScore { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal PercentageScore { get; set; }
         public string Grade { get; set; }
         public string Remark { get; set; }

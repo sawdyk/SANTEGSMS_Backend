@@ -28,9 +28,13 @@ namespace SANTEGSMS.Entities
         public long TermId { get; set; }
         public long AverageScore { get; set; }
         public long AveragePosition { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal CumulativeCA_Score { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal FirstTermTotalScore { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal SecondTermTotalScore { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal AverageTotalScore { get; set; }
         public string Grade { get; set; }
         public string Remark { get; set; }

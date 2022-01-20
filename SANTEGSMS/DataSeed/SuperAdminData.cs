@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SANTEGSMS.DatabaseContext;
 using SANTEGSMS.Entities;
 using SANTEGSMS.Helpers;
 using SANTEGSMS.Reusables;
@@ -27,8 +28,8 @@ namespace SANTEGSMS.DataSeed
                     Id = Guid.NewGuid(),
                     FirstName = "Super Admin",
                     LastName = "Super Admin",
-                    Email = "Ahmedsodiq7@gmail.com",
-                    PhoneNumber = "09000990099",
+                    Email = "Oluagbe1@gmail.com",
+                    PhoneNumber = "08024174777",
                     Salt = salt,
                     PasswordHash = passwordHash,
                     DateCreated = DateTime.Now

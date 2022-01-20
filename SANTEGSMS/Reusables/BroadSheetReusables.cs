@@ -198,5 +198,40 @@ namespace SANTEGSMS.Reusables
                 throw ex;
             }
         }
+
+          //------------------------------------------------CHECK IF STUDENT TAKES ONE OR MORE EXAMS-------------------------------------------------------------------------------
+
+        public long getNumberOfStudentsThatTookAtLeastAnExamByGender(long schoolId, long campusId, long sessionId, long termId, long classId, long genderId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+                var checkTerm = check.checkTermById(termId);
+                var checkSession = check.checkSessionById(sessionId);
+
+                long noOfStudents = 0;
+
+                if (checkSchool && checkCampus && checkTerm && checkSession)    
+                {
+                    //students that has passed or failed as remark by gender
+                    var studentsCount = from std in _context.BroadSheetData where std.SchoolId == schoolId && std.CampusId == campusId  && std.ClassId == classId 
+                                   && std.SessionId == sessionId && std.TermId == termId && std.GenderId == genderId && std.NoOfSubjectsComputed > 0 select std;                    
+
+                    if (studentsCount.Count() > 0)
+                    {
+                        noOfStudents = studentsCount.Count();
+                    }
+                }
+
+                return noOfStudents;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

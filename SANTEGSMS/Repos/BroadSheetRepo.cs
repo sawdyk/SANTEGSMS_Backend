@@ -281,6 +281,7 @@ namespace SANTEGSMS.Repos
                                  cl.SchoolId,
                                  cl.CampusId,
                                  cl.SubjectId,
+                                 cl.SchoolSubjects.SubjectName,
                                  cl.Classes.ClassName,
                                  cl.ClassId,
                                  cl.Mandatory,
@@ -324,6 +325,8 @@ namespace SANTEGSMS.Repos
                 int countOtherSubjectsPassed = 0;
                 int countPassedStudents = 0;
                 int countFailedStudents = 0;
+                int countAbsentsInExam = 0;
+                int countPresenceInExam = 0;
 
                 //check if all parameters supplied is Valid
                 if (checkSchool == true && checkCampus == true && checkClass == true && checkClassGarade == true && checkTerm == true && checkSession == true)
@@ -407,7 +410,15 @@ namespace SANTEGSMS.Repos
                                         //assign the subject total score and the subject name
                                         subjectScore.Score = rptData.TotalScore;
                                         subjectScore.SubjectName = broadSheetReusables.subjectName(rptData.SubjectId);
+
+                                        //to get the number of subjects exams student took
+                                        countPresenceInExam++;
                                     }
+                                    else
+                                    {
+                                        countAbsentsInExam++;
+                                    }
+                                    //absentCount++ if the reortcard data is null
                                    
                                     //add the subject score obj to a list
                                     subjectScoreList.Add(subjectScore);
@@ -419,16 +430,22 @@ namespace SANTEGSMS.Repos
                                         //check if the subject is configured as mandatory and apply the logic
                                         if (brdRmkConfig.Mandatory == true)
                                         {
-                                            if (rptData.TotalScore >= 50) //check if the total score for the madatory configured is greater than 50%
+                                            if (rptData != null)
                                             {
-                                                countMandatorySubjectsPassed++;
+                                                if (rptData.TotalScore >= 50) //check if the total score for the madatory configured is greater than 50%
+                                                {
+                                                    countMandatorySubjectsPassed++;
+                                                }
                                             }
                                         }
                                         else
                                         {
-                                            if (rptData.TotalScore >= 50) //check if the total score for others that are not configured as mandatory is greater than 50%
+                                            if (rptData != null)
                                             {
-                                                countOtherSubjectsPassed++;
+                                                if (rptData.TotalScore >= 50) //check if the total score for others that are not configured as mandatory is greater than 50%
+                                                {
+                                                    countOtherSubjectsPassed++;
+                                                }
                                             }
                                         }
                                     }
@@ -439,8 +456,15 @@ namespace SANTEGSMS.Repos
                             var mandatoryRemrk = broadSheetReusables.mandatoryPassedRemark(countMandatorySubjectsPassed, totalMandatoryConfig);
                             //student total No of others passed
                             var othersRemrk = broadSheetReusables.othersPassedRemark(countOtherSubjectsPassed);
-                            //Student final Remark
-                            var studentFinalRemark = broadSheetReusables.studentFinalRemark(mandatoryRemrk, othersRemrk);
+                            var studentFinalRemark = string.Empty;
+
+                            if (countAbsentsInExam == subjectsInClass.Count()) //if student did not take any exam (no record of any exam in the ReportCardData table)
+                                //Student final Remark
+                                studentFinalRemark = "Absent";
+                            else
+                                //Student final Remark
+                                studentFinalRemark = broadSheetReusables.studentFinalRemark(mandatoryRemrk, othersRemrk);
+
 
                             //count No of students that passed or failed
                             if (studentFinalRemark == "Passed")
@@ -504,7 +528,7 @@ namespace SANTEGSMS.Repos
                                     ClassGradeId = classGradeId,
                                     TermId = termId,
                                     SessionId = sessionId,
-                                    NoOfSubjectsComputed = subjectsInClass.Count(),
+                                    NoOfSubjectsComputed = countPresenceInExam,
                                     TotalScore = totalScore,
                                     PercentageScore = percentageScore,
                                     Grade = grade,
@@ -525,7 +549,7 @@ namespace SANTEGSMS.Repos
                                 brdShtData.ClassGradeId = classGradeId;
                                 brdShtData.TermId = termId;
                                 brdShtData.SessionId = sessionId;
-                                brdShtData.NoOfSubjectsComputed = subjectsInClass.Count();
+                                brdShtData.NoOfSubjectsComputed = countPresenceInExam;
                                 brdShtData.TotalScore = totalScore;
                                 brdShtData.PercentageScore = percentageScore;
                                 brdShtData.Grade = grade;
@@ -536,7 +560,9 @@ namespace SANTEGSMS.Repos
                             }
 
                             countMandatorySubjectsPassed = 0;
-                        countOtherSubjectsPassed = 0;
+                            countOtherSubjectsPassed = 0;
+                            countAbsentsInExam = 0;
+                            countPresenceInExam = 0;
                         }
                     }
 
@@ -614,14 +640,18 @@ namespace SANTEGSMS.Repos
 
                             //present
                             //number of students (Male, Female, Total) who took the exams in all the classes. (Students must take atleast 1 exam to be recorded as present).
-                            present.Male = registeredMale;
-                            present.Female = registeredFemale;
-                            present.Total = totalRegistered;
+                            long presentMale = broadSheetReusables.getNumberOfStudentsThatTookAtLeastAnExamByGender(obj.SchoolId, obj.CampusId, obj.SessionId, obj.TermId, classId, (long)EnumUtility.Gender.Male);
+                            long presentFemale = broadSheetReusables.getNumberOfStudentsThatTookAtLeastAnExamByGender(obj.SchoolId, obj.CampusId, obj.SessionId, obj.TermId, classId, (long)EnumUtility.Gender.Female);
+                            long totalPresent = presentMale + presentFemale;
+
+                            present.Male = presentMale;
+                            present.Female = presentFemale;
+                            present.Total = totalPresent;
 
                             //absent
                             //number of student who did not take any exams at all (Male, Female, Total) we can get this by subtracting number present from number registered
-                            long absentMale = registeredMale - registeredMale;
-                            long absentFemale = registeredFemale - registeredFemale;
+                            long absentMale = registeredMale - presentMale;
+                            long absentFemale = registeredFemale - presentFemale;
                             long totalAbsent = absentMale + absentFemale;
 
                             absent.Male = absentMale;
@@ -652,7 +682,7 @@ namespace SANTEGSMS.Repos
                             decimal percentagePass = 0;
                             if (totalRegistered > 0)
                             {
-                                percentagePass = Math.Round((decimal)totalMandatory / totalRegistered * 100);
+                                percentagePass = Math.Round((decimal)totalMandatory / totalRegistered * 100, 2);
                             }
 
                             PerformanceAnalysisInfo perfAnalysis = new PerformanceAnalysisInfo();

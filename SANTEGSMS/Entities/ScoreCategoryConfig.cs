@@ -18,6 +18,7 @@ namespace SANTEGSMS.Entities
         public long ClassId { get; set; }
         public long SessionId { get; set; }
         public long TermId { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal Percentage { get; set; }
         public DateTime DateCreated { get; set; }
         public bool IsDeleted { get; set; }

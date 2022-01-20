@@ -15,7 +15,9 @@ namespace SANTEGSMS.Entities
         public long Id { get; set; }
         public long AssignmentId { get; set; }
         public Guid StudentId { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal? ObtainableScore { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal? ScoreObtained { get; set; }
         public string FileUrl { get; set; }
         public long ClassId { get; set; }

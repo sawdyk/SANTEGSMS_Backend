@@ -21,6 +21,7 @@ namespace SANTEGSMS.Entities
         public Guid StudentId { get; set; }
         public string AdmissionNumber { get; set; }
         public long MarkObtainable { get; set; }
+        [Column(TypeName = "decimal(60,4)")]
         public decimal MarkObtained { get; set; }
         public long CategoryId { get; set; }
         public long SubCategoryId { get; set; }
