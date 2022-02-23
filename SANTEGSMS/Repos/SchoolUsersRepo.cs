@@ -76,14 +76,18 @@ namespace SANTEGSMS.Repos
                     //save the SchoolUser Roles
                     foreach (var roleId in obj.RoleIds)
                     {
-                        var usrRol = new SchoolUserRoles
+                        var checkRol = _context.SchoolUserRoles.FirstOrDefault(u => u.UserId == schUsr.Id && u.RoleId == roleId.Id);
+                        if (checkRol is null)
                         {
-                            UserId = schUsr.Id,
-                            RoleId = roleId.Id,
-                            DateCreated = DateTime.Now
-                        };
+                            var usrRol = new SchoolUserRoles
+                            {
+                                UserId = schUsr.Id,
+                                RoleId = roleId.Id,
+                                DateCreated = DateTime.Now
+                            };
 
-                        await _context.SchoolUserRoles.AddAsync(usrRol);
+                            await _context.SchoolUserRoles.AddAsync(usrRol);
+                        }
                         await _context.SaveChangesAsync();
                     }
 

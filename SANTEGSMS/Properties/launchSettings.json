@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/SANTEGSMS",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:1952",
       "sslPort": 0
@@ -18,13 +22,13 @@
       }
     },
     "SANTEGSMS": {
-      "commandName": "Project",
+      "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "https://localhost:446/"
     }
   }
 }

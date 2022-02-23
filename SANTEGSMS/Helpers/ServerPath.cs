@@ -41,7 +41,8 @@ namespace SANTEGSMS.Helpers
 
         public string ServerBaseURL()
         {
-            string baseUrl = "http://161.97.77.250:8080";
+            //string baseUrl = "http://161.97.77.250:8080";
+            string baseUrl = "https://oviteg.com";
 
             return baseUrl;
         }

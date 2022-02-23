@@ -45,7 +45,6 @@ namespace SANTEGSMS
 
             });
 
-
             //configure Basic Authentication 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
@@ -144,6 +143,12 @@ namespace SANTEGSMS
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.UseHttpsRedirection();
+                //app.UseHttpsRedirection();
+            }
+            else
+            {
+                app.UseHsts();
             }
 
             app.UseSwagger();
@@ -161,8 +166,8 @@ namespace SANTEGSMS
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
+            //app.UseHttpsRedirection();
             app.UseAuthentication();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
