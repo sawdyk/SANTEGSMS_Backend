@@ -1195,233 +1195,167 @@ namespace SANTEGSMS.Repos
 
                         for (int row = 2; row <= rowCount; row++) // starts from the second row (Jumping the table headings)
                         {
-
-                            //Check the Student FirstName, Gender, Date of birth, parent Email Address
-                            //AdmissionNumber
-                            var admissionNumber = admNumber.GenerateAdmissionNumber(obj.SchoolId);
-
-                            //the salt
-                            string salt = paswordHasher.getSalt();
-                            //Hash the password and salt
-                            string passwordHash = paswordHasher.hashedPassword(defaultPassword, salt);
-
-                            long studentGenderId = 1; //set a default genderId (Male)
-
-                            if (worksheet.Cells[row, 4].Value != null)
+                            if (worksheet.Cells[row, 1].Value != null && worksheet.Cells[row, 2].Value != null) // checks if the firstname and lastname in the excel sheey is not empty
                             {
-                                studentGenderId = (long)Converters.stringToGender(worksheet.Cells[row, 4].Value.ToString());
-                            }
+                                //Check the Student FirstName, Gender, Date of birth, parent Email Address
+                                //AdmissionNumber
+                                var admissionNumber = admNumber.GenerateAdmissionNumber(obj.SchoolId);
 
-                            //check for exsting students in the school
-                            var getExistingStudents = from x in _context.Students
-                                                      where x.LastName == worksheet.Cells[row, 1].Value.ToString()
-                                                        && x.FirstName == worksheet.Cells[row, 2].Value.ToString()
-                                                        && x.MiddleName == worksheet.Cells[row, 3].Value.ToString()
-                                                        && x.SchoolId == obj.SchoolId
-                                                        && x.CampusId == obj.CampusId
-                                                      select x;
+                                //the salt
+                                string salt = paswordHasher.getSalt();
+                                //Hash the password and salt
+                                string passwordHash = paswordHasher.hashedPassword(defaultPassword, salt);
 
-                            //skip and add students to duplicate table if the students exists 
-                            if (getExistingStudents.Count() > 0)
-                            {
-                                foreach (Students std in getExistingStudents)
+                                long studentGenderId = 1; //set a default genderId (Male)
+
+                                if (worksheet.Cells[row, 4].Value != null)
                                 {
-                                    //check if the students exists in the duplicate table
-                                    StudentDuplicates objDupStd = _context.StudentDuplicates.Where(x => x.NewStudentFullName == worksheet.Cells[row, 1].Value.ToString() + " " + worksheet.Cells[row, 2].Value.ToString() + " " + worksheet.Cells[row, 3].Value.ToString()
-                                    && x.ExistingStudentId == std.Id
-                                    && x.SchoolId == obj.SchoolId
-                                    && x.CampusId == obj.CampusId).FirstOrDefault();
-
-                                    //adds the students duplicate record
-                                    if (objDupStd == null)
-                                    {
-                                        var objDup = new StudentDuplicates
-                                        {
-                                            NewStudentFullName = worksheet.Cells[row, 1].Value.ToString() + " " + worksheet.Cells[row, 2].Value.ToString() + " " + worksheet.Cells[row, 3].Value.ToString(),
-                                            ExistingStudentId = std.Id,
-                                            SchoolId = obj.SchoolId,
-                                            CampusId = obj.CampusId,
-                                            DateCreated = DateTime.Now,
-                                        };
-                                        await _context.StudentDuplicates.AddAsync(objDup);
-                                    }
-                                    else //updates the students duplicate record
-                                    {
-                                        objDupStd.NewStudentFullName = worksheet.Cells[row, 1].Value.ToString() + " " + worksheet.Cells[row, 2].Value.ToString() + " " + worksheet.Cells[row, 3].Value.ToString();
-                                        objDupStd.ExistingStudentId = std.Id;
-                                        objDupStd.SchoolId = obj.SchoolId;
-                                        objDupStd.CampusId = obj.CampusId;
-                                        objDupStd.DateCreated = DateTime.Now;
-                                    }
-                                    await _context.SaveChangesAsync();
-
-                                    //the student data existing
-                                    var existingStudent = (from sd in _context.Students
-                                                           where sd.Id == std.Id
-                                                           select new
-                                                           {
-                                                               sd.Id,
-                                                               sd.SchoolId,
-                                                               sd.CampusId,
-                                                               sd.FirstName,
-                                                               sd.LastName,
-                                                               sd.UserName,
-                                                               sd.AdmissionNumber,
-                                                               sd.hasParent,
-                                                               sd.IsActive,
-                                                               sd.LastPasswordChangedDate,
-                                                               sd.LastLoginDate,
-                                                               sd.LastUpdatedDate,
-                                                               sd.DateCreated,
-                                                           }).FirstOrDefault();
-
-                                    //add the existing students to a list as response
-                                    listOfStudentThatExists.Add(existingStudent);
-                                    numberOfExistingStudents++;
+                                    studentGenderId = (long)Converters.stringToGender(worksheet.Cells[row, 4].Value.ToString());
                                 }
-                            }
-                            else
-                            {
-                                var std = new Students
+
+                                string lastName = string.Empty;
+                                string firstName = string.Empty;
+                                string middleName = string.Empty;
+
+                                lastName = worksheet.Cells[row, 1].Value.ToString();
+                                firstName = worksheet.Cells[row, 2].Value.ToString();
+                                middleName = worksheet.Cells[row, 3].Value.ToString();
+
+                                //check for exsting students in the school
+                                var getExistingStudents = (from x in _context.Students
+                                                           where x.LastName == lastName
+                                                             && x.FirstName == firstName
+                                                             && x.MiddleName == middleName
+                                                             && x.SchoolId == obj.SchoolId
+                                                             && x.CampusId == obj.CampusId
+                                                           select x).ToList();
+
+                                //skip and add students to duplicate table if the students exists 
+                                if (getExistingStudents.Count() > 0)
                                 {
-                                    LastName = worksheet.Cells[row, 1].Value.ToString(),
-                                    FirstName = worksheet.Cells[row, 2].Value.ToString(),
-                                    MiddleName = worksheet.Cells[row, 3].Value.ToString(),
-                                    GenderId = (long)Converters.stringToGender(worksheet.Cells[row, 4].Value.ToString()),
-                                    StaffStatus = 0,
-                                    DateOfBirth = Convert.ToDateTime(worksheet.Cells[row, 6].Value.ToString()),
-                                    YearOfAdmission = worksheet.Cells[row, 7].Value.ToString(),
-                                    StateOfOrigin = worksheet.Cells[row, 8].Value.ToString(),
-                                    LocalGovt = worksheet.Cells[row, 9].Value.ToString(),
-                                    Religion = worksheet.Cells[row, 10].Value.ToString(),
-                                    HomeAddress = worksheet.Cells[row, 11].Value.ToString(),
-                                    City = worksheet.Cells[row, 12].Value.ToString(),
-                                    State = worksheet.Cells[row, 13].Value.ToString(),
-                                    UserName = admissionNumber,
-                                    AdmissionNumber = admissionNumber,
-                                    Salt = salt,
-                                    PasswordHash = passwordHash,
-                                    StudentStatus = "",
-                                    SchoolId = obj.SchoolId,
-                                    CampusId = obj.CampusId,
-                                    IsAssignedToClass = false,
-                                    hasParent = false,
-                                    IsActive = true,
-                                    ProfilePictureUrl = "",
-                                    Status = "",
-                                    DateCreated = DateTime.Now,
-                                };
-
-                                await _context.Students.AddAsync(std);
-                                await _context.SaveChangesAsync();
-
-                                //the students created
-                                var stud = (from sd in _context.Students
-                                            where sd.Id == std.Id
-                                            select new
-                                            {
-                                                sd.Id,
-                                                sd.SchoolId,
-                                                sd.CampusId,
-                                                sd.FirstName,
-                                                sd.LastName,
-                                                sd.UserName,
-                                                sd.AdmissionNumber,
-                                                sd.hasParent,
-                                                sd.IsActive,
-                                                sd.LastPasswordChangedDate,
-                                                sd.LastLoginDate,
-                                                sd.LastUpdatedDate,
-                                                sd.DateCreated,
-                                            }).FirstOrDefault();
-
-                                //add all students created to a list
-                                listOfStudentsCreated.Add(stud);
-
-                                //the parents email Address
-                                string parentsEmailAddress = worksheet.Cells[row, 17].Value.ToString(); //gets the parent email Address
-
-                                //Check if the parent exists in the school and map student to the parent if true
-                                var parentExists = _context.Parents.Where(P => P.Email == parentsEmailAddress && P.SchoolId == obj.SchoolId).FirstOrDefault();
-
-                                if (parentExists != null)
-                                {
-                                    //map student to existing parent
-                                    var mapp = new ParentsStudentsMap
+                                    foreach (Students std in getExistingStudents)
                                     {
-                                        ParentId = parentExists.Id,
-                                        StudentId = std.Id,
-                                        SchoolId = obj.SchoolId,
-                                        CampusId = obj.CampusId,
-                                        DateCreated = DateTime.Now
-                                    };
+                                        string studentFullName = lastName + " " + firstName + " " + middleName;
+                                        //check if the students exists in the duplicate table
+                                        StudentDuplicates objDupStd = _context.StudentDuplicates.Where(x => x.NewStudentFullName == studentFullName && x.ExistingStudentId == std.Id && x.SchoolId == obj.SchoolId && x.CampusId == obj.CampusId).FirstOrDefault();
+                                        //adds the students duplicate record
+                                        if (objDupStd == null)
+                                        {
+                                            var objDup = new StudentDuplicates
+                                            {
+                                                NewStudentFullName = studentFullName,
+                                                ExistingStudentId = std.Id,
+                                                SchoolId = obj.SchoolId,
+                                                CampusId = obj.CampusId,
+                                                DateCreated = DateTime.Now,
+                                            };
+                                            await _context.StudentDuplicates.AddAsync(objDup);
+                                        }
+                                        else //updates the students duplicate record
+                                        {
+                                            objDupStd.NewStudentFullName = studentFullName;
+                                            objDupStd.ExistingStudentId = std.Id;
+                                            objDupStd.SchoolId = obj.SchoolId;
+                                            objDupStd.CampusId = obj.CampusId;
+                                            objDupStd.DateCreated = DateTime.Now;
+                                        }
+                                        await _context.SaveChangesAsync();
 
-                                    //student was mapped to a parent
-                                    var getStudent = _context.Students.Where(s => s.Id == std.Id).FirstOrDefault();
-                                    getStudent.hasParent = true;
+                                        //the student data existing
+                                        var existingStudent = (from sd in _context.Students
+                                                               where sd.Id == std.Id
+                                                               select new
+                                                               {
+                                                                   sd.Id,
+                                                                   sd.SchoolId,
+                                                                   sd.CampusId,
+                                                                   sd.FirstName,
+                                                                   sd.LastName,
+                                                                   sd.UserName,
+                                                                   sd.AdmissionNumber,
+                                                                   sd.hasParent,
+                                                                   sd.IsActive,
+                                                                   sd.LastPasswordChangedDate,
+                                                                   sd.LastLoginDate,
+                                                                   sd.LastUpdatedDate,
+                                                                   sd.DateCreated,
+                                                               }).FirstOrDefault();
 
-                                    await _context.ParentsStudentsMap.AddAsync(mapp);
-                                    await _context.SaveChangesAsync();
-
-                                    //the list of parent that exits
-                                    var prts = (from prt in _context.Parents
-                                                where prt.Email == parentExists.Email
-                                                select new
-                                                {
-                                                    prt.Id,
-                                                    prt.SchoolId,
-                                                    prt.CampusId,
-                                                    prt.FirstName,
-                                                    prt.LastName,
-                                                    prt.UserName,
-                                                    prt.Email,
-                                                    prt.PhoneNumber,
-                                                    prt.hasChild,
-                                                    prt.IsActive,
-                                                    prt.DateCreated,
-                                                }).FirstOrDefault();
-                                    //add all existing parent to a list and send as part of API respponse
-                                    listOfParentThatExistsInSchool.Add(prts);
+                                        //add the existing students to a list as response
+                                        listOfStudentThatExists.Add(existingStudent);
+                                        numberOfExistingStudents++;
+                                    }
                                 }
                                 else
                                 {
-                                    //Check if the parent exists in the Database
-                                    var parentExistsInDb = _context.Parents.Where(P => P.Email == parentsEmailAddress).FirstOrDefault();
-                                    if (parentExistsInDb == null)
+                                    var std = new Students
                                     {
-                                        //Save new parents details
-                                        var parent = new Parents
-                                        {
-                                            FirstName = worksheet.Cells[row, 14].Value.ToString(),
-                                            LastName = worksheet.Cells[row, 15].Value.ToString(),
-                                            UserName = parentsEmailAddress,
-                                            GenderId = (long)Converters.stringToGender(worksheet.Cells[row, 16].Value.ToString()),
-                                            Email = parentsEmailAddress,
-                                            PhoneNumber = worksheet.Cells[row, 18].Value.ToString(),
-                                            Salt = salt,
-                                            PasswordHash = passwordHash,
-                                            SchoolId = obj.SchoolId,
-                                            CampusId = obj.CampusId,
-                                            Nationality = worksheet.Cells[row, 19].Value.ToString(),
-                                            State = worksheet.Cells[row, 20].Value.ToString(),
-                                            City = worksheet.Cells[row, 21].Value.ToString(),
-                                            HomeAddress = worksheet.Cells[row, 22].Value.ToString(),
-                                            Occupation = worksheet.Cells[row, 23].Value.ToString(),
-                                            StateOfOrigin = worksheet.Cells[row, 24].Value.ToString(),
-                                            LocalGovt = worksheet.Cells[row, 25].Value.ToString(),
-                                            Religion = worksheet.Cells[row, 26].Value.ToString(),
-                                            IsActive = true,
-                                            hasChild = true,
-                                            DateCreated = DateTime.Now,
-                                        };
+                                        LastName = lastName,
+                                        FirstName = firstName,
+                                        MiddleName = middleName,
+                                        GenderId = (long)Converters.stringToGender(worksheet.Cells[row, 4].Value.ToString()),
+                                        StaffStatus = 0,
+                                        DateOfBirth = Convert.ToDateTime(worksheet.Cells[row, 6].Value.ToString()),
+                                        YearOfAdmission = worksheet.Cells[row, 7].Value.ToString(),
+                                        StateOfOrigin = worksheet.Cells[row, 8].Value.ToString(),
+                                        LocalGovt = worksheet.Cells[row, 9].Value.ToString(),
+                                        Religion = worksheet.Cells[row, 10].Value.ToString(),
+                                        HomeAddress = worksheet.Cells[row, 11].Value.ToString(),
+                                        City = worksheet.Cells[row, 12].Value.ToString(),
+                                        State = worksheet.Cells[row, 13].Value.ToString(),
+                                        UserName = admissionNumber,
+                                        AdmissionNumber = admissionNumber,
+                                        Salt = salt,
+                                        PasswordHash = passwordHash,
+                                        StudentStatus = "",
+                                        SchoolId = obj.SchoolId,
+                                        CampusId = obj.CampusId,
+                                        IsAssignedToClass = false,
+                                        hasParent = false,
+                                        IsActive = true,
+                                        ProfilePictureUrl = "",
+                                        Status = "",
+                                        DateCreated = DateTime.Now,
+                                    };
 
-                                        await _context.Parents.AddAsync(parent);
-                                        await _context.SaveChangesAsync();
+                                    await _context.Students.AddAsync(std);
+                                    await _context.SaveChangesAsync();
 
-                                        //map student and parent
+                                    //the students created
+                                    var stud = (from sd in _context.Students
+                                                where sd.Id == std.Id
+                                                select new
+                                                {
+                                                    sd.Id,
+                                                    sd.SchoolId,
+                                                    sd.CampusId,
+                                                    sd.FirstName,
+                                                    sd.LastName,
+                                                    sd.UserName,
+                                                    sd.AdmissionNumber,
+                                                    sd.hasParent,
+                                                    sd.IsActive,
+                                                    sd.LastPasswordChangedDate,
+                                                    sd.LastLoginDate,
+                                                    sd.LastUpdatedDate,
+                                                    sd.DateCreated,
+                                                }).FirstOrDefault();
+
+                                    //add all students created to a list
+                                    listOfStudentsCreated.Add(stud);
+
+                                    //the parents email Address
+                                    string parentsEmailAddress = worksheet.Cells[row, 17].Value.ToString(); //gets the parent email Address
+
+                                    //Check if the parent exists in the school and map student to the parent if true
+                                    var parentExists = _context.Parents.Where(P => P.Email == parentsEmailAddress && P.SchoolId == obj.SchoolId).FirstOrDefault();
+
+                                    if (parentExists != null)
+                                    {
+                                        //map student to existing parent
                                         var mapp = new ParentsStudentsMap
                                         {
-                                            ParentId = parent.Id,
+                                            ParentId = parentExists.Id,
                                             StudentId = std.Id,
                                             SchoolId = obj.SchoolId,
                                             CampusId = obj.CampusId,
@@ -1434,28 +1368,101 @@ namespace SANTEGSMS.Repos
 
                                         await _context.ParentsStudentsMap.AddAsync(mapp);
                                         await _context.SaveChangesAsync();
+
+                                        //the list of parent that exits
+                                        var prts = (from prt in _context.Parents
+                                                    where prt.Email == parentExists.Email
+                                                    select new
+                                                    {
+                                                        prt.Id,
+                                                        prt.SchoolId,
+                                                        prt.CampusId,
+                                                        prt.FirstName,
+                                                        prt.LastName,
+                                                        prt.UserName,
+                                                        prt.Email,
+                                                        prt.PhoneNumber,
+                                                        prt.hasChild,
+                                                        prt.IsActive,
+                                                        prt.DateCreated,
+                                                    }).FirstOrDefault();
+                                        //add all existing parent to a list and send as part of API respponse
+                                        listOfParentThatExistsInSchool.Add(prts);
                                     }
                                     else
                                     {
-                                        //This parent info will not be created, but student info will be created.
-                                        //Parent profile should be created with a different email that doesn't exists in the DB and 
-                                        //student created should be mapped to the parent
-                                        listOfParentEmailThatExists.Add(parentsEmailAddress);
+                                        //Check if the parent exists in the Database
+                                        var parentExistsInDb = _context.Parents.Where(P => P.Email == parentsEmailAddress).FirstOrDefault();
+                                        if (parentExistsInDb == null)
+                                        {
+                                            //Save new parents details
+                                            var parent = new Parents
+                                            {
+                                                FirstName = worksheet.Cells[row, 14].Value.ToString(),
+                                                LastName = worksheet.Cells[row, 15].Value.ToString(),
+                                                UserName = parentsEmailAddress,
+                                                GenderId = (long)Converters.stringToGender(worksheet.Cells[row, 16].Value.ToString()),
+                                                Email = parentsEmailAddress,
+                                                PhoneNumber = worksheet.Cells[row, 18].Value.ToString(),
+                                                Salt = salt,
+                                                PasswordHash = passwordHash,
+                                                SchoolId = obj.SchoolId,
+                                                CampusId = obj.CampusId,
+                                                Nationality = worksheet.Cells[row, 19].Value.ToString(),
+                                                State = worksheet.Cells[row, 20].Value.ToString(),
+                                                City = worksheet.Cells[row, 21].Value.ToString(),
+                                                HomeAddress = worksheet.Cells[row, 22].Value.ToString(),
+                                                Occupation = worksheet.Cells[row, 23].Value.ToString(),
+                                                StateOfOrigin = worksheet.Cells[row, 24].Value.ToString(),
+                                                LocalGovt = worksheet.Cells[row, 25].Value.ToString(),
+                                                Religion = worksheet.Cells[row, 26].Value.ToString(),
+                                                IsActive = true,
+                                                hasChild = true,
+                                                DateCreated = DateTime.Now,
+                                            };
+
+                                            await _context.Parents.AddAsync(parent);
+                                            await _context.SaveChangesAsync();
+
+                                            //map student and parent
+                                            var mapp = new ParentsStudentsMap
+                                            {
+                                                ParentId = parent.Id,
+                                                StudentId = std.Id,
+                                                SchoolId = obj.SchoolId,
+                                                CampusId = obj.CampusId,
+                                                DateCreated = DateTime.Now
+                                            };
+
+                                            //student was mapped to a parent
+                                            var getStudent = _context.Students.Where(s => s.Id == std.Id).FirstOrDefault();
+                                            getStudent.hasParent = true;
+
+                                            await _context.ParentsStudentsMap.AddAsync(mapp);
+                                            await _context.SaveChangesAsync();
+                                        }
+                                        else
+                                        {
+                                            //This parent info will not be created, but student info will be created.
+                                            //Parent profile should be created with a different email that doesn't exists in the DB and 
+                                            //student created should be mapped to the parent
+                                            listOfParentEmailThatExists.Add(parentsEmailAddress);
+                                        }
                                     }
+
+                                    //increments the numbers of students created from the excel file
+                                    numberOfStudentsCreated++;
                                 }
 
-                                //increments the numbers of students created from the excel file
-                                numberOfStudentsCreated++;
+                                response.StatusCode = 200;
+                                response.StatusMessage = "Uploaded Successfully!, Student(s) with existing Parent Details was updated Successfully!";
+                                response.NumberOfStudentsCreated = numberOfStudentsCreated;
+                                response.StudentsData = listOfStudentsCreated.ToList();
+                                response.NumberOfExistingParents = listOfParentThatExistsInSchool.Count();
+                                response.ExistingParentsInfoInSchool = listOfParentThatExistsInSchool.ToList();
+                                response.ExistingStudentsInfo = listOfStudentThatExists.ToList();
+                                response.ExistingParentsEmail = listOfParentEmailThatExists.ToList();
                             }
-
-                            response.StatusCode = 200;
-                            response.StatusMessage = "Uploaded Successfully!, Student(s) with existing Parent Details was updated Successfully!";
-                            response.NumberOfStudentsCreated = numberOfStudentsCreated;
-                            response.StudentsData = listOfStudentsCreated.ToList();
-                            response.NumberOfExistingParents = listOfParentThatExistsInSchool.Count();
-                            response.ExistingParentsInfoInSchool = listOfParentThatExistsInSchool.ToList();
-                            response.ExistingStudentsInfo = listOfStudentThatExists.ToList();
-                            response.ExistingParentsEmail = listOfParentEmailThatExists.ToList();
                         }
                     }
                 }

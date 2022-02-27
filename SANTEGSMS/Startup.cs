@@ -143,14 +143,8 @@ namespace SANTEGSMS
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseHttpsRedirection();
-                //app.UseHttpsRedirection();
             }
-            else
-            {
-                app.UseHsts();
-            }
-
+           
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
