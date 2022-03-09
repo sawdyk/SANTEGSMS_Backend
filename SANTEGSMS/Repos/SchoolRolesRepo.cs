@@ -101,6 +101,43 @@ namespace SANTEGSMS.Repos
             }
         }
 
+        public async Task<GenericRespModel> getSchoolRolesAssignedToSchoolUsersAsync(long schoolId, long campusId, Guid schoolUserId)
+        {
+            try
+            {
+                //Validations
+                CheckerValidation check = new CheckerValidation(_context);
+                var checkSchool = check.checkSchoolById(schoolId);
+                var checkCampus = check.checkSchoolCampusById(campusId);
+
+                //check if the School and CampusId is Valid
+                if (checkSchool == true && checkCampus == true)
+                {
+                    var getRoles = from rol in _context.SchoolUserRoles
+                                   where rol.UserId == schoolUserId
+                                   select new
+                                   {
+                                       rol.Id,
+                                       rol.UserId,
+                                       rol.RoleId,
+                                       rol.SchoolRoles.RoleName
+                                   };
+
+                    return new GenericRespModel { StatusCode = 200, StatusMessage = "Successful", Data = getRoles.ToList()};
+                }
+
+                return new GenericRespModel { StatusCode = 400, StatusMessage = "No School Or Campus With the specified ID" };
+            }
+            catch (Exception exMessage)
+            {
+                ErrorLogger err = new ErrorLogger();
+                var logError = err.logError(exMessage);
+                await _context.ErrorLog.AddAsync(logError);
+                await _context.SaveChangesAsync();
+                return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
+            }
+        }
+
         public async Task<GenericRespModel> assignRolesToSchoolUsersAsync(AssignRolesReqModel obj)
         {
             try
@@ -191,6 +228,6 @@ namespace SANTEGSMS.Repos
                 await _context.SaveChangesAsync();
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
-        }
+        }       
     }
 }

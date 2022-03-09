@@ -1,4 +1,5 @@
-﻿using SANTEGSMS.DatabaseContext;
+﻿using Microsoft.EntityFrameworkCore;
+using SANTEGSMS.DatabaseContext;
 using SANTEGSMS.Entities;
 using SANTEGSMS.Helpers;
 using SANTEGSMS.IRepos;
@@ -346,7 +347,7 @@ namespace SANTEGSMS.Repos
                     //get user by email address
                     var getUserByEmail = _context.SchoolUsers.Where(s => s.Email == obj.Email).FirstOrDefault();
 
-                    if (getUserByEmail != null)
+                    if (getUserByEmail != null && getSchUser.Id != getUserByEmail.Id)
                     {
                         return new GenericRespModel { StatusCode = 409, StatusMessage = "A User with this Email Address Already Exists" };
                     }
@@ -360,7 +361,29 @@ namespace SANTEGSMS.Repos
                         getSchUser.CampusId = obj.CampusId;
                         getSchUser.LastUpdatedDate = DateTime.Now;
 
-                        await _context.SaveChangesAsync();
+                        //update/save the SchoolUser Roles
+                        foreach (var roleId in obj.RoleIds)
+                        {
+                            var checkRol = _context.SchoolUserRoles.FirstOrDefault(u => u.UserId == getSchUser.Id && u.RoleId == roleId.Id);
+                            if (checkRol is null)
+                            {
+                                var usrRol = new SchoolUserRoles
+                                {
+                                    UserId = getSchUser.Id,
+                                    RoleId = roleId.Id,
+                                    DateCreated = DateTime.Now
+                                };
+
+                                await _context.SchoolUserRoles.AddAsync(usrRol);
+                            }
+                            else
+                            {
+                                checkRol.UserId = getSchUser.Id;
+                                checkRol.RoleId = roleId.Id;
+                            }
+
+                            await _context.SaveChangesAsync();
+                        }
 
                         //activityLog
                         var activitylog = new ActivityLogs()
@@ -377,7 +400,7 @@ namespace SANTEGSMS.Repos
                         await _context.ActivityLogs.AddAsync(activitylog);
                         await _context.SaveChangesAsync();
 
-                        return new GenericRespModel { StatusCode = 200, StatusMessage = "User Details Updated Successfully", };
+                        return new GenericRespModel { StatusCode = 200, StatusMessage = "User Details Updated Successfully"};
                     }
                 }
 
@@ -391,7 +414,6 @@ namespace SANTEGSMS.Repos
                 await _context.SaveChangesAsync();
                 return new GenericRespModel { StatusCode = 500, StatusMessage = "An Error Occured!" };
             }
-
         }
 
         public async Task<GenericRespModel> deleteSchoolUsersAsync(Guid schoolUserId, long schoolId, long campusId)

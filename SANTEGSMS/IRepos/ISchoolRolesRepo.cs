@@ -13,6 +13,7 @@ namespace SANTEGSMS.IRepos
         Task<GenericRespModel> getAllSchoolRolesAsync();
         Task<GenericRespModel> getSchoolRolesForSchoolUserCreationAsync();
         Task<GenericRespModel> getSchoolRolesByRoleIdAsync(long schoolRoleId);
+        Task<GenericRespModel> getSchoolRolesAssignedToSchoolUsersAsync(long schoolId, long campusId, Guid schoolUserId);
         Task<GenericRespModel> assignRolesToSchoolUsersAsync(AssignRolesReqModel obj);
         Task<GenericRespModel> deleteRolesAssignedToSchoolUsersAsync(DeleteRolesAssignedReqModel obj);
 

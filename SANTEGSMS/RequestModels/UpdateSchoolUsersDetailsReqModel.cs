@@ -21,5 +21,7 @@ namespace SANTEGSMS.RequestModels
         public string Email { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
+        [Required]
+        public IEnumerable<RoleIds> RoleIds { get; set; } //A list of Roles
     }
 }

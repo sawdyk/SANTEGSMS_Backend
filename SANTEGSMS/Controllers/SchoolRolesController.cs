@@ -65,6 +65,20 @@ namespace SANTEGSMS.Controllers
             return Ok(result);
         }
 
+        [HttpGet("schoolRolesAssignedToSchoolUsers")]
+        [Authorize]
+        public async Task<IActionResult> getSchoolRolesAssignedToSchoolUsersAsync(long schoolId, long campusId, Guid schoolUserId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var result = await _schoolRolesRepo.getSchoolRolesAssignedToSchoolUsersAsync(schoolId, campusId, schoolUserId);
+
+            return Ok(result);
+        }
+
         [HttpPost("assignRolesToSchoolUsers")]
         [Authorize]
         public async Task<IActionResult> assignRolesToSchoolUsersAsync(AssignRolesReqModel obj)

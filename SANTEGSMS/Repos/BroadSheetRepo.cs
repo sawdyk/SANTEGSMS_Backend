@@ -223,10 +223,20 @@ namespace SANTEGSMS.Repos
                 {
                     foreach (var mand in obj.SubjectLists)
                     {
-                        var getBroadSheetRemark = _context.BroadSheetRemark.Where(c => c.SchoolId == obj.SchoolId && c.CampusId == obj.CampusId
-                        && c.ClassId == obj.ClassId && c.Mandatory == mand.Mandatory && c.SubjectId == mand.SubjectId).FirstOrDefault();
+                        var checkBrdRmrk = _context.BroadSheetRemark.Where(c => c.SchoolId == obj.SchoolId && c.CampusId == obj.CampusId
+                        && c.ClassId == obj.ClassId && c.SubjectId == mand.SubjectId).FirstOrDefault();
 
-                        if (getBroadSheetRemark == null)
+                        if (checkBrdRmrk != null)
+                        {
+                            checkBrdRmrk.SchoolId = obj.SchoolId;
+                            checkBrdRmrk.CampusId = obj.CampusId;
+                            checkBrdRmrk.ClassId = obj.ClassId;
+                            checkBrdRmrk.SubjectId = mand.SubjectId;
+                            checkBrdRmrk.Mandatory = mand.Mandatory;
+
+                            await _context.SaveChangesAsync();
+                        }
+                        else
                         {
                             var bdGrd = new BroadSheetRemark
                             {
@@ -239,16 +249,6 @@ namespace SANTEGSMS.Repos
                             };
 
                             await _context.BroadSheetRemark.AddAsync(bdGrd);
-                            await _context.SaveChangesAsync();
-                        }
-                        else
-                        {
-                            getBroadSheetRemark.SchoolId = obj.SchoolId;
-                            getBroadSheetRemark.CampusId = obj.CampusId;
-                            getBroadSheetRemark.ClassId = obj.ClassId;
-                            getBroadSheetRemark.SubjectId = mand.SubjectId;
-                            getBroadSheetRemark.Mandatory = mand.Mandatory;
-
                             await _context.SaveChangesAsync();
                         }
                     }
